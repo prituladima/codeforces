@@ -15,8 +15,6 @@ public class C_926_B {
 
         Arrays.sort(coordinates);
 
-//        System.out.println(coordinates);
-
         if (coordinates[0] < 0) {
             int dif = Math.abs(coordinates[0]);
             for (int i = 0; i < coordinates.length; i++) {
