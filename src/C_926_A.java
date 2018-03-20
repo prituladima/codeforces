@@ -1,5 +1,3 @@
-package com.prituladima.contest_926.problem_A;
-
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
