@@ -20,7 +20,7 @@ public class C_926_A {
         int r = 0;
         for (Integer c : set) {
             if (from <= c && c <= to){
-                System.out.println(c);
+                //System.out.println(c);
                 r++;
             }
         }
@@ -30,12 +30,15 @@ public class C_926_A {
 
     }
 
-    static int pow(int a, int b) {
-        int r = 1;
-        for (int i = 1; i <= b; i++) {
-            r *= a;
+    static int pow(int a, int n) {
+        if (n == 0)
+            return 1;
+        if (n % 2 == 1)
+            return pow (a, n-1) * a;
+        else {
+            int b = pow (a, n/2);
+            return b * b;
         }
-        return r;
     }
 
 }
