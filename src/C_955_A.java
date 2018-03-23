@@ -17,23 +17,19 @@ public class C_955_A {
         int H = scanner.nextInt();
         int D = scanner.nextInt();
 
-
-        double C = scanner.nextDouble();
+        int C = scanner.nextInt();
         int N = scanner.nextInt();
 
-        double res = 0.0;
-        if (hh >= 20) {
-            res = (H + N - 1) / N * (C * 0.8);
-        } else {
-            double amount = (H + N - 1) / N;
-            double now = amount * C;
-            double time = ((20 - hh - 1) * 60 + (60 - mm));
-            double amount2 = (time * D + H + N - 1) / N;
-            double wait = (amount2 * (C * 0.8));
-            res = Math.min(now, wait);
+        int L = 20 * 60 - (hh * 60 + mm);
+        double ans = Double.POSITIVE_INFINITY;
+
+        if (hh < 20) {
+            ans = Math.min(ans, (H + N - 1) / N * C);
         }
 
-        System.out.printf("%.4f", res);
+        ans = Math.min(ans, (H + Math.max(L, 0) * D + N - 1) / N * C * 0.8);
+
+        System.out.printf("%.4f", ans);
 
     }
 
