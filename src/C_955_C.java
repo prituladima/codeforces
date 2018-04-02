@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
-public class C {
+public class C_955_C {
     InputStream is;
     PrintWriter out;
     String INPUT = "";
@@ -76,7 +76,7 @@ public class C {
     }
 
     public static void main(String[] args) throws Exception {
-        new C().run();
+        new C_955_C().run();
     }
 
     private byte[] inbuf = new byte[1024];
