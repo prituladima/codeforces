@@ -1,5 +1,3 @@
-
-
 import java.io.*;
 import java.util.*;
 
@@ -12,7 +10,7 @@ public class Template {
     }
 
     public static void main(String[] args) {
-        new C_952_A().run();
+        new Template().run();
     }
 
     StringTokenizer tokenizer;
