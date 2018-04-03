@@ -1,13 +1,14 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
-
-import java.io.*;
-import java.util.*;
-
-public class Template {
+public class C_952_A {
 
     private void solve(BufferedReader reader, PrintWriter writer) throws IOException {
 
-        //solve
+        writer.print(nextInt() % 2);
 
     }
 
