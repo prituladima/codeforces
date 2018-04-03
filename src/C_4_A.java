@@ -1,16 +1,32 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
-public class Template {
+/**
+ * Created by prituladima on 4/4/18.
+ */
+public class C_4_A {
 
-    private void solve() throws IOException {
 
-        //solve
+    private void solve() throws Exception {
+
+        int w = nextInt();
+
+        if (w < 3) {
+            writer.println("NO");
+            return;
+        } else {
+            int d = w - 2;
+            writer.print(d % 2 == 0 ? "YES" : "NO");
+        }
+
 
     }
 
     public static void main(String[] args) {
-        new Template().run();
+        new C_4_A().run();
     }
 
     StringTokenizer tokenizer;
@@ -49,4 +65,5 @@ public class Template {
         }
         return tokenizer.nextToken();
     }
+
 }
