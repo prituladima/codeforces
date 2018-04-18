@@ -1,12 +1,12 @@
 import java.util.*;
 
-public class TaskA {
+public class C_964_A {
 
     public static void main(String[] args) {
-        new TaskA().solve();
+        new C_964_A().solve();
     }
 
-    TaskA() {
+    C_964_A() {
     }
 
     private void solve() {
