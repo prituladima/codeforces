@@ -7,5 +7,6 @@ public class C_1_A {
         long m = scanner.nextLong();
         long a = scanner.nextLong();
         System.out.println(((n + a - 1) / a) * ((m + a - 1) / a));
+
     }
 }
