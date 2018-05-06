@@ -32,12 +32,9 @@ public class C_977_B {
     }
 
     private static int amountOfSubString(String s, String sub) {
-        int counter = 0;
-
-        int index = -1;
+        int counter = 0, index = -1;
         while ((index = s.indexOf(sub, index + 1)) != -1)
             counter++;
-
         return counter;
     }
 
