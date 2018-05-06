@@ -11,36 +11,34 @@ public class C_977_B {
         int n = nextInt();
         String s = nextToken();
 
-        if(n == 2) {
-            System.out.println(s);
-            return;
-        }
+        int max = Integer.MIN_VALUE;
+        String maxSubString = "";
 
-
-        Map<String, Integer> map = new HashMap<>();
-        char[] chars = s.toCharArray();
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < i; j++) {
-                if (chars[i] == chars[j] && chars[i + 1] == chars[j + 1]) {
-                    String key = chars[i] + "" + chars[i + 1];
-                    int value = map.containsKey(key) ? map.get(key) + 1 : 1;
-                    map.put(key, value);
+        for (char i = 'A'; i <= 'Z'; i++) {
+            for (char j = 'A'; j <= 'Z'; j++) {
+                String subString = i + "" + j;
+                int amount = amountOfSubString(s, subString);
+                if (max < amount) {
+                    max = amount;
+                    maxSubString = subString;
                 }
+
             }
         }
 
-        String max = null;
-        int maxInt = 0;
-        for (String s1 : map.keySet()) {
-            if (maxInt < map.get(s1)) {
-                maxInt = map.get(s1);
-                max = s1;
-            }
-        }
-
-        System.out.println(max);
+        System.out.println(maxSubString);
 
 
+    }
+
+    private static int amountOfSubString(String s, String sub) {
+        int counter = 0;
+
+        int index = -1;
+        while ((index = s.indexOf(sub, index + 1)) != -1)
+            counter++;
+
+        return counter;
     }
 
     public static void main(String[] args) {
