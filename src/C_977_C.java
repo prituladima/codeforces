@@ -1,17 +1,60 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.StringTokenizer;
 
-// TODO: 5/6/18 CHANGE THIS APPROACH
-public class Template {
+public class C_977_C {
 
     private void solve() throws IOException {
 
-        //solve
+        int n = nextInt();
+        int k = nextInt();
+        int[] ar = nextArr(n);
+
+
+        Arrays.sort(ar);
+//        System.out.println(Arrays.toString(ar));
+
+
+
+
+        if (k == 0) {
+            if(ar[0] == 1) System.out.println(-1);
+            else System.out.println(ar[0] - 1);
+            return;
+        }
+
+        if (k == n) {
+            System.out.println(ar[k - 1]);
+            return;
+        }
+
+
+        if (ar[k - 1] == ar[k]) {
+            System.out.println(-1);
+        } else {
+            System.out.println(ar[k - 1]);
+        }
+
+
+//        int max = -1;
+//        int maxI = -1;
+//
+//        for (int i = 0; i < ar.length; i++) {
+//            if(ar[k-1] <= )
+//        }
+
+
+
 
     }
 
     public static void main(String[] args) {
-        new Template().run();
+        new C_977_C().run();
     }
 
     StringTokenizer tokenizer;
@@ -71,4 +114,5 @@ public class Template {
             arr[i] = nextDouble();
         return arr;
     }
+
 }

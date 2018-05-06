@@ -1,17 +1,50 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.*;
 
-// TODO: 5/6/18 CHANGE THIS APPROACH
-public class Template {
+public class C_977_B {
 
     private void solve() throws IOException {
 
-        //solve
+        int n = nextInt();
+        String s = nextToken();
+
+        if(n == 2) {
+            System.out.println(s);
+            return;
+        }
+
+
+        Map<String, Integer> map = new HashMap<>();
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < i; j++) {
+                if (chars[i] == chars[j] && chars[i + 1] == chars[j + 1]) {
+                    String key = chars[i] + "" + chars[i + 1];
+                    int value = map.containsKey(key) ? map.get(key) + 1 : 1;
+                    map.put(key, value);
+                }
+            }
+        }
+
+        String max = null;
+        int maxInt = 0;
+        for (String s1 : map.keySet()) {
+            if (maxInt < map.get(s1)) {
+                maxInt = map.get(s1);
+                max = s1;
+            }
+        }
+
+        System.out.println(max);
+
 
     }
 
     public static void main(String[] args) {
-        new Template().run();
+        new C_977_B().run();
     }
 
     StringTokenizer tokenizer;
@@ -71,4 +104,5 @@ public class Template {
             arr[i] = nextDouble();
         return arr;
     }
+
 }
