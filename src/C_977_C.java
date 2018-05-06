@@ -2,9 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class C_977_C {
@@ -15,11 +12,7 @@ public class C_977_C {
         int k = nextInt();
         int[] ar = nextArr(n);
 
-
-        Arrays.sort(ar);
-//        System.out.println(Arrays.toString(ar));
-
-
+        quickSort(ar, 0, ar.length - 1);
 
 
         if (k == 0) {
@@ -51,6 +44,33 @@ public class C_977_C {
 
 
 
+    }
+
+
+    private static void quickSort(int[] array, int start, int end) {
+        if (start >= end)
+            return;
+        int i = start, j = end;
+        int cur = i - (i - j) / 2;
+        while (i < j) {
+            while (i < cur && (array[i] <= array[cur])) {
+                i++;
+            }
+            while (j > cur && (array[cur] <= array[j])) {
+                j--;
+            }
+            if (i < j) {
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                if (i == cur)
+                    cur = j;
+                else if (j == cur)
+                    cur = i;
+            }
+        }
+        quickSort(array, start, cur);
+        quickSort(array, cur+1, end);
     }
 
     public static void main(String[] args) {
