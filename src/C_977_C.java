@@ -2,7 +2,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
 public class C_977_C {
 
@@ -12,9 +16,11 @@ public class C_977_C {
         int k = nextInt();
         int[] ar = nextArr(n);
 
-        quickSort(ar, 0, ar.length - 1);
+        List<Integer> list = Arrays.stream(ar).boxed().collect(Collectors.toList());
+        Collections.sort(list);
 
-
+        for(int i=0;i<n;i++)
+            ar[i]= list.get(i);
         if (k == 0) {
             if(ar[0] == 1) System.out.println(-1);
             else System.out.println(ar[0] - 1);
