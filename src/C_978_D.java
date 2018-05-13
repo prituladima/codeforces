@@ -14,21 +14,42 @@ public class C_978_D {
     private void solve() throws IOException {
 
         int n = nextInt();
-        long[] array = nextArrL(n);
+        int[] b = nextArr(n);
 
-        Map<Long, Long> map = new HashMap<>();
-        for (int i = 0; i < array.length - 1; i++) {
-            long diff = array[i] - array[i + 1];
-            if(!map.containsKey(diff)){
-                map.put(diff, 1L);
-            }
-            else {
-                map.put(diff, map.get(diff) + 1);
+        if (n <= 2) {
+            System.out.println(0);
+            return;
+        }
+
+        int min = Integer.MAX_VALUE;
+
+        for (int d1 = -1; d1 <= 1; d1++) {
+            for (int d2 = -1; d2 <= 1; d2++) {
+                int a1 = b[0] + d1;
+                int a2 = b[1] + d2;
+                int cnt = Math.abs(d1) + Math.abs(d2);
+//                System.out.print(d1 + " " + d2 + " ");
+                for (int i = 2; i < b.length; i++) {
+
+                    int ai = a1 + i * (a2 - a1);
+                    if (Math.abs(ai - b[i]) > 1) {
+                        cnt = Integer.MAX_VALUE;
+                        break;
+                    } else if (ai - b[i] == 0) {
+
+                    } else {
+                        cnt++;
+                    }
+                }
+
+                min = Math.min(cnt, min);
+//                System.out.println(cnt);
             }
         }
 
+        if (min == Integer.MAX_VALUE) min = -1;
 
-
+        System.out.println(min);
 
     }
 
