@@ -20,12 +20,36 @@ public class C_978_F {
         int y;
     }
 
+    public static class PairP{
+
+        public PairP(int i, int r) {
+            this.i = i;
+            this.r = r;
+        }
+
+        int i;
+        int r;
+
+    }
+
     private void solve() throws IOException {
 
         int n = nextInt();
         long k = nextLong();
 
         int[] r = nextArr(n);
+
+        List<PairP> progers = new ArrayList<>();
+        for (int i = 0; i < r.length; i++) {
+            progers.add(new PairP(i, r[i]));
+        }
+
+        Collections.sort(progers, (p1, p2) -> Integer.compare(p1.r, p2.r));
+
+
+
+
+
         List<PairS> list = new ArrayList<>();
         for (long i = 0; i < k; i++) {
             list.add(new PairS(nextInt(), nextInt()));
