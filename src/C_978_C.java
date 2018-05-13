@@ -14,23 +14,29 @@ public class C_978_C {
 
         int n = nextInt(), m = nextInt();
 
-        final long[] apartments_per_house = nextArrL(n), abs_addresses = nextArrL(m);
+        final long[] a = nextArrL(n), b = nextArrL(m);
 
-        long[] arr3 = apartments_per_house.clone();
-        for (int i = 1; i < arr3.length; i++) {
-            arr3[i] += arr3[i - 1];
+        long[] sums = a.clone();
+        for (int i = 1; i < sums.length; i++) {
+            sums[i] += sums[i - 1];
         }
 
 
-        for (int i = 0; i < abs_addresses.length; i++) {
-            int house = BinarySearch(arr3, abs_addresses[i], 1, arr3.length -1) + 1;
+        for (int i = 0; i < b.length; i++) {
+            int house = BinarySearch(sums, b[i], 1, sums.length -1) + 1;
             if(house == 0) house = 1;
-            long apartaments = app(apartments_per_house, abs_addresses[i]);
-            if(apartaments == 0){
-                apartaments = apartments_per_house[house - 1];
+            long ap;
+            if(house == 1){
+                ap = b[i];
             }
+            else {
+                ap = b[i] - sums[house - 2];
+            }
+//            if(apartaments == 0){
+//                apartaments = a[house - 1];
+//            }
 
-            System.out.println(house + " " + apartaments);
+            System.out.println(house + " " + ap);
         }
 
     }
