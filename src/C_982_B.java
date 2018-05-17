@@ -54,55 +54,26 @@ public class C_982_B {
         Collections.sort(pairs, (v1, v2) -> Integer.compare(v1.v, v2.v));
 
 
-        int last_0 = 0;
-        int last_1 = pairs.size() - 1;
-
-        boolean places0ut0 = false;
-        boolean placesOut1 = false;
-
-
-
-
-        int last_0_ = 0;
-        int last_1_ = pairs.size() - 1;
-
-        boolean places0ut0_ = false;
-        boolean placesOut1_ = false;
-
-
         for (int i = 0; i < chars.length; i++) {
 
             if (chars[i] == '0') {
 
                 boolean out = false;
-                for (int j = last_0; j < pairs.size(); j++) {
-                    last_0 = j + 1;
+                for (int j = 0; j < pairs.size(); j++) {
                     if (pairs.get(j).p < 1) {
                         pairs.get(j).p++;
                         System.out.print((pairs.get(j).order + 1) + " ");
                         out = true;
-
-                        if (pairs.get(j).p == 2) {
-                            pairs.remove(j);
-                        }
-
                         break;
                     }
                 }
 
                 if (out) continue;
 
-                for (int j = last_0_; j < pairs.size(); j++) {
-                    last_0_ = j + 1;
+                for (int j = 0; j < pairs.size(); j++) {
                     if (pairs.get(j).p == 1) {
                         pairs.get(j).p++;
                         System.out.print((pairs.get(j).order + 1) + " ");
-
-
-                        if (pairs.get(j).p == 2) {
-                            pairs.remove(j);
-                        }
-
                         break;
                     }
                 }
@@ -110,36 +81,21 @@ public class C_982_B {
 
             } else {
                 boolean out = false;
-                for (int i1 = last_1; i1 >= 0; i1--) {
-                    last_1 = i1 - 1;
+                for (int i1 = pairs.size() - 1; i1 >= 0; i1--) {
                     if (pairs.get(i1).p == 1) {
                         pairs.get(i1).p++;
                         System.out.print((pairs.get(i1).order + 1) + " ");
                         out = true;
-
-
-                        if (pairs.get(i1).p == 2) {
-                            pairs.remove(i1);
-                        }
-
                         break;
                     }
                 }
 
 
                 if (out) continue;
-                for (int i1 = last_1_; i1 >= 0; i1--) {
-
-                    last_1_ = i1 - 1;
+                for (int i1 = pairs.size() - 1; i1 >= 0; i1--) {
                     if (pairs.get(i1).p == 0) {
                         pairs.get(i1).p++;
                         System.out.print((pairs.get(i1).order + 1) + " ");
-
-
-                        if (pairs.get(i1).p == 2) {
-                            pairs.remove(i1);
-                        }
-
                         break;
                     }
                 }
