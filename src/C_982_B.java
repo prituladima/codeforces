@@ -79,7 +79,7 @@ public class C_982_B {
                 }
 
 
-            } else {
+            } else if(chars[i] == '0'){
                 boolean out = false;
                 for (int i1 = pairs.size() - 1; i1 >= 0; i1--) {
                     if (pairs.get(i1).p == 1) {
