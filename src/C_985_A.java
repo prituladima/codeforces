@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class C_985_A {
@@ -11,39 +12,13 @@ public class C_985_A {
         int n = nextInt();
 
         int[] p = nextArr(n / 2);
-//
-//        int index1 = 1;
-//        int steps1 = 0;
-//        for (int i : p) {
-//            steps1 += Math.abs(i - index1);
-//            index1 += 2;
-//        }
-//
-//        int index2 = 2;
-//        int steps2 = 0;
-//        for (int i : p) {
-//            steps2 += Math.abs(i - index2);
-//            index2 += 2;
-//        }
-//
-//        ///
-//
-//
-//
-//        ////
-//
-//        System.out.println(Math.min(steps1, steps2));
-//
 
+        Arrays.sort(p);
 
-        int st1 = 0;
+        int st1 = 0, st2 = 0;
         for (int i = 0; i < p.length; i++) {
-            st1 += Math.abs(2*i + 1 - p[i]);
-        }
-
-        int st2 = 0;
-        for (int i = 0; i < p.length; i++) {
-            st2 += Math.abs(2*i + 2 - p[i]);
+            st1 += Math.abs(2 * i + 1 - p[i]);
+            st2 += Math.abs(2 * i + 2 - p[i]);
         }
 
         System.out.println(Math.min(st1, st2));
