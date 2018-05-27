@@ -11,35 +11,26 @@ public class Main {
 
     private void solve() throws IOException {
 
-        int n = nextInt(), d = nextInt();
-        int[] x = nextArr(n);
-        List<Integer> list = new ArrayList<>();
-        for (int i : x) {
-            list.add(i);
+        int n = nextInt();
+        int d = nextInt();
+        int[] xs = nextArr(n);
+
+        int minimum = n;
+
+        for (int start = 1; start <= 100; start++) {
+            minimum = Math.min(minimum, getAmountToRemoveFromArrayOutOfBounds(xs, start, start + d));
         }
-        Collections.sort(list);
+        System.out.println(minimum);
+    }
 
-        Set<Integer> set = new HashSet<>(list);
-
-        if (set.size() == 1) {
-            System.out.println(0);
-            return;
-        }
-
-        int before = list.size();
-
-        while (list.get(list.size() - 1) - list.get(0) > d) {
-            if (list.get(1) - list.get(0) > list.get(list.size() - 1) - list.get(list.size() - 2)) {
-                list.remove(0);
-            } else {
-                list.remove(list.size() - 1);
+    public static int getAmountToRemoveFromArrayOutOfBounds(int[] xs, int start, int end) {
+        int result = 0;
+        for (int x : xs) {
+            if (x < start || end < x) {
+                result++;
             }
         }
-
-        int after = list.size();
-        System.out.println(before - after);
-
-
+        return result;
     }
 
     public static void main(String[] args) {

@@ -2714,6 +2714,7 @@ public class Pre
         int n = nextInt();
         int d = nextInt();
         int[] xs = nextInts(n);
+
         int minimum = n;
         for (int start = 1; start < 100; start++)
         {
