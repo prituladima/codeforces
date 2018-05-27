@@ -2,37 +2,48 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * Created by prituladima on 5/23/18.
  */
-public class DiagonalWalking {
+public class Main {
 
     private void solve() throws IOException {
-        int n = nextInt();
-        String s = nextToken();
 
-        char[] chars = s.toCharArray();
+        int n = nextInt(), d = nextInt();
+        int[] x = nextArr(n);
+        List<Integer> list = new ArrayList<>();
+        for (int i : x) {
+            list.add(i);
+        }
+        Collections.sort(list);
 
-        int counter = 0;
+        Set<Integer> set = new HashSet<>(list);
 
-        for (int i = 0; i < chars.length - 1; i++) {
-            if (chars[i] != chars[i + 1]) {
-                counter++;
-                i++;
+        if (set.size() == 1) {
+            System.out.println(0);
+            return;
+        }
+
+        int before = list.size();
+
+        while (list.get(list.size() - 1) - list.get(0) > d) {
+            if (list.get(1) - list.get(0) > list.get(list.size() - 1) - list.get(list.size() - 2)) {
+                list.remove(0);
+            } else {
+                list.remove(list.size() - 1);
             }
         }
 
-        System.out.println(s.length() - counter);
+        int after = list.size();
+        System.out.println(before - after);
 
 
     }
 
     public static void main(String[] args) {
-        new DiagonalWalking().run();
+        new Main().run();
     }
 
     StringTokenizer tokenizer;
