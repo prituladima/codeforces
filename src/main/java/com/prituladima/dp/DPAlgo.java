@@ -10,6 +10,6 @@ public interface DPAlgo {
 
     int bin_coef(int n, int k);
 
-    int lrs_lenght(char[] S);
+    int lrs_lenght(char[] S, int l);
 
 }

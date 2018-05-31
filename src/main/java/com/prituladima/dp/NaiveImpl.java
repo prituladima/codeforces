@@ -29,7 +29,7 @@ public class NaiveImpl implements DPAlgo {
     }
 
     @Override
-    public int lrs_lenght(char[] S) {
+    public int lrs_lenght(char[] S, int l) {
         return 0;
     }
 
