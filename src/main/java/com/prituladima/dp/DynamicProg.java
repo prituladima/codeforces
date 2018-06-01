@@ -1,6 +1,6 @@
 package com.prituladima.dp;
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class DynamicProg implements DPAlgo {
 
@@ -95,93 +95,86 @@ public class DynamicProg implements DPAlgo {
 
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-            int[] arr = new int[sc.nextInt()];
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = sc.nextInt();
-            }
 
-            System.out.println(kadane_max(arr, arr.length));
+        int[] arr = {-2, -3, 4, -1, -2, 1, 5, -3};
 
-
+        System.out.println(Arrays.toString(kadane_max_full(arr, arr.length)));
 
     }
 
 
     private static int kadane_max(int[] a, int n) {
-        int max_so_far = 0;
-        int max_ending_here = a[0];
+        int sum = 0;
+        int max = a[0];
 
         for (int i = 0; i < n; i++) {
-            max_so_far += a[i];
-            max_ending_here = Math.max(max_ending_here, max_so_far);
-            max_so_far = Math.max(max_so_far, 0);
+            sum += a[i];
+            max = Math.max(max, sum);
+            sum = Math.max(sum, 0);
         }
 
-        return max_ending_here;
+        return max;
     }
 
     private static int kadane_min(int[] a, int n) {
-        int min_so_far = 0;
-        int min_ending_here = a[0];
+        int sum = 0;
+        int min = a[0];
 
         for (int i = 0; i < n; i++) {
-            min_so_far += a[i];
-            min_ending_here = Math.min(min_ending_here, min_so_far);
-            min_so_far = Math.min(min_so_far, 0);
+            sum += a[i];
+            min = Math.min(min, sum);
+            sum = Math.min(sum, 0);
         }
 
-        return min_ending_here;
-    }
-
-
-    private static int[] kadane_min_full(int[] a, int n) {
-        int min_l = 0, min_r = 0;
-
-        int min_so_far = 0;
-        int min_ending_here = a[0];
-
-        int last_pos_sum = -1;
-        for (int i = 0; i < n; i++) {
-            min_so_far += a[i];
-            if (min_ending_here > min_so_far) {
-                min_ending_here = min_so_far;
-                min_r = i;
-                min_l = last_pos_sum + 1;
-            }
-            if (min_so_far > 0) {
-                min_so_far = 0;
-                last_pos_sum = i;
-            }
-        }
-        return new int[]{min_ending_here, min_l, min_r};
+        return min;
     }
 
     private static int[] kadane_max_full(int[] a, int n) {
-        int max_l = 0, max_r = 0;
+        int maxL = 0, maxR = 0;
 
-        int max_so_far = 0;
-        int max_from_sum = a[0];
+        int nonNegativeSum = 0;
+        int max = a[0];
 
         int last_min_sum = -1;
         for (int i = 0; i < n; i++) {
-            max_so_far += a[i];
+            nonNegativeSum += a[i];
 
-            if (max_from_sum < max_so_far) {
-                max_from_sum = max_so_far;
-                max_r = i;
-                max_l = last_min_sum + 1;
+            if (max < nonNegativeSum) {
+                max = nonNegativeSum;
+                maxR = i;
+                maxL = last_min_sum + 1;
             }
 
-            if (max_so_far < 0) {
-                max_so_far = 0;
+            if (nonNegativeSum < 0) {
+                nonNegativeSum = 0;
                 last_min_sum = i;
             }
         }
 
-        System.out.println(max_l);
-        System.out.println(max_r);
-        return new int[]{max_from_sum, max_l, max_r};
+        return new int[]{max, maxL, maxR};
+    }
+
+
+    private static int[] kadane_min_full(int[] a, int n) {
+        int minL = 0, minR = 0;
+
+        int nonPositiveSum = 0;
+        int min = a[0];
+
+        int last_pos_sum = -1;
+        for (int i = 0; i < n; i++) {
+            nonPositiveSum += a[i];
+            if (min > nonPositiveSum) {
+                min = nonPositiveSum;
+                minR = i;
+                minL = last_pos_sum + 1;
+            }
+            if (nonPositiveSum > 0) {
+                nonPositiveSum = 0;
+                last_pos_sum = i;
+            }
+        }
+        return new int[]{min, minL, minR};
     }
 
 
