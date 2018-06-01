@@ -2,6 +2,8 @@ package com.prituladima.dp;
 
 import java.util.Arrays;
 
+import static java.lang.Math.max;
+
 public class DynamicProg implements DPAlgo {
 
     public int fib(int n) {
@@ -15,62 +17,7 @@ public class DynamicProg implements DPAlgo {
     }
 
 
-    public int lcs_lenght(char[] X, char[] Y, int m, int n) {
-        int L[][] = new int[m + 1][n + 1];
-        for (int i = 0; i <= m; i++) {
-            for (int j = 0; j <= n; j++) {
-                if (i == 0 || j == 0)
-                    L[i][j] = 0;
-                else if (X[i - 1] == Y[j - 1])
-                    L[i][j] = L[i - 1][j - 1] + 1;
-                else
-                    L[i][j] = Math.max(L[i - 1][j], L[i][j - 1]);
-            }
-        }
-        return L[m][n];
-    }
-
-    @Override
-    public int bin_coef(int n, int k) {
-        if (k == 0 || k == n) {
-            return 1;
-        }
-
-        int[][] dp = new int[n + 1][k + 1];
-
-        for (int i = 0; i <= n; i++) {
-            for (int j = 0; j <= Math.min(i, k); j++) {
-                if (j == 0 || i == j) {
-                    dp[i][j] = 1;
-                } else {
-                    dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1];
-                }
-            }
-        }
-
-        return dp[n][k];
-    }
-
-
-    @Override
-    public int lrs_lenght(char[] s, int l) {
-        int[][] dp = new int[l + 1][l + 1];
-
-        for (int i = 0; i <= l; i++)
-            for (int j = 0; j <= l; j++)
-                if (i == 0 || j == 0) {
-                    dp[i][j] = 0;
-                } else if (s[i - 1] == s[j - 1] && i != j) {
-                    dp[i][j] = 1 + dp[i - 1][j - 1];
-                } else {
-                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
-                }
-
-        return dp[l][l];
-    }
-
-
-    int lcs(char[] X, char[] Y, int m, int n) {
+    public int lcs(char[] X, char[] Y, int m, int n) {
         int L[][] = new int[m + 1][n + 1];
 
     /* Following steps build L[m+1][n+1] in bottom up fashion. Note
@@ -88,9 +35,43 @@ public class DynamicProg implements DPAlgo {
         return L[m][n];
     }
 
-    /* Utility function to get max of 2 integers */
-    int max(int a, int b) {
-        return (a > b) ? a : b;
+    @Override
+    public int nCr(int n, int r) {
+        if (r == 0 || r == n) {
+            return 1;
+        }
+
+        int[][] dp = new int[n + 1][r + 1];
+
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= Math.min(i, r); j++) {
+                if (j == 0 || i == j) {
+                    dp[i][j] = 1;
+                } else {
+                    dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1];
+                }
+            }
+        }
+
+        return dp[n][r];
+    }
+
+
+    @Override
+    public int lrs_lenght(char[] s, int l) {
+        int[][] dp = new int[l + 1][l + 1];
+
+        for (int i = 0; i <= l; i++)
+            for (int j = 0; j <= l; j++)
+                if (i == 0 || j == 0) {
+                    dp[i][j] = 0;
+                } else if (s[i - 1] == s[j - 1] && i != j) {
+                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                } else {
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+                }
+
+        return dp[l][l];
     }
 
 
@@ -109,8 +90,8 @@ public class DynamicProg implements DPAlgo {
 
         for (int i = 0; i < n; i++) {
             sum += a[i];
-            max = Math.max(max, sum);
-            sum = Math.max(sum, 0);
+            max = max(max, sum);
+            sum = max(sum, 0);
         }
 
         return max;
