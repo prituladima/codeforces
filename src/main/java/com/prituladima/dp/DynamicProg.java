@@ -181,11 +181,32 @@ public class DynamicProg implements DPAlgo {
     }
 
 
-    public int divisible2357(int n){
-        return  (n / 2) + (n / 3) + (n / 5) + (n / 7)
+    public int divisible2357(int n) {
+        return (n / 2) + (n / 3) + (n / 5) + (n / 7)
                 - (n / 6) - (n / 10) - (n / 14) - (n / 15) - (n / 21) - (n / 35)
                 + (n / 30) + (n / 42) + (n / 70) + (n / 105)
                 - (n / 210);
+    }
+
+
+    public int maxSquareSizeInMatrix(int[][] mtx, int n, int m) {
+        int[][] sum = new int[n][m];
+        int max = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (i == 0 || j == 0) {
+                    sum[i][j] = mtx[i][j];
+                } else if (mtx[i][j] == 1) {
+                    sum[i][j] = 1 + Math.min(Math.min(sum[i - 1][j], sum[i][j - 1]), sum[i - 1][j - 1]);
+
+                } else {
+                    sum[i][j] = 0;
+                }
+
+                max = Math.max(max, sum[i][j]);
+            }
+        }
+        return max;
     }
 
 
