@@ -1,7 +1,5 @@
 package com.prituladima.dp;
 
-import java.util.Arrays;
-
 import static java.lang.Math.max;
 
 public class DynamicProg implements DPAlgo {
@@ -72,15 +70,6 @@ public class DynamicProg implements DPAlgo {
                 }
 
         return dp[l][l];
-    }
-
-
-    public static void main(String[] args) {
-
-        int[] arr = {-2, -3, 4, -1, -2, 1, 5, -3};
-
-        System.out.println(Arrays.toString(kadane_max_full(arr, arr.length)));
-
     }
 
 
@@ -159,4 +148,52 @@ public class DynamicProg implements DPAlgo {
     }
 
 
+    public int ugly(int n) {
+        int nearest = 1;
+        int next2 = 2, next3 = 3, next5 = 5;
+        int i2 = 0, i3 = 0, i5 = 0;
+
+        int[] ugly = new int[n];
+        ugly[0] = 1;
+
+        for (int i = 1; i < n; i++) {
+            nearest = Math.min(Math.min(next2, next3), next5);
+            ugly[i] = nearest;
+
+            if (nearest == next2) {
+                i2++;
+                next2 = ugly[i2] * 2;
+            }
+            if (nearest == next3) {
+                i3++;
+                next3 = ugly[i3] * 3;
+            }
+            if (nearest == next5) {
+                i5++;
+                next5 = ugly[i5] * 5;
+            }
+        }
+        return nearest;
+    }
+
+    public int divisible235(int n) {
+        return n / 2 + n / 3 + n / 5 - n / 6 - n / 15 - n / 10;
+    }
+
+
+    public int divisible2357(int n){
+        return  (n / 2) + (n / 3) + (n / 5) + (n / 7)
+                - (n / 6) - (n / 10) - (n / 14) - (n / 15) - (n / 21) - (n / 35)
+                + (n / 30) + (n / 42) + (n / 70) + (n / 105)
+                - (n / 210);
+    }
+
+
+    /* Driver program to test above functions */
+    public static void main(String args[]) {
+        int n = 5832;
+        System.out.println(new DynamicProg().divisible2357(n));
+        System.out.println(new DynamicProg().divisible235(n));
+
+    }
 }
