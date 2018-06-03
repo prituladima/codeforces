@@ -2,10 +2,20 @@ package com.prituladima.dp;
 
 import static java.lang.Math.max;
 
+/**
+ * @see "https://www.geeksforgeeks.org/dynamic-programming/"
+ */
 class DynamicProgramming {
 
+    /**
+     * @see "https://www.geeksforgeeks.org/modulo-1097-1000000007/"
+     */
     final int modulo = 1000000007;
 
+
+    /**
+     * @see "https://www.geeksforgeeks.org/program-for-nth-fibonacci-number/"
+     */
     int fib(int n) {
         if (n == 1 || n == 2) return 1;
 
@@ -17,6 +27,9 @@ class DynamicProgramming {
         return dp[n];
     }
 
+    /**
+     * @see "https://www.geeksforgeeks.org/program-for-nth-fibonacci-number/"
+     */
     int fib_fast(int n) {
         int F[][] = new int[][]{{1, 1}, {1, 0}};
         if (n == 0)
@@ -51,6 +64,32 @@ class DynamicProgramming {
             multiply(F, M);
     }
 
+    /**
+     * @see "https://www.geeksforgeeks.org/dynamic-programming-set-9-binomial-coefficient/"
+     */
+    int nCr(int n, int r) {
+        if (r == 0 || r == n) {
+            return 1;
+        }
+
+        int[][] dp = new int[n + 1][r + 1];
+
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= Math.min(i, r); j++) {
+                if (j == 0 || i == j) {
+                    dp[i][j] = 1;
+                } else {
+                    dp[i][j] = (dp[i - 1][j] + dp[i - 1][j - 1]) % modulo;
+                }
+            }
+        }
+
+        return dp[n][r];
+    }
+
+    /**
+     * @see "https://practice.geeksforgeeks.org/problems/longest-common-subsequence/0"
+     */
     int lcs(char[] X, char[] Y, int m, int n) {
         int L[][] = new int[m + 1][n + 1];
 
@@ -69,27 +108,11 @@ class DynamicProgramming {
         return L[m][n];
     }
 
-    int nCr(int n, int r) {
-        if (r == 0 || r == n) {
-            return 1;
-        }
 
-        int[][] dp = new int[n + 1][r + 1];
-
-        for (int i = 0; i <= n; i++) {
-            for (int j = 0; j <= Math.min(i, r); j++) {
-                if (j == 0 || i == j) {
-                    dp[i][j] = 1;
-                } else {
-                    dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1];
-                }
-            }
-        }
-
-        return dp[n][r];
-    }
-
-    int lrs_lenght(char[] s, int l) {
+    /**
+     * @see "https://www.geeksforgeeks.org/longest-repeated-subsequence/"
+     */
+    int lrs(char[] s, int l) {
         int[][] dp = new int[l + 1][l + 1];
 
         for (int i = 0; i <= l; i++)
@@ -105,7 +128,9 @@ class DynamicProgramming {
         return dp[l][l];
     }
 
-
+    /**
+     * @see "https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/"
+     */
     int kadane_max(int[] a, int n) {
         int sum = 0;
         int max = a[0];
@@ -180,7 +205,9 @@ class DynamicProgramming {
         return new int[]{min, minL, minR};
     }
 
-
+    /**
+     * @see ""
+     */
     int ugly(int n) {
         int nearest = 1;
         int next2 = 2, next3 = 3, next5 = 5;
@@ -209,11 +236,14 @@ class DynamicProgramming {
         return nearest;
     }
 
+
     int divisible235(int n) {
         return n / 2 + n / 3 + n / 5 - n / 6 - n / 15 - n / 10;
     }
 
-
+    /**
+     * @see ""
+     */
     int divisible2357(int n) {
         return (n / 2) + (n / 3) + (n / 5) + (n / 7)
                 - (n / 6) - (n / 10) - (n / 14) - (n / 15) - (n / 21) - (n / 35)
@@ -221,7 +251,9 @@ class DynamicProgramming {
                 - (n / 210);
     }
 
-
+    /**
+     * @see ""
+     */
     int maxSquareSizeInMatrix(int[][] mtx, int n, int m) {
         int[][] sum = new int[n][m];
         int max = 0;
@@ -241,4 +273,8 @@ class DynamicProgramming {
         return max;
     }
 
+    /**
+     * todo
+     * @see ""
+     */
 }
