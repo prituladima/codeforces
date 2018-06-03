@@ -2,20 +2,56 @@ package com.prituladima.dp;
 
 import static java.lang.Math.max;
 
-public class DynamicProg implements DPAlgo {
+class DynamicProgramming {
 
-    public int fib(int n) {
-        int[] res = new int[n];
-        res[0] = 0;
-        res[1] = 1;
-        for (int i = 2; i < res.length; i++) {
-            res[i] = res[i - 1] + res[i - 2];
-        }
-        return res[n - 1];
+    final int modulo = 1000000007;
+
+    int fib(int n) {
+        if (n == 1 || n == 2) return 1;
+
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 1;
+        for (int i = 3; i <= n; i++)
+            dp[i] = (dp[i - 1] + dp[i - 2]) % modulo;
+        return dp[n];
     }
 
+    int fib_fast(int n) {
+        int F[][] = new int[][]{{1, 1}, {1, 0}};
+        if (n == 0)
+            return 0;
+        power(F, n - 1);
 
-    public int lcs(char[] X, char[] Y, int m, int n) {
+        return F[0][0];
+    }
+
+    void multiply(int F[][], int M[][]) {
+        int x = F[0][0] * M[0][0] + F[0][1] * M[1][0];
+        int y = F[0][0] * M[0][1] + F[0][1] * M[1][1];
+        int z = F[1][0] * M[0][0] + F[1][1] * M[1][0];
+        int w = F[1][0] * M[0][1] + F[1][1] * M[1][1];
+
+        F[0][0] = x;
+        F[0][1] = y;
+        F[1][0] = z;
+        F[1][1] = w;
+    }
+
+    /* Optimized version of power() in method 4 */
+    void power(int F[][], int n) {
+        if (n == 0 || n == 1)
+            return;
+        int M[][] = new int[][]{{1, 1}, {1, 0}};
+
+        power(F, n / 2);
+        multiply(F, F);
+
+        if (n % 2 != 0)
+            multiply(F, M);
+    }
+
+    int lcs(char[] X, char[] Y, int m, int n) {
         int L[][] = new int[m + 1][n + 1];
 
     /* Following steps build L[m+1][n+1] in bottom up fashion. Note
@@ -33,8 +69,7 @@ public class DynamicProg implements DPAlgo {
         return L[m][n];
     }
 
-    @Override
-    public int nCr(int n, int r) {
+    int nCr(int n, int r) {
         if (r == 0 || r == n) {
             return 1;
         }
@@ -54,9 +89,7 @@ public class DynamicProg implements DPAlgo {
         return dp[n][r];
     }
 
-
-    @Override
-    public int lrs_lenght(char[] s, int l) {
+    int lrs_lenght(char[] s, int l) {
         int[][] dp = new int[l + 1][l + 1];
 
         for (int i = 0; i <= l; i++)
@@ -73,7 +106,7 @@ public class DynamicProg implements DPAlgo {
     }
 
 
-    private static int kadane_max(int[] a, int n) {
+    int kadane_max(int[] a, int n) {
         int sum = 0;
         int max = a[0];
 
@@ -86,7 +119,7 @@ public class DynamicProg implements DPAlgo {
         return max;
     }
 
-    private static int kadane_min(int[] a, int n) {
+    int kadane_min(int[] a, int n) {
         int sum = 0;
         int min = a[0];
 
@@ -99,7 +132,7 @@ public class DynamicProg implements DPAlgo {
         return min;
     }
 
-    private static int[] kadane_max_full(int[] a, int n) {
+    int[] kadane_max_full(int[] a, int n) {
         int maxL = 0, maxR = 0;
 
         int nonNegativeSum = 0;
@@ -125,7 +158,7 @@ public class DynamicProg implements DPAlgo {
     }
 
 
-    private static int[] kadane_min_full(int[] a, int n) {
+    int[] kadane_min_full(int[] a, int n) {
         int minL = 0, minR = 0;
 
         int nonPositiveSum = 0;
@@ -148,7 +181,7 @@ public class DynamicProg implements DPAlgo {
     }
 
 
-    public int ugly(int n) {
+    int ugly(int n) {
         int nearest = 1;
         int next2 = 2, next3 = 3, next5 = 5;
         int i2 = 0, i3 = 0, i5 = 0;
@@ -176,12 +209,12 @@ public class DynamicProg implements DPAlgo {
         return nearest;
     }
 
-    public int divisible235(int n) {
+    int divisible235(int n) {
         return n / 2 + n / 3 + n / 5 - n / 6 - n / 15 - n / 10;
     }
 
 
-    public int divisible2357(int n) {
+    int divisible2357(int n) {
         return (n / 2) + (n / 3) + (n / 5) + (n / 7)
                 - (n / 6) - (n / 10) - (n / 14) - (n / 15) - (n / 21) - (n / 35)
                 + (n / 30) + (n / 42) + (n / 70) + (n / 105)
@@ -189,7 +222,7 @@ public class DynamicProg implements DPAlgo {
     }
 
 
-    public int maxSquareSizeInMatrix(int[][] mtx, int n, int m) {
+    int maxSquareSizeInMatrix(int[][] mtx, int n, int m) {
         int[][] sum = new int[n][m];
         int max = 0;
         for (int i = 0; i < n; i++) {
@@ -198,7 +231,6 @@ public class DynamicProg implements DPAlgo {
                     sum[i][j] = mtx[i][j];
                 } else if (mtx[i][j] == 1) {
                     sum[i][j] = 1 + Math.min(Math.min(sum[i - 1][j], sum[i][j - 1]), sum[i - 1][j - 1]);
-
                 } else {
                     sum[i][j] = 0;
                 }
@@ -209,12 +241,4 @@ public class DynamicProg implements DPAlgo {
         return max;
     }
 
-
-    /* Driver program to test above functions */
-    public static void main(String args[]) {
-        int n = 5832;
-        System.out.println(new DynamicProg().divisible2357(n));
-        System.out.println(new DynamicProg().divisible235(n));
-
-    }
 }
