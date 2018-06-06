@@ -27,9 +27,6 @@ class DynamicProgramming {
         return dp[n];
     }
 
-    /**
-     * @see "https://www.geeksforgeeks.org/program-for-nth-fibonacci-number/"
-     */
     int fib_fast(int n) {
         int F[][] = new int[][]{{1, 1}, {1, 0}};
         if (n == 0)
@@ -206,7 +203,7 @@ class DynamicProgramming {
     }
 
     /**
-     * @see ""
+     * @see "https://www.geeksforgeeks.org/ugly-numbers/"
      */
     int ugly(int n) {
         int nearest = 1;
@@ -241,9 +238,6 @@ class DynamicProgramming {
         return n / 2 + n / 3 + n / 5 - n / 6 - n / 15 - n / 10;
     }
 
-    /**
-     * @see ""
-     */
     int divisible2357(int n) {
         return (n / 2) + (n / 3) + (n / 5) + (n / 7)
                 - (n / 6) - (n / 10) - (n / 14) - (n / 15) - (n / 21) - (n / 35)
@@ -252,7 +246,7 @@ class DynamicProgramming {
     }
 
     /**
-     * @see ""
+     * @see "https://www.geeksforgeeks.org/maximum-size-sub-matrix-with-all-1s-in-a-binary-matrix/"
      */
     int maxSquareSizeInMatrix(int[][] mtx, int n, int m) {
         int[][] sum = new int[n][m];
