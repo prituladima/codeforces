@@ -79,4 +79,12 @@ public class DynamicProgrammingTest {
 
     }
 
+
+    @Test
+    public void catalan(){
+        assertEquals(42, dp.catalan_naive(5));
+        assertEquals(14, dp.catalan_naive(4));
+        assertEquals(16796, dp.catalan_naive(10));
+    }
+
 }

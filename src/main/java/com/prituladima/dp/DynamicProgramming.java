@@ -267,6 +267,36 @@ class DynamicProgramming {
         return max;
     }
 
+
+    /**
+     * @see "https://www.geeksforgeeks.org/program-nth-catalan-number/"
+     */
+    int catalan_naive(int n) {
+        if (n == 0) {
+            return 1;
+        }
+
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            res += catalan_naive(i) * catalan_naive(n - i - 1);
+        }
+
+        return res;
+    }
+
+    int catalan_dp(int n) {
+        int[] a = new int[n + 1];
+        a[0] = 1;
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= i; j++) {
+                a[i] += a[j]*a[i-j];
+            }
+        }
+        return a[n];
+    }
+
+
     /**
      * todo
      * @see ""
