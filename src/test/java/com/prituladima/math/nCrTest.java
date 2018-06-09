@@ -43,8 +43,8 @@ public class nCrTest {
                         {4, 2, 6},
                         {4, 3, 4},
 
-                        {794, 736, 927517870},
-                        {778, 116, 735309323},
+//                        {794, 736, 927517870},
+//                        {778, 116, 735309323},
                         {5, 2, 10}
                 }
         );
@@ -54,5 +54,12 @@ public class nCrTest {
     @Test(timeout = 2000)
     public void test() throws Exception {
         assertEquals(expected, nCr.nCr_mod_p_lucas(n, r, modulo));
+//        assertEquals(expected, nCr.nCr_cached_fact(n, r));
+//        assertEquals(expected, nCr.nCr(n, r));
+        assertEquals(expected, nCr.nCr_mod_p_dp(n, r, modulo));
+        assertEquals(expected, nCr.nCr_fast(n, r));
+        assertEquals(expected, nCr.binomialCoeff_opt(n, r));
+        assertEquals(expected, nCr.binomialCoeff_dp(n, r));
+
     }
 }

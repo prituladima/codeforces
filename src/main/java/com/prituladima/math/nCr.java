@@ -1,5 +1,8 @@
 package com.prituladima.math;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Math.min;
 
 /**
@@ -67,7 +70,6 @@ public class nCr {
             for (int j = Math.min(i, k); j > 0; j--)
                 C[j] = C[j] + C[j - 1];
 
-            C[i] %= modulo;
         }
         return C[k];
     }
@@ -113,32 +115,70 @@ public class nCr {
         // Compute result for last digits computed above, and
         // for remaining digits.  Multiply the two results and
         // compute the result of multiplication in modulo p.
-        return (nCr_mod_p_lucas(n/p, r/p, p) * // Last digits of n and r
+        return (nCr_mod_p_lucas(n / p, r / p, p) * // Last digits of n and r
                 nCr_mod_p_dp(ni, ri, p)) % p;  // Remaining digits
 
     }
 
-    int nCr_mod_p_dp (int n, int r, int p){
+    int nCr_mod_p_dp(int n, int r, int p) {
 
-        if(n==r || r==0){
+        if (n == r || r == 0) {
             return 1;
         }
-        r = Math.min(r, n-r);
+        r = Math.min(r, n - r);
 
-        int[][] dp = new int[n+1][r+1];
+        int[][] dp = new int[n + 1][r + 1];
 
         for (int i = 0; i <= n; i++) {
             for (int j = 0; j <= Math.min(i, r); j++) {
-                if (j == 0 || i == j){
+                if (j == 0 || i == j) {
                     dp[i][j] = 1;
-                }
-                else{
-                    dp[i][j] = dp[i-1][j] + dp[i-1][j-1];
+                } else {
+                    dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1];
                     dp[i][j] %= modulo;
                 }
             }
         }
         return dp[n][r];
+    }
+
+    /**
+     * @see "https://www.geeksforgeeks.org/space-and-time-efficient-binomial-coefficient/"
+     * highest priority
+     */
+    int nCr(int n, int k) {
+
+
+        k = Math.min(k, n - k);
+
+        int ans = 1;
+        for (int i = 0; i < k; i++) {
+            ans *= n - i;
+            ans /= i + 1;
+            // ans %= 1000000007;
+        }
+
+        return ans;
+
+    }
+
+    int nCr_cached_fact(int n, int k) {
+        List<Integer> list = new ArrayList<>();
+        list.add(0);
+        int i = 1;
+
+        while (true) {
+            int last = list.get(list.size() - 1);
+            int value = last * i;
+
+            if (value / i != last) break;
+
+            i++;
+        }
+
+        return list.get(n) / (list.get(k) * list.get(n - k));
+
+
     }
 
 
