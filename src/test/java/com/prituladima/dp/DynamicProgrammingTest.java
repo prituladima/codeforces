@@ -44,6 +44,8 @@ public class DynamicProgrammingTest {
         assertEquals(4, dp.nCr(4, 3));
 
         assertEquals(927517870, dp.nCr(794, 736));
+        assertEquals(735309323, dp.nCr(778, 116));
+
 
     }
 
@@ -85,6 +87,14 @@ public class DynamicProgrammingTest {
         assertEquals(42, dp.catalan_naive(5));
         assertEquals(14, dp.catalan_naive(4));
         assertEquals(16796, dp.catalan_naive(10));
+
+        assertEquals(42, dp.catalan_dp(5));
+        assertEquals(14, dp.catalan_dp(4));
+        assertEquals(16796, dp.catalan_dp(10));
+
+        assertEquals(42, dp.catalan_fast(5));
+        assertEquals(14, dp.catalan_fast(4));
+        assertEquals(16796, dp.catalan_fast(10));
     }
 
 }

@@ -272,7 +272,7 @@ class DynamicProgramming {
      * @see "https://www.geeksforgeeks.org/program-nth-catalan-number/"
      */
     int catalan_naive(int n) {
-        if (n == 0) {
+        if (n == 0 || n == 1) {
             return 1;
         }
 
@@ -285,15 +285,16 @@ class DynamicProgramming {
     }
 
     int catalan_dp(int n) {
-        int[] a = new int[n + 1];
-        a[0] = 1;
+        int[] С = new int[n + 1];
+        С[0] = 1;
+        for (int i = 1; i <= n; i++)
+            for (int j = 0; j <= i - 1; j++)
+                С[i] += С[j] * С[i - j - 1];
+        return С[n];
+    }
 
-        for (int i = 1; i <= n; i++) {
-            for (int j = 0; j <= i; j++) {
-                a[i] += a[j]*a[i-j];
-            }
-        }
-        return a[n];
+    int catalan_fast(int n) {
+        return nCr(2 * n, n) / (n + 1);
     }
 
 
