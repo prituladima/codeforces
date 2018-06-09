@@ -47,8 +47,6 @@ public class nCr {
                     // Calculate value using previosly stored values
                 else
                     C[i][j] = C[i - 1][j - 1] + C[i - 1][j];
-
-                C[i][j] %= modulo;
             }
         }
 
