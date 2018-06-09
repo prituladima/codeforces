@@ -54,8 +54,7 @@ public class nCrTest {
     @Test(timeout = 2000)
     public void test() throws Exception {
         assertEquals(expected, nCr.nCr_mod_p_lucas(n, r, modulo));
-//        assertEquals(expected, nCr.nCr_cached_fact(n, r));
-//        assertEquals(expected, nCr.nCr(n, r));
+        assertEquals(expected, nCr.nCr(n, r));
         assertEquals(expected, nCr.nCr_mod_p_dp(n, r, modulo));
         assertEquals(expected, nCr.nCr_fast(n, r));
         assertEquals(expected, nCr.binomialCoeff_opt(n, r));
