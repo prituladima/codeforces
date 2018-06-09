@@ -1,4 +1,4 @@
-package com.prituladima.geeksforgeeks.math;
+package com.prituladima.geeksforgeeks.math.binomial;
 
 import static java.lang.Math.min;
 

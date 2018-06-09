@@ -1,12 +1,8 @@
-package com.prituladima.geeksforgeeks.math;
+package com.prituladima.geeksforgeeks.math.binomial;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
-/**
- * Created by prituladima on 6/9/18.
- */
 public class nCrPROTest {
 
     final double delta = 0.000001;

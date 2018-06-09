@@ -1,4 +1,4 @@
-package com.prituladima.geeksforgeeks.math;
+package com.prituladima.geeksforgeeks.math.binomial;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

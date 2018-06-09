@@ -1,4 +1,4 @@
-package com.prituladima.geeksforgeeks.math;
+package com.prituladima.geeksforgeeks.math.binomial;
 
 import java.util.ArrayList;
 import java.util.List;

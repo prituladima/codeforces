@@ -1,4 +1,4 @@
-package com.prituladima.geeksforgeeks.math;
+package com.prituladima.geeksforgeeks.math.binomial;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +40,5 @@ public class nCrMODTest {
         assertEquals(expected, nCr_mod.binomialCoeff_dp_opt(n, r));
         assertEquals(expected, nCr_mod.binomialCoeff_dp(n, r));
     }
-
-
 
 }
