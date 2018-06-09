@@ -32,6 +32,39 @@ public class RencontresNumber {
     }
 
 
+    int rencontres_number_dp(int n, int m){
+        int dp[][] = new int[n + 1][m + 1];
+
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= m; j++) {
+                if (j <= i) {
+
+                    // base case
+                    if (i == 0 && j == 0)
+                        dp[i][j] = 1;
+
+                        // base case
+                    else if (i == 1 && j == 0)
+                        dp[i][j] = 0;
+
+                    else if (j == 0)
+                        dp[i][j] = (i - 1) * (dp[i - 1][0]
+                                + dp[i - 2][0]);
+                    else
+                        dp[i][j] = nCr(i, j) * dp[i - j][0];
+                }
+            }
+        }
+
+        return dp[n][m];
+
+
+    }
+
+
+
+
+
     int nCr(int n, int r) {
         int ans = 1;
         r = Math.min(r, n - r);

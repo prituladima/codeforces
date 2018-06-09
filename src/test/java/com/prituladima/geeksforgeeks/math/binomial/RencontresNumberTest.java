@@ -42,6 +42,7 @@ public class RencontresNumberTest {
     @Test
     public void rencontres_number_test(){
         assertEquals(expected, rencontresNumber.rencontres_number_rec(n, m));
+        assertEquals(expected, rencontresNumber.rencontres_number_dp(n, m));
     }
 
 }
