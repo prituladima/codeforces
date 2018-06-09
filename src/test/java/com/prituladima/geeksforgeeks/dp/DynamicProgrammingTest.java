@@ -1,4 +1,4 @@
-package com.prituladima.dp;
+package com.prituladima.geeksforgeeks.dp;
 
 import org.junit.Test;
 

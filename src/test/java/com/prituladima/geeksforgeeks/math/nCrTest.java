@@ -1,13 +1,10 @@
-package com.prituladima.math;
+package com.prituladima.geeksforgeeks.math;
 
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 

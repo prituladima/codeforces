@@ -1,4 +1,4 @@
-package com.prituladima.math;
+package com.prituladima.geeksforgeeks.math;
 
 import java.util.ArrayList;
 import java.util.List;

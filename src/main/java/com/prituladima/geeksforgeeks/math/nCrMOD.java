@@ -1,4 +1,4 @@
-package com.prituladima.math;
+package com.prituladima.geeksforgeeks.math;
 
 import static java.lang.Math.min;
 

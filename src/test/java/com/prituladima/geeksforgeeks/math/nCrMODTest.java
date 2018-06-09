@@ -1,4 +1,4 @@
-package com.prituladima.math;
+package com.prituladima.geeksforgeeks.math;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
