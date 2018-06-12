@@ -12,6 +12,7 @@ import static com.prituladima.geeksforgeeks.util.Print.printMatrix;
 import static com.prituladima.geeksforgeeks.util.Print.sout;
 import static com.prituladima.geeksforgeeks.util.Util.array;
 import static com.prituladima.geeksforgeeks.util.Util.matrix;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(value = Parameterized.class)
 public class DirectedGraphTest {
@@ -20,32 +21,34 @@ public class DirectedGraphTest {
     private int[][] pairs;
     private int path_to;
     private int[][] result;
+    private int connectedComponent;
 
-    public DirectedGraphTest(int vertex_amount, int[][] pairs, int path_to, int[][] result) {
+    public DirectedGraphTest(int vertex_amount, int[][] pairs, int path_to, int[][] result, int connectedComponent) {
         this.vertex_amount = vertex_amount;
         this.pairs = pairs;
         this.path_to = path_to;
         this.result = result;
+        this.connectedComponent = connectedComponent;
     }
 
 
     @Parameterized.Parameters(name = "{index}: breadth_first_search(V = {0}, mtx = {1}, from {2})={3}")
     public static Iterable<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                        {4, matrix(), 0, matrix(array(), null, null, null)},
-                        {4, matrix(), 1, matrix(null, array(), null, null)},
-                        {4, matrix(), 2, matrix(null, null, array(), null)},
-                        {4, matrix(), 3, matrix(null, null, null, array())},
+                        {4, matrix(), 0, matrix(array(), null, null, null), 4},
+                        {4, matrix(), 1, matrix(null, array(), null, null), 4},
+                        {4, matrix(), 2, matrix(null, null, array(), null), 4},
+                        {4, matrix(), 3, matrix(null, null, null, array()), 4},
 
 
                         {4, matrix(array(0, 2), array(2, 1), array(1, 3)),
-                                0, matrix(array(), array(2, 1), array(2), array(2, 1, 3))},
+                                0, matrix(array(), array(2, 1), array(2), array(2, 1, 3)), 1},
                         {4, matrix(array(0, 2), array(2, 1), array(1, 3)),
-                                1, matrix(null, array(), null, array(3))},
+                                1, matrix(null, array(), null, array(3)), 1},
                         {4, matrix(array(0, 2), array(2, 1), array(1, 3)),
-                                2, matrix(null, array(1), array(), array(1, 3))},
+                                2, matrix(null, array(1), array(), array(1, 3)), 1},
                         {4, matrix(array(0, 2), array(2, 1), array(1, 3)),
-                                3, matrix(null, null, null, array())},
+                                3, matrix(null, null, null, array()), 1},
 
 
                 }
@@ -66,6 +69,8 @@ public class DirectedGraphTest {
         assertMatrixEquals(result, minPath);
         sout(graph);
         printMatrix(minPath);
+
+        assertEquals(connectedComponent, graph.amountOfConnectedComponent());
         sout("----------------------------------------------");
     }
 

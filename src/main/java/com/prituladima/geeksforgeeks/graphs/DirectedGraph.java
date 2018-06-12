@@ -26,7 +26,12 @@ public class DirectedGraph {
     }
 
     public int[][] breadthFirstSearch(int s) {
-        boolean[] used = new boolean[V];
+        return breadthFirstSearch(s, null);
+    }
+
+    public int[][] breadthFirstSearch(int s, boolean[] used) {
+        if (used == null)
+            used = new boolean[V];
         LinkedList<Integer> queue = new LinkedList<>();
         int[] d = new int[V];
         int[] p = new int[V];
@@ -62,6 +67,20 @@ public class DirectedGraph {
         }
 
         return path;
+    }
+
+
+    public int amountOfConnectedComponent() {
+        boolean[] used = new boolean[V];
+        int amount = 0;
+        for (int i = 0; i < used.length; i++) {
+            if (!used[i]) {
+                breadthFirstSearch(i, used);
+                amount++;
+            }
+        }
+        return amount;
+
     }
 
     @Override
