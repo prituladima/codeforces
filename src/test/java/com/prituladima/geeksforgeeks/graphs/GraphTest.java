@@ -2,6 +2,8 @@ package com.prituladima.geeksforgeeks.graphs;
 
 import org.junit.Test;
 
+import static com.prituladima.geeksforgeeks.util.Print.sout;
+
 /**
  * Created by prituladima on 6/12/18.
  */
@@ -20,7 +22,7 @@ public class GraphTest {
                 .addEdge(2, 3)
                 .addEdge(3, 4);
 
-        System.out.println(graph);
+        sout(graph);
 
     }
 

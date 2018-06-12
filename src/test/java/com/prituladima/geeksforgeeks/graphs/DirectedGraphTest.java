@@ -7,9 +7,11 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 
+import static com.prituladima.geeksforgeeks.util.Asserts.assertMatrixEquals;
+import static com.prituladima.geeksforgeeks.util.Print.printMatrix;
+import static com.prituladima.geeksforgeeks.util.Print.sout;
 import static com.prituladima.geeksforgeeks.util.Util.array;
 import static com.prituladima.geeksforgeeks.util.Util.matrix;
-import static org.junit.Assert.*;
 
 @RunWith(value = Parameterized.class)
 public class DirectedGraphTest {
@@ -52,33 +54,19 @@ public class DirectedGraphTest {
 
     @Test
     public void test_breadth_first_search() {
-
-        System.out.println("----------------------------------------------");
+        sout("----------------------------------------------");
 
         DirectedGraph graph = new DirectedGraph(vertex_amount);
         for (int i = 0; i < pairs.length; i++) {
             graph.addEdge(pairs[i][0], pairs[i][1]);
         }
 
-        System.out.println(graph);
-
         int[][] minPath = graph.breadthFirstSearch(path_to);
-        assertEquals(result.length, minPath.length);
 
-
-        for (int i = 0; i < minPath.length; i++) {
-            System.out.println(Arrays.toString(minPath[i]));
-            assertArrayEqualsWithNull(result[i], minPath[i]);
-        }
-        System.out.println("----------------------------------------------");
-    }
-
-
-    private void assertArrayEqualsWithNull(int[] a, int[] b) {
-        if (a == null) {
-            assertTrue(b == null);
-        } else
-            assertArrayEquals(a, b);
+        assertMatrixEquals(result, minPath);
+        sout(graph);
+        printMatrix(minPath);
+        sout("----------------------------------------------");
     }
 
 
