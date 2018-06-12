@@ -41,7 +41,7 @@ public class DirectedGraphTest {
                         {4, matrix(array(0, 2), array(2, 1), array(1, 3)),
                                 1, matrix(null, array(), null, array(3))},
                         {4, matrix(array(0, 2), array(2, 1), array(1, 3)),
-                                2, matrix(null, array(), array(1), array(1, 3))},
+                                2, matrix(null, array(1), array(), array(1, 3))},
                         {4, matrix(array(0, 2), array(2, 1), array(1, 3)),
                                 3, matrix(null, null, null, array())},
 
