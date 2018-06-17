@@ -1,86 +1,62 @@
-package com.prituladima.codeforce.contests;
+//package com.prituladima.codeforce.contests;
+//
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * Created by prituladima on 6/16/18.
  */
 public class C993B {
 
+    public class Knight implements Comparable<Integer>{
+        int index;
+        int power;
+        int coin;
 
-    public class Kn {
-        int i;
-        long p;
-        long c;
+        public Knight(int index, int power, int coin) {
+            this.index = index;
+            this.power = power;
+            this.coin = coin;
+        }
 
-        long res;
-
-        public Kn(int i, long p, long c) {
-            this.i = i;
-            this.p = p;
-            this.c = c;
+        @Override
+        public int compareTo(Integer o) {
+            return Integer.compare(power, o);
         }
     }
 
     private void solve() throws IOException {
-
         int n = nextInt();
         int k = nextInt();
-        long[] p = nextArrL(n);
-        long[] c = nextArrL(n);
 
 
-        List<Kn> initial = new ArrayList<>();
-        List<Kn> sortedC = new ArrayList<>();
-        for (int i = 0; i < p.length; i++) {
-            Kn cur = new Kn(i, p[i], c[i]);
-            initial.add(cur);
-            sortedC.add(cur);
-        }
+        Knight[] a = new Knight[n];
+        for (int i = 0; i < n; i++) a[i] = new Knight(i, nextInt(), 0);
+        for (int i = 0; i < n; i++) a[i].coin = nextInt();
+        Arrays.sort(a, (x, y) -> Long.compare(x.power, y.power));
 
-
-        Collections.sort(sortedC, (x, y) -> Long.compare(x.c, y.c));
-        for (int j = 0; j < n; j++) {
-            int buf = k;
-            for (int i = n - 1; i >= 0; i--) {
-                if(buf == 0) break;
-                if (initial.get(j).p > sortedC.get(i).p && initial.get(j).i != sortedC.get(i).i) {
-                    initial.get(j).res += sortedC.get(i).c;
-                    buf--;
-                }
-
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Comparator.reverseOrder());
+        long ans[] = new long[n];
+        for (int i = 0; i < n; i++) {
+            long sum = 0;
+            ArrayList<Integer> store = new ArrayList<>();
+            for (int j = 0; j < k && !pq.isEmpty(); j++) {
+                int x = pq.remove();
+                sum += x;
+                store.add(x);
             }
+            ans[a[i].index] = sum + a[i].coin;
+            for (int x : store) pq.add(x);
+            pq.add(a[i].coin);
         }
 
-
-        for (int i = 0; i < initial.size(); i++) {
-            System.out.print((initial.get(i).res + initial.get(i).c) + " ");
-        }
+        for (long x : ans) System.out.printf("%d ", x);
 
     }
-
-    public int bin(
-            List<Kn> sortedArray, int key, int low, int high) {
-        int index = -1;
-
-        while (low <= high) {
-            int mid = (low + high) / 2;
-            if (sortedArray.get(mid).p < key) {
-                index = low = mid + 1;
-            } else if (sortedArray.get(mid).p >= key) {
-                high = mid - 1;
-            }
-        }
-        return index;
-    }
-
 
     public static void main(String[] args) {
         new C993B().run();
