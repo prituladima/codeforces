@@ -1,4 +1,4 @@
-package com.prituladima.codeforce.contests;//package com.prituladima.codeforce;
+//package com.prituladima.codeforce.contests;//package com.prituladima.codeforce;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,16 +11,22 @@ import java.util.StringTokenizer;
  */
 public class C994A {
 
-    public  class Point {
+    public class Point {
         int x;
         int y;
 
-        public  Point nextPoint() throws IOException{
+        public Point nextPoint() throws IOException {
             x = nextInt();
             y = nextInt();
             return this;
         }
 
+        public Point rotate45() {
+            int buf = x;
+            x = y + x;
+            y = buf - y;
+            return this;
+        }
     }
 
 
@@ -42,6 +48,10 @@ public class C994A {
         int x1 = Math.max(Math.max(p1.x, p2.x), p3.x);
         int x0 = Math.min(Math.min(p1.x, p2.x), p3.x);
 
+
+        int midX = (s1.x + s2.x + s3.x + s4.x)/4;
+        int midY = (s1.y + s2.y + s3.y + s4.y)/4;
+
         String ans = "NO";
         if(x0 <= s1.x && s1.x <= x1 && y0 <= s1.y && s1.y <= y1){
             ans = "YES";
@@ -57,11 +67,26 @@ public class C994A {
             ans = "YES";
         }
 
+        if(x0 <= midX && midX <= x1 && y0 <= midY && midY <= y1){
+            ans = "YES";
+        }
 
 
 
-        ///////////////////////////
+        p1 = p1.rotate45();
+        p2 = p2.rotate45();
+        p3 = p3.rotate45();
+        p4 = p4.rotate45();
 
+        s1 = s1.rotate45();
+        s2 = s2.rotate45();
+        s3 = s3.rotate45();
+        s4 = s4.rotate45();
+
+
+
+        midX = (p1.x + p2.x + p3.x + p4.x)/4;
+        midY = (p1.y + p2.y + p3.y + p4.y)/4;
 
         y1 = Math.max(Math.max(s1.y, s2.y), s3.y);
         y0 = Math.min(Math.min(s1.y, s2.y), s3.y);
@@ -82,8 +107,9 @@ public class C994A {
             ans = "YES";
         }
 
-
-
+        if(x0 <= midX && midX <= x1 && y0 <= midY && midY <= y1){
+            ans = "YES";
+        }
 
         System.out.println(ans);
 
