@@ -1,4 +1,4 @@
-//package com.prituladima.codeforce.contests;
+package com.prituladima.codeforce.contests;
 //
 
 import java.io.BufferedReader;
