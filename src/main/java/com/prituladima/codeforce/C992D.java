@@ -13,7 +13,45 @@ public class C992D {
 
     private void solve() throws IOException {
 
-        //solve
+        int n = nextInt(), k = nextInt();
+        int[] a = nextArr(n);
+
+        int ans = 0;
+        for (int i = 1; i <= Math.min(n, 61); i++) {
+
+            int left = 0;
+            long p = 1;
+            long s = 0;
+
+            for (int j = 0; j < i; j++){
+                p *= a[j];
+                s += a[j];
+            }
+
+            if (p % s == 0 && p / s == k) {
+                ans++;
+            }
+
+            for (int j = i; j < n; j++) {
+
+
+
+                p/=a[left];
+                s-=a[left];
+
+                p *= a[j];
+                s += a[j];
+
+                if (p % s == 0 && p / s == k) {
+                    ans++;
+                }
+
+                left++;
+            }
+        }
+
+        System.out.println(ans);
+
 
     }
 
