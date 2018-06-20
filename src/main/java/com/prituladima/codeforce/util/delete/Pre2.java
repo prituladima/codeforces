@@ -1,4 +1,4 @@
-package com.prituladima.codeforce.util;
+package com.prituladima.codeforce.util.delete;
 
 import java.io.*;
 import java.util.*;

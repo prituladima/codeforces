@@ -1,4 +1,4 @@
-package com.prituladima.codeforce.contests;
+package com.prituladima.codeforce.contests.contest992;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,52 +6,42 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
-public class C_985_B {
+/**
+ * Created by prituladima on 6/18/18.
+ */
+public class C992D {
 
     private void solve() throws IOException {
-
-        int n = nextInt(), m = nextInt();
-
-        char[][] arr = new char[n][m];
-
-        for (int i = 0; i < n; i++) {
-            arr[i] = nextToken().toCharArray();
-        }
-
-        int[] sum = new int[m];
-
-        for (int j = 0; j < m; j++) {
-            for (int i = 0; i < n; i++) {
-                sum[j] += Integer.parseInt(arr[i][j] + "");
+        int n = nextInt(), k = nextInt();
+        int[] a = nextArr(n);
+        int ans = 0;
+        for (int sub_len = 1; sub_len <= n; sub_len++) {
+            int left = 0;
+            long p = 1;
+            long s = 0;
+            for (int j = 0; j < sub_len; j++) {
+                p *= a[j];
+                s += a[j];
+            }
+            if (p % s == 0 && p / s == k) {
+                ans++;
+            }
+            for (int j = sub_len; j < n; j++) {
+                p /= a[left];
+                s -= a[left];
+                p *= a[j];
+                s += a[j];
+                if (p % s == 0 && p / s == k) {
+                    ans++;
+                }
+                left++;
             }
         }
-
-//        System.out.println(Arrays.toString(sum));
-
-        for (int i = 0; i < n; i++) {
-            int[] buff = sum.clone();
-
-            boolean allMoreThanZeroAfterSubtraction = true;
-            for (int j = 0; j < m; j++) {
-                buff[j] -= Integer.parseInt(arr[i][j] + "");
-                allMoreThanZeroAfterSubtraction = buff[j] > 0 && allMoreThanZeroAfterSubtraction;
-            }
-
-            if(allMoreThanZeroAfterSubtraction){
-                System.out.println("YES");
-                return;
-            }
-        }
-
-        System.out.println("NO");
-
-
-
-
+        System.out.println(ans);
     }
 
     public static void main(String[] args) {
-        new C_985_B().run();
+        new C992D().run();
     }
 
     StringTokenizer tokenizer;

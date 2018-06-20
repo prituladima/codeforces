@@ -1,4 +1,4 @@
-package com.prituladima.codeforce.contests;
+package com.prituladima.codeforce.contests.contest992;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,23 +6,40 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
-/**
- * Created by prituladima on 5/14/18.
- */
-public class C_979_A {
+public class C992B {
 
     private void solve() throws IOException {
 
-        long n = nextLong();
+        long l = nextInt(), r = nextInt(), x = nextInt(), y = nextInt();
+        long sol = 0;
 
-        if(n == 0){ System.out.println(0); return;}
-
-        System.out.println((n + 1) % 2 == 0 ? (n + 1) / 2 : n + 1);
+        long nesto = x * y;
+        for (long i = x; i * i <= nesto; i += x) {
+            if (nesto % i == 0) {
+                long gcd = gcd(i, nesto / i);
+                long lcm = nesto / gcd;
+                if (gcd == x && lcm == y && i >= l && nesto / i <= r) {
+                    sol++;
+                    if (i != nesto / i) {
+                        sol++;
+                    }
+                }
+            }
+        }
+        System.out.println(sol);
 
     }
 
+
+    public static long gcd(long a, long b) {
+        if (b == 0)
+            return a;
+        else
+            return gcd(b, a % b);
+    }
+
     public static void main(String[] args) {
-        new C_979_A().run();
+        new C992B().run();
     }
 
     StringTokenizer tokenizer;

@@ -1,4 +1,4 @@
-package com.prituladima.codeforce.contests;
+package com.prituladima.codeforce.contests.contest992;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,44 +7,46 @@ import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 /**
- * Created by prituladima on 5/13/18.
+ * Created by prituladima on 6/18/18.
  */
-public class C_978_B {
-
-
+public class C992C {
+    long MOD = 1000000007;
     private void solve() throws IOException {
 
-        int n = nextInt();
-        String s = nextToken();
 
-        char[] chars = s.toCharArray();
+        long x = nextLong(), k = nextLong();
 
-        int counter = 0;
-        for (int i = 0; i < chars.length; i++) {
-
-            if(chars[i] == 'x'){
-                counter++;
-                if(counter == 3){
-                    chars[i] = '_';
-                    counter = 2;
-                }
-            }else {
-                counter=0;
-            }
+        if(x == 0){
+            System.out.println(0);
+            return;
         }
 
-        String res = new String(chars);
 
-        res = res.replaceAll("_", "");
+        long b = fast_expo(2, k);
+        long a = (b * 2) % MOD;
 
-        System.out.println(s.length() - res.length());
-
-
+        long u = ((x % MOD) * a) % MOD;
+        long v = (b - 1 + MOD) % MOD;
+        System.out.print((u - v + MOD) % MOD);
 
     }
 
+    private long fast_expo(long a, long b) {
+        long res = 1L;
+        a = a % MOD;
+        while (b > 0) {
+            if ((b & 1) != 0) {
+                res = (res * a) % MOD;
+            }
+            b = b >> 1;
+            a = (a * a) % MOD;
+        }
+        return res % MOD;
+    }
+
+
     public static void main(String[] args) {
-        new C_978_B().run();
+        new C992C().run();
     }
 
     StringTokenizer tokenizer;
@@ -104,5 +106,6 @@ public class C_978_B {
             arr[i] = nextDouble();
         return arr;
     }
+
 
 }

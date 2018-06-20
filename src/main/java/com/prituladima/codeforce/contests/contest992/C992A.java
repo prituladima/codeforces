@@ -1,58 +1,43 @@
-package com.prituladima.codeforce.contests;
+package com.prituladima.codeforce.contests.contest992;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
 
-public class C_964_C {
-
+/**
+ * Created by prituladima on 6/18/18.
+ */
+public class C992A {
 
     private void solve() throws IOException {
 
-        long n = nextLong(), a = nextLong(), b = nextLong(), k = nextLong();
 
-        char[] chars = nextToken().toCharArray();
-        int[] ints = new int[chars.length];
+        int n = nextInt();
+        int[] a = nextArr(n);
 
-        for (int i = 0; i < ints.length; i++) {
-            ints[i] = chars[i] == '+' ? 1 : -1;
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < a.length; i++) {
+            set.add(a[i]);
         }
 
-        long sum = 0;
-
-        int index = 0;
-        while (true) {
-            sum += ints[index % ints.length] * binpow(a, n - index) * binpow(b, index);
-            index++;
-            if (n - index == -1) break;
+        int diff = 0;
+        if(set.contains(0)){
+            diff = 1;
         }
 
-
-        long divisor = binpow(10, 9) + 9;
-
-        long result = sum % divisor;
-        result = result < 0 ? divisor + result : result;
-
-        System.out.println(result);
+        System.out.println(set.size()  -diff);
 
 
-    }
 
-    private long binpow(long a, long n) {
-        int res = 1;
-        while (n != 0) {
-            if ((n & 1) != 0)
-                res *= a;
-            a *= a;
-            n >>= 1;
-        }
-        return res;
+
     }
 
     public static void main(String[] args) {
-        new C_964_C().run();
+        new C992A().run();
     }
 
     StringTokenizer tokenizer;
@@ -112,5 +97,6 @@ public class C_964_C {
             arr[i] = nextDouble();
         return arr;
     }
+
 
 }
