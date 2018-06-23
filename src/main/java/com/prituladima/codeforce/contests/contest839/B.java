@@ -1,61 +1,80 @@
-package com.prituladima.codeforce.contests.contest992;
+package com.prituladima.codeforce.contests.contest839;
+
+import com.prituladima.codeforce.Template;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
 
-public class C992D {
-
-    final long INF = 1L << 62;
-    final int INF_INT = 1 << 31 - 1;
+/**
+ * Created by prituladima on 6/20/18.
+ */
+public class B {
 
     private void solve() throws IOException {
 
-        int n = nextInt();
-        int k = nextInt();
-        int[] v = new int[n];
-        int[] next = new int[n];
-        for (int i = 0; i < n; ++i) {
-            v[i] = nextInt();
-        }
-        next[n - 1] = n;
-        System.out.println(n - 1 + " - " + next[n - 1]);
-        for (int i = n - 2; i >= 0; --i) {
-            next[i] = (v[i + 1] == 1) ? next[i + 1] : (i + 1);
-            System.out.println(i + " - " + next[i]);
+        int n = nextInt(), p = nextInt();
+        String s = nextToken();
+
+        if (n == p) {
+            System.out.println(s.replace(".", "0"));
+            return;
         }
 
-        System.out.println(Arrays.toString(next));
-        long ans = 0;
-        for (int i = 0; i < n; ++i) {
-            long sum = 0, prod = 1;
-            int j = i;
-            while (j < n) {
-                if (v[j] == 1) {
-                    ans += (prod % k == 0 && prod / k - sum > 0 && (next[j] - j + sum) >= (prod / k)) ? 1 : 0;
-                    sum += next[j] - j;
-                    j = next[j];
-                } else {
-                    if (prod > INF / v[j]) {
-                        break;
-                    }
-                    prod *= v[j];
-                    sum += v[j];
-                    ans += (sum * k == prod) ? 1 : 0;
-                    ++j;
-                }
-            }
+        char[] cs = s.toCharArray();
+
+        int firstP = 0;
+        for (int i = 0; i < n; i++) {
+            if (cs[i] == '.') firstP = i;
         }
-        System.out.println(ans);
+
+
+        for (int i = 0; i < p - 1; i++) {
+
+            char[] cs_copy = Arrays.copyOf(cs, cs.length);
+            for (int j = 0; j < p - 1; j++) {
+                int cur = (p - 1 + j) % p;
+                Set<Character> set = new HashSet<>();
+                while (cur <= n - 1) {
+                    set.add(cs[cur]);
+                    cur += p;
+                }
+                set.remove('.');
+                if (set.size() == 1) {
+                    cur = (p - 1 + j) % p;
+                    char newC = set.iterator().next();
+                    while (cur <= n - 1) {
+                        cs_copy[cur] = newC;
+                        cur += p;
+                    }
+                }
+
+            }
+            if (!new StringBuilder().append(cs_copy).toString().contains(".")) {
+                if (cs_copy[firstP] == '1')
+                    cs_copy[firstP] = '0';
+                else
+                    cs_copy[firstP] = '1';
+
+                System.out.println(new StringBuilder().append(cs_copy).toString());
+                return;
+            }
+
+        }
+
+
+        System.out.println("No");
 
 
     }
 
     public static void main(String[] args) {
-        new C992D().run();
+        new B().run();
     }
 
     StringTokenizer tokenizer;
@@ -115,5 +134,6 @@ public class C992D {
             arr[i] = nextDouble();
         return arr;
     }
+
 
 }

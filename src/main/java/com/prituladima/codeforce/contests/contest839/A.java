@@ -1,61 +1,42 @@
-package com.prituladima.codeforce.contests.contest992;
+package com.prituladima.codeforce.contests.contest839;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
-public class C992D {
-
-    final long INF = 1L << 62;
-    final int INF_INT = 1 << 31 - 1;
+/**
+ * Created by prituladima on 6/20/18.
+ */
+public class A {
 
     private void solve() throws IOException {
 
-        int n = nextInt();
-        int k = nextInt();
-        int[] v = new int[n];
-        int[] next = new int[n];
-        for (int i = 0; i < n; ++i) {
-            v[i] = nextInt();
-        }
-        next[n - 1] = n;
-        System.out.println(n - 1 + " - " + next[n - 1]);
-        for (int i = n - 2; i >= 0; --i) {
-            next[i] = (v[i + 1] == 1) ? next[i + 1] : (i + 1);
-            System.out.println(i + " - " + next[i]);
-        }
+        Scanner scanner = new Scanner(System.in);
+        String string = scanner.nextLine();
 
-        System.out.println(Arrays.toString(next));
-        long ans = 0;
-        for (int i = 0; i < n; ++i) {
-            long sum = 0, prod = 1;
-            int j = i;
-            while (j < n) {
-                if (v[j] == 1) {
-                    ans += (prod % k == 0 && prod / k - sum > 0 && (next[j] - j + sum) >= (prod / k)) ? 1 : 0;
-                    sum += next[j] - j;
-                    j = next[j];
-                } else {
-                    if (prod > INF / v[j]) {
-                        break;
+        String[] arr = string.split("\\.");
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].length() >= 3) {
+                char[] ca = arr[i].toCharArray();
+                for (int j = 0; j < ca.length - 2; j++) {
+                    if (ca[j] != ca[j + 1] && ca[j + 1] != ca[j + 2] && ca[j] != ca[j + 2]) {
+                        System.out.println("YES");
+                        return;
                     }
-                    prod *= v[j];
-                    sum += v[j];
-                    ans += (sum * k == prod) ? 1 : 0;
-                    ++j;
                 }
             }
         }
-        System.out.println(ans);
+
+        System.out.println("No");
 
 
     }
 
     public static void main(String[] args) {
-        new C992D().run();
+        new A().run();
     }
 
     StringTokenizer tokenizer;
@@ -115,5 +96,6 @@ public class C992D {
             arr[i] = nextDouble();
         return arr;
     }
+
 
 }
