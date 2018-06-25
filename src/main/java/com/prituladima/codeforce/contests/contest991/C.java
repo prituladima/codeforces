@@ -15,45 +15,8 @@ public class C {
 
     private void solve() throws IOException {
 
-        int n = nextInt();
-
-//        double suum = n;
-//        int d = 0;
-//        while (suum > 1){
-//            d++;
-//            suum *= 0.9;
-//        }
-//
-        int k  = 1;
-        int n_h = n/2 + n%2;
-
-        for(int d = 1; d < Integer.MAX_VALUE; d++){
-            k = n_h / d + ((n_h % d) > 0 ? 1 : 0);
-
-            int rest = n;
-            if (rest <= 0) { break; }
-            for (int i = 1; i <= d; i++) {
-                rest -= k;
-                rest = (rest * 9) / 10 + (((rest * 9)%10) > 0 ? 1 : 0);
-            }
-            if (rest + k * d == n) {
-                break;
-            }
-        }
-//
-        System.out.println(k);
 
 
-    }
-    int binpow (int a, int n) {
-        if (n == 0)
-            return 1;
-        if (n % 2 == 1)
-            return binpow (a, n-1) * a;
-        else {
-            int b = binpow (a, n/2);
-            return b * b;
-        }
     }
 
     public static void main(String[] args) {

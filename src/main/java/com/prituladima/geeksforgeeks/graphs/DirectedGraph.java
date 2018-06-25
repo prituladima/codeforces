@@ -1,5 +1,6 @@
 package com.prituladima.geeksforgeeks.graphs;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -81,6 +82,31 @@ public class DirectedGraph {
         }
         return amount;
 
+    }
+
+    public int[] motherVertexes() {
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        for (int i = 0; i < V; i++) {
+            boolean[] used = new boolean[V];
+            breadthFirstSearch(i, used);
+            boolean mother = true;
+            for (int j = 0; j < used.length; j++) {
+                if (!used[j]) {
+                    mother = false;
+                    break;
+                }
+            }
+            if(mother){
+                arr.add(i);
+            }
+        }
+        int[] res = new int[arr.size()];
+        for (int i = 0; i < arr.size(); i++) {
+            res[i] = arr.get(i);
+        }
+
+        return res;
     }
 
     @Override
