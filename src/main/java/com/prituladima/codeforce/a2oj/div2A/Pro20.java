@@ -1,4 +1,4 @@
-//package com.prituladima.codeforce.a2oj.div2A;
+package com.prituladima.codeforce.a2oj.div2A;
 
 import java.io.*;
 import java.util.*;
