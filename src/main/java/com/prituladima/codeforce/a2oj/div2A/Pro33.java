@@ -13,7 +13,7 @@ public class Pro33 {
     private void solve() {
 
         int n = nextInt();
-        char[][] mtx = range(0, n).mapToObj(i -> nextToken().toCharArray()).toArray(char[][]::new);
+        char[][] mtx = nextCharMatrix(n);
 
 
         for (int i = 0; i < n; i++) {
@@ -68,6 +68,10 @@ public class Pro33 {
 
     double[] nextArrD(int size) {
         return Arrays.stream(new double[size]).map(c -> nextDouble()).toArray();
+    }
+
+    char[][] nextCharMatrix(int n){
+        return range(0, n).mapToObj(i -> nextToken().toCharArray()).toArray(char[][]::new);
     }
 
 

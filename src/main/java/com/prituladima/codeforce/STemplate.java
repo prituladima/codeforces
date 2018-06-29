@@ -47,6 +47,17 @@ public class STemplate {
         return Arrays.stream(new double[size]).map(c -> nextDouble()).toArray();
     }
 
+    char[][] nextCharMatrix(int n){
+        return range(0, n).mapToObj(i -> nextToken().toCharArray()).toArray(char[][]::new);
+    }
+
+    int[][] nextIntMatrix(int n, int m){
+        return range(0, n).mapToObj(i -> nextArr(m)).toArray(int[][]::new);
+    }
+
+    double[][] nextDoubleMatrix(int n, int m){
+        return range(0, n).mapToObj(i -> nextArr(m)).toArray(double[][]::new);
+    }
 
     String nextToken() {
         while (tokenizer == null || !tokenizer.hasMoreTokens()) {
