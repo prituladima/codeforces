@@ -2,6 +2,8 @@ package com.prituladima.codeforce.a2oj.div2A;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.*;
+
 
 import static java.util.stream.IntStream.range;
 import static java.lang.System.out;
@@ -15,11 +17,15 @@ public class Pro32 {
 
         int n = nextInt(), v = nextInt();
 
-        List<Integer> sellers = new ArrayList<>();
-
-        range(1, n + 1)
-                .filter(i -> v > range(0, nextInt()).map(j -> nextInt()).min().getAsInt())
-                .forEach(sellers::add);
+        List<Integer> sellers = range(1, n + 1)
+                .filter(
+                        i -> v > range(0, nextInt())
+                                .map(j -> nextInt())
+                                .min()
+                                .getAsInt()
+                )
+                .boxed()
+                .collect(Collectors.toCollection(ArrayList::new));
 
         out.println(sellers.size());
         sellers.forEach(x -> out.print(x + " "));
@@ -30,7 +36,8 @@ public class Pro32 {
         new Pro32().solve();
     }
 
-    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));;
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    ;
     StringTokenizer tokenizer;
 
     int nextInt() {
