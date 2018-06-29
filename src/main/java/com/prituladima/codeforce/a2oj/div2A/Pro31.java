@@ -1,67 +1,57 @@
-package com.prituladima.codeforce;
+package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.*;
+import static java.util.stream.IntStream.*;
 
 /**
- * Created by prituladima on 5/23/18.
+ * Created by prituladima on 6/28/18.
  */
-public class Main {
+public class Pro31 {
 
     private void solve() throws IOException {
 
-        String s = nextToken();
-        char[] chars = s.toCharArray();
+        int r = nextInt();
+        int c = nextInt();
 
+        char[][] mtx = new char[r][c];
 
-        Map<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < chars.length; i++) {
-            map.put(chars[i], map.containsKey(chars[i]) ? map.get(chars[i]) + 1 : 1);
+        for (int i = 0; i < r; i++) {
+            mtx[i] = nextToken().toCharArray();
         }
 
 
-        Set<Character> set = map.keySet();
+        Set<Integer> ra = new HashSet<>();
+        range(0, r).forEach(ra::add);
+        Set<Integer> ca = new HashSet<>();
+        range(0, c).forEach(ca::add);
 
-        if (s.length() < 4 || set.size() > 4) {
-            System.out.println("No");
-            return;
-        } else if (set.size() == 4) {
-            System.out.println("Yes");
-            return;
+//        System.out.println(ra);
+//        System.out.println(ca);
+
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                if(mtx[i][j] == 'S'){
+                    ra.remove(i);
+                    ca.remove(j);
+                }
+            }
         }
 
+//        System.out.println(ra);
+//        System.out.println(ca);
 
-        for (Character character : set) {
+//        System.out.println(ra.size());
+//        System.out.println(ca.size());
+//        System.out.println(r);
+//        System.out.println(c);
 
-        }
-
-        System.out.println("No");
-
-
-    }
-
-    int getSumPath(int a, int b, int pos) {
-        return sumNumbers(Math.abs(pos - a)) + sumNumbers(Math.abs(pos - b));
-    }
-
-    int sumNumbers(int a) {
-        int aa = a + 1;
-        int bb = a;
-        if (aa % 2 == 0) {
-            aa /= 2;
-        } else {
-            bb /= 2;
-        }
-        return aa * bb;
-
+        System.out.println(ra.size()*c + ca.size()*r - ra.size()*ca.size());
 
     }
 
     public static void main(String[] args) {
-        new Main().run();
+        new Pro31().run();
     }
 
     StringTokenizer tokenizer;
