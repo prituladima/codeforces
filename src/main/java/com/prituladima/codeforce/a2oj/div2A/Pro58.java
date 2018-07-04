@@ -1,4 +1,4 @@
-package com.prituladima.codeforce;
+package com.prituladima.codeforce.a2oj.div2A;
 
 import java.io.*;
 import java.util.*;
@@ -6,18 +6,22 @@ import java.util.*;
 import static java.util.stream.IntStream.range;
 
 /**
- * Created by prituladima on 5/23/18.
+ * Created by prituladima on 7/4/18.
  */
-public final class STemplate {
+public class Pro58 {
 
     private void solve() {
-
-        //put your code here
-
+        int n = nextInt(), m = nextInt();
+        char[][] matrix = nextCharMatrix(n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++)
+                sout(matrix[i][j] == '.' ? (i % 2 == j % 2 ? 'B' : 'W') : '-');
+            soutn();
+        }
     }
 
     public static void main(String[] args) {
-        new STemplate().run();
+        new Pro58().run();
     }
 
     private BufferedReader reader;
@@ -104,5 +108,6 @@ public final class STemplate {
     private <Param> void sout(Param[] arr) {
         writer.println(Arrays.toString(arr));
     }
+
 
 }
