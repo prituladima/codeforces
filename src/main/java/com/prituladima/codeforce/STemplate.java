@@ -3,6 +3,10 @@ package com.prituladima.codeforce;
 import java.io.*;
 import java.util.*;
 
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
+import static java.lang.Long.parseLong;
+import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
 /**
@@ -39,34 +43,34 @@ public final class STemplate {
     }
 
     private int nextInt() {
-        return Integer.parseInt(nextToken());
+        return parseInt(nextToken());
     }
 
     private long nextLong() {
-        return Long.parseLong(nextToken());
+        return parseLong(nextToken());
     }
 
     private double nextDouble() {
-        return Double.parseDouble(nextToken());
+        return parseDouble(nextToken());
     }
 
     private int[] nextArr(int size) {
-        return Arrays.stream(new int[size]).map(c -> nextInt()).toArray();
+        return stream(new int[size]).map(c -> nextInt()).toArray();
     }
 
     private long[] nextArrL(int size) {
-        return Arrays.stream(new long[size]).map(c -> nextLong()).toArray();
+        return stream(new long[size]).map(c -> nextLong()).toArray();
     }
 
     private double[] nextArrD(int size) {
-        return Arrays.stream(new double[size]).map(c -> nextDouble()).toArray();
+        return stream(new double[size]).map(c -> nextDouble()).toArray();
     }
 
     private char[][] nextCharMatrix(int n) {
         return range(0, n).mapToObj(i -> nextToken().toCharArray()).toArray(char[][]::new);
     }
 
-    private int[][] nextIntMatrix(int n, int m) {
+    private int[][] nextIntMatrix(final int n, final int m) {
         return range(0, n).mapToObj(i -> nextArr(m)).toArray(int[][]::new);
     }
 

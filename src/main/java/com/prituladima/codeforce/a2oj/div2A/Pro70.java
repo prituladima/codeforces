@@ -1,6 +1,5 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,10 +11,27 @@ import static java.util.stream.IntStream.range;
 
 public class Pro70 {
 
-
     private void solve() {
 
-        //put your code here
+        int n = nextInt(), m = nextInt(), a;
+
+        boolean isTwo = false;
+
+        for (int i = 0; i < n; i++) {
+            for(int j = 0; j < m; j++) {
+                a = nextInt();
+                if (a == 1) {
+                    if (i == 0 || i == (n - 1))
+                        isTwo = true;
+                    if (j == 0 || j == (m - 1))
+                        isTwo = true;
+                }
+            }
+        }
+
+
+        sout(isTwo ? 2 : 4);
+
 
     }
 
