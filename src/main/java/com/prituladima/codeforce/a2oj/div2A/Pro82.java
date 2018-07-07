@@ -1,7 +1,6 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,13 +8,57 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 import static java.util.stream.IntStream.range;
 
 public class Pro82 {
 
     private void solve() {
 
-        //put your code here
+        int x = nextInt(), y = nextInt();
+
+
+        int rot = 0;
+        int xi = 0;
+        int yi = 0;
+        int xj = 0;
+        int yj = 0;
+
+
+        boolean first = true;
+        int k = 1;
+        while (true) {
+            xj = xi;
+            yj = yi;
+            if (first) {
+                xi += k;
+                first = false;
+            } else {
+                yi += k;
+                first = true;
+                if (k > 0) {
+                    k += 1;
+                    k *= -1;
+                } else {
+                    k *= -1;
+                    k += 1;
+                }
+            }
+
+            if (yi != yj && min(yi, yj) <= y && y <= max(yi, yj) && xi == xj && xi == x) {
+                break;
+            }
+
+            if (xi != xj && min(xi, xj) <= x && x <= max(xi, xj) && yi == yj && yi == y) {
+                break;
+            }
+
+            rot++;
+        }
+
+        sout(rot);
+
 
     }
 

@@ -1,7 +1,6 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,7 +14,24 @@ public class Pro81 {
 
     private void solve() {
 
-        //put your code here
+        nextInt();
+
+        int i = 0, n = 0, p = 0, t = 0, m = 0;
+        String s;
+        s = nextToken();
+        m = s.indexOf('R');
+        n = s.indexOf('L');
+        p = s.lastIndexOf('R');
+        t = s.lastIndexOf('L');
+
+        if (m < 0)
+            System.out.print((t + 1) + " " + (n));
+        else {
+            if (n < 0)
+                System.out.print((m + 1) + " " + (p + 2));
+            else
+                System.out.print((m + 1) + " " + (p + 1));
+        }
 
     }
 

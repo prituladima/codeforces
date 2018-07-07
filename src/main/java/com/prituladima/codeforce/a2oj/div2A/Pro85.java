@@ -1,7 +1,6 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,9 +12,30 @@ import static java.util.stream.IntStream.range;
 
 public class Pro85 {
 
-    private void solve() {
+    private void solve() throws IOException {
 
-        //put your code here
+        char[] vow = {'A', 'E', 'I', 'O', 'U', 'Y'};
+        char[] con = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z'};
+
+        String input = reader.readLine().replace("?", "").trim();
+
+        char a = input.charAt(input.length() - 1);
+
+
+        for (int i = 0; i < vow.length; i++) {
+            if (String.valueOf(vow[i]).equalsIgnoreCase(String.valueOf(a))) {
+                soutn("YES");
+                return;
+            }
+        }
+
+
+        for (int i = 0; i < con.length; i++) {
+            if (String.valueOf(con[i]).equalsIgnoreCase(String.valueOf(a))) {
+                soutn("NO");
+                return;
+            }
+        }
 
     }
 

@@ -1,7 +1,6 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,13 +8,27 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
+import static java.lang.Math.abs;
 import static java.util.stream.IntStream.range;
 
 public class Pro84 {
 
     private void solve() {
 
-        //put your code here
+        int x1 = nextInt(), y1 = nextInt(), x2 = nextInt(), y2 = nextInt();
+
+        sout(x1 != x2 && y1 != y2 ? 2 : 1);
+
+        sout(" ");
+        sout(((x1 & 1) == (y1 & 1)) == ((x2 & 1) == (y2 & 1)) ? (abs(x1 - x2) == abs(y1 - y2) ? 1 : 2) : 0);
+        sout(" ");
+        int ans = 0;
+        while (x1 != x2 || y1 != y2) {
+            x1 += x2 > x1 ? 1 : x2 < x1 ? -1 : 0;
+            y1 += y2 > y1 ? 1 : y2 < y1 ? -1 : 0;
+            ans++;
+        }
+        sout(ans);
 
     }
 

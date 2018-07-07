@@ -1,13 +1,10 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
@@ -15,8 +12,29 @@ public class Pro80 {
 
     private void solve() {
 
-        //put your code here
-
+        int n = nextInt(), m = nextInt(), k = nextInt();
+        ArrayList<Integer> a = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            int next = nextInt();
+            if (next != 1) {
+                a.add(next);
+            }
+        }
+        Collections.sort(a, Comparator.reverseOrder());
+        if (k >= m) {
+            sout(0);
+        } else {
+            int canSupply = 0;
+            int ans = 0;
+            for (int i = 0; i < a.size(); i++) {
+                canSupply += a.get(i) - 1;
+                ans++;
+                if (canSupply + k >= m) {
+                   break;
+                }
+            }
+            sout(canSupply + k >= m ? ans : -1);
+        }
     }
 
     public static void main(String[] args) {

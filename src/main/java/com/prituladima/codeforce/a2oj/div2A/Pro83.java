@@ -14,7 +14,18 @@ public class Pro83 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt();
+        int[] a = nextArr(n);
+        a = Arrays.copyOf(a, n+1);
+        a[n] = 0;
+        Arrays.sort(a);
+        for (int i = 0; i < a.length - 1; i++) {
+            if (a[i + 1] - a[i] >= 2) {
+                soutn(a[i] + 1);
+                return;
+            }
+        }
+        soutn(a[a.length - 1] + 1);
 
     }
 
