@@ -4,8 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
@@ -13,7 +12,67 @@ public class Pro77 {
 
     private void solve() {
 
-        //put your code here
+        final int n = nextInt();
+
+        Map<Character, Integer> map = new HashMap<>();
+        String condition;
+        int value;
+        String isCorrect;
+
+        for (int i = 0; i < n; i++) {
+            condition = nextToken();
+            value = nextInt();
+            isCorrect = nextToken();
+            if (isCorrect.charAt(0) == 'N') {
+                switch (condition) {
+                    case ">=":
+                        condition = "<";
+                        break;
+                    case ">":
+                        condition = "<=";
+                        break;
+                    case "<=":
+                        condition = ">";
+                        break;
+                    case "<":
+                        condition = ">=";
+                        break;
+                }
+            }
+
+            switch (condition) {
+                case ">=":
+                    map.putIfAbsent('>', value - 1);
+                    map.merge('>', value - 1, Math::max);
+                    break;
+                case "<=":
+                    map.putIfAbsent('<', value + 1);
+                    map.merge('<', value + 1, Math::min);
+                    break;
+                case "<":
+                    map.putIfAbsent('<', value);
+                    map.merge('<', value, Math::min);
+                    break;
+                case ">":
+                    map.putIfAbsent('>', value);
+                    map.merge('>', value, Math::max);
+                    break;
+
+            }
+
+        }
+
+
+        if (map.get('<') == null) {
+            sout(map.get('>') + 1);
+            return;
+        }
+        if (map.get('>') == null) {
+            sout(map.get('<') - 1);
+            return;
+        }
+        sout(map.get('>') + 1 < map.get('<') ? map.get('>') + 1 : "Impossible");
+
 
     }
 

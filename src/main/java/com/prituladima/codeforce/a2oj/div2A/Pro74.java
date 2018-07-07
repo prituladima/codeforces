@@ -5,8 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
@@ -14,7 +13,39 @@ public class Pro74 {
 
     private void solve() {
 
-        //put your code here
+        int r1 = nextInt(), r2 = nextInt();
+        int c1 = nextInt(), c2 = nextInt();
+        int d1 = nextInt(), d2 = nextInt();
+
+        for (int c11 = 1; c11 < 10; c11++) {
+            for (int c12 = 1; c12 < 10; c12++) {
+                for (int c21 = 1; c21 < 10; c21++) {
+                    for (int c22 = 1; c22 < 10; c22++) {
+                        if (c11 + c12 == r1 &&
+                                c21 + c22 == r2 &&
+                                c11 + c21 == c1 &&
+                                c12 + c22 == c2 &&
+                                c11 + c22 == d1 &&
+                                c12 + c21 == d2
+                                ) {
+
+                            Set<Integer> set = new HashSet<>();
+                            set.add(c11);
+                            set.add(c21);
+                            set.add(c12);
+                            set.add(c22);
+                            if (set.size() == 4) {
+                                souf("%d %d \n%d %d", c11, c12, c21, c22);
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        soutn(-1);
+
 
     }
 

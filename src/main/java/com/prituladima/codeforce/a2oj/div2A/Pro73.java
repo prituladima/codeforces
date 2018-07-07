@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
+import static java.lang.Math.abs;
 import static java.util.stream.IntStream.range;
 
 public class Pro73 {
@@ -15,8 +16,23 @@ public class Pro73 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt();
+        int[] a = nextArr(n);
 
+        int d = abs(a[0] - a[n - 1]);
+
+        int f = n;
+        int s = 1;
+
+        for (int i = 1; i < n; i++) {
+//            soutn(abs(a[i] - a[i - 1]));
+            if (abs(a[i] - a[i - 1]) < d) {
+                f = i ;
+                s = i +1;
+                d = abs(a[i] - a[i - 1]);
+            }
+        }
+        souf("%d %d", f, s);
     }
 
     public static void main(String[] args) {

@@ -8,6 +8,8 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 import static java.util.stream.IntStream.range;
 
 public class Pro72 {
@@ -15,7 +17,33 @@ public class Pro72 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt();
+        int[] x = nextArr(n);
+
+
+        String ans = "no";
+        int L1, L2, R1, R2;
+        for (int i = 1; i < x.length; i++) {
+            for (int j = 1; j < x.length; j++) {
+
+                L1 = min(x[i - 1], x[i]);
+                R1 = max(x[i - 1], x[i]);
+
+                L2 = min(x[j - 1], x[j]);
+                R2 = max(x[j - 1], x[j]);
+
+                if (L1 < L2 && L2 < R1 && R1 < R2) {
+                    ans = "yes";
+                }else if(L2 < L1 && L1 < R2 && R2 < R1){
+                    ans = "yes";
+                }
+
+
+            }
+        }
+
+        sout(ans);
+
 
     }
 

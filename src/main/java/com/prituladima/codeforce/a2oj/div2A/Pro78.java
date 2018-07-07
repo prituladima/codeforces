@@ -14,8 +14,13 @@ public class Pro78 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt(), k = nextInt();
 
+        if (k / n > 2) {
+            sout(0);
+        } else {
+            sout(n - k % n);
+        }
     }
 
     public static void main(String[] args) {

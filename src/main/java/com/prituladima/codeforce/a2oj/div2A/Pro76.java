@@ -13,8 +13,38 @@ public class Pro76 {
 
     private void solve() {
 
-        //put your code here
+        char[] input = nextToken().toCharArray();
+        while (true) {
+            plusOneMin(input);
+            if ((input[0] == input[4] && input[1] == input[3])) {
+                break;
+            }
+        }
 
+        sout(input);
+    }
+
+
+    private void plusOneMin(char[] input) {
+        if (input[4] + 1 > '9') {
+            input[4] = '0';
+            if (input[3] + 1 > '5') {
+                input[3] = '0';
+                int hh = Integer.parseInt(input[0] + "" + input[1]);
+                if (hh + 1 > 23) {
+                    input[0] = '0';
+                    input[1] = '0';
+                } else {
+                    char[] newHH = String.format("%02d", hh + 1).toCharArray();
+                    input[0] = newHH[0];
+                    input[1] = newHH[1];
+                }
+            } else {
+                input[3]++;
+            }
+        } else {
+            input[4]++;
+        }
     }
 
     public static void main(String[] args) {
@@ -102,7 +132,11 @@ public class Pro76 {
         writer.printf(format, args);
     }
 
-    private <Param> void sout(Param[] arr) {
-        writer.println(Arrays.toString(arr));
+    private void sout(char[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            sout(arr[i]);
+        }
     }
+
+
 }

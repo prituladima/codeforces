@@ -15,9 +15,19 @@ public class Pro71 {
 
 
     private void solve() {
-
-        //put your code here
-
+        int n = nextInt(), m = nextInt();
+        int neg = 0;
+        int pos = 0;
+        for (int i = 0; i < n; i++) {
+            int ai = nextInt();
+            neg += ai < 0 ? 1 : 0;
+            pos += ai > 0 ? 1 : 0;
+        }
+        for (int i = 0; i < m; i++) {
+            int l = nextInt(), r = nextInt();
+            int range = r - l + 1;
+            soutn((range & 1) == 0 && range >> 1 <= pos && range >> 1 <= neg ? 1 : 0);
+        }
     }
 
     public static void main(String[] args) {

@@ -1,13 +1,11 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
@@ -15,8 +13,25 @@ public class Pro75 {
 
     private void solve() {
 
-        //put your code here
+        char[] gen1 = nextToken().toCharArray();
+        char[] gen2 = nextToken().toCharArray();
 
+        if (gen1.length == gen2.length) {
+            int n = gen1.length;
+            int diff = 0;
+
+            Set<Character> set = new HashSet<>();
+            for (int i = 0; i < n; i++) {
+                if (gen1[i] != gen2[i]) {
+                    diff++;
+                    set.add(gen1[i]);
+                    set.add(gen2[i]);
+                }
+            }
+            sout(diff == 2 && set.size()==2 ? "YES" : "NO");
+        } else {
+            sout("NO");
+        }
     }
 
     public static void main(String[] args) {

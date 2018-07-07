@@ -89,24 +89,33 @@ public final class STemplate {
         return tokenizer.nextToken();
     }
 
-    private void soutn() {
-        writer.println();
-    }
-
-    private void soutn(Object o) {
-        writer.println(o);
+    private void souf(String format, Object... args) {
+        writer.printf(format, args);
     }
 
     private void sout(Object o) {
         writer.print(o);
     }
 
-    private void souf(String format, Object... args) {
-        writer.printf(format, args);
+    private void newLine() {
+        writer.println();
     }
 
-    private <Param> void sout(Param[] arr) {
-        writer.println(Arrays.toString(arr));
+    private void soutnl(Object o) {
+        sout(o);
+        newLine();
+    }
+
+    private void soutCharArray(char[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            sout(arr[i]);
+        }
+    }
+
+    private <T extends Number> void soutNumberArray(T[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            soutnl(arr[i]);
+        }
     }
 
 }

@@ -1,13 +1,11 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
@@ -15,9 +13,30 @@ public class Pro79 {
 
     private void solve() {
 
-        //put your code here
+        char[] n = {'6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'};
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < n.length; i++) {
+            map.put(n[i], i + 1);
+        }
+
+        char[] s = {'S', 'H', 'D', 'C'};
+
+        char tramp = nextToken().charAt(0);
+
+        String card1 = nextToken();
+        String card2 = nextToken();
+
+        if (card1.charAt(1) == tramp && card2.charAt(1) != tramp) {
+            sout("YES");
+        } else if (card1.charAt(1) == card2.charAt(1) && map.get(card1.charAt(0)) > map.get(card2.charAt(0))) {
+            sout("YES");
+        } else {
+            sout("NO");
+        }
+
 
     }
+
 
     public static void main(String[] args) {
         new Pro79().run();
