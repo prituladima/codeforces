@@ -5,15 +5,28 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
 public class Pro87 {
     private void solve() {
 
-        //put your code here
+        int n = nextInt();
+        Set<Integer> set = new HashSet<>();
+
+        for (int i = 1; i * (i + 1) >> 1 <= n; i++) {
+            set.add(i * (i + 1) >> 1);
+        }
+
+        for (int i : set) {
+            if (set.contains(n - i)) {
+                sout("YES");
+                return;
+            }
+        }
+
+        sout("NO");
 
     }
 

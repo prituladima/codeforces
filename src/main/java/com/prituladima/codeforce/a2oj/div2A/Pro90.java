@@ -1,13 +1,10 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
@@ -15,7 +12,21 @@ public class Pro90 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt();
+        int[] a = nextArr(n);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n; k++) {
+                    if (i != j && j != k && a[i] == a[j] + a[k]) {
+                        souf("%d %d %d", i + 1, j + 1, k + 1);
+                        return;
+                    }
+                }
+            }
+        }
+
+        sout(-1);
 
     }
 

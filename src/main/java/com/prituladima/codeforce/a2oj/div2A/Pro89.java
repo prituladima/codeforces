@@ -1,11 +1,6 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
@@ -15,8 +10,29 @@ public class Pro89 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt();
+        char[] input = nextToken().toCharArray();
 
+        char[][] ans = new char[n >> 1][2];
+        int[][] ans1 = new int[n >> 1][2];
+
+        for (int i = 0; i < n; i++) {
+            ans[i % (n >> 1)][i + 1 > n / 2 ? 1 : 0] = input[i];
+            ans1[i % (n >> 1)][i + 1 > n / 2 ? 1 : 0] = i + 1;
+        }
+
+        for (int i = 0; i < (n >> 1); i++) {
+            if (ans[i][0] == 'R' && ans[i][1] == 'L') {
+                char buf = ans[i][0];
+                ans[i][0] = ans[i][1];
+                ans[i][1] = buf;
+
+                int buf1 = ans1[i][0];
+                ans1[i][0] = ans1[i][1];
+                ans1[i][1] = buf1;
+            }
+            souf("%d %d\n", ans1[i][0], ans1[i][1]);
+        }
     }
 
     public static void main(String[] args) {
@@ -29,9 +45,9 @@ public class Pro89 {
 
     private void run() {
         try {
-            reader = new BufferedReader(new InputStreamReader(System.in));
+            reader = new BufferedReader(new FileReader(new File("input.txt")));
             tokenizer = null;
-            writer = new PrintWriter(System.out);
+            writer = new PrintWriter(new File("output.txt"));
             solve();
             reader.close();
             writer.close();

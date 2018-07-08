@@ -1,22 +1,33 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
 public class Pro88 {
 
     private void solve() {
-
-        //put your code here
-
+        Set<String> alcg = new HashSet<>(
+                Arrays.asList("ABSINTH", "BEER",
+                        "BRANDY", "CHAMPAGNE", "GIN", "RUM", "SAKE",
+                        "TEQUILA", "VODKA", "WHISKEY", "WINE"));
+        int n = nextInt();
+        int ans = 0;
+        while (n-- > 0) {
+            String next = nextToken();
+            try {
+                int age = Integer.parseInt(next);
+                ans += age < 18 ? 1 : 0;
+            } catch (NumberFormatException nfe) {
+                ans += alcg.contains(next) ? 1 : 0;
+            }
+        }
+        sout(ans);
     }
 
     public static void main(String[] args) {

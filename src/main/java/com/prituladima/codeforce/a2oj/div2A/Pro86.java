@@ -1,22 +1,37 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
 public class Pro86 {
 
     private void solve() {
-
-        //put your code here
-
+        final long p = nextLong();
+//        int ans = 0;
+        Set<Long> set = new HashSet<>();
+        for (long x = 1; x < p; x++) {
+            boolean accepted = true;
+            long X = 1;
+            for (long i = 1; i <= p - 2; i++) {
+                X *= x % p;
+                X %= p;
+                if ((X - 1) % p == 0) {
+                    accepted = false;
+//                    break;
+                }
+            }
+            if (accepted && (X * x - 1) % p == 0) {
+//                ans++;
+                set.add(x % p);
+            }
+        }
+        souf("%d", set.size());
     }
 
     public static void main(String[] args) {
