@@ -1,23 +1,51 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
 public class Pro94 {
 
+
     private void solve() {
 
-        //put your code here
+        List<String> list = Arrays.asList("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "B", "H");
+
+        final int n2 = list.size();
+        String X = nextToken(), Y = nextToken(), Z = nextToken();
+
+        String[] n = {X, Y, Z};
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < 3; k++) {
+                    if (i != j && j != k) {
+                        int ni = list.indexOf(n[i]);
+                        int nj = list.indexOf(n[j]);
+                        int nk = list.indexOf(n[k]);
+
+                        if ((ni + 3) % n2 == nj && (nj + 4) % n2 == nk && (ni + 7) % n2 == nk) {
+                            sout("minor");
+                            return;
+                        } else if ((ni + 4) % n2 == nj && (nj + 3) % n2 == nk && (ni + 7) % n2 == nk) {
+                            sout("major");
+                            return;
+                        }
+
+                    }
+                }
+            }
+        }
+
+        sout("strange");
 
     }
+
 
     public static void main(String[] args) {
         new Pro94().run();

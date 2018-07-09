@@ -1,21 +1,94 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
 public class Pro91 {
 
+    private class Num {
+        int index;
+        int value = 0;
+        Set<Integer> conflicts = new HashSet<>();
+
+        public Num(int index, int value) {
+            this.index = index;
+            this.value = value;
+        }
+
+        public int conflicts() {
+            return conflicts.size();
+        }
+    }
+
+
     private void solve() {
 
-        //put your code here
+
+        int n = nextInt();
+        ArrayList<Num> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(new Num(i, nextInt()));
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i != j) {
+                    int valuei = list.get(i).value;
+                    Set<Integer> seti = list.get(i).conflicts;
+
+                    int hi = valuei / 100;
+                    int di = valuei / 10 % 10;
+                    int oi = valuei % 10;
+
+
+                    int valuej = list.get(j).value;
+                    Set<Integer> setj = list.get(j).conflicts;
+
+                    int hj = valuej / 100;
+                    int dj = valuej / 10 % 10;
+                    int oj = valuej % 10;
+
+                    if ((hi != 0 && hj != 0) || (di != 0 && dj != 0) || (oi != 0 && oj != 0)) {
+                        seti.add(j);
+                        setj.add(i);
+                    }
+                }
+            }
+        }
+
+
+        Collections.sort(list, Comparator.comparingInt(Num::conflicts).reversed());
+
+        boolean[] ans = new boolean[n];
+        int amountToRemove = 0;
+
+        for (int i = 0; i < list.size(); i++) {
+            Set<Integer> set = list.get(i).conflicts;
+            if (set.size() != 0) {
+                ans[i] = true;
+                amountToRemove++;
+            }
+
+            for (Num num : list) {
+                if (num.index != list.get(i).index) {
+                    num.conflicts.remove(list.get(i).index);
+                }
+            }
+
+
+        }
+
+        soutn(n - amountToRemove);
+
+        for (int i = 0; i < n; i++) {
+            if (!ans[i]) souf("%d ", list.get(i).value);
+        }
 
     }
 

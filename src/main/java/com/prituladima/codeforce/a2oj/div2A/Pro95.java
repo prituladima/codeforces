@@ -1,7 +1,6 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,7 +14,104 @@ public class Pro95 {
 
     private void solve() {
 
-        //put your code here
+
+        int[][] xy = new int[3][2];
+
+        for (int i = 0; i < 3; i++) {
+            xy[i][0] = nextInt();
+            xy[i][1] = nextInt();
+        }
+
+        int s1p2 = (xy[0][0] - xy[1][0]) * (xy[0][0] - xy[1][0]) + (xy[0][1] - xy[1][1]) * (xy[0][1] - xy[1][1]);
+        int s2p2 = (xy[1][0] - xy[2][0]) * (xy[1][0] - xy[2][0]) + (xy[1][1] - xy[2][1]) * (xy[1][1] - xy[2][1]);
+        int s3p2 = (xy[0][0] - xy[2][0]) * (xy[0][0] - xy[2][0]) + (xy[0][1] - xy[2][1]) * (xy[0][1] - xy[2][1]);
+
+        if (s1p2 + s2p2 == s3p2 || s1p2 + s3p2 == s2p2 || s3p2 + s2p2 == s1p2) {
+            if (s1p2 != 0 && s2p2 != 0 && s3p2 != 0) {
+                sout("RIGHT");
+                return;
+            }
+        }
+
+        for (int k = 0; k < 3; k++) {
+
+
+            xy[k][0]--;
+
+            int s1p2k = (xy[0][0] - xy[1][0]) * (xy[0][0] - xy[1][0]) + (xy[0][1] - xy[1][1]) * (xy[0][1] - xy[1][1]);
+            int s2p2k = (xy[1][0] - xy[2][0]) * (xy[1][0] - xy[2][0]) + (xy[1][1] - xy[2][1]) * (xy[1][1] - xy[2][1]);
+            int s3p2k = (xy[0][0] - xy[2][0]) * (xy[0][0] - xy[2][0]) + (xy[0][1] - xy[2][1]) * (xy[0][1] - xy[2][1]);
+
+            if (s1p2k + s2p2k == s3p2k || s1p2k + s3p2k == s2p2k || s3p2k + s2p2k == s1p2k) {
+                if (s1p2k != 0 && s2p2k != 0 && s3p2k != 0) {
+                    sout("ALMOST");
+                    return;
+                }
+            }
+
+            xy[k][0]++;
+
+            /////////
+
+            xy[k][0]++;
+
+            s1p2k = (xy[0][0] - xy[1][0]) * (xy[0][0] - xy[1][0]) + (xy[0][1] - xy[1][1]) * (xy[0][1] - xy[1][1]);
+            s2p2k = (xy[1][0] - xy[2][0]) * (xy[1][0] - xy[2][0]) + (xy[1][1] - xy[2][1]) * (xy[1][1] - xy[2][1]);
+            s3p2k = (xy[0][0] - xy[2][0]) * (xy[0][0] - xy[2][0]) + (xy[0][1] - xy[2][1]) * (xy[0][1] - xy[2][1]);
+
+            if (s1p2k + s2p2k == s3p2k || s1p2k + s3p2k == s2p2k || s3p2k + s2p2k == s1p2k) {
+                if (s1p2k != 0 && s2p2k != 0 && s3p2k != 0) {
+                    sout("ALMOST");
+                    return;
+                }
+            }
+
+
+            xy[k][0]--;
+
+            ////////
+
+            xy[k][1]--;
+
+
+            s1p2k = (xy[0][0] - xy[1][0]) * (xy[0][0] - xy[1][0]) + (xy[0][1] - xy[1][1]) * (xy[0][1] - xy[1][1]);
+            s2p2k = (xy[1][0] - xy[2][0]) * (xy[1][0] - xy[2][0]) + (xy[1][1] - xy[2][1]) * (xy[1][1] - xy[2][1]);
+            s3p2k = (xy[0][0] - xy[2][0]) * (xy[0][0] - xy[2][0]) + (xy[0][1] - xy[2][1]) * (xy[0][1] - xy[2][1]);
+
+            if (s1p2k + s2p2k == s3p2k || s1p2k + s3p2k == s2p2k || s3p2k + s2p2k == s1p2k) {
+                if (s1p2k != 0 && s2p2k != 0 && s3p2k != 0) {
+                    sout("ALMOST");
+                    return;
+                }
+            }
+
+
+            xy[k][1]++;
+
+            /////////
+
+            xy[k][1]++;
+
+
+            s1p2k = (xy[0][0] - xy[1][0]) * (xy[0][0] - xy[1][0]) + (xy[0][1] - xy[1][1]) * (xy[0][1] - xy[1][1]);
+            s2p2k = (xy[1][0] - xy[2][0]) * (xy[1][0] - xy[2][0]) + (xy[1][1] - xy[2][1]) * (xy[1][1] - xy[2][1]);
+            s3p2k = (xy[0][0] - xy[2][0]) * (xy[0][0] - xy[2][0]) + (xy[0][1] - xy[2][1]) * (xy[0][1] - xy[2][1]);
+
+            if (s1p2k + s2p2k == s3p2k || s1p2k + s3p2k == s2p2k || s3p2k + s2p2k == s1p2k) {
+                if (s1p2k != 0 && s2p2k != 0 && s3p2k != 0) {
+                    sout("ALMOST");
+                    return;
+                }
+            }
+
+
+            xy[k][1]--;
+
+            ///////////
+
+        }
+
+        sout("NEITHER");
 
     }
 

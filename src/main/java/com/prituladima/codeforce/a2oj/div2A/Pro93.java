@@ -1,11 +1,7 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
@@ -15,7 +11,22 @@ public class Pro93 {
 
     private void solve() {
 
-        //put your code here
+        int[] st = new int[3];
+        int i = nextInt();
+        st[i-1] = 1;
+        for (int j = 0; j < 3; j++) {
+            int f = nextInt(), s = nextInt();
+            int buff = st[f - 1];
+            st[f - 1] = st[s - 1];
+            st[s - 1] = buff;
+        }
+
+        for (int j = 0; j < st.length; j++) {
+            if (st[j] != 0){
+                sout(j + 1);
+            }
+        }
+
 
     }
 
@@ -29,9 +40,9 @@ public class Pro93 {
 
     private void run() {
         try {
-            reader = new BufferedReader(new InputStreamReader(System.in));
+            reader = new BufferedReader(new FileReader(new File("input.txt")));
             tokenizer = null;
-            writer = new PrintWriter(System.out);
+            writer = new PrintWriter(new File("output.txt"));
             solve();
             reader.close();
             writer.close();
