@@ -8,10 +8,10 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 
 import static com.prituladima.geeksforgeeks.util.Asserts.assertMatrixEquals;
-import static com.prituladima.geeksforgeeks.util.Print.printMatrix;
-import static com.prituladima.geeksforgeeks.util.Print.sout;
-import static com.prituladima.geeksforgeeks.util.Util.array;
-import static com.prituladima.geeksforgeeks.util.Util.matrix;
+import static com.prituladima.geeksforgeeks.util.PrintWrapper.soutMatrix;
+import static com.prituladima.geeksforgeeks.util.PrintWrapper.sout;
+import static com.prituladima.geeksforgeeks.util.TestSetWrapper.array;
+import static com.prituladima.geeksforgeeks.util.TestSetWrapper.matrix;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(value = Parameterized.class)
@@ -68,7 +68,7 @@ public class DirectedGraphTest {
 
         assertMatrixEquals(result, minPath);
         sout(graph);
-        printMatrix(minPath);
+        soutMatrix(minPath);
 
         assertEquals(connectedComponent, graph.amountOfConnectedComponent());
         sout("----------------------------------------------");

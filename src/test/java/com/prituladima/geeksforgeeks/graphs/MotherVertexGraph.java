@@ -6,9 +6,8 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 
-import static com.prituladima.geeksforgeeks.util.Asserts.assertArrayEqualsWithNull;
-import static com.prituladima.geeksforgeeks.util.Util.array;
-import static com.prituladima.geeksforgeeks.util.Util.matrix;
+import static com.prituladima.geeksforgeeks.util.TestSetWrapper.array;
+import static com.prituladima.geeksforgeeks.util.TestSetWrapper.matrix;
 
 @RunWith(value = Parameterized.class)
 public class MotherVertexGraph {

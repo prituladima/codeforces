@@ -5,9 +5,9 @@ import org.junit.*;
 import org.junit.runner.*;
 import org.junit.runners.*;
 
-import static com.prituladima.geeksforgeeks.util.Print.printMatrix;
-import static com.prituladima.geeksforgeeks.util.Util.array;
-import static com.prituladima.geeksforgeeks.util.Util.matrix;
+import static com.prituladima.geeksforgeeks.util.PrintWrapper.soutMatrix;
+import static com.prituladima.geeksforgeeks.util.TestSetWrapper.array;
+import static com.prituladima.geeksforgeeks.util.TestSetWrapper.matrix;
 import static org.junit.Assert.*;
 
 /**
@@ -70,7 +70,7 @@ public class FindIfAnyTwoSegmentsIntersectTest {
 
     @Test
     public void test1() {
-        printMatrix(points);
+        soutMatrix(points);
         assertEquals(expected, o.sweepLineAlgorithm(n, points));
     }
 

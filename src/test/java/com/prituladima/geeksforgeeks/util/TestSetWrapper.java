@@ -1,9 +1,26 @@
 package com.prituladima.geeksforgeeks.util;
 
+import java.util.*;
+
 /**
  * Created by prituladima on 6/12/18.
  */
-public class Util {
+public class TestSetWrapper {
+
+
+    public static Iterable<Object[]> testSet(Object[]... objects){
+        Object[][] o = new Object[objects.length][];
+        for (int i = 0; i < objects.length; i++) {
+            o[i] = objects[i];
+        }
+
+        return Arrays.asList(o);
+    }
+
+    public static Object[] item(Object... objects){
+        return objects;
+    }
+
 
     public static int[][] matrix(int[]... lines) {
         int[][] matrix = new int[lines.length][];

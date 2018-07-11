@@ -6,7 +6,7 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 
-import static com.prituladima.geeksforgeeks.util.Util.*;
+import static com.prituladima.geeksforgeeks.util.TestSetWrapper.*;
 import static org.junit.Assert.*;
 
 /**

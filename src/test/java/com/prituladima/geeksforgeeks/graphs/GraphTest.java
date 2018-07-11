@@ -2,7 +2,7 @@ package com.prituladima.geeksforgeeks.graphs;
 
 import org.junit.Test;
 
-import static com.prituladima.geeksforgeeks.util.Print.sout;
+import static com.prituladima.geeksforgeeks.util.PrintWrapper.sout;
 
 /**
  * Created by prituladima on 6/12/18.
