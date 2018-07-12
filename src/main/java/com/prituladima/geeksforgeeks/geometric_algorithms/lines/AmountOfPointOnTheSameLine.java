@@ -1,5 +1,6 @@
 package com.prituladima.geeksforgeeks.geometric_algorithms.lines;
 
+import com.prituladima.geeksforgeeks.geometric_algorithms.lines.slope.*;
 import java.util.*;
 
 import static java.util.stream.IntStream.range;
@@ -32,6 +33,8 @@ public class AmountOfPointOnTheSameLine {
 
 
     int noOfPoints(int x[], int y[], int n) {
+        if(n < 3) return n;
+
         int ans = 2;
 
         for (int i = 0; i < n; i++) {
@@ -41,32 +44,14 @@ public class AmountOfPointOnTheSameLine {
                     for (int k = 0; k < n; k++) {
                         if (k != i && k != j) {
 
-                            System.out.printf("%d %d %d\n", i, j, k);
+                            //System.out.printf("%d %d %d\n", i, j, k);
 
-                            int A = y[i] - y[j];
-                            int B = x[k] - x[i];
-                            int C = y[k] - y[i];
-                            int D = x[i] - x[j];
+                            Slope s1 = new Slope(x[i], y[i], x[j], y[j]);
+                            Slope s2 = new Slope(x[j], y[j], x[k], y[k]);
 
-                            if (B == 0 && C == 0) {
-                                sum++;
-                                continue;
-                            } else if (B == 0 || C == 0) {
-                                continue;
-                            }
-
-                            if (D == 0 && A == 0) {
-                                sum++;
-                                continue;
-                            } else if (A == 0 || D == 0) {
-                                continue;
-                            }
-
-
-                            if (A * B == C * D) {
+                            if (s1.equals(s2)) {
                                 sum++;
                             }
-
 
                         }
                     }
