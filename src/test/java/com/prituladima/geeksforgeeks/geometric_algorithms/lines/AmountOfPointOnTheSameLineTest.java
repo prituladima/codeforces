@@ -50,8 +50,13 @@ public class AmountOfPointOnTheSameLineTest {
     AmountOfPointOnTheSameLine o = new AmountOfPointOnTheSameLine();
 
     @Test
-    public void test(){
+    public void naive(){
         assertEquals(expected, o.noOfPoints(x, y, n));
+    }
+
+    @Test
+    public void fast(){
+        assertEquals(expected, o.noOfPointsFast(x, y, n));
     }
 
 

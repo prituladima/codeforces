@@ -32,8 +32,32 @@ public class AmountOfPointOnTheSameLine {
     }
 
 
+    int noOfPointsFast(int x[], int y[], int n) {
+        if (n < 3) return n;
+        int ans = 1;
+
+        HashMap<Slope, Integer> slopeToCounter = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int maxI = 1;
+            for (int j = 0; j < n; j++) {
+                if (i != j) {
+                    Slope slopeij = new Slope(x[i], y[i], x[j], y[j]);
+                    slopeToCounter.merge(slopeij, 1, (a1, a2) -> a1 + a2);
+                    maxI = Math.max(maxI, slopeToCounter.get(slopeij));
+                }
+            }
+
+            slopeToCounter.clear();
+            ans = Math.max(ans, maxI);
+
+        }
+        return ans + 1;
+
+
+    }
+
     int noOfPoints(int x[], int y[], int n) {
-        if(n < 3) return n;
+        if (n < 3) return n;
 
         int ans = 2;
 
