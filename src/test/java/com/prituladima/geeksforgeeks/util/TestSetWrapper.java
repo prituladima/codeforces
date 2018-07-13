@@ -59,5 +59,9 @@ public class TestSetWrapper {
         return array(x, y);
     }
 
+    public static int[] vector(int... item){
+        return array(item);
+    }
+
 
 }
