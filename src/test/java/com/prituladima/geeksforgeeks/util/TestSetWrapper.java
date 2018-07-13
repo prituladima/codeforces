@@ -8,7 +8,7 @@ import java.util.*;
 public class TestSetWrapper {
 
 
-    public static Iterable<Object[]> testSet(Object[]... objects){
+    public static Iterable<Object[]> testSet(Object[]... objects) {
         Object[][] o = new Object[objects.length][];
         for (int i = 0; i < objects.length; i++) {
             o[i] = objects[i];
@@ -17,7 +17,7 @@ public class TestSetWrapper {
         return Arrays.asList(o);
     }
 
-    public static Object[] item(Object... objects){
+    public static Object[] item(Object... objects) {
         return objects;
     }
 
@@ -38,28 +38,32 @@ public class TestSetWrapper {
         return array;
     }
 
-    public static int[][] asArray(int[]... lines){
+    public static int[][] asArray(int[]... lines) {
         return matrix(lines);
     }
 
 
-    public static int[] segment(int x1, int x2){
+    public static int[] segment(int x1, int x2) {
         return array(x1, x2);
     }
 
-    public static int[][] segment(int[] p, int[] q){
+    public static int[][] segment(int[] p, int[] q) {
         return matrix(p, q);
     }
 
-    public static int[] point(int x, int y, int z){
+    public static int[] point(int x, int y, int z) {
         return array(x, y, z);
     }
 
-    public static int[] point(int x, int y){
+    public static int[] point(int x, int y) {
         return array(x, y);
     }
 
-    public static int[] vector(int... item){
+    public static int[][] pointSet(int[]... lines) {
+        return matrix(lines);
+    }
+
+    public static int[] vector(int... item) {
         return array(item);
     }
 
