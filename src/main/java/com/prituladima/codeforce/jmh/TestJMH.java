@@ -2,6 +2,7 @@ package com.prituladima.codeforce.jmh;
 
 import org.openjdk.jmh.annotations.Benchmark;
 
+@Deprecated
 public class TestJMH {
 
     @Benchmark

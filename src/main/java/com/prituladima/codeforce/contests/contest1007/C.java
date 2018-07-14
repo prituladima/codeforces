@@ -1,4 +1,4 @@
-//package com.prituladima.codeforce.contests.contest1007;
+package com.prituladima.codeforce.contests.contest1007;
 
 import java.io.*;
 import java.util.*;
