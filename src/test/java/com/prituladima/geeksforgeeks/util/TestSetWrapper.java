@@ -63,6 +63,14 @@ public class TestSetWrapper {
         return matrix(lines);
     }
 
+    public static int[][] lineSet(int[]... lines){
+        return matrix(lines);
+    }
+
+    public static int[] line(int A, int B, int C){
+        return array(A, B, C);
+    }
+
     public static int[] vector(int... item) {
         return array(item);
     }

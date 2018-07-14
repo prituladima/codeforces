@@ -2,19 +2,38 @@ package com.prituladima.geeksforgeeks.util;
 
 import java.util.Arrays;
 
+import static java.util.stream.IntStream.range;
+import static java.lang.System.out;
+
 /**
  * Created by prituladima on 6/13/18.
  */
 public class PrintWrapper {
 
-    public static void soutMatrix(int[][] mtx) {
-        for (int i = 0; i < mtx.length; i++) {
-            sout(Arrays.toString(mtx[i]));
-        }
+    public static void sout(int[][] mtx) {
+        range(0, mtx.length).forEach(i -> soutln(mtx[i]));
     }
 
-    public static void sout(Object o){
-        System.out.println(o);
+    public static void soutln(int[] arr) {
+        soutln(Arrays.toString(arr));
+    }
+
+    private static void soutln(Object o) {
+        sout(o);
+        newLine();
+    }
+
+    private static void newLine() {
+        sout('\n');
+    }
+
+
+    public static void sout(Object o) {
+        out.print(o);
+    }
+
+    private static void souf(String format, Object... args) {
+        out.printf(format, args);
     }
 
 }
