@@ -38,6 +38,14 @@ public class TestSetWrapper {
         return array;
     }
 
+    public static double[] array(double... item) {
+        double[] array = new double[item.length];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = item[i];
+        }
+        return array;
+    }
+
     public static int[][] asArray(int[]... lines) {
         return matrix(lines);
     }
@@ -59,16 +67,24 @@ public class TestSetWrapper {
         return array(x, y);
     }
 
+    public static double[] point(double x, double y) {
+        return array(x, y);
+    }
+
     public static int[][] pointSet(int[]... lines) {
         return matrix(lines);
     }
 
-    public static int[][] lineSet(int[]... lines){
+    public static int[][] lineSet(int[]... lines) {
         return matrix(lines);
     }
 
-    public static int[] line(int A, int B, int C){
+    public static int[] line(int A, int B, int C) {
         return array(A, B, C);
+    }
+
+    public static int[][] line(int[] p, int[] q) {
+        return lineSet(p, q);
     }
 
     public static int[] vector(int... item) {
