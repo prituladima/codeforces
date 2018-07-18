@@ -1,21 +1,41 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.util.stream.IntStream.range;
 
 public class Pro99 {
 
-    private void solve() {
 
-        //put your code here
+    private void solve() {
+        int n = nextInt();
+
+        boolean[] used = new boolean[100];
+        for (int i = 0; i < n; i++) {
+            int left = nextInt(), right = nextInt();
+            if (i == 0) {
+                for (int j = left; j < right; j++) {
+                    used[j] = true;
+                }
+            } else {
+                for (int j = left; j < right; j++) {
+                    used[j] = false;
+                }
+            }
+        }
+
+        int ans = 0;
+
+        for (int i = 0; i < 100; i++) {
+            ans += used[i] ? 1 : 0;
+        }
+
+        sout(ans);
+
 
     }
 

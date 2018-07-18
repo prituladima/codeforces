@@ -1,21 +1,28 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
+import static java.lang.Integer.min;
 import static java.util.stream.IntStream.range;
 
 public class Pro98 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt();
+        Set<Integer> setX = new HashSet<>();
+        Set<Integer> setY = new HashSet<>();
+
+        for (int i = 0; i < n; i++) {
+            setX.add(nextInt());
+            setY.add(nextInt());
+        }
+
+        sout(min(setX.size(), setY.size()));
 
     }
 

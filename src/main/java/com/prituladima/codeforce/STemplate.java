@@ -106,16 +106,12 @@ public final class STemplate {
         newLine();
     }
 
-    private void soutCharArray(char[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            sout(arr[i]);
-        }
+    private int max(int a, int b) {
+        return Math.max(a, b);
     }
 
-    private <T extends Number> void soutNumberArray(T[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            soutnl(arr[i]);
-        }
+    private int min(int a, int b) {
+        return Math.min(a, b);
     }
 
 }
