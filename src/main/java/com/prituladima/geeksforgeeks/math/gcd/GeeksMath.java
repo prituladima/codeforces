@@ -35,4 +35,27 @@ public class GeeksMath {
         return a / gcd(a, b) * b;
     }
 
+    long save_mod(long x, long m) {
+        return (x % m + m) % m;
+    }
+
+    long gcdExtended(long a, long b, long[] x) {
+        // Base Case
+        if (a == 0) {
+            x[0] = 0;
+            x[1] = 1;
+            return b;
+        }
+
+        long[] t = {1, 1}; // To store results of recursive call
+        long gcd = gcdExtended(b % a, a, t);
+
+        // Update t using results of recursive
+        // call
+
+        x[0] = t[1] - (b / a) * t[0];
+        x[1] = t[0];
+        return gcd;
+    }
+
 }
