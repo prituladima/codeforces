@@ -5,7 +5,7 @@ import org.junit.*;
 import org.junit.runner.*;
 import org.junit.runners.*;
 
-import static com.prituladima.geeksforgeeks.util.PrintWrapper.sout;
+import static com.prituladima.geeksforgeeks.util.PrintWrapper.soutln;
 import static com.prituladima.geeksforgeeks.util.TestSetWrapper.array;
 import static com.prituladima.geeksforgeeks.util.TestSetWrapper.matrix;
 import static org.junit.Assert.*;
@@ -70,7 +70,7 @@ public class FindIfAnyTwoSegmentsIntersectTest {
 
     @Test
     public void test1() {
-        sout(points);
+        soutln(points);
         assertEquals(expected, o.sweepLineAlgorithm(n, points));
     }
 

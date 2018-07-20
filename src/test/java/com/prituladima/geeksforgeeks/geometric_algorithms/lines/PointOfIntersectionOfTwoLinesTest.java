@@ -1,11 +1,10 @@
 package com.prituladima.geeksforgeeks.geometric_algorithms.lines;
 
-import com.prituladima.geeksforgeeks.geometric_algorithms.lines.line.*;
 import org.junit.*;
 import org.junit.runner.*;
 import org.junit.runners.*;
 
-import static com.prituladima.geeksforgeeks.util.PrintWrapper.sout;
+import static com.prituladima.geeksforgeeks.util.PrintWrapper.soutln;
 import static com.prituladima.geeksforgeeks.util.TestSetWrapper.*;
 import static com.prituladima.geeksforgeeks.util.TestSetWrapper.line;
 import static org.junit.Assert.*;
@@ -78,8 +77,8 @@ public class PointOfIntersectionOfTwoLinesTest {
     @Test
     public void test() {
 
-        sout(line1);
-        sout(line2);
+        soutln(line1);
+        soutln(line2);
 
         if (noAns) {
             assertNull(o.pointOfIntersectionOfTwoLines(line1, line2));

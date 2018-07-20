@@ -10,7 +10,7 @@ import static java.lang.System.out;
  */
 public class PrintWrapper {
 
-    public static void sout(int[][] mtx) {
+    public static void soutln(int[][] mtx) {
         range(0, mtx.length).forEach(i -> soutln(mtx[i]));
     }
 
@@ -18,7 +18,7 @@ public class PrintWrapper {
         soutln(Arrays.toString(arr));
     }
 
-    private static void soutln(Object o) {
+    public static void soutln(Object o) {
         sout(o);
         newLine();
     }

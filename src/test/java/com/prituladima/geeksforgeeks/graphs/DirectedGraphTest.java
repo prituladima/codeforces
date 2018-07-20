@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 import static com.prituladima.geeksforgeeks.util.Asserts.assertMatrixEquals;
 import static com.prituladima.geeksforgeeks.util.PrintWrapper.sout;
+import static com.prituladima.geeksforgeeks.util.PrintWrapper.soutln;
 import static com.prituladima.geeksforgeeks.util.TestSetWrapper.array;
 import static com.prituladima.geeksforgeeks.util.TestSetWrapper.matrix;
 import static org.junit.Assert.assertEquals;
@@ -67,7 +68,7 @@ public class DirectedGraphTest {
 
         assertMatrixEquals(result, minPath);
         sout(graph);
-        sout(minPath);
+        soutln(minPath);
         assertEquals(connectedComponent, graph.amountOfConnectedComponent());
         sout("----------------------------------------------");
     }
