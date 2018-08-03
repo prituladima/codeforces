@@ -1,4 +1,6 @@
-package com.prituladima.geeksforgeeks.math.gcd;
+package com.prituladima.geeksforgeeks.math;
+
+import static java.lang.StrictMath.max;
 
 /**
  * @see "https://www.geeksforgeeks.org/modular-exponentiation-power-in-modular-arithmetic/"
@@ -57,5 +59,59 @@ public class GeeksMath {
         x[1] = t[0];
         return gcd;
     }
+
+
+    /**
+     * @see "https://www.geeksforgeeks.org/mathematical-algorithms/mathematical-algorithms-prime-factorization-divisors/"
+     */
+
+    boolean isPrime(long n) {
+        if ((n & 1) == 0) {
+            return false;
+        }
+        long f = 3;
+        while (f * f <= n) {
+            if (n % f == 0)
+                return false;
+            else
+                f += 2;
+        }
+
+        return n != 1;
+    }
+
+    long sumOfDig(long n) {
+        long sum = 0;
+        while (n != 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
+    }
+
+    long largestPrimeFactor(long n) {
+        long ans = 1;
+
+        while ((n & 1) == 0) {
+            ans = 2;
+            n /= 2;
+        }
+
+        long i = 3;
+        while (i * i <= n) {
+            if (n % i == 0) {
+                ans = max(ans, i);
+                n /= i;
+            } else {
+                i += 2;
+            }
+
+        }
+
+        if (n != 1) ans = n;
+
+        return ans;
+    }
+
 
 }
