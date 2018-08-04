@@ -1,4 +1,4 @@
-package com.prituladima.geeksforgeeks.math.prime;
+package com.prituladima.geeksforgeeks.math.factorization;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

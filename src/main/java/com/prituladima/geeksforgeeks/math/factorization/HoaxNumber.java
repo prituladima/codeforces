@@ -1,7 +1,6 @@
-package com.prituladima.geeksforgeeks.math.prime;
+package com.prituladima.geeksforgeeks.math.factorization;
 
 import java.util.HashSet;
-import java.util.Scanner;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.prituladima.geeksforgeeks.math.prime;
+package com.prituladima.geeksforgeeks.math.factorization;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,25 +8,27 @@ import static com.prituladima.geeksforgeeks.util.TestSetWrapper.item;
 import static com.prituladima.geeksforgeeks.util.TestSetWrapper.testSet;
 import static org.junit.Assert.*;
 
-
 @RunWith(value = Parameterized.class)
-public class HoaxNumberTest {
+public class FrugalNumberTest {
 
     private long n;
     private boolean expected;
 
-    public HoaxNumberTest(long n, boolean expected) {
+    public FrugalNumberTest(long n, boolean expected) {
         this.n = n;
         this.expected = expected;
     }
 
 
-    @Parameterized.Parameters(name = "{index}: HoaxNumberTest")
+    @Parameterized.Parameters(name = "{index}: FrugalNumberTest")
     public static Iterable<Object[]> data() {
         return testSet(
-                item(22, true),
-                item(84, true),
-                item(19, false),
+                item(125, true),
+                item(128, true),
+                item(243, true),
+                item(256, true),
+                item(17, false),
+                item(5, false),
                 item(1, false)
         );
     }
@@ -34,7 +36,7 @@ public class HoaxNumberTest {
 
     @Test
     public void text() {
-        assertEquals(expected, HoaxNumber.isHoax(n));
+        assertEquals(expected, FrugalNumber.isFrugalNumber(n));
     }
 
 
