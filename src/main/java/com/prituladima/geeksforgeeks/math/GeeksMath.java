@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.lang.StrictMath.max;
+import static java.util.Arrays.fill;
 
 /**
  * @see "https://www.geeksforgeeks.org/modular-exponentiation-power-in-modular-arithmetic/"
@@ -154,6 +155,21 @@ public class GeeksMath {
             n /= 10;
         }
         return amount;
+    }
+
+    static boolean[] prime(int n) {
+        boolean[] prime = new boolean[n + 1];
+        fill(prime, true);
+        prime[1] = prime[0] = false;
+
+        for (int i = 2; i <= n; i++)
+            if (prime[i])
+                if (i * 1L * i <= n)
+                    for (int j = i * i; j <= n; j += i)
+                        prime[j] = false;
+
+
+        return prime;
     }
 
 
