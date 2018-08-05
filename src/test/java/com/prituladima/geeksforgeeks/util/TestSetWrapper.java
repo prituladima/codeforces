@@ -67,6 +67,18 @@ public class TestSetWrapper {
         return array(x, y);
     }
 
+    public static int[][] pairList(int[]... pairs) {
+        return matrix(pairs);
+    }
+
+    public static int[] pair(int x, int y) {
+        return array(x, y);
+    }
+
+    public static int[] triplet(int x, int y, int z) {
+        return array(x, y, z);
+    }
+
     public static double[] point(double x, double y) {
         return array(x, y);
     }
