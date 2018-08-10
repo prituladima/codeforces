@@ -29,6 +29,9 @@ public class TestSetWrapper {
         }
         return matrix;
     }
+    public static long[][] matrix2x2(long a, long b, long c, long d) {
+        return new long[][]{{a, b}, {c, d}};
+    }
 
     public static int[] array(int... item) {
         int[] array = new int[item.length];

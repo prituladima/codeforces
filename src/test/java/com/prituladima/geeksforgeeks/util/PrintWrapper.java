@@ -14,7 +14,15 @@ public class PrintWrapper {
         range(0, mtx.length).forEach(i -> soutln(mtx[i]));
     }
 
+    public static void soutln(long[][] mtx) {
+        range(0, mtx.length).forEach(i -> soutln(mtx[i]));
+    }
+
     public static void soutln(int[] arr) {
+        soutln(Arrays.toString(arr));
+    }
+
+    public static void soutln(long[] arr) {
         soutln(Arrays.toString(arr));
     }
 

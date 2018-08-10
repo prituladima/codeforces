@@ -20,7 +20,22 @@ public class Asserts {
         }
     }
 
+    public static void assertMatrixEquals(long[][] expected, long[][] actual) {
+        assertEquals(expected.length, actual.length);
+
+        for (int i = 0; i < actual.length; i++) {
+            assertArrayEqualsWithNull(expected[i], actual[i]);
+        }
+    }
+
     public static void assertArrayEqualsWithNull(int[] a, int[] b) {
+        if (a == null) {
+            assertTrue(b == null);
+        } else
+            assertArrayEquals(a, b);
+    }
+
+    public static void assertArrayEqualsWithNull(long[] a, long[] b) {
         if (a == null) {
             assertTrue(b == null);
         } else
