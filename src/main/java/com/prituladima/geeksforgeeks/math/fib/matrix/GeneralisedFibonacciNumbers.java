@@ -2,6 +2,7 @@ package com.prituladima.geeksforgeeks.math.fib.matrix;
 
 import java.util.Scanner;
 
+import static java.lang.Math.max;
 import static java.lang.System.arraycopy;
 
 /**
@@ -21,14 +22,54 @@ public class GeneralisedFibonacciNumbers {
         GeneralisedFibonacciNumbers o = new GeneralisedFibonacciNumbers();
         while (t-- > 0) {
 
+            long a = scanner.nextLong();
+            long b = scanner.nextLong();
+            long c = scanner.nextLong();
             long n = scanner.nextLong();
+            long m = scanner.nextLong();
 
-//            long ans = o.fib_gen(n);
 
-//            System.out.println(ans);
+            long ans = o.fibonacci_gen_mod(a, b, c, n-1, m);
+
+            System.out.println(ans);
         }
 
 
+    }
+
+
+    long fibonacci_gen_mod_naive(long a, long b, long c, long n, long m){
+        long[] dp = new long[(int)n+1];
+        dp[1] = 1;
+        dp[2] = 1;
+
+        for(int i = 3; i <= n; i++){
+            dp[i] = (a * dp[i - 1] + b * dp[i - 2] + c)%m;
+        }
+
+        return dp[(int)n];
+    }
+
+
+    long fibonacci_gen_mod(long a, long b, long c, long n, long m) {
+
+        long[][] M = {{a, b}, {1, 0}};
+        long[][] P = matrix2x2_pow_modulo(M, n, m);
+
+        return (P[0][0] + P[0][1] + power_mod(a + b, max((n - 3), 0), m) * c) % m;
+    }
+
+
+    static long power_mod(long a, long pow, long mod) {
+        long res = 1;
+        a = a % mod;
+        while (pow > 0) {
+            if ((pow & 1) == 1)
+                res = (res * a) % mod;
+            pow = pow >> 1;
+            a = (a * a) % mod;
+        }
+        return res;
     }
 
 
