@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.lang.StrictMath.max;
+import static java.lang.System.arraycopy;
 import static java.util.Arrays.fill;
 
 /**
@@ -171,6 +172,89 @@ public class GeeksMath {
 
         return prime;
     }
+
+    static long power_mod(long a, long pow, long mod) {
+        long res = 1;
+        a = a % mod;
+        while (pow > 0) {
+            if ((pow & 1) == 1)
+                res = (res * a) % mod;
+            pow = pow >> 1;
+            a = (a * a) % mod;
+        }
+        return res;
+    }
+
+
+    long[][] matrixNxN_pow_modulo(long[][] P, long pow, long modulo) {
+
+        if (pow <= 0) throw new IllegalArgumentException("Pow must be > 0");
+
+        long[][] MUTABLE_COPY = deepCopy(P);
+        long[][] RESULT = deepCopy(P);
+
+        pow--;
+        while (pow > 0) {
+            if ((pow & 1) == 1) {
+                RESULT = multiplyNxN_modulo(RESULT, MUTABLE_COPY, modulo);
+                pow--;
+            } else {
+                MUTABLE_COPY = multiplyNxN_modulo(MUTABLE_COPY, MUTABLE_COPY, modulo);
+                pow >>= 1;
+            }
+        }
+
+        return RESULT;
+    }
+
+    long[][] multiplyNxN_modulo(long[][] V, long[][] U, long modulo) {
+        int n = assertSquareSizeAndGet(V, U);
+        long[][] R = matrixNxN(n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n; k++) {
+                    R[i][j] += (V[i][k] % modulo) * (U[k][j] % modulo) % modulo;
+                    R[i][j] %= modulo;
+                }
+            }
+        }
+        return R;
+    }
+
+    long[][] deepCopy(long[][] P) {
+        int n = assertSquareSizeAndGet(P);
+        long[][] RESULT = matrixNxN(n);
+        for (int i = 0; i < P.length; i++) {
+            arraycopy(P[i], 0, RESULT[i], 0, RESULT[i].length);
+        }
+        return RESULT;
+    }
+
+    int assertSquareSizeAndGet(long[][] V, long[][] U) {
+        int n = assertSquareSizeAndGet(V);
+        int m = assertSquareSizeAndGet(U);
+        Error e = new AssertionError("Matrix must be square!");
+        if (m == n) {
+            return n;
+        }
+        throw e;
+    }
+
+    int assertSquareSizeAndGet(long[][] V) {
+        int n = V.length;
+        Error e = new AssertionError("Matrix must be square!");
+        for (int i = 0; i < n; i++) {
+            if (V[i].length != n) {
+                throw e;
+            }
+        }
+        return n;
+    }
+
+    long[][] matrixNxN(int n) {
+        return new long[n][n];
+    }
+
 
 
 }

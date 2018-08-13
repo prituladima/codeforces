@@ -1,6 +1,5 @@
 package com.prituladima.geeksforgeeks.math.fib.matrix;
 
-import com.prituladima.geeksforgeeks.math.factorization.AliquotSum;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -8,7 +7,6 @@ import org.junit.runners.Parameterized;
 import static com.prituladima.geeksforgeeks.util.Asserts.assertMatrixEquals;
 import static com.prituladima.geeksforgeeks.util.PrintWrapper.soutln;
 import static com.prituladima.geeksforgeeks.util.TestSetWrapper.*;
-import static org.junit.Assert.*;
 
 @RunWith(value = Parameterized.class)
 public class Matrix2x2PowModuloTest {
@@ -51,7 +49,7 @@ public class Matrix2x2PowModuloTest {
         soutln(pow);
         soutln("Expected");
         soutln(expected);
-        long[][] R = o.matrix2x2_pow_modulo(M, pow, modulo);
+        long[][] R = o.matrixNxN_pow_modulo(M, pow, modulo);
         soutln("Actual");
         soutln(R);
         assertMatrixEquals(expected, R);
