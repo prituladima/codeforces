@@ -17,7 +17,63 @@ public final class Pro25 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt();
+        ArrayList<Integer> first = new ArrayList<>();
+        ArrayList<Integer> second = new ArrayList<>();
+        long sumF = 0;
+        long sumS = 0;
+
+        boolean Flast = true;
+        for (int i = 0; i < n; i++) {
+            int next = nextInt();
+            if (next > 0) {
+                sumF += next;
+                first.add(next);
+                Flast = true;
+            } else {
+                sumS -= next;
+                second.add(-next);
+                Flast = false;
+            }
+        }
+
+
+        if (sumF > sumS) {
+            sout("first");
+            return;
+        } else if (sumF < sumS) {
+            sout("second");
+            return;
+        } else {
+
+
+            if (first.size() > second.size()) {
+                int diff = first.size() - second.size();
+                for (int i = 0; i < diff; i++) {
+                    second.add(0);
+                }
+
+            } else if (first.size() < second.size()) {
+                int diff = second.size() - first.size();
+                for (int i = 0; i < diff; i++) {
+                    first.add(0);
+                }
+            }
+
+
+            for (int i = 0; i < first.size(); i++) {
+                if (second.get(i) > first.get(i)) {
+                    sout("second");
+                    return;
+                } else if (second.get(i) < first.get(i)) {
+                    sout("first");
+                    return;
+                }
+
+            }
+        }
+
+        sout(Flast ? "first" : "second");
 
     }
 

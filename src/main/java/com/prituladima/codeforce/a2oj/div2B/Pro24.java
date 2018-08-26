@@ -5,8 +5,10 @@ import java.io.*;
 import java.util.*;
 
 import static java.lang.Double.parseDouble;
+import static java.lang.Integer.min;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
+import static java.lang.Math.max;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
@@ -17,7 +19,64 @@ public final class Pro24 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt(), k = nextInt();
+        int[] a = nextArr(n);
+
+//        Arrays.sort(a);
+
+
+        int[][] ans = new int[a.length][];
+        for (int i = 0; i < a.length; i++) {
+            ans[i] = new int[a[i]];
+            for (int j = 0; j < ans[i].length; j++) {
+                ans[i][j] = (j) % k + 1;
+//                sout(ans[i][j] + " ");
+            }
+//            sout("\n");
+        }
+
+
+        int[][] occ = new int[a.length][k];
+        for (int i = 0; i < ans.length; i++) {
+            for (int j = 0; j < ans[i].length; j++) {
+                occ[i][ans[i][j] - 1]++;
+            }
+        }
+
+//        for (int i = 0; i < a.length; i++) {
+//            for (int j = 0; j < k; j++) {
+//                souf("%d ", occ[i][j]);
+//            }
+//            newLine();
+//        }
+
+
+//        for (int i = 0; i < a.length; i++) {
+        for (int i = 0; i < k; i++) {
+            int max_ = Integer.MIN_VALUE;
+            int min_ = Integer.MAX_VALUE;
+            for (int j = 0; j < a.length; j++) {
+                    max_ = max(max_, occ[j][i]);
+                    min_ = min(min_, occ[j][i]);
+            }
+            if(max_ - min_ > 1) {
+                sout("NO");
+                return;
+            }
+        }
+
+        sout("YES\n");
+
+        for (int i = 0; i < a.length; i++) {
+
+            for (int j = 0; j < ans[i].length; j++) {
+                sout(ans[i][j] + " ");
+            }
+            sout("\n");
+        }
+
+//        }
+
 
     }
 
