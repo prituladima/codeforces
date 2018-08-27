@@ -1,7 +1,9 @@
 package com.prituladima.codeforce.a2oj.div2B;
 
 
+import javax.print.attribute.IntegerSyntax;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 import static java.lang.Double.parseDouble;
@@ -17,7 +19,52 @@ public final class Pro26 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt(), m = nextInt();
+        int[] a = nextArr(n);
+        int[] b = nextArr(m);
+
+        Set<Integer> req = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            req.add(a[i]);
+        }
+
+        boolean[] used = new boolean[m];
+
+        int count = 0;
+        for (int cur : req) {
+            for (int i = 0; i < m; i++) {
+                if (b[i] == cur && !used[i]) {
+                    used[i] = true;
+                    count++;
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < used.length; i++) {
+            if (used[i]) {
+                req.remove(b[i]);
+            }
+        }
+
+        for (int cur : req) {
+            for (int i = 0; i < m; i++) {
+                if (b[i] > cur && !used[i]) {
+                    used[i] = true;
+                    count++;
+                    break;
+                }
+            }
+        }
+
+//        int need_to_do = 0;
+//
+//        for (int i = 0; i < used.length; i++) {
+//            need_to_do += used[i] ? 1 : 0;
+//        }
+
+        sout(n - count);
+
 
     }
 
