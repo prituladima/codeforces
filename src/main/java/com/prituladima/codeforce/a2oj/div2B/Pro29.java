@@ -17,7 +17,26 @@ public final class Pro29 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt(), m = nextInt();
+        int[] a = nextArr(n);
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int i = 0; i < a.length; i++) {
+            pq.add(a[i]);
+        }
+
+
+        int ans = 0;
+        while (m-- > 0) {
+            int next = pq.remove();
+            if (next < 0)
+                ans -= next;
+            else
+                break;
+        }
+
+        sout(ans);
+
 
     }
 
