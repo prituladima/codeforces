@@ -17,7 +17,28 @@ public final class Pro28 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt();
+
+        int[] r = nextArr(n);
+
+        Arrays.sort(r);
+        double pi = Math.PI;
+
+        long ans = 0;
+
+        boolean trig = false;
+
+        for (int i = n - 1; i > -1; i --) {
+            if (trig)
+                ans -= r[i] * r[i];
+            else
+                ans += r[i] * r[i];
+            trig = !trig;
+        }
+
+
+        sout(pi*(double)ans);
+
 
     }
 
