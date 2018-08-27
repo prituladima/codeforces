@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.*;
 
 import static java.lang.Double.parseDouble;
+import static java.lang.Integer.max;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 import static java.util.Arrays.stream;
@@ -17,7 +18,28 @@ public final class Pro27 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt();
+        int[] a = nextArr(n);
+
+        int max_len = 0;
+        int last_len = 0;
+
+        if (n == 1 || n == 2) {
+            sout(n);
+            return;
+        }
+
+
+        for (int i = 2; i < n; i++) {
+            if (a[i] == a[i - 1] + a[i - 2]) {
+                last_len++;
+            } else {
+                last_len = 0;
+            }
+            max_len = max(max_len, last_len);
+        }
+
+        sout(max_len + 2);
 
     }
 
