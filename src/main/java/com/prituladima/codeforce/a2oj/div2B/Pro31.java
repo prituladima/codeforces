@@ -7,6 +7,8 @@ import java.util.*;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
+import static java.lang.Math.min;
+import static java.lang.StrictMath.max;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
@@ -17,7 +19,28 @@ public final class Pro31 {
 
     private void solve() {
 
-        //put your code here
+        int n = nextInt(), m = nextInt();
+
+        char[][] MTX = nextCharMatrix(n);
+
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (MTX[i][j] == 'W') {
+
+                    boolean ans = MTX[max(i - 1, 0)][j] == 'P' ||
+                            MTX[min(i + 1, n - 1)][j] == 'P' ||
+                            MTX[i][max(j - 1, 0)] == 'P' ||
+                            MTX[i][min(j + 1, m - 1)] == 'P';
+
+                    res += ans ? 1 : 0;
+
+                }
+            }
+        }
+
+
+        sout(res);
 
     }
 
