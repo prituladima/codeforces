@@ -17,7 +17,43 @@ public final class Pro32 {
 
     private void solve() {
 
-        //put your code here
+        int d = nextInt();
+        int sumTime = nextInt();
+
+        int[] a = new int[d];
+        int[] b = new int[d];
+
+        int up = 0;
+        int bottom = 0;
+        for (int i = 0; i < d; i++) {
+            a[i] = nextInt();
+            b[i] = nextInt();
+
+            bottom += a[i];
+            up += b[i];
+        }
+
+        if (up < sumTime || bottom > sumTime) {
+            sout("NO");
+            return;
+        }
+
+        soutnl("YES");
+
+        int inc = sumTime - bottom;
+        int index = 0;
+        while (inc > 0) {
+            if (b[index] - a[index] == 0) {
+                index++;
+            } else {
+                a[index]++;
+                inc--;
+            }
+        }
+
+        for (int i : a) {
+            souf("%d ", i);
+        }
 
     }
 
