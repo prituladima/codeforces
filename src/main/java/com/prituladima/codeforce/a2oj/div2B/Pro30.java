@@ -1,6 +1,5 @@
 package com.prituladima.codeforce.a2oj.div2B;
 
-
 import java.io.*;
 import java.util.*;
 
@@ -17,9 +16,39 @@ public final class Pro30 {
 
     private void solve() {
 
-        //put your code here
+
+        int n = nextInt();
+        int m = nextInt();
+
+        boolean[] dont_t = new boolean[n];
+
+        for (int i = 0; i < m; i++) {
+            int ai = nextInt(), bi = nextInt();
+            dont_t[ai - 1] = dont_t[bi - 1] = true;
+        }
+
+
+        int ans = 0;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < dont_t.length; i++) {
+            if (!dont_t[i]) {
+                for (int j = 0; j < n; j++) {
+                    if (i != j) {
+                        sb.append((i + 1) + " " + (j + 1) + "\n");
+                        ans++;
+                    }
+                }
+
+                break;
+            }
+        }
+
+        soutnl(ans);
+        sout(sb.toString());
+
 
     }
+
 
     public static void main(String[] args) {
         new Pro30().run();
