@@ -20,4 +20,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-annprocess
     compileOnly group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.21'
 
+
+    compile 'com.io7m.jgrapht:jgrapht-dist:1.2.1-MODULARIZED'
+
 }
