@@ -1,5 +1,3 @@
-package com.prituladima.codeforce.virtual.contest1027;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,60 +5,55 @@ import java.io.PrintWriter;
 import java.util.*;
 
 import static java.lang.Double.parseDouble;
-import static java.lang.Integer.min;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
 public class D {
-    int maxn = 200020;
-    int n;
-    int[] c = new int[maxn];
-    int[] a = new int[maxn];
-    int[] d = new int[maxn];
-    int dnum;
-    int[] v = new int[maxn];
-    int flag;
+    ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+    ArrayList<Integer> cycles;
+    int buf = -1;
+    int[] price = new int[200002];
+    int[] color = new int[200002];
+    int[] graph = new int[200002];
 
-
-    int ans;
-
-    void dfs(int k) {
-        if (v[k] == 2) {
-            flag = 1;
-            for (int i = 1; i <= dnum; i++) v[d[i]] = 2;
-            return;
-        }
-        if (v[k] == 1) {
-            int tmp = 100000;
-            for (int i = dnum; i > 0; i--) {
-                tmp = min(tmp, c[d[i]]);
-                if (d[i] == k) break;
-            }
-            ans += tmp;
-            for (int i = 1; i <= dnum; i++) v[d[i]] = 2;
-            flag = 1;
-            return;
-        }
-        v[k] = 1;
-        dnum++;
-        d[dnum] = k;
-        dfs(a[k]);
+    private void dfs(int from) {
+        color[from] = 1;
+        int to = graph[from];
+        if (color[to] == 0) dfs(to);
+        if (color[to] == 1) buf = to;
+        if (buf != -1) cycles.add(from);
+        if (from == buf) buf = -1;
+        color[from] = 2;
     }
 
     private void solve() {
-
-        n = nextInt();
-        for (int i = 1; i <= n; i++) c[i] = nextInt();
-        for (int i = 1; i <= n; i++) a[i] = nextInt();
+        int n = nextInt();
         for (int i = 1; i <= n; i++) {
-            if (v[i] > 0) continue;
-            flag = 0;
-            dnum = 0;
-            dfs(i);
+            price[i] = nextInt();
         }
-        souf("%d", ans);
+        for (int i = 1; i <= n; i++) {
+            graph[i] = nextInt();
+        }
+        for (int from = 1; from <= n; from++) {
+            if (color[from] == 0) {
+                cycles = new ArrayList<>();
+                dfs(from);
+                ans.add(cycles);
+            }
+        }
+        long res = 0;
+        for (int i = 0; i < ans.size(); i++) {
+            int min = Integer.MAX_VALUE;
+            if (ans.get(i).size() != 0) {
+                for (int j = 0; j < ans.get(i).size(); j++) {
+                    min = Integer.min(min, price[ans.get(i).get(j)]);
+                }
+                res += min;
+            }
+        }
+        soutnl(res);
     }
 
     public static void main(String[] args) {
@@ -148,5 +141,4 @@ public class D {
         sout(o);
         newLine();
     }
-
 }
