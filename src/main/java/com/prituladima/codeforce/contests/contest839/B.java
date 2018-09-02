@@ -1,7 +1,5 @@
 package com.prituladima.codeforce.contests.contest839;
 
-import com.prituladima.codeforce.Template;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

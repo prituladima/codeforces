@@ -9,9 +9,6 @@ import static java.lang.Long.parseLong;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-/**
- * Created by prituladima on 5/23/18.
- */
 public final class STemplate {
 
     private void solve() {
