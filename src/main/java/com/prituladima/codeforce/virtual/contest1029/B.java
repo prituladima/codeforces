@@ -17,26 +17,15 @@ public final class B {
         int[] a = nextArr(n);
 
         int ans = 1;
-
-        int j = 0;
-
-        int lazy_lang = 1;
-
-
-        for (int i = 1; i < n; i++) {
-            if (a[i] <= a[j] * 2) {
-                lazy_lang++;
-            } else {
-                while (a[i] > a[j] * 2 || lazy_lang > 1) {
-                    lazy_lang--;
-                    j++;
-                }
-            }
-
-            ans = max(ans, lazy_lang);
+        for (int i = 0; i < n; i++) {
+            int j = i;
+            while(j+1 <= n-1 && 2*a[j] >= a[j+1])
+                j++;
+            ans = max(ans, j - i + 1);
+            i = j;
         }
 
-        sout(ans);
+        soutnl(ans);
     }
 
     public static void main(String[] args) {
