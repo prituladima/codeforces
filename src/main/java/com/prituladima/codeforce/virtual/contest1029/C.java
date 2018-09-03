@@ -11,33 +11,50 @@ import static java.util.stream.IntStream.range;
 
 public final class C {
 
+
     private void solve() {
 
         int n = nextInt();
-//        int[] line = new int[1000000001];
-        Map<Integer, Integer> map = new HashMap<>();
+        int[] LEFT_RANGE = new int[n];
+        int[] RIGHT_RANGE = new int[n];
+
         for (int i = 0; i < n; i++) {
             int L = nextInt(), R = nextInt();
-            for (int j = L; j <= R; j++) {
-//                line[j]++;
-                map.merge(j, 1, (x, y)->x + y);
-            }
+            LEFT_RANGE[i] = L;
+            RIGHT_RANGE[i] = R;
         }
 
-        Map<Integer, Integer> map2 = new HashMap<>();
-        for (int cur_key : map.keySet()) {
-            map2.merge(map.get(cur_key), 1, (x, y)->x + y);
+        int[] SEG_PREFIX_L = new int[n + 1];
+        int[] SEG_PREFIX_R = new int[n + 1];
+        int[] SEG_SUFIX_L = new int[n + 1];
+        int[] SEG_SUFIX_R = new int[n + 1];
+
+        SEG_PREFIX_L[0] = SEG_SUFIX_L[n] = 0;
+        SEG_PREFIX_R[0] = SEG_SUFIX_R[n] = Integer.MAX_VALUE;
+
+
+        for (int i = 0; i < n; i++) {
+            SEG_PREFIX_L[i + 1] = Integer.max(LEFT_RANGE[i], SEG_PREFIX_L[i]);
+            SEG_PREFIX_R[i + 1] = Integer.min(RIGHT_RANGE[i], SEG_PREFIX_R[i]);
         }
 
-        int max = Integer.MIN_VALUE;
-        for (int cur_key : map2.keySet()) {
-            max = max(max, map2.get(cur_key));
+        for (int i = n - 1; i >= 0; i--) {
+            SEG_SUFIX_L[i] = Integer.max(LEFT_RANGE[i], SEG_SUFIX_L[i + 1]);
+            SEG_SUFIX_R[i] = Integer.min(RIGHT_RANGE[i], SEG_SUFIX_R[i + 1]);
         }
 
-        sout(max);
+        int ans = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            ans = max(ans,
+                    min(SEG_SUFIX_R[i + 1], SEG_PREFIX_R[i]) - max(SEG_SUFIX_L[i + 1], SEG_PREFIX_L[i])
+            );
+
+        }
 
 
-
+        sout(ans);
     }
 
     public static void main(String[] args) {
