@@ -9,9 +9,11 @@ public class CodeGen {
 
 
     public static void main(String[] args) throws IOException {
-        final String NUMBER = "1040";
+        final boolean isFromHome = false;
+        final int NUMBER = 1041;
         final String PACKAGE = "com.prituladima.codeforce.virtual.contest" + NUMBER;
-        final String DIR_PATH = "/home/prituladima/IdeaProjects/codeforces/src/main/java/com/prituladima/codeforce/virtual/contest" + NUMBER + "/";
+        final String DIR_PATH_HOME = "/home/prituladima/IdeaProjects/codeforces/src/main/java/com/prituladima/codeforce/virtual/contest" + NUMBER + "/";
+        final String DIR_PATH_WORK = "C:\\Users\\Dmytro_Prytula\\IdeaProjects\\codeforces\\src\\main\\java\\com\\prituladima\\codeforce\\virtual\\contest" + NUMBER + "\\";
         final String SRC =
                 "package %s;\n" +
                         "import java.io.*;\n" +
@@ -128,7 +130,7 @@ public class CodeGen {
                         "}";
 
         for (char i = 'A'; i < 'H'; i++) {
-            File file = new File(DIR_PATH + i + ".java");
+            File file = new File((isFromHome ? DIR_PATH_HOME : DIR_PATH_WORK) + i + ".java");
             File parent = file.getParentFile();
             if (!parent.exists()) parent.mkdir();
             PrintWriter pw = new PrintWriter(file);
