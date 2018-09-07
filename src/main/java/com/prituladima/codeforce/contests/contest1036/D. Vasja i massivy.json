@@ -1,0 +1,44 @@
+{
+  "name" : "D. Вася и массивы",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "5\n11 2 3 5 7\n4\n11 7 3 7\n",
+    "output" : "3\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "2\n1 2\n1\n100\n",
+    "output" : "-1\n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "3\n1 2 3\n3\n1 2 3\n",
+    "output" : "3\n",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1036",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1036.D",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2018.09.07",
+  "contestName" : "Educational Codeforces Round 50 (рейтинговый для Див. 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : false,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
