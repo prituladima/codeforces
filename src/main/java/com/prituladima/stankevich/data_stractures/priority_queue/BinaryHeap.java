@@ -1,63 +1,65 @@
 package com.prituladima.stankevich.data_stractures.priority_queue;
 
-import java.util.Arrays;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class BinaryHeap {
 
     /**
      * FIELDS
      */
-    private int[] values;
-    private int size;
+    private int[] heap;
+    private int actualSize;
     private int heapSize;
-
 
     /**
      * CONSTRUCTORS
      */
-    public BinaryHeap(int[] array) {
-        this.values = GeeksHeaps.heapify(array);
-        this.size = array.length;
-        this.heapSize = values.length;
+    public BinaryHeap() {
+        this(7);
     }
 
-    public BinaryHeap(int bufferSize) {
-        this.size = 0;
-        this.heapSize = bufferSize;
-        this.values = new int[bufferSize];
-        Arrays.fill(values, Integer.MAX_VALUE);
+    public BinaryHeap(int[] array) {
+        this.heap = GeeksHeaps.heapify(array);
+        this.actualSize = array.length;
+        this.heapSize = heap.length;
+    }
+
+    public BinaryHeap(int heapSize) {
+        this.actualSize = 0;
+        this.heapSize = heapSize;
+        this.heap = new int[heapSize];
+        Arrays.fill(heap, Integer.MAX_VALUE);
     }
 
     /**
      * FUNCTION
      */
-    public int findMin() {
-        return values[0];
+    public int get() {
+        if (actualSize > 0)
+            return heap[0];
+        else
+            throw new NoSuchElementException();
     }
 
-    void insert(int value) {
-        if (heapSize == size)
+    public void add(int value) {
+        if (heapSize == actualSize)
             grow();
-        values[size++] = value;
-        siftUp(size - 1);
+        heap[actualSize++] = value;
+        if (actualSize > 1)
+            siftUp(actualSize - 1);
     }
 
-    int extractMin() {
-        int min = values[0];
-        int lastnTheHeap = values[size - 1];
-        values[0] = lastnTheHeap;
-        values[size - 1] = Integer.MAX_VALUE;
+    public int delete() {
+        int answer = get();
+        int lastInTheHeap = heap[actualSize - 1];
+        heap[0] = lastInTheHeap;
+        heap[actualSize - 1] = Integer.MAX_VALUE;
+        actualSize--;
         siftDown(0);
-        return min;
-    }
-
-    void deleteMin() {
-        throw new UnsupportedOperationException();
-    }
-
-    void incriaseKey(int key) {
-        throw new UnsupportedOperationException();
+        if(heapSize == ((actualSize + 1) << 1) - 1){
+            decrease();
+        }
+        return answer;
     }
 
 
@@ -65,25 +67,53 @@ public class BinaryHeap {
      * INNER
      */
     private void grow() {
-        int newHeapSize = heapSize + heapSize >> 1;
-        values = Arrays.copyOf(values, newHeapSize);
+        heapSize = ((heapSize + 1) << 1) - 1;
+        heap = Arrays.copyOf(heap, heapSize);
+        Arrays.fill(heap, actualSize, heapSize, Integer.MAX_VALUE);
+    }
+
+    private void decrease() {
+        heapSize = actualSize;
+        heap = Arrays.copyOf(heap, heapSize);
+        Arrays.fill(heap, actualSize, heapSize, Integer.MAX_VALUE);
     }
 
     private void siftDown(int index) {
-        throw new UnsupportedOperationException();
+        while (2 * index + 1 < heapSize) {
+            int leftChildren = 2 * index + 1;
+            int rightChildren = 2 * index + 2;
+            int j = leftChildren;
+            if (rightChildren < heapSize && heap[rightChildren] < heap[leftChildren])
+                j = rightChildren;
+            if (heap[index] <= heap[j])
+                break;
+
+            int buf = heap[index];
+            heap[index] = heap[j];
+            heap[j] = buf;
+
+            index = j;
+
+        }
+
     }
 
     private void siftUp(int index) {
-        while (index < (index - 1) >> 1) {
-            int buf = values[(index - 1) >> 1];
-            values[(index - 1) >> 1] = values[index];
-            values[index] = buf;
-            index = (index - 1) >> 1;
+        while (heap[index] < heap[parent(index)]) {
+            int buf = heap[parent(index)];
+            heap[parent(index)] = heap[index];
+            heap[index] = buf;
+            index = parent(index);
+            if(index == 0) break;
         }
     }
 
+    private int parent(int index) {
+        return (index - 1) >> 1;
+    }
+
     /**
-     * MERGE
+     * MERGE todo
      */
     void merge(BinaryHeap a, BinaryHeap b) {
         throw new UnsupportedOperationException();
@@ -98,8 +128,21 @@ public class BinaryHeap {
         throw new UnsupportedOperationException();
     }
 
-    public static void main(String[] args) {
 
+    /**
+     * FOR TEST
+     */
+    public int[] toArray() {
+        return Arrays.copyOf(heap, actualSize);
     }
+
+    public String toString() {
+        return Arrays.toString(toArray());
+    }
+
+    /**
+     * ENDPOINT
+     */
+    public static void main(String[] args) {}
 
 }

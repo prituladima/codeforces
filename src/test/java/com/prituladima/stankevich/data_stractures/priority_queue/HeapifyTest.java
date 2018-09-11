@@ -13,7 +13,6 @@ import static org.junit.Assert.*;
 @RunWith(value = Parameterized.class)
 public class HeapifyTest {
 
-
     private int[] array;
     private int[] heap;
 
@@ -45,6 +44,14 @@ public class HeapifyTest {
         soutln(heap);
         soutln(actual);
         assertArrayEquals(heap, GeeksHeaps.heapify(array));
+
+
+        //must be power of 2
+        int heapSize = actual.length + 1;
+        soutln(heapSize);
+        assertTrue(((heapSize & (~heapSize + 1)) == heapSize));
+
+
         soutln("END TEST");
     }
 
