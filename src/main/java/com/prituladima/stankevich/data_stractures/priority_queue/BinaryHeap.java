@@ -37,7 +37,7 @@ public class BinaryHeap {
     }
 
     void insert(int value) {
-        if(heapSize == size)
+        if (heapSize == size)
             grow();
         values[size++] = value;
         siftUp(size - 1);
@@ -64,8 +64,8 @@ public class BinaryHeap {
     /**
      * INNER
      */
-    private void grow(){
-        int newHeapSize =  heapSize + heapSize >> 1;
+    private void grow() {
+        int newHeapSize = heapSize + heapSize >> 1;
         values = Arrays.copyOf(values, newHeapSize);
     }
 
@@ -73,8 +73,13 @@ public class BinaryHeap {
         throw new UnsupportedOperationException();
     }
 
-    private void siftUp(int index){
-        throw new UnsupportedOperationException();
+    private void siftUp(int index) {
+        while (index < (index - 1) >> 1) {
+            int buf = values[(index - 1) >> 1];
+            values[(index - 1) >> 1] = values[index];
+            values[index] = buf;
+            index = (index - 1) >> 1;
+        }
     }
 
     /**
