@@ -5,41 +5,60 @@ import java.util.Arrays;
 public class GeeksHeaps {
 
     protected static int[] heapify(int[] array) {
+        int heapSize = array.length;
 
-        int i = array.length - 1;
-        int level = 0;
+        heapSize |= heapSize >> 1;
+        heapSize |= heapSize >> 2;
+        heapSize |= heapSize >> 4;
+        heapSize |= heapSize >> 8;
+        heapSize |= heapSize >> 16;
 
-        while (i > 0){
-            if(i % 2 == 0){
-                i -= 2;
-            }else {
-                i -= 1;
-            }
-            i >>= 1;
-            level++;
+        int[] heap = new int[heapSize];
+
+        Arrays.fill(heap, Integer.MAX_VALUE);
+
+        for (int i = 0; i < array.length; i++) {
+            heap[i] = array[i];
         }
 
-        int j = 0;
-        while (level > 0){
-            j <<= 1;
-            j += 2;
-            level--;
+        for (int i = heapSize / 2; i >= 0; i--)
+            siftDown(heap, i);
+
+        return heap;
+    }
+
+    protected static void siftDown(int[] heap, int index) {
+        while (2 * index + 1 < heap.length) {
+            int leftChildren = 2 * index + 1;
+            int rightChildren = 2 * index + 2;
+            int j = leftChildren;
+            if (rightChildren < heap.length && heap[rightChildren] < heap[leftChildren])
+                j = rightChildren;
+            if (heap[index] <= heap[j])
+                break;
+
+            int buf = heap[index];
+            heap[index] = heap[j];
+            heap[j] = buf;
+
+            index = j;
+
         }
 
-        int[] heapifiedArray = new int[j + 1];
+    }
 
-        Arrays.sort(array);
-
-        int index = 0;
-        for (int k = 0; k < array.length; k++) {
-            heapifiedArray[index++] = array[k];
+    protected static void siftUp(int[] heap, int index) {
+        while (heap[index] < heap[getParent(index)]) {
+            int buf = heap[getParent(index)];
+            heap[getParent(index)] = heap[index];
+            heap[index] = buf;
+            index = getParent(index);
+            if (index == 0) break;
         }
+    }
 
-        for (int k = index; k < heapifiedArray.length; k++) {
-            heapifiedArray[k] = Integer.MAX_VALUE;
-        }
-
-        return heapifiedArray;
+    protected static int getParent(int index) {
+        return (index - 1) >> 1;
     }
 
 }

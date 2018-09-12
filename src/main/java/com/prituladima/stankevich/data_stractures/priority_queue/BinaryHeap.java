@@ -46,7 +46,7 @@ public class BinaryHeap {
             grow();
         heap[actualSize++] = value;
         if (actualSize > 1)
-            siftUp(actualSize - 1);
+            GeeksHeaps.siftUp(heap, actualSize - 1);
     }
 
     public int delete() {
@@ -55,9 +55,9 @@ public class BinaryHeap {
         heap[0] = lastInTheHeap;
         heap[actualSize - 1] = Integer.MAX_VALUE;
         actualSize--;
-        siftDown(0);
+        GeeksHeaps.siftDown(heap, 0);
         if(heapSize == ((actualSize + 1) << 1) - 1){
-            decrease();
+            shrink();
         }
         return answer;
     }
@@ -72,44 +72,10 @@ public class BinaryHeap {
         Arrays.fill(heap, actualSize, heapSize, Integer.MAX_VALUE);
     }
 
-    private void decrease() {
+    private void shrink() {
         heapSize = actualSize;
         heap = Arrays.copyOf(heap, heapSize);
         Arrays.fill(heap, actualSize, heapSize, Integer.MAX_VALUE);
-    }
-
-    private void siftDown(int index) {
-        while (2 * index + 1 < heapSize) {
-            int leftChildren = 2 * index + 1;
-            int rightChildren = 2 * index + 2;
-            int j = leftChildren;
-            if (rightChildren < heapSize && heap[rightChildren] < heap[leftChildren])
-                j = rightChildren;
-            if (heap[index] <= heap[j])
-                break;
-
-            int buf = heap[index];
-            heap[index] = heap[j];
-            heap[j] = buf;
-
-            index = j;
-
-        }
-
-    }
-
-    private void siftUp(int index) {
-        while (heap[index] < heap[parent(index)]) {
-            int buf = heap[parent(index)];
-            heap[parent(index)] = heap[index];
-            heap[index] = buf;
-            index = parent(index);
-            if(index == 0) break;
-        }
-    }
-
-    private int parent(int index) {
-        return (index - 1) >> 1;
     }
 
     /**
