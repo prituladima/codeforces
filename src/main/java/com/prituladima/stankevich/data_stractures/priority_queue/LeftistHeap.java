@@ -1,6 +1,7 @@
 package com.prituladima.stankevich.data_stractures.priority_queue;
 
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class LeftistHeap {
@@ -27,6 +28,15 @@ public class LeftistHeap {
     }
 
     public LeftistHeap() {
+    }
+
+    public int delete(){
+        if(root == null)
+            throw new NoSuchElementException();
+
+        int value = root.value;
+        root = merge(root.left, root.right);
+        return value;
     }
 
     public void add(int... values) {

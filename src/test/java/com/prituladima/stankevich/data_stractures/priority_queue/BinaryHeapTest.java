@@ -47,6 +47,7 @@ public class BinaryHeapTest {
         soutln("START TEST");
         PriorityQueue<Integer> javaPQ = new PriorityQueue<>();
         BinaryHeap customPQ = new BinaryHeap();
+        LeftistHeap leftistHeap = new LeftistHeap();
 
         soutln( array.length + " " + prioritedArray.length);
         assertEquals(array.length, prioritedArray.length);
@@ -55,6 +56,7 @@ public class BinaryHeapTest {
         for(int i = 0; i < size; i++){
             javaPQ.add(array[i]);
             customPQ.add(array[i]);
+            leftistHeap.add(array[i]);
         }
 
         soutln(array);
@@ -62,25 +64,30 @@ public class BinaryHeapTest {
         for(int i = 0; i < size; i++){
             assertEquals((int)javaPQ.remove(), prioritedArray[i]);
             assertEquals(customPQ.delete(), prioritedArray[i]);
+            assertEquals(leftistHeap.delete(), prioritedArray[i]);
         }
 
         //test twice
         for(int i = 0; i < size; i++){
             javaPQ.add(array[i]);
             customPQ.add(array[i]);
+            leftistHeap.add(array[i]);
         }
 
         for(int i = 0; i < size; i++){
             assertEquals((int)javaPQ.remove(), prioritedArray[i]);
             assertEquals(customPQ.delete(), prioritedArray[i]);
+            assertEquals(leftistHeap.delete(), prioritedArray[i]);
         }
 
         //third test
         for(int i = 0; i < size; i++){
             javaPQ.add(array[i]);
             customPQ.add(array[i]);
+            leftistHeap.add(array[i]);
             assertEquals((int)javaPQ.remove(), array[i]);
             assertEquals(customPQ.delete(), array[i]);
+            assertEquals(leftistHeap.delete(), prioritedArray[i]);
         }
 
 
