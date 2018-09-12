@@ -56,7 +56,7 @@ public class BinaryHeap {
         heap[actualSize - 1] = Integer.MAX_VALUE;
         actualSize--;
         GeeksHeaps.siftDown(heap, 0);
-        if(heapSize == ((actualSize + 1) << 1) - 1){
+        if (heapSize == ((actualSize + 1) << 1) - 1) {
             shrink();
         }
         return answer;
@@ -81,8 +81,16 @@ public class BinaryHeap {
     /**
      * MERGE todo
      */
-    void merge(BinaryHeap a, BinaryHeap b) {
-        throw new UnsupportedOperationException();
+    public static BinaryHeap merge(BinaryHeap a, BinaryHeap b) {
+        int[] heapA = a.heap;
+        int[] heapB = b.heap;
+        int sizeA = heapA.length;
+        int sizeB = heapB.length;
+
+        int[] concatAB = new int[sizeA + sizeB];
+        System.arraycopy(heapA, 0, concatAB, 0, heapA.length);
+        System.arraycopy(heapB, 0, concatAB, heapA.length, heapB.length);
+        return new BinaryHeap(concatAB);
     }
 
 
@@ -102,13 +110,54 @@ public class BinaryHeap {
         return Arrays.copyOf(heap, actualSize);
     }
 
+    public int[] toHeapArray() {
+        return heap;
+    }
+
     public String toString() {
         return Arrays.toString(toArray());
+    }
+
+    public String toNiceString() {
+        return getString(heap, 0, "", true);
+    }
+
+    private static String getString(int[] tree, int index, String prefix, boolean isTail) {
+        StringBuilder builder = new StringBuilder();
+
+        int value = tree[index];
+        builder.append(prefix + (isTail ? "└── " : "├── ") + value + "\n");
+        List<Integer> children = null;
+        int leftIndex = 2 * index + 1;
+        int rightIndex = 2 * index + 2;
+        if (leftIndex != Integer.MIN_VALUE || rightIndex != Integer.MIN_VALUE) {
+            children = new ArrayList<Integer>(2);
+            if (leftIndex != Integer.MIN_VALUE && leftIndex < tree.length) {
+                children.add(leftIndex);
+            }
+            if (rightIndex != Integer.MIN_VALUE && rightIndex < tree.length) {
+                children.add(rightIndex);
+            }
+        }
+        if (children != null) {
+            for (int i = 0; i < children.size() - 1; i++) {
+                builder.append(getString(tree, children.get(i), prefix + (isTail ? "    " : "│   "), false));
+            }
+            if (children.size() >= 1) {
+                builder.append(getString(tree, children.get(children.size() - 1), prefix
+                        + (isTail ? "    " : "│   "), false));
+            }
+        }
+
+        return builder.toString();
     }
 
     /**
      * ENDPOINT
      */
-    public static void main(String[] args) {}
+    public static void main(String[] args) {
+        int[] array = new int[]{4, 4, 5, 6, 12, 17, 1, 5, 12};
+        System.out.println(new BinaryHeap(array).toNiceString());
+    }
 
 }
