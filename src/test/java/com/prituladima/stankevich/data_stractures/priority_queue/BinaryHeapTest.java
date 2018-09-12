@@ -75,6 +75,14 @@ public class BinaryHeapTest {
             assertEquals(customPQ.delete(), prioritedArray[i]);
         }
 
+        //third test
+        for(int i = 0; i < size; i++){
+            javaPQ.add(array[i]);
+            customPQ.add(array[i]);
+            assertEquals((int)javaPQ.remove(), array[i]);
+            assertEquals(customPQ.delete(), array[i]);
+        }
+
 
         soutln("END TEST");
     }
