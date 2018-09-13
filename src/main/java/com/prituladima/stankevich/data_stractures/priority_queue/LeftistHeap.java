@@ -1,6 +1,7 @@
 package com.prituladima.stankevich.data_stractures.priority_queue;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Random;
 /**
@@ -8,6 +9,8 @@ import java.util.Random;
  * @see "https://www.sanfoundry.com/java-program-implement-leftist-heap/"
  * @see "https://neerc.ifmo.ru/wiki/index.php?title=Левосторонняя_куча"
  * todo why LeftistHeap can be build from array in O(n)???
+ * @see "http://web.onda.com.br/abveiga/capitulo5-ingles.pdf"
+ * todo even slower
  */
 public class LeftistHeap {
 
@@ -28,13 +31,27 @@ public class LeftistHeap {
     public LeftistHeap() {
     }
 
-    public int delete(){
-        if(root == null)
+    public int delete() {
+        if (root == null)
             throw new NoSuchElementException();
 
         int value = root.value;
         root = merge(root.left, root.right);
         return value;
+    }
+
+    public int add_fast(int... values) {
+        LinkedList<Node> queue = new LinkedList<>();
+        for (int cur : values) {
+            queue.addFirst(new Node(cur));
+        }
+        int amount_of_operation = 0;
+        while (queue.size() > 1) {
+            amount_of_operation++;
+            queue.addLast(merge(queue.removeFirst(), queue.removeFirst()));
+        }
+        root = queue.removeLast();
+        return amount_of_operation;
     }
 
     public void add(int... values) {
