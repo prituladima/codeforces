@@ -12,19 +12,20 @@ import static org.junit.Assert.*;
 
 /**
  * Created by prituladima on 9/11/18.
+ * todo write benchmark for it
  */
 @RunWith(value = Parameterized.class)
-public class BinaryHeapTest {
+public class AllHeapsTest {
 
     private int[] array;
-    private int[] prioritedArray;
+    private int[] sorted;
 
-    public BinaryHeapTest(int[] array, int[] prioritedArray) {
+    public AllHeapsTest(int[] array, int[] sorted) {
         this.array = array;
-        this.prioritedArray = prioritedArray;
+        this.sorted = sorted;
     }
 
-    @Parameterized.Parameters(name = "{index}: BinaryHeapTest")
+    @Parameterized.Parameters(name = "{index}: AllHeapsTest")
     public static Iterable<Object[]> data() {
         return testSet(
                 item(array(5), array(5)),
@@ -49,8 +50,9 @@ public class BinaryHeapTest {
         BinaryHeap customPQ = new BinaryHeap();
         LeftistHeap leftistHeap = new LeftistHeap();
 
-        soutln( array.length + " " + prioritedArray.length);
-        assertEquals(array.length, prioritedArray.length);
+        soutln("SIZES");
+        soutln( array.length + " " + sorted.length);
+        assertEquals(array.length, sorted.length);
 
         int size = array.length;
         for(int i = 0; i < size; i++){
@@ -58,14 +60,21 @@ public class BinaryHeapTest {
             customPQ.add(array[i]);
             leftistHeap.add(array[i]);
         }
+        soutln("LEFTIST HEAP AFTER INSERTION");
+        soutln(leftistHeap);
 
+        soutln("ARRAYS");
         soutln(array);
-        soutln(prioritedArray);
+        soutln(sorted);
+
         for(int i = 0; i < size; i++){
-            assertEquals((int)javaPQ.remove(), prioritedArray[i]);
-            assertEquals(customPQ.delete(), prioritedArray[i]);
-            assertEquals(leftistHeap.delete(), prioritedArray[i]);
+            assertEquals((int)javaPQ.remove(), sorted[i]);
+            assertEquals(customPQ.delete(), sorted[i]);
+            assertEquals(leftistHeap.delete(), sorted[i]);
         }
+
+        soutln("LEFTIST HEAP AFTER REMOVING");
+        soutln(leftistHeap);
 
         //test twice
         for(int i = 0; i < size; i++){
@@ -73,12 +82,17 @@ public class BinaryHeapTest {
             customPQ.add(array[i]);
             leftistHeap.add(array[i]);
         }
+        soutln("LEFTIST HEAP AFTER INSERTION");
+        soutln(leftistHeap);
 
         for(int i = 0; i < size; i++){
-            assertEquals((int)javaPQ.remove(), prioritedArray[i]);
-            assertEquals(customPQ.delete(), prioritedArray[i]);
-            assertEquals(leftistHeap.delete(), prioritedArray[i]);
+            assertEquals((int)javaPQ.remove(), sorted[i]);
+            assertEquals(customPQ.delete(), sorted[i]);
+            assertEquals(leftistHeap.delete(), sorted[i]);
         }
+
+        soutln("LEFTIST HEAP AFTER REMOVING");
+        soutln(leftistHeap);
 
         //third test
         for(int i = 0; i < size; i++){
@@ -87,7 +101,7 @@ public class BinaryHeapTest {
             leftistHeap.add(array[i]);
             assertEquals((int)javaPQ.remove(), array[i]);
             assertEquals(customPQ.delete(), array[i]);
-            assertEquals(leftistHeap.delete(), prioritedArray[i]);
+            assertEquals(leftistHeap.delete(), array[i]);
         }
 
 

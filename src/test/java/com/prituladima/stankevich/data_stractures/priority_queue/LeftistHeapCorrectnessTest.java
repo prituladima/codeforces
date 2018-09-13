@@ -31,7 +31,7 @@ public class LeftistHeapCorrectnessTest {
                 item(10),
                 item(100),
                 item(1000),
-                item(10000)
+                item(100000)
         );
     }
 
@@ -58,6 +58,17 @@ public class LeftistHeapCorrectnessTest {
 
 
         soutln("END TEST");
+
+
+        for(int i = 0; i < generated_size; i++){
+            leftistHeap.delete();
+        }
+
+        for(int i = 0; i < generated_size; i++){
+            int expected = r.nextInt();
+            leftistHeap.add(expected);
+            assertEquals(expected, leftistHeap.delete());
+        }
 
     }
 

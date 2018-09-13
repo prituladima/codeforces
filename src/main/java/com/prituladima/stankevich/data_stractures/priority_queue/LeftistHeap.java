@@ -3,7 +3,9 @@ package com.prituladima.stankevich.data_stractures.priority_queue;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Random;
-
+/**
+ * @see "https://www.cs.usfca.edu/~galles/visualization/LeftistHeap.html"
+ */
 public class LeftistHeap {
 
     public static class Node {
@@ -18,14 +20,7 @@ public class LeftistHeap {
         protected Node right;
     }
 
-    private int size;
     protected Node root;
-
-
-    public LeftistHeap(Node root) {
-        this.root = root;
-        this.size = 1;
-    }
 
     public LeftistHeap() {
     }
