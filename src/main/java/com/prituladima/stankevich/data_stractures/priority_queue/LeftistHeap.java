@@ -5,6 +5,9 @@ import java.util.NoSuchElementException;
 import java.util.Random;
 /**
  * @see "https://www.cs.usfca.edu/~galles/visualization/LeftistHeap.html"
+ * @see "https://www.sanfoundry.com/java-program-implement-leftist-heap/"
+ * @see "https://neerc.ifmo.ru/wiki/index.php?title=Левосторонняя_куча"
+ * todo why LeftistHeap can be build from array in O(n)???
  */
 public class LeftistHeap {
 
