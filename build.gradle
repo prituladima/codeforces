@@ -23,4 +23,10 @@ dependencies {
 
     compile 'com.io7m.jgrapht:jgrapht-dist:1.2.1-MODULARIZED'
 
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    compile group: 'com.google.guava', name: 'guava', version: '26.0-jre'
+
+    // https://mvnrepository.com/artifact/edu.princeton.cs/algs4
+    //compile group: 'edu.princeton.cs', name: 'algs4', version: '1.0.3'
+
 }
