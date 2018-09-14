@@ -52,7 +52,7 @@ public class BinaryHeapMergeTest {
 
         BinaryHeap binaryHeapA = new BinaryHeap(A);
         BinaryHeap binaryHeapB = new BinaryHeap(B);
-        BinaryHeap mergedBinaryHeap = BinaryHeap.merge(binaryHeapA, binaryHeapB);
+        BinaryHeap mergedBinaryHeap = BinaryHeap.meld(binaryHeapA, binaryHeapB);
 
         int[] merged = mergedBinaryHeap.toHeapArray();
 

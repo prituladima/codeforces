@@ -81,7 +81,7 @@ public class BinaryHeap {
     /**
      * MERGE todo
      */
-    public static BinaryHeap merge(BinaryHeap a, BinaryHeap b) {
+    public static BinaryHeap meld(BinaryHeap a, BinaryHeap b) {
         int[] heapA = a.heap;
         int[] heapB = b.heap;
         int sizeA = heapA.length;
@@ -92,16 +92,6 @@ public class BinaryHeap {
         System.arraycopy(heapB, 0, concatAB, heapA.length, heapB.length);
         return new BinaryHeap(concatAB);
     }
-
-
-    void meld(BinaryHeap a, BinaryHeap b) {
-        throw new UnsupportedOperationException();
-    }
-
-    void split(BinaryHeap a, BinaryHeap b) {
-        throw new UnsupportedOperationException();
-    }
-
 
     /**
      * FOR TEST

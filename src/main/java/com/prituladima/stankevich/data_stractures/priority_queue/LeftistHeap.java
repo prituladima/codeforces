@@ -36,7 +36,7 @@ public class LeftistHeap {
             throw new NoSuchElementException();
 
         int value = root.value;
-        root = merge(root.left, root.right);
+        root = meld(root.left, root.right);
         return value;
     }
 
@@ -48,7 +48,7 @@ public class LeftistHeap {
         int amount_of_operation = 0;
         while (queue.size() > 1) {
             amount_of_operation++;
-            queue.addLast(merge(queue.removeFirst(), queue.removeFirst()));
+            queue.addLast(meld(queue.removeFirst(), queue.removeFirst()));
         }
         root = queue.removeLast();
         return amount_of_operation;
@@ -59,10 +59,10 @@ public class LeftistHeap {
     }
 
     public void add(int value) {
-        root = merge(root, new Node(value));
+        root = meld(root, new Node(value));
     }
 
-    public Node merge(Node x, Node y) {
+    public Node meld(Node x, Node y) {
         if (x == null) return y;
         if (y == null) return x;
 
@@ -73,8 +73,8 @@ public class LeftistHeap {
             y = temp;
         }
 
-        //Let's merge RIGHT side of current root and Y
-        x.right = merge(x.right, y);
+        //Let's meld RIGHT side of current root and Y
+        x.right = meld(x.right, y);
 
         if (x.left == null) {
             x.left = x.right;

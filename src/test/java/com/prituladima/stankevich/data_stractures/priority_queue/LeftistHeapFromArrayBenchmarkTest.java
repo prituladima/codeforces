@@ -1,13 +1,10 @@
 package com.prituladima.stankevich.data_stractures.priority_queue;
 
 
+import java.util.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import java.util.HashMap;
-import java.util.PriorityQueue;
-import java.util.Random;
 
 import static com.prituladima.geeksforgeeks.util.PrintWrapper.soutln;
 import static com.prituladima.geeksforgeeks.util.TestSetWrapper.item;
@@ -18,13 +15,16 @@ public class LeftistHeapFromArrayBenchmarkTest {
 
     private int generated_size;
     private int[] randomNumbers;
+    private ArrayList<Integer> randomNumbersList;
 
     public LeftistHeapFromArrayBenchmarkTest(int generated_size) {
         this.generated_size = generated_size;
         randomNumbers = new int[generated_size];
+        randomNumbersList = new ArrayList<>();
         Random r = new Random();
         for (int i = 0; i < generated_size; i++) {
             randomNumbers[i] = r.nextInt(1000);
+            randomNumbersList.add(randomNumbers[i]);
         }
     }
 
@@ -43,7 +43,7 @@ public class LeftistHeapFromArrayBenchmarkTest {
     }
 
     @Test
-    public void test_() {
+    public void test_heaps_init() {
 
         LeftistHeap leftistHeap = new LeftistHeap();
         LeftistHeap leftistHeap1 = new LeftistHeap();
@@ -51,47 +51,34 @@ public class LeftistHeapFromArrayBenchmarkTest {
         BinaryHeap binaryHeap = new BinaryHeap();
 
         long current_time = System.currentTimeMillis();
-
-
         leftistHeap.add(randomNumbers);
-
-
-        soutln("O(n*log(n)) - " + (System.currentTimeMillis() - current_time));
-
+        soutln("Leftist heap init - O(n*log(n)) - " + (System.currentTimeMillis() - current_time));
 
         current_time = System.currentTimeMillis();
-
-
         int op = leftistHeap1.add_fast(randomNumbers);
+        soutln("Leftist heap init - O(n) - " + (System.currentTimeMillis() - current_time) + " - " + op + " - probably wrong?");
 
-        soutln("O(n) - " + (System.currentTimeMillis() - current_time) + " - " + op);
-
-
+        current_time = System.currentTimeMillis();
+        new PriorityQueue<>(randomNumbersList);
+        soutln("PriorityQueue - O(n*log(n)) - " + (System.currentTimeMillis() - current_time) );
 
 
         current_time = System.currentTimeMillis();
-
         for (int i = 0; i < generated_size; i++) {
             PQ.add(randomNumbers[i]);
         }
-
-        soutln("PriorityQueue - " + (System.currentTimeMillis() - current_time) );
+        soutln("PriorityQueue -  O(n) - " + (System.currentTimeMillis() - current_time) );
 
 
         current_time = System.currentTimeMillis();
-
         for (int i = 0; i < generated_size; i++) {
             binaryHeap.add(randomNumbers[i]);
         }
-
         soutln("binaryHeap - n*log(n) " + (System.currentTimeMillis() - current_time) );
 
 
         current_time = System.currentTimeMillis();
-
-
         BinaryHeap binaryHeap1 = new BinaryHeap(randomNumbers);
-
         soutln("binaryHeap - n " + (System.currentTimeMillis() - current_time) );
 
     }
