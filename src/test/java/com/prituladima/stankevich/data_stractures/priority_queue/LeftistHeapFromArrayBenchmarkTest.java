@@ -48,6 +48,16 @@ public class LeftistHeapFromArrayBenchmarkTest {
         LeftistHeap leftistHeap = new LeftistHeap();
         LeftistHeap leftistHeap1 = new LeftistHeap();
         PriorityQueue<Integer> PQ = new PriorityQueue<>();
+//        PriorityQueue<Integer> pr_fast = new PriorityQueue<>(ar, comp) {
+//            PriorityQueue(List<edge> ar, Comparator<edge> c) {
+//                this(c);
+//                for(int i = 0; i < queue.length; i++) {
+//                    queue[i] = ar.get(i);
+//                }
+//                this.size = queue.length;
+//                heapify(); // O(n), except that heapify is private and thus you can't call it!!!
+//            }
+//        }
         BinaryHeap binaryHeap = new BinaryHeap();
 
         long current_time = System.currentTimeMillis();
@@ -58,17 +68,20 @@ public class LeftistHeapFromArrayBenchmarkTest {
         int op = leftistHeap1.add_fast(randomNumbers);
         soutln("Leftist heap init - O(n) - " + (System.currentTimeMillis() - current_time) + " - " + op + " - probably wrong?");
 
+        soutln("");
+
         current_time = System.currentTimeMillis();
         new PriorityQueue<>(randomNumbersList);
-        soutln("PriorityQueue - O(n*log(n)) - " + (System.currentTimeMillis() - current_time) );
+        soutln("PriorityQueue - O(n) - " + (System.currentTimeMillis() - current_time) );
 
 
         current_time = System.currentTimeMillis();
         for (int i = 0; i < generated_size; i++) {
             PQ.add(randomNumbers[i]);
         }
-        soutln("PriorityQueue -  O(n) - " + (System.currentTimeMillis() - current_time) );
+        soutln("PriorityQueue -  O(n*log(n)) - " + (System.currentTimeMillis() - current_time) );
 
+        soutln("");
 
         current_time = System.currentTimeMillis();
         for (int i = 0; i < generated_size; i++) {
