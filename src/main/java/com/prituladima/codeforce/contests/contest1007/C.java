@@ -2,7 +2,6 @@ package com.prituladima.codeforce.contests.contest1007;
 
 import java.io.*;
 import java.util.*;
-import javafx.util.*;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
