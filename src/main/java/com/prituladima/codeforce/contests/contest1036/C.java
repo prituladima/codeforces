@@ -17,27 +17,10 @@ import static java.util.stream.IntStream.range;
 
 public class C {
 
-    //    long NAXI = 9223372036854775807L;
+    long NAXI = 9223372036854775807L;
     long MAXC = 1000000000000000000L;
 
-    private void solve() {
-        pregen();
-
-//        for (Long re : res) {
-//            soutnl(re);
-//        }
-        IntStream.range(0, nextInt()).forEach((i) -> soutnl(Classy_Numbers(nextLong(), nextLong())));
-    }
-
-
-    List<Long> LIST = new ArrayList<>(20000);
-    Set<Long> res = new HashSet<>();
-
     private void pregen() {
-//        for (long i = 1; i < 1000; i++) {
-//            res.add(i);
-//        }
-
         char[] number = new char[18];
         Arrays.fill(number, '0');
 
@@ -46,8 +29,7 @@ public class C {
             for (char j = '1'; j <= '9'; j++) {
                 number[i] = j;
                 long newV = Long.parseLong(new StringBuilder().append(number).toString());
-//                if (newV != 0)
-                res.add(newV);
+                LIST.add(newV);
                 number[i] = '0';
             }
         }
@@ -58,14 +40,11 @@ public class C {
 
                 for (int i2 = 17; i2 >= 0; i2--) {
                     for (char j2 = '1'; j2 <= '9'; j2++) {
-
                         if (i > i2) {
                             number[i] = j;
                             number[i2] = j2;
                             long newV = Long.parseLong(new StringBuilder().append(number).toString());
-
-                            res.add(newV);
-
+                            LIST.add(newV);
                             number[i] = '0';
                             number[i2] = '0';
 
@@ -90,10 +69,8 @@ public class C {
                                     number[i] = j;
                                     number[i2] = j2;
                                     number[i3] = j3;
-
                                     long newV = Long.parseLong(new StringBuilder().append(number).toString());
-                                    res.add(newV);
-
+                                    LIST.add(newV);
                                     number[i] = '0';
                                     number[i2] = '0';
                                     number[i3] = '0';
@@ -106,27 +83,36 @@ public class C {
         }
 
 
-        res.add(MAXC);
-//        sout(res.size() + "--" );
-        LIST = new ArrayList<>(res);
+        LIST.add(MAXC);
         Collections.sort(LIST);
+//        System.out.println(LIST.size());
     }
 
+    private void solve() {
+        pregen();
+        int k = nextInt();
+        while (k-- > 0){
+            soutnl(Classy_Numbers(nextLong(), nextLong()));
+        }
+//        IntStream.range(0, nextInt()).forEach((i) -> soutnl(Classy_Numbers(nextLong(), nextLong())));
+    }
+
+    List<Long> LIST = new ArrayList<>(30_000);
 
     private long Classy_Numbers(long L, long R) {
         if (L == 1)
             return Classy_Numbers(R);
-        else
-            return Classy_Numbers(1, R) - Classy_Numbers(1, L - 1);
+
+        return Classy_Numbers(1, R) - Classy_Numbers(1, L - 1);
     }
 
     private long Classy_Numbers(long R) {
-        return upperBound(LIST, res.size(), R);
+        return upperBound(LIST, R);
     }
 
-    public static int upperBound(List<Long> array, int length, long value) {
+    public static int upperBound(List<Long> array, long value) {
         int low = 0;
-        int high = length;
+        int high = array.size();
         while (low < high) {
             final int mid = (low + high) / 2;
             if (value >= array.get(mid)) {
@@ -151,6 +137,7 @@ public class C {
         }
         return low;
     }
+
 
     public static void main(String[] args) {
         new C().run();
