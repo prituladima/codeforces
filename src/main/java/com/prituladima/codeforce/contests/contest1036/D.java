@@ -9,7 +9,6 @@ import java.util.StringTokenizer;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
-import static java.lang.StrictMath.max;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
@@ -21,94 +20,50 @@ public class D {
 
         int n = nextInt();
         int[] a = nextArr(n);
+//        int lastIndexI = n - 1;
 
         int m = nextInt();
         int[] b = nextArr(m);
+//        int lastIndexJ = m - 1;
 
+        int i = 0;
+        int j = 0;
 
-        long[] sum_a = new long[n];
-        long[] sum_B = new long[m];
-        sum_a[0] = a[0];
-        sum_B[0] = b[0];
-        for (int i = 1; i < n; i++) {
-            sum_a[i] += sum_a[i - 1] + a[i];
-        }
-        for (int i = 1; i < m; i++) {
-            sum_B[i] += sum_B[i - 1] + b[i];
+        long sum = 0L;
+        for (int cura : a) {
+            sum += cura;
         }
 
+        for (int curb : b) {
+            sum -= curb;
+        }
 
-        if (sum_a[n - 1] != sum_B[m - 1]) {
+        if (sum != 0) {
             sout(-1);
-        } else {
-            sout(LCSLength(sum_a, sum_B));
+            return;
         }
 
 
-    }
+        long ans = 0;
 
+        while (n > i && m > j) {
 
-    int lcs(long[] X, long[] Y, int m, int n )
-    {
-        int[][] L = new int[m+1][n+1];
-        int i, j;
+            ans++;
+            long segSumI = a[i++];
+            long segSumJ = b[j++];
 
-   /* Following steps build L[m+1][n+1] in bottom up fashion. Note
-      that L[i][j] contains length of LCS of X[0..i-1] and Y[0..j-1] */
-        for (i=0; i<=m; i++)
-        {
-            for (j=0; j<=n; j++)
-            {
-                if (i == 0 || j == 0)
-                    L[i][j] = 0;
-
-                else if (X[i-1] == Y[j-1])
-                    L[i][j] = L[i-1][j-1] + 1;
-
-                else
-                    L[i][j] = max(L[i-1][j], L[i][j-1]);
+            while (segSumI != segSumJ) {
+                if (segSumI < segSumJ) {
+                    segSumI += a[i++];
+                } else {
+                    segSumJ += b[j++];
+                }
             }
         }
 
-        /* L[m][n] contains length of LCS for X[0..n-1] and Y[0..m-1] */
-        return L[m][n];
-    }
+        sout(ans);
 
-    public static int LCSLength(long[] X, long[] Y)
-    {
-        int m = X.length, n = Y.length;
 
-        // allocate storage for one-dimensional array curr
-        int[] curr = new int[n + 1];
-        int prev;
-
-        // fill the lookup table in bottom-up manner
-        for (int i = 0; i <= m; i++)
-        {
-            prev = curr[0];
-            for (int j = 0; j <= n; j++)
-            {
-                int backup = curr[j];
-                if (i == 0 || j == 0) {
-                    curr[j] = 0;
-                }
-                else
-                {
-                    // if current character of X and Y matches
-                    if (X[i - 1] == Y[j - 1]) {
-                        curr[j] = prev + 1;
-                    }
-                    // else if current character of X and Y don't match
-                    else {
-                        curr[j] = Integer.max(curr[j], curr[j - 1]);
-                    }
-                }
-                prev = backup;
-            }
-        }
-
-        // LCS will be last entry in the lookup table
-        return curr[n];
     }
 
 
@@ -197,9 +152,6 @@ public class D {
         sout(o);
         newLine();
     }
-
-
-
 
 
 }
