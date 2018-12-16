@@ -1,6 +1,10 @@
 package com.prituladima.codeforce.contests.contest1082;
-import java.io.*;
-import java.util.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -11,9 +15,47 @@ import static java.util.stream.IntStream.range;
 public final class A {
 
     private void solve() {
+        int T = nextInt();
 
-        //put your code here
+        while (T-- > 0) {
 
+            int n = nextInt(), x = nextInt(), y = nextInt(), d = nextInt();
+
+            soutnl(minStep(n, x, y, d, false));
+        }
+
+    }
+
+
+    private int minStep(int n, int x, int y, int d, boolean second) {
+        int abs = Math.abs(y - x);
+        if (abs % d == 0) {
+            return abs / d;
+        }
+
+        if(second){
+            return -1;
+        }
+
+        int P = minStep(n, 1, y, d, true);
+        if(P == -1) {
+            P = Integer.MAX_VALUE;
+        }else {
+            P += ((x - 1) + d - 1) / d;
+        }
+
+        int Q = minStep(n, n, y, d, true);
+        if(Q == -1) {
+            Q = Integer.MAX_VALUE;
+        }else {
+            Q += ((n - x) + d - 1) / d;
+        }
+
+        if(Math.min(P, Q) == Integer.MAX_VALUE){
+            return -1;
+        }
+
+        return Math.min(P, Q);
     }
 
     public static void main(String[] args) {
