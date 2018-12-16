@@ -1,4 +1,4 @@
-//package com.prituladima.codeforce.contests.contest1036;
+package com.prituladima.codeforce.contests.contest1036;
 
 import java.io.OutputStream;
 import java.io.IOException;

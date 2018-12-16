@@ -9,11 +9,11 @@ public class CodeGen {
 
 
     public static void main(String[] args) throws IOException {
-        final boolean isFromHome = false;
-        final int NUMBER = 1041;
-        final String PACKAGE = "com.prituladima.codeforce.virtual.contest" + NUMBER;
-        final String DIR_PATH_HOME = "/home/prituladima/IdeaProjects/codeforces/src/main/java/com/prituladima/codeforce/virtual/contest" + NUMBER + "/";
-        final String DIR_PATH_WORK = "C:\\Users\\Dmytro_Prytula\\IdeaProjects\\codeforces\\src\\main\\java\\com\\prituladima\\codeforce\\virtual\\contest" + NUMBER + "\\";
+        final boolean isFromHome = true;
+        final int NUMBER = 1082;
+        final String PACKAGE = "com.prituladima.codeforce.contests.contest" + NUMBER;
+        final String DIR_PATH_HOME = "/home/prituladima/Documents/IdeaProjects/codeforces/src/main/java/com/prituladima/codeforce/contests/contest" + NUMBER + "/";
+        final String DIR_PATH_WORK = "C:\\Users\\Dmytro_Prytula\\IdeaProjects\\codeforces\\src\\main\\java\\com\\prituladima\\codeforce\\contests\\contest" + NUMBER + "\\";
         final String SRC =
                 "package %s;\n" +
                         "import java.io.*;\n" +
