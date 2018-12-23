@@ -9,6 +9,9 @@ public class GeekMath {
         return (n + k - 1) / k;
     }
 
+    public static boolean equalParity(long a, long b){
+        return a % 2 == b % 2;
+    }
 
     public static int upperBound(int[] array, int length, int value) {
         int low = 0;
