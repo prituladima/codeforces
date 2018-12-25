@@ -37,7 +37,7 @@ public class B {
             String B = t.substring(divisors.get(i));
 
             t = A + B;
-            //System.out.println(A + " + " + B +  " = " + t);
+            //System.out.println(Data + " + " + B +  " = " + t);
 
         }
 

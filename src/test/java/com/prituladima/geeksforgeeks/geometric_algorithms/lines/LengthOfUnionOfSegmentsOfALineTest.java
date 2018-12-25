@@ -26,7 +26,7 @@ public class LengthOfUnionOfSegmentsOfALineTest {
         this.expected = expected;
     }
 
-    @Parameterized.Parameters(name = "{index}:Length Of Union Of Segments Of A Line Test (" +
+    @Parameterized.Parameters(name = "{index}:Length Of Union Of Segments Of Data Line Test (" +
             "Amounts of segments {0})={2}")
     public static Iterable<Object[]> data() {
         return Arrays.asList(new Object[][]{

@@ -56,7 +56,7 @@ public class BinaryHeapMergeTest {
 
         int[] merged = mergedBinaryHeap.toHeapArray();
 
-        soutln("A");
+        soutln("Data");
         soutln(binaryHeapA.toNiceString());
         soutln("B");
         soutln(binaryHeapB.toNiceString());

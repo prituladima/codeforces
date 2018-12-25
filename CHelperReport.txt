@@ -1,2 +1,2 @@
-86 src/main/java/com/prituladima/codeforce/contests/contest1080/C. Masha i dva druga.json
+91 src/main/java/com/prituladima/codeforce/contests/contest1073/D. Berljandskaja jarmarka.json
 0

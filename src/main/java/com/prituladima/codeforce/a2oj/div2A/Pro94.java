@@ -14,7 +14,7 @@ public class Pro94 {
 
     private void solve() {
 
-        List<String> list = Arrays.asList("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "B", "H");
+        List<String> list = Arrays.asList("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "Data", "B", "H");
 
         final int n2 = list.size();
         String X = nextToken(), Y = nextToken(), Z = nextToken();

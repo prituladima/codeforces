@@ -31,7 +31,7 @@ public class CheckIfFibonacci {
     }
 
 
-    // A utility function that returns true if x is perfect square
+    // Data utility function that returns true if x is perfect square
    static boolean isPerfectSquare(int x)
     {
         int s = (int)Math.sqrt(x);
