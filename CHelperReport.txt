@@ -1,2 +1,2 @@
-87 src/main/java/com/prituladima/codeforce/contests/contest1091/B. Udalenie podstroki.json
+104 src/main/java/com/prituladima/codeforce/contests/contest1091/C. Novyj god i sfericheskaja peredacha.json
 0
