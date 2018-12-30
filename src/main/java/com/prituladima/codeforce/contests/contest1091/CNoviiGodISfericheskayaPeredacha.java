@@ -1,10 +1,10 @@
 package com.prituladima.codeforce.contests.contest1091;
 
 import com.prituladima.codeforce.InputReader;
-import com.prituladima.codeforce.util.delete.Pre;
 
 import java.io.PrintWriter;
 import java.util.*;
+
 
 public class CNoviiGodISfericheskayaPeredacha {
     public void solve(int testNumber, InputReader in, PrintWriter out) {
@@ -13,22 +13,16 @@ public class CNoviiGodISfericheskayaPeredacha {
         long n = in.nextLong();
 
         Set<Long> ans = new HashSet<>();
-        ans.add(1L);
-        ans.add(n * (n + 1) / 2);
+//        ans.add(1L);
+//        ans.add(n * (n + 1) / 2);
 
-        long up = (int) Math.sqrt(n) + 1;
-        up = n / 2;
-        for (int K = 2; K <= up; K++) {
+//        long up = (int) Math.sqrt(n) + 1;
+//        up = n / 2;
+        for (int K = 1; K * K <= n; K++) {
             if (n % K == 0) {
-                long res = 1L;
-                long counter = 1L;
-                long j = 1L;
-                while (counter + K <= n) {
-                    counter += K;
-                    res += j * K + 1;
-                    j++;
-                }
-                ans.add(res);
+                long KD = n / K;
+                solve(ans, K, KD);
+                solve(ans, KD, K);
             }
         }
         List<Long> list = new ArrayList<>(ans);
@@ -38,6 +32,11 @@ public class CNoviiGodISfericheskayaPeredacha {
         for (int i = 0; i < list.size(); i++) {
             out.print(list.get(i) + " ");
         }
+    }
+
+    private void solve(Set<Long> set, long a, long b) {
+        long res = a* (b*(b-1))/2 + b;
+        set.add(res);
 
     }
 }
