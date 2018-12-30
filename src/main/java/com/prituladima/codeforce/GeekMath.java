@@ -3,7 +3,20 @@ package com.prituladima.codeforce;
 import java.util.Arrays;
 import java.util.Random;
 
+//use long only
+// TODO: 30.12.2018 Rename ti something like GeekLong
 public class GeekMath {
+
+
+
+    public static long multiplication(long modulo, long... arr){
+        long ans = 1;
+        for (long l : arr) {
+            ans *= l;
+            ans %= modulo;
+        }
+        return ans;
+    }
 
     public static long ceiling(long n, long k) {
         return (n + k - 1) / k;
