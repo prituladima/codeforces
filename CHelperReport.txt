@@ -1,2 +1,2 @@
-104 src/main/java/com/prituladima/codeforce/contests/contest1091/C. Novyj god i sfericheskaja peredacha.json
+92 src/main/java/com/prituladima/codeforce/contests/contest1081/B. Proschalnaja vecherinka.json
 0
