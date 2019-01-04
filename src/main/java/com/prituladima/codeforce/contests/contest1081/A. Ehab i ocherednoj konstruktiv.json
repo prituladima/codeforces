@@ -1,0 +1,39 @@
+{
+  "name" : "A. Ехаб и очередной конструктив",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "10\n",
+    "output" : "6 3\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "1\n",
+    "output" : "-1\n",
+    "index" : 1,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1081",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1081.AEhabIOcherednoiKonstruktiv",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.04",
+  "contestName" : "Codeforces Round #525 (Div. 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : false,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
