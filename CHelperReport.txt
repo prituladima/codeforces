@@ -1,2 +1,3 @@
-92 src/main/java/com/prituladima/codeforce/contests/contest1081/B. Proschalnaja vecherinka.json
-0
+87 src/main/java/com/prituladima/codeforce/contests/contest1081/B. Ehab i vychitanija.json
+1
+1
