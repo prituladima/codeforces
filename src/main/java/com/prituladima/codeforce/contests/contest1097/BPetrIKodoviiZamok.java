@@ -1,5 +1,6 @@
 package com.prituladima.codeforce.contests.contest1097;
 
+import com.prituladima.codeforce.GeekMath;
 import com.prituladima.codeforce.InputReader;
 
 import java.io.PrintWriter;
@@ -14,7 +15,7 @@ public class BPetrIKodoviiZamok {
 
         for (int i = 1; i < MAX; i++) {
             long res = 0L;
-            char[] arr = toBi(i, n).toCharArray();
+            char[] arr = GeekMath.toBitString(i, n).toCharArray();
             int k = 0;
             for (char c : arr) {
                 res += (c == '1') ? a[k] : -a[k];
@@ -26,16 +27,5 @@ public class BPetrIKodoviiZamok {
             }
         }
         out.print("NO");
-    }
-
-    private String toBi(int i, int n) {
-        String bits = Integer.toString(i, 2);
-        StringBuilder sb = new StringBuilder();
-
-        for (int toPrepend = n - bits.length(); toPrepend > 0; toPrepend--) {
-            sb.append('0');
-        }
-        sb.append(bits);
-        return sb.toString();
     }
 }

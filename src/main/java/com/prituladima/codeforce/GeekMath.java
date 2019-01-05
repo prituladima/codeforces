@@ -7,7 +7,15 @@ import java.util.Random;
 // TODO: 30.12.2018 Rename ti something like GeekLong
 public class GeekMath {
 
-
+    public static String toBitString(int number, int len) {
+        String bits = Integer.toString(number, 2);
+        StringBuilder sb = new StringBuilder();
+        for (int toPrepend = len - bits.length(); toPrepend > 0; toPrepend--) {
+            sb.append('0');
+        }
+        sb.append(bits);
+        return sb.toString();
+    }
 
     public static long multiplication(long modulo, long... arr){
         long ans = 1;
