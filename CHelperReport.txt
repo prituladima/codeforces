@@ -1,2 +1,2 @@
-90 src/main/java/com/prituladima/codeforce/contests/contest1097/B. Pjotr i kodovyj zamok.json
+83 src/main/java/com/prituladima/codeforce/contests/contest1097/C. Yuhao i skobki.json
 0
