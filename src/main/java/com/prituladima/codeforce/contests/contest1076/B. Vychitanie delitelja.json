@@ -1,0 +1,84 @@
+{
+  "name" : "B. Вычитание делителя",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "5\n",
+    "output" : "1\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "4\n",
+    "output" : "2\n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "17",
+    "output" : "1",
+    "index" : 2,
+    "active" : true
+  }, {
+    "input" : "7",
+    "output" : "1",
+    "index" : 3,
+    "active" : true
+  }, {
+    "input" : "10",
+    "output" : "5",
+    "index" : 4,
+    "active" : true
+  }, {
+    "input" : "37",
+    "output" : "1",
+    "index" : 5,
+    "active" : true
+  }, {
+    "input" : "541",
+    "output" : "1",
+    "index" : 6,
+    "active" : true
+  }, {
+    "input" : "100",
+    "output" : "50",
+    "index" : 7,
+    "active" : true
+  }, {
+    "input" : "2",
+    "output" : "1",
+    "index" : 8,
+    "active" : true
+  }, {
+    "input" : "10000000000",
+    "output" : "5000000000",
+    "index" : 9,
+    "active" : true
+  }, {
+    "input" : "21",
+    "output" : "",
+    "index" : 10,
+    "active" : false
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1076",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1076.BVichitanieDelitelya",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.06",
+  "contestName" : "Educational Codeforces Round 54 (рейтинговый для Див. 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : false,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

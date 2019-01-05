@@ -1,2 +1,3 @@
-77 src/main/java/com/prituladima/codeforce/contests/contest1099/C. Otkrytka.json
+84 src/main/java/com/prituladima/codeforce/contests/contest1076/C. Memnaja zadacha.json
+1
 0
