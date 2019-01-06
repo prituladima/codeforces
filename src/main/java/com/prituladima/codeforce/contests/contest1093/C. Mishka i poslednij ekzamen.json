@@ -1,0 +1,49 @@
+{
+  "name" : "C. Мишка и последний экзамен",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "4\n5 6\n",
+    "output" : "2 3 3 3\n",
+    "index" : 0,
+    "active" : false
+  }, {
+    "input" : "6\n2 1 2\n",
+    "output" : "0 0 1 1 1 2 \n",
+    "index" : 1,
+    "active" : false
+  }, {
+    "input" : "10\n10 10 10 10 10",
+    "output" : "0 0 0 0 0 10 10 10 10 10",
+    "index" : 2,
+    "active" : true
+  }, {
+    "input" : "10\n10 12 11 10 10",
+    "output" : "0 2 2 2 2 8 8 9 10 10",
+    "index" : 3,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1093",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1093.CMishkaIPosledniiEkzamen",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.06",
+  "contestName" : "Educational Codeforces Round 56 (рейтинговый для Див. 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : false,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
