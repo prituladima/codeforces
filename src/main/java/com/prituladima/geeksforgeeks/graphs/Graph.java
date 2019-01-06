@@ -11,7 +11,7 @@ public class Graph {
     private LinkedList<Integer>[] adjListArray;
 
     public Graph(int v) {
-        V = v;
+        V = v + 1;
 
         adjListArray = new LinkedList[V];
 
