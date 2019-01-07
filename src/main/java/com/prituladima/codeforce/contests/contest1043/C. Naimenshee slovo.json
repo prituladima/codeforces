@@ -22,10 +22,15 @@
   }, {
     "input" : "bbbbaabbbaaabbbaa",
     "index" : 2,
-    "active" : true
+    "active" : false
   }, {
     "input" : "bbbaabbbbaaabbbaa",
     "index" : 3,
+    "active" : false
+  }, {
+    "input" : "abbaabba",
+    "output" : "0 0 1 0 1 0 1 1",
+    "index" : 4,
     "active" : true
   } ],
   "location" : "src/main/java/com/prituladima/codeforce/contests/contest1043",
