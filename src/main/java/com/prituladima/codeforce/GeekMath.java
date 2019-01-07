@@ -30,6 +30,10 @@ public class GeekMath {
         return (n + k - 1) / k;
     }
 
+    public static int ceiling(int n, int k) {
+        return (n + k - 1) / k;
+    }
+
     public static boolean equalParity(long a, long b){
         return a % 2 == b % 2;
     }

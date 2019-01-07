@@ -1,2 +1,2 @@
-85 src/main/java/com/prituladima/codeforce/contests/contest1043/C. Naimenshee slovo.json
+87 src/main/java/com/prituladima/codeforce/contests/contest1079/C. Igra na fortepiano.json
 0
