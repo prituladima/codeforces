@@ -11,16 +11,12 @@ public class AStoloviePribori {
         int n = in.nextInt(), k = in.nextInt();
         int[] a = in.nextArr(n);
 
-        Map<Integer, Integer> co = new HashMap<>();
+        Map<Integer, Integer> multiSet = GeekMath.multiSet(a);
 
-        for (int i = 0; i < n; i++) {
-            co.merge(a[i], 1, Integer::sum);
-        }
-
-        int amountIn = co.keySet().size();
+        int amountIn = multiSet.keySet().size();
         int max = Integer.MIN_VALUE;
-        for (Integer integer : co.keySet()) {
-            max = Math.max(max, co.get(integer));
+        for (Integer integer : multiSet.keySet()) {
+            max = Math.max(max, multiSet.get(integer));
         }
         int cou = GeekMath.ceiling(max, k);
 

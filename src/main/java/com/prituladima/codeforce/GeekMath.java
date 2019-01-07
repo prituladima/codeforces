@@ -1,11 +1,22 @@
 package com.prituladima.codeforce;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 //use long only
 // TODO: 30.12.2018 Rename ti something like GeekLong
 public class GeekMath {
+
+    public static Map<Integer, Integer> multiSet(int[] arr) {
+        Map<Integer, Integer> co = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            co.merge(arr[i], 1, Integer::sum);
+        }
+        return co;
+    }
+
 
     public static String toBitString(int number, int len) {
         String bits = Integer.toString(number, 2);
@@ -17,7 +28,7 @@ public class GeekMath {
         return sb.toString();
     }
 
-    public static long multiplication(long modulo, long... arr){
+    public static long multiplication(long modulo, long... arr) {
         long ans = 1;
         for (long l : arr) {
             ans *= l;
@@ -34,7 +45,7 @@ public class GeekMath {
         return (n + k - 1) / k;
     }
 
-    public static boolean equalParity(long a, long b){
+    public static boolean equalParity(long a, long b) {
         return a % 2 == b % 2;
     }
 
