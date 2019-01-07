@@ -1,2 +1,2 @@
-85 src/main/java/com/prituladima/codeforce/contests/contest1079/A. Stolovye pribory.json
+84 src/main/java/com/prituladima/codeforce/contests/contest1084/C. Orehus i stroka.json
 0

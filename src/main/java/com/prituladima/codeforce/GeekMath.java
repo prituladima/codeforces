@@ -1,9 +1,6 @@
 package com.prituladima.codeforce;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 //use long only
 // TODO: 30.12.2018 Rename ti something like GeekLong
@@ -26,6 +23,15 @@ public class GeekMath {
         }
         sb.append(bits);
         return sb.toString();
+    }
+
+    public static long multiplication(long modulo, List<Long> list) {
+        long[] arr = new long[list.size()];
+        int k = 0;
+        for (long i : list) {
+            arr[k++] = i;
+        }
+        return multiplication(modulo, arr);
     }
 
     public static long multiplication(long modulo, long... arr) {

@@ -22,7 +22,7 @@ public class GeeksMath {
         return res;
     }
 
-    long bin_pow_mod(long a, long n, long modulo) {
+    public static long bin_pow_mod(long a, long n, long modulo) {
         long res = 1;
         a %= modulo;
         while (n > 0) {
