@@ -1,11 +1,27 @@
 package com.prituladima.codeforce;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class GeekLong {
+
+    public static List<Long> toList(long[] arr) {
+        List<Long> ans = new ArrayList<>();
+        for (long i : arr) ans.add(i);
+        return ans;
+    }
+
+    public static Set<Long> toHashSet(long[] arr) {
+        Set<Long> ans = new HashSet<>();
+        for (long i : uniq(arr)) ans.add(i);
+        return ans;
+    }
+
+    public static long[] toArray(Collection<Long> collection) {
+        long[] array = new long[collection.size()];
+        int k = 0;
+        for (long cur : collection) array[k++] = cur;
+        return array;
+    }
 
     public static Map<Long, Integer> toMultiSet(long[] arr) {
         Map<Long, Integer> multiSet = new HashMap<>();
@@ -77,4 +93,18 @@ public class GeekLong {
         arr[j] = arr[i] ^ arr[j];
         arr[i] = arr[i] ^ arr[j];
     }
+
+    static long[] uniq(long[] arr) {
+        shuffle(arr);
+        Arrays.sort(arr);
+        int pos = 0;
+        arr[pos++] = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] != arr[i - 1]) {
+                arr[pos++] = arr[i];
+            }
+        }
+        return Arrays.copyOf(arr, pos);
+    }
+
 }

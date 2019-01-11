@@ -6,6 +6,25 @@ import java.util.*;
 // TODO: 30.12.2018 Rename ti something like GeekLong
 public class GeekInteger {
 
+    public static List<Integer> toList(int[] arr) {
+        List<Integer> ans = new ArrayList<>();
+        for (int i : arr) ans.add(i);
+        return ans;
+    }
+
+    public static Set<Integer> toHashSet(int[] arr) {
+        Set<Integer> ans = new HashSet<>();
+        for (int i : uniq(arr)) ans.add(i);
+        return ans;
+    }
+
+    public static int[] toArray(Collection<Integer> collection) {
+        int[] array = new int[collection.size()];
+        int k = 0;
+        for (int cur : collection) array[k++] = cur;
+        return array;
+    }
+
     public static Map<Integer, Integer> multiSet(int[] arr) {
         Map<Integer, Integer> co = new HashMap<>();
         for (int i : arr) co.merge(i, 1, Integer::sum);
@@ -23,12 +42,13 @@ public class GeekInteger {
         return sb.toString();
     }
 
+    @Deprecated
     public static long multiplication(long modulo, List<Long> list) {
         long[] arr = new long[list.size()];
         int k = 0;
-        for (long i : list) {
+        for (long i : list)
             arr[k++] = i;
-        }
+
         return multiplication(modulo, arr);
     }
 
@@ -115,7 +135,7 @@ public class GeekInteger {
 
 
     static int[] uniq(int[] arr) {
-//        GeekInteger.shuffle(arr);
+        shuffle(arr);
         Arrays.sort(arr);
         int pos = 0;
         arr[pos++] = arr[0];
@@ -127,6 +147,7 @@ public class GeekInteger {
         return Arrays.copyOf(arr, pos);
     }
 
+    @Deprecated
     static int[] uniqUsingSet(int[] array) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < array.length; i++) {
@@ -138,16 +159,6 @@ public class GeekInteger {
             new_array[i] = list.get(i);
         }
         return new_array;
-    }
-
-    public static int[] toArray(Set<Integer> set) {
-        int[] a = new int[set.size()];
-        int k = 0;
-        for (int cur : set) {
-            a[k++] = cur;
-        }
-        return a;
-//        set.stream().collect(Collectors.toList()).
     }
 
 
