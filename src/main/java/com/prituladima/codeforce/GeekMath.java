@@ -1,6 +1,7 @@
 package com.prituladima.codeforce;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 //use long only
 // TODO: 30.12.2018 Rename ti something like GeekLong
@@ -84,7 +85,8 @@ public class GeekMath {
     }
 
 
-    long[] shuffle(long[] arr) {
+
+    public static long[] shuffle(long[] arr) {
         Random r = new Random();
         for (int i = 1, j; i < arr.length; i++) {
             j = r.nextInt(i);
@@ -95,17 +97,79 @@ public class GeekMath {
         return arr;
     }
 
-    int[] uniq(int[] arr) {
+    public static void save_sort(int[] array){
+        shuffle(array);
+        Arrays.sort(array);
+    }
+
+    public static int[] shuffle(int[] arr) {
+        Random r = new Random();
+        for (int i = 1, j; i < arr.length; i++) {
+            j = r.nextInt(i);
+            arr[i] = arr[i] ^ arr[j];
+            arr[j] = arr[i] ^ arr[j];
+            arr[i] = arr[i] ^ arr[j];
+        }
+        return arr;
+    }
+
+    static int[] uniq(int[] arr) {
+//        GeekMath.shuffle(arr);
         Arrays.sort(arr);
-        int[] rv = new int[arr.length];
         int pos = 0;
-        rv[pos++] = arr[0];
+        arr[pos++] = arr[0];
         for (int i = 1; i < arr.length; i++) {
             if (arr[i] != arr[i - 1]) {
-                rv[pos++] = arr[i];
+                arr[pos++] = arr[i];
             }
         }
-        return Arrays.copyOf(rv, pos);
+        return Arrays.copyOf(arr, pos);
+    }
+
+    static int[] uniqUsingSet(int[] array) {
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < array.length; i++) {
+            set.add(array[i]);
+        }
+        ArrayList<Integer> list = new ArrayList<>(set);
+        int[] new_array = new int[set.size()];
+        for (int i = 0; i < list.size(); i++) {
+            new_array[i] = list.get(i);
+        }
+        return new_array;
+    }
+
+    public static int[] toArray(Set<Integer> set) {
+        int[] a = new int[set.size()];
+        int k = 0;
+        for (int cur : set) {
+            a[k++] = cur;
+        }
+        return a;
+//        set.stream().collect(Collectors.toList()).
+    }
+
+
+    public static long gcd(long[] a) {
+        long gcd = 0;
+        for (long i : a) gcd = gcd(gcd, i);
+        return gcd;
+    }
+
+
+    public static long gcd(long a, long b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+
+    public static int gcd(int[] a) {
+        int gcd = 0;
+        for (int i : a) gcd = gcd(gcd, i);
+        return gcd;
+    }
+
+
+    public static int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
     }
 
 
