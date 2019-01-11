@@ -1,0 +1,49 @@
+{
+  "name" : "D. Граф максимального диаметра",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "3\n2 2 2\n",
+    "output" : "YES 2\n2\n1 2\n2 3\n",
+    "index" : 0,
+    "active" : false
+  }, {
+    "input" : "5\n1 4 1 1 1\n",
+    "output" : "YES 2\n4\n1 2\n3 2\n4 2\n5 2\n",
+    "index" : 1,
+    "active" : false
+  }, {
+    "input" : "3\n1 1 1\n",
+    "output" : "NO\n",
+    "index" : 2,
+    "active" : false
+  }, {
+    "input" : "10\n5 5 1 1 1 1 1 1 1 1 ",
+    "output" : "YES 3\n9\n1 2\n1 3\n1 4\n1 5 \n1 6\n2 7\n2 8\n2 9\n2 10\n",
+    "index" : 3,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1082",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1082.DGrafMaksimalnogoDiametra",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.11",
+  "contestName" : "Educational Codeforces Round 55 (рейтинговый для Див. 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

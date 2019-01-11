@@ -1,2 +1,3 @@
-84 src/main/java/com/prituladima/codeforce/contests/contest1084/C. Orehus i stroka.json
-0
+95 src/main/java/com/prituladima/codeforce/contests/contest1082/D. Graf maksimalnogo diametra.json
+1
+3
