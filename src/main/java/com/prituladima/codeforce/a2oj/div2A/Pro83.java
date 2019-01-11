@@ -16,7 +16,7 @@ public class Pro83 {
 
         int n = nextInt();
         int[] a = nextArr(n);
-        a = Arrays.copyOf(a, n+1);
+        a = Arrays.copyOf(a, n + 1);
         a[n] = 0;
         Arrays.sort(a);
         for (int i = 0; i < a.length - 1; i++) {

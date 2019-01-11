@@ -14,7 +14,7 @@ public class AOrehusILift {
             int cur_sum = 0;
             for (int i = 1; i <= n; i++) {
 //                if (x != i) {
-                    cur_sum += 4 * (Math.max(i ,  x) -1) * a[i - 1];
+                cur_sum += 4 * (Math.max(i, x) - 1) * a[i - 1];
 //                }
 //                cur_sum += 2 * (i - 1) * a[i - 1];
             }

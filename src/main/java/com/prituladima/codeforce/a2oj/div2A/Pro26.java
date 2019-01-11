@@ -1,7 +1,11 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 /**
  * Created by prituladima on 6/28/18.
@@ -21,7 +25,7 @@ public class Pro26 {
         System.out.println(ans);
 
         for (int i = 0; i < ans; i++) {
-            System.out.printf("%d %d %d\n", (int)gs[0].get(i) +1, (int)gs[1].get(i)+1, (int)gs[2].get(i)+1);
+            System.out.printf("%d %d %d\n", (int) gs[0].get(i) + 1, (int) gs[1].get(i) + 1, (int) gs[2].get(i) + 1);
         }
 
 

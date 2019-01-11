@@ -4,7 +4,6 @@ import com.prituladima.codeforce.InputReader;
 import com.prituladima.geeksforgeeks.graphs.Graph;
 
 import java.io.PrintWriter;
-import java.util.LinkedList;
 
 public class DKrasiviiGraf {
     int MODULO = 998244353;
@@ -29,9 +28,7 @@ public class DKrasiviiGraf {
             out.println(g.toString());
 
 
-
 //            LinkedList<Integer>[] graph = new LinkedList[n];
-
 
 
         }

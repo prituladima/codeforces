@@ -52,7 +52,6 @@ public class CheckIfTwoLineSegmentsIntersect {
     }
 
 
-
     int orientation(IntPoint p, IntPoint q, IntPoint r) {
         int val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
         return val == 0 ? 0 : val > 0 ? 1 : 2;
@@ -125,7 +124,7 @@ public class CheckIfTwoLineSegmentsIntersect {
         return stream(new double[size]).map(c -> nextDouble()).toArray();
     }
 
-    private IntPoint nextPoint(){
+    private IntPoint nextPoint() {
         return new IntPoint(nextInt(), nextInt());
     }
 

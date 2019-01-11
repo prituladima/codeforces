@@ -1,7 +1,10 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 import static java.lang.Math.min;
 import static java.util.stream.IntStream.range;
@@ -14,11 +17,11 @@ public class Pro37 {
     private void solve() {
         int n = nextInt(), k = nextInt(), l = nextInt(), c = nextInt(), d = nextInt(), p = nextInt(), nl = nextInt(), np = nextInt();
 
-        int A = p/np;
-        int B = c*d;
-        int C = k*l/nl;
+        int A = p / np;
+        int B = c * d;
+        int C = k * l / nl;
 
-        System.out.println(min(min(A, B), C)/n);
+        System.out.println(min(min(A, B), C) / n);
 
     }
 

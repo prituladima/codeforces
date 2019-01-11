@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class BNoviiGodIMestopolozhenieSokrovisha {
 
-    public static class XYPoint{
+    public static class XYPoint {
         int x, y;
 
         public XYPoint(int x, int y) {

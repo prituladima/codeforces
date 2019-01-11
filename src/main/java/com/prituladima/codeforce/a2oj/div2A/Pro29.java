@@ -1,7 +1,12 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 /**
  * Created by prituladima on 6/28/18.
@@ -17,11 +22,11 @@ public class Pro29 {
 
 
         for (int i = 1; i <= n; i++) {
-               int cur = nextInt();
+            int cur = nextInt();
 
             if (cur % 2 == 0) {
                 even.put(i, cur);
-            }else {
+            } else {
                 odd.put(i, cur);
             }
         }

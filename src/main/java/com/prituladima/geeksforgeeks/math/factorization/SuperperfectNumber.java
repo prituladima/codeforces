@@ -2,6 +2,7 @@ package com.prituladima.geeksforgeeks.math.factorization;
 
 /**
  * Created by prituladima on 8/5/18.
+ *
  * @see "https://www.geeksforgeeks.org/superperfect-number/"
  */
 public class SuperperfectNumber {

@@ -1,6 +1,8 @@
 package com.prituladima.geeksforgeeks.graphs;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  * @see "https://practice.geeksforgeeks.org/problems/nodes-at-even-distance/0"
@@ -31,7 +33,7 @@ public class NodesAtEvenDistance {
             int odd = 0;
 
             for (int i = 0; i < d.length; i++) {
-                if (d[i] % 2 == 0)  even++ ;
+                if (d[i] % 2 == 0) even++;
                 else odd++;
             }
 
@@ -44,18 +46,18 @@ public class NodesAtEvenDistance {
 
     public static void dfs(ArrayList<LinkedList<Integer>> g, int from, boolean[] used, int[] d) {
         used[from] = true;
-        for (int to: g.get(from)) {
+        for (int to : g.get(from)) {
             if (!used[to]) {
-                d[to]=d[from]+1;
+                d[to] = d[from] + 1;
                 dfs(g, to, used, d);
             }
         }
     }
 
     public static int nCr(int n, int r) {
-        if(r > n) return 0;
+        if (r > n) return 0;
         if (n == 0 && n == r) return 1;
-        r = Math.min(r, n-r);
+        r = Math.min(r, n - r);
 
         int ans = 1;
         for (int i = 0; i <= r - 1; i++) {
@@ -65,8 +67,8 @@ public class NodesAtEvenDistance {
         return ans;
     }
 
-    public static int nC2(int n){
-        return n*(n-1)/2;
+    public static int nC2(int n) {
+        return n * (n - 1) / 2;
     }
 
 

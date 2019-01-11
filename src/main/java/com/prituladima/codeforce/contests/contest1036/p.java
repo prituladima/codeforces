@@ -14,7 +14,7 @@ public class p {
 
         for (int i = 2; i <= n; i++)
             if (sieve[i])
-                for (int j = 2 * i ; j <= n; j += i)
+                for (int j = 2 * i; j <= n; j += i)
                     sieve[j] = false;
 
         return sieve;
@@ -31,7 +31,7 @@ public class p {
         int part1 = 2;
         int part2 = i - part1;
 
-        while (primes[part1] || primes[part2]){
+        while (primes[part1] || primes[part2]) {
             part1++;
             part2--;
         }

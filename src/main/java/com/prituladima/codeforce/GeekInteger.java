@@ -1,21 +1,18 @@
 package com.prituladima.codeforce;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 //use long only
 // TODO: 30.12.2018 Rename ti something like GeekLong
-public class GeekMath {
+public class GeekInteger {
 
     public static Map<Integer, Integer> multiSet(int[] arr) {
         Map<Integer, Integer> co = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) {
-            co.merge(arr[i], 1, Integer::sum);
-        }
+        for (int i : arr) co.merge(i, 1, Integer::sum);
         return co;
     }
 
-
+    @Deprecated
     public static String toBitString(int number, int len) {
         String bits = Integer.toString(number, 2);
         StringBuilder sb = new StringBuilder();
@@ -85,7 +82,6 @@ public class GeekMath {
     }
 
 
-
     public static long[] shuffle(long[] arr) {
         Random r = new Random();
         for (int i = 1, j; i < arr.length; i++) {
@@ -97,7 +93,7 @@ public class GeekMath {
         return arr;
     }
 
-    public static void save_sort(int[] array){
+    public static void save_sort(int[] array) {
         shuffle(array);
         Arrays.sort(array);
     }
@@ -106,15 +102,20 @@ public class GeekMath {
         Random r = new Random();
         for (int i = 1, j; i < arr.length; i++) {
             j = r.nextInt(i);
-            arr[i] = arr[i] ^ arr[j];
-            arr[j] = arr[i] ^ arr[j];
-            arr[i] = arr[i] ^ arr[j];
+            swap(arr, i, j);
         }
         return arr;
     }
 
+    public static void swap(int[] arr, int i, int j) {
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
+    }
+
+
     static int[] uniq(int[] arr) {
-//        GeekMath.shuffle(arr);
+//        GeekInteger.shuffle(arr);
         Arrays.sort(arr);
         int pos = 0;
         arr[pos++] = arr[0];

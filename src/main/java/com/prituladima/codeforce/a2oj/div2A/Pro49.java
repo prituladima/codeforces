@@ -1,7 +1,12 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.StringTokenizer;
 
 import static java.util.stream.IntStream.range;
 
@@ -28,16 +33,14 @@ public class Pro49 {
         Collections.sort(listB);
 
         int v = listA.get(0);
-        int p = listA.get(listA.size() -1);
+        int p = listA.get(listA.size() - 1);
         int c = listB.get(0);
 
 
-
-
-        if (Math.max(2*v, p)>=c) {
+        if (Math.max(2 * v, p) >= c) {
             System.out.println(-1);
         } else {
-            System.out.println(Math.max(2*v, p));
+            System.out.println(Math.max(2 * v, p));
         }
 
 

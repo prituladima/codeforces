@@ -2,6 +2,7 @@ package com.prituladima.geeksforgeeks.math.factorization;
 
 /**
  * Created by prituladima on 8/5/18.
+ *
  * @see "https://www.geeksforgeeks.org/deficient-number/"
  */
 public class DeficientNumber {

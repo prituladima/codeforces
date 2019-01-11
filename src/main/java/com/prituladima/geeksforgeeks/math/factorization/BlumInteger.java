@@ -1,7 +1,5 @@
 package com.prituladima.geeksforgeeks.math.factorization;
 
-import java.util.*;
-
 import static java.util.Arrays.fill;
 
 /**

@@ -1,8 +1,14 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
-import static java.util.stream.IntStream.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.StringTokenizer;
+
+import static java.util.stream.IntStream.range;
 
 /**
  * Created by prituladima on 6/28/18.
@@ -31,7 +37,7 @@ public class Pro31 {
 
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
-                if(mtx[i][j] == 'S'){
+                if (mtx[i][j] == 'S') {
                     ra.remove(i);
                     ca.remove(j);
                 }
@@ -46,7 +52,7 @@ public class Pro31 {
 //        System.out.println(r);
 //        System.out.println(c);
 
-        System.out.println(ra.size()*c + ca.size()*r - ra.size()*ca.size());
+        System.out.println(ra.size() * c + ca.size() * r - ra.size() * ca.size());
 
     }
 

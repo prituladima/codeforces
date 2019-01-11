@@ -6,14 +6,14 @@ public class Segment {
     SPoint q;
 
     public Segment(SPoint p, SPoint q) {
-        if(p.x == q.x){
+        if (p.x == q.x) {
             this.p = p;
             this.q = q;
-        }else if(p.x > q.x){
+        } else if (p.x > q.x) {
             this.p = q;
             this.q = p;
             this.q.isLeft = true;
-        }else {
+        } else {
             this.p = p;
             this.q = q;
             this.p.isLeft = true;

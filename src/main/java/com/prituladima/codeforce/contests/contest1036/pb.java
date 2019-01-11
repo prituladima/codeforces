@@ -1,7 +1,5 @@
 package com.prituladima.codeforce.contests.contest1036;
 
-import com.prituladima.codeforce.STemplate;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,7 +21,7 @@ public class pb {
         int k = nextInt();
 
         PriorityQueue<Integer> pq = new PriorityQueue<>();
-        while (n-- > 0){
+        while (n-- > 0) {
             pq.add(nextInt());
         }
 
@@ -32,14 +30,14 @@ public class pb {
         for (int i = 0; i < (n + k - 1) / k; i++) {
             int last_fl = -1;
             int counter = k;
-            while (!pq.isEmpty() && counter-- > 0){
+            while (!pq.isEmpty() && counter-- > 0) {
                 last_fl = pq.remove();
             }
-            ans += (last_fl - 1) ;
+            ans += (last_fl - 1);
 
         }
 
-        System.out.println(ans* 2);
+        System.out.println(ans * 2);
 
 
     }

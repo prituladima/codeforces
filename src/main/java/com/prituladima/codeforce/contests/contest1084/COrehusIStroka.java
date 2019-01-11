@@ -1,8 +1,7 @@
 package com.prituladima.codeforce.contests.contest1084;
 
-import com.prituladima.codeforce.GeekMath;
+import com.prituladima.codeforce.GeekInteger;
 import com.prituladima.codeforce.InputReader;
-import com.prituladima.geeksforgeeks.math.GeeksMath;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -36,6 +35,6 @@ public class COrehusIStroka {
             }
         }
 
-        out.println(GeekMath.multiplication(mod, ans) - 1);
+        out.println(GeekInteger.multiplication(mod, ans) - 1);
     }
 }

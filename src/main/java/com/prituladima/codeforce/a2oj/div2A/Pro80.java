@@ -30,7 +30,7 @@ public class Pro80 {
                 canSupply += a.get(i) - 1;
                 ans++;
                 if (canSupply + k >= m) {
-                   break;
+                    break;
                 }
             }
             sout(canSupply + k >= m ? ans : -1);

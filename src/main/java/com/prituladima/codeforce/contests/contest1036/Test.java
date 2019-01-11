@@ -31,16 +31,16 @@ public class Test {
 
 
     static int SOLVE_FOR_RANGE(int L, int R) {
-        return SOLVE_FOR_NUMBER(R) - SOLVE_FOR_NUMBER( L - 1);
+        return SOLVE_FOR_NUMBER(R) - SOLVE_FOR_NUMBER(L - 1);
     }
 
     static int SOLVE_FOR_NUMBER(int V) {
         return UPPER_BOUND(arr, V);
     }
 
-    static int UPPER_BOUND(int[] array, int value){
+    static int UPPER_BOUND(int[] array, int value) {
         int index = Arrays.binarySearch(array, value);
-        if(index < 0) index = -(index + 1);
+        if (index < 0) index = -(index + 1);
         return index;
     }
 

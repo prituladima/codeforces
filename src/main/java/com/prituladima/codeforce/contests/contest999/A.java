@@ -19,8 +19,8 @@ public class A {
         int ans = 0;
 
         for (int i = 0; i < a.length; i++) {
-            if(a[i] <= k){
-                if(i == n - 1){
+            if (a[i] <= k) {
+                if (i == n - 1) {
                     System.out.println(n);
                     return;
                 }
@@ -29,9 +29,9 @@ public class A {
         }
 
         for (int i = a.length - 1; i >= 0; i--) {
-            if(a[i] <= k){
+            if (a[i] <= k) {
                 ans++;
-            }else break;
+            } else break;
         }
 
         System.out.println(ans);

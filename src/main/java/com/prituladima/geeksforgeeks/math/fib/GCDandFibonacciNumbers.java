@@ -1,8 +1,6 @@
 package com.prituladima.geeksforgeeks.math.fib;
 
-import java.util.*;
-import java.lang.*;
-import java.io.*;
+import java.util.Scanner;
 
 public class GCDandFibonacciNumbers {
 

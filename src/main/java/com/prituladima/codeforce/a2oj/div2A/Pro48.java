@@ -1,9 +1,12 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
-import static java.lang.Math.*;
+import static java.lang.Math.max;
 import static java.util.stream.IntStream.range;
 
 /**
@@ -21,7 +24,7 @@ public class Pro48 {
 
         int ans = Integer.MIN_VALUE;
         for (int i = 0; i <= n / a; i++) {
-            for (int j = 0; j <= (n-i*a)/b; j++) {
+            for (int j = 0; j <= (n - i * a) / b; j++) {
                 int S = n - i * a - j * b;
                 if (S % c == 0) {
                     ans = max(ans, i + j + S / c);

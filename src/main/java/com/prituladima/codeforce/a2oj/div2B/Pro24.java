@@ -1,8 +1,11 @@
 package com.prituladima.codeforce.a2oj.div2B;
 
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.min;
@@ -56,10 +59,10 @@ public final class Pro24 {
             int max_ = Integer.MIN_VALUE;
             int min_ = Integer.MAX_VALUE;
             for (int j = 0; j < a.length; j++) {
-                    max_ = max(max_, occ[j][i]);
-                    min_ = min(min_, occ[j][i]);
+                max_ = max(max_, occ[j][i]);
+                min_ = min(min_, occ[j][i]);
             }
-            if(max_ - min_ > 1) {
+            if (max_ - min_ > 1) {
                 sout("NO");
                 return;
             }

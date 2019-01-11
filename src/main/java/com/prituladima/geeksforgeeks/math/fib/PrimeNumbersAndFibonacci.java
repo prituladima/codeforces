@@ -1,6 +1,5 @@
 package com.prituladima.geeksforgeeks.math.fib;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class PrimeNumbersAndFibonacci {

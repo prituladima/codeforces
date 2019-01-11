@@ -1,7 +1,10 @@
 package com.prituladima.codeforce.contests.contest1007;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -23,12 +26,12 @@ public class B {
 
         for (int i = 1; i < n; i++) {
             int w = nextInt(), h = nextInt();
-            if(max < Math.min(w, h)){
+            if (max < Math.min(w, h)) {
                 soutnl("NO");
                 return;
-            }else {
-                if(max >= Math.max(w, h))
-                max = Math.max(w, h);
+            } else {
+                if (max >= Math.max(w, h))
+                    max = Math.max(w, h);
                 else max = Math.min(w, h);
             }
 

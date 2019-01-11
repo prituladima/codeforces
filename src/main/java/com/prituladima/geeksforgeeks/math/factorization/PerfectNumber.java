@@ -1,9 +1,10 @@
 package com.prituladima.geeksforgeeks.math.factorization;
 
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * Created by prituladima on 8/5/18.
+ *
  * @see "https://practice.geeksforgeeks.org/problems/perfect-numbers/0"
  */
 public class PerfectNumber {

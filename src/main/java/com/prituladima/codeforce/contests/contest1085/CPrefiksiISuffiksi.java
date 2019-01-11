@@ -4,9 +4,7 @@ import com.prituladima.codeforce.InputReader;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class CPrefiksiISuffiksi {
     public void solve(int testNumber, InputReader in, PrintWriter out) {
@@ -72,7 +70,7 @@ public class CPrefiksiISuffiksi {
 
             if (s.substring(i, n).equals(first[i])) {
                 res[pointer2[i]] = 'S';
-            } else if (s.substring(i, n).equals(second[i])){
+            } else if (s.substring(i, n).equals(second[i])) {
                 res[pointer2[i]] = 'S';
             }
 

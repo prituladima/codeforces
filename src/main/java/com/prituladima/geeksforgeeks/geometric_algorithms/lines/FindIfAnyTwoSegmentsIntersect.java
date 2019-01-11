@@ -1,7 +1,11 @@
 package com.prituladima.geeksforgeeks.geometric_algorithms.lines;
 
-import com.prituladima.geeksforgeeks.geometric_algorithms.lines.sweep.*;
-import java.util.*;
+import com.prituladima.geeksforgeeks.geometric_algorithms.lines.sweep.SPoint;
+import com.prituladima.geeksforgeeks.geometric_algorithms.lines.sweep.Segment;
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 import static com.prituladima.geeksforgeeks.geometric_algorithms.lines.sweep.Util.doIntersect;
 

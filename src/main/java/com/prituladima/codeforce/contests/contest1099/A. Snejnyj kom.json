@@ -1,39 +1,42 @@
 {
-  "name" : "A. Снежный ком",
-  "testType" : "SINGLE",
-  "input" : {
-    "type" : "STANDARD",
-    "fileName" : "input.txt"
+  "name": "A. Снежный ком",
+  "testType": "SINGLE",
+  "input": {
+    "type": "STANDARD",
+    "fileName": "input.txt"
   },
-  "output" : {
-    "type" : "STANDARD",
-    "fileName" : "output.txt"
+  "output": {
+    "type": "STANDARD",
+    "fileName": "output.txt"
   },
-  "tests" : [ {
-    "input" : "4 3\n1 1\n1 2\n",
-    "output" : "8\n",
-    "index" : 0,
-    "active" : true
-  }, {
-    "input" : "4 3\n9 2\n0 1\n",
-    "output" : "1\n",
-    "index" : 1,
-    "active" : true
-  } ],
-  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1099",
-  "vmArgs" : "-Xmx256M",
-  "mainClass" : "Main",
-  "taskClass" : "com.prituladima.codeforce.contests.contest1099.ASnezhniiKom",
-  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
-  "checkerParameters" : "",
-  "testClasses" : [ ],
-  "date" : "2019.01.05",
-  "contestName" : "Codeforces Round #530 (Div. 2)",
-  "truncate" : true,
-  "inputClass" : "com.prituladima.codeforce.InputReader",
-  "outputClass" : "java.io.PrintWriter",
-  "includeLocale" : false,
-  "failOnOverflow" : false,
-  "interactive" : false,
-  "interactor" : "net.egork.chelper.tester.Interactor"
+  "tests": [
+    {
+      "input": "4 3\n1 1\n1 2\n",
+      "output": "8\n",
+      "index": 0,
+      "active": true
+    },
+    {
+      "input": "4 3\n9 2\n0 1\n",
+      "output": "1\n",
+      "index": 1,
+      "active": true
+    }
+  ],
+  "location": "src/main/java/com/prituladima/codeforce/contests/contest1099",
+  "vmArgs": "-Xmx256M",
+  "mainClass": "Main",
+  "taskClass": "com.prituladima.codeforce.contests.contest1099.ASnezhniiKom",
+  "checkerClass": "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters": "",
+  "testClasses": [],
+  "date": "2019.01.05",
+  "contestName": "Codeforces Round #530 (Div. 2)",
+  "truncate": true,
+  "inputClass": "com.prituladima.codeforce.InputReader",
+  "outputClass": "java.io.PrintWriter",
+  "includeLocale": false,
+  "failOnOverflow": false,
+  "interactive": false,
+  "interactor": "net.egork.chelper.tester.Interactor"
 }

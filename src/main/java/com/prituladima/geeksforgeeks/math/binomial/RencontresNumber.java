@@ -32,7 +32,7 @@ public class RencontresNumber {
     }
 
 
-    int rencontres_number_dp(int n, int m){
+    int rencontres_number_dp(int n, int m) {
         int dp[][] = new int[n + 1][m + 1];
 
         for (int i = 0; i <= n; i++) {
@@ -60,9 +60,6 @@ public class RencontresNumber {
 
 
     }
-
-
-
 
 
     int nCr(int n, int r) {

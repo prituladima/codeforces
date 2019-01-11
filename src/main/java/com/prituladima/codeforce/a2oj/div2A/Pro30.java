@@ -1,6 +1,9 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.*;
 
 /**
@@ -32,7 +35,7 @@ public class Pro30 {
         int n = nextInt(), k = nextInt();
         PriorityQueue<Student> pqPart =
                 new PriorityQueue<>(Comparator.comparingInt(Student::getPart)
-                .thenComparing(Student::getIndex));
+                        .thenComparing(Student::getIndex));
 
 
         for (int i = 0; i < n; i++) {
@@ -40,19 +43,16 @@ public class Pro30 {
         }
 
         List<Student> ans = new ArrayList<>();
-        while (!pqPart.isEmpty()){
+        while (!pqPart.isEmpty()) {
             Student can = pqPart.remove();
-            if(can.getPart() + k <= 5){
+            if (can.getPart() + k <= 5) {
                 ans.add(can);
-            }else {
+            } else {
                 break;
             }
         }
 
-        System.out.println(ans.size()/3);
-
-
-
+        System.out.println(ans.size() / 3);
 
 
     }

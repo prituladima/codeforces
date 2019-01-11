@@ -12,12 +12,12 @@ import static java.util.stream.IntStream.range;
 
 public class Pro68 {
     private void solve() {
-        int n  = nextInt();
+        int n = nextInt();
         int[] k = nextArr(n);
         int ans = Integer.MAX_VALUE;
         for (int i = 0; i < n; i++) {
             int[] m = nextArr(k[i]);
-            ans = min(ans, Arrays.stream(m).sum()*5 + k[i]*15);
+            ans = min(ans, Arrays.stream(m).sum() * 5 + k[i] * 15);
         }
         sout(ans);
     }

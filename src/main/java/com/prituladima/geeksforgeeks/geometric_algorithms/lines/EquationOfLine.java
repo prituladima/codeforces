@@ -1,6 +1,6 @@
 package com.prituladima.geeksforgeeks.geometric_algorithms.lines;
 
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * Created by prituladima on 7/13/18.
@@ -12,12 +12,12 @@ public class EquationOfLine {
 
         int A = p[1] - q[1];
         int B = q[0] - p[0];
-        int C = -1*(A * p[0] + B * p[1]);
+        int C = -1 * (A * p[0] + B * p[1]);
 
         int gcd = gcd(A, B);
         gcd = gcd(gcd, C);
 
-        return new int[]{A/gcd, B/gcd, C/gcd};
+        return new int[]{A / gcd, B / gcd, C / gcd};
     }
 
     int gcd(int a, int b) {

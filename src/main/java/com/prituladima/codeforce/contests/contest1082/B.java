@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.StringTokenizer;
 
 import static java.lang.Double.parseDouble;
@@ -26,7 +24,7 @@ public final class B {
             return;
         }
 
-        if(!S.contains("G")){
+        if (!S.contains("G")) {
             sout(0);
             return;
         }
@@ -35,7 +33,7 @@ public final class B {
 
         long counter_gold = S.chars().filter(c -> c == 'G').count();
 
-        if(S.length() == 2){
+        if (S.length() == 2) {
             sout(counter_gold);
             return;
         }
@@ -44,9 +42,9 @@ public final class B {
         int[] Ri = new int[n];
         int[] Li = new int[n];
         for (int i = 0; i < chars.length; i++) {
-            if(i == 0 && chars[i] == 'G'){
+            if (i == 0 && chars[i] == 'G') {
                 Li[0] = 1;
-            } else if(chars[i] == 'G') {
+            } else if (chars[i] == 'G') {
                 Li[i] = Li[i - 1] + 1;
             } else {
                 Li[i] = 0;
@@ -54,9 +52,9 @@ public final class B {
         }
 
         for (int i = chars.length - 1; i >= 0; i--) {
-            if(i == n - 1 && chars[i] == 'G'){
+            if (i == n - 1 && chars[i] == 'G') {
                 Ri[n - 1] = 1;
-            } else if(chars[i] == 'G') {
+            } else if (chars[i] == 'G') {
                 Ri[i] = Ri[i + 1] + 1;
             } else {
                 Ri[i] = 0;
@@ -65,32 +63,28 @@ public final class B {
 
         int ans = Integer.MIN_VALUE;
         for (int i = 1; i < chars.length - 1; i++) {
-            int both = Li[i - 1 ] +  Ri[i + 1];
-            ans = Math.max(ans, Math.min(both + 1, (int)counter_gold));
+            int both = Li[i - 1] + Ri[i + 1];
+            ans = Math.max(ans, Math.min(both + 1, (int) counter_gold));
         }
         sout(ans);
     }
 
 
-    static int maxSubArraySum(int a[], int size)
-    {
+    static int maxSubArraySum(int a[], int size) {
         int max_so_far = Integer.MIN_VALUE,
-                max_ending_here = 0,start = 0,
+                max_ending_here = 0, start = 0,
                 end = 0, s = 0;
 
-        for (int i = 0; i < size; i++)
-        {
+        for (int i = 0; i < size; i++) {
             max_ending_here += a[i];
 
-            if (max_so_far < max_ending_here)
-            {
+            if (max_so_far < max_ending_here) {
                 max_so_far = max_ending_here;
                 start = s;
                 end = i;
             }
 
-            if (max_ending_here < 0)
-            {
+            if (max_ending_here < 0) {
                 max_ending_here = 0;
                 s = i + 1;
             }

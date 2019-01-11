@@ -1,6 +1,6 @@
 package com.prituladima.codeforce.contests.contest1096;
 
-import com.prituladima.codeforce.GeekMath;
+import com.prituladima.codeforce.GeekInteger;
 import com.prituladima.codeforce.InputReader;
 
 import java.io.PrintWriter;
@@ -35,7 +35,7 @@ public class BUdaleniePodstroki {
             return;
         }
 
-        long ans = GeekMath.multiplication(mod, R + 1, L + 1);
+        long ans = GeekInteger.multiplication(mod, R + 1, L + 1);
 
         out.println(ans);
 

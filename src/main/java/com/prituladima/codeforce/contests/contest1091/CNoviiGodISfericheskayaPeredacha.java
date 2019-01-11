@@ -35,7 +35,7 @@ public class CNoviiGodISfericheskayaPeredacha {
     }
 
     private void solve(Set<Long> set, long a, long b) {
-        long res = a* (b*(b-1))/2 + b;
+        long res = a * (b * (b - 1)) / 2 + b;
         set.add(res);
 
     }

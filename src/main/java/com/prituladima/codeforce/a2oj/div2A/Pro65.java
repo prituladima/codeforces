@@ -18,7 +18,7 @@ public class Pro65 {
 
 
         int s = y + 1;
-        s = s % k == 0 ? s : s  - s % k + k;
+        s = s % k == 0 ? s : s - s % k + k;
 
         boolean atLeastOne = false;
         for (int i = s; i <= n; i += k) {

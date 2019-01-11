@@ -10,7 +10,7 @@ public class NbonacciNumbers {
 
     }
 
-    static void bonacciseries(int N, int M){
+    static void bonacciseries(int N, int M) {
 
         int[] fib = new int[M + 1];
         for (int i = 0; i < N; i++) {

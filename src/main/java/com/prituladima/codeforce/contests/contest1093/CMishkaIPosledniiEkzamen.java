@@ -22,7 +22,7 @@ public class CMishkaIPosledniiEkzamen {
             if (a[i] < a[i - 1]) {
                 long diff = a[i - 1] - a[i];
                 a[i] += diff;
-                a[n - 1 -i] -= diff;
+                a[n - 1 - i] -= diff;
             }
         }
 

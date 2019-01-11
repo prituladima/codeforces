@@ -1,7 +1,10 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 import static java.lang.Math.max;
 import static java.util.stream.IntStream.range;
@@ -20,8 +23,8 @@ public class Pro34 {
 
 
         int ans = c;
-        for (int i = 0; i < x.length-1; i++) {
-            ans = max(ans, x[i] - x[i+1]);
+        for (int i = 0; i < x.length - 1; i++) {
+            ans = max(ans, x[i] - x[i + 1]);
         }
 
         System.out.println(ans - c);
@@ -60,15 +63,15 @@ public class Pro34 {
         return Arrays.stream(new double[size]).map(c -> nextDouble()).toArray();
     }
 
-    char[][] nextCharMatrix(int n){
+    char[][] nextCharMatrix(int n) {
         return range(0, n).mapToObj(i -> nextToken().toCharArray()).toArray(char[][]::new);
     }
 
-    int[][] nextIntMatrix(int n, int m){
+    int[][] nextIntMatrix(int n, int m) {
         return range(0, n).mapToObj(i -> nextArr(m)).toArray(int[][]::new);
     }
 
-    double[][] nextDoubleMatrix(int n, int m){
+    double[][] nextDoubleMatrix(int n, int m) {
         return range(0, n).mapToObj(i -> nextArr(m)).toArray(double[][]::new);
     }
 

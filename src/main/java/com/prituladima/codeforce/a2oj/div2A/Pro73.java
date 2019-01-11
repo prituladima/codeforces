@@ -27,8 +27,8 @@ public class Pro73 {
         for (int i = 1; i < n; i++) {
 //            soutn(abs(a[i] - a[i - 1]));
             if (abs(a[i] - a[i - 1]) < d) {
-                f = i ;
-                s = i +1;
+                f = i;
+                s = i + 1;
                 d = abs(a[i] - a[i - 1]);
             }
         }

@@ -37,7 +37,7 @@ public class Sorting {
             stop = System.currentTimeMillis();
 
 
-            System.out.println("---------- Time for --------- " +  (stop - start));
+            System.out.println("---------- Time for --------- " + (stop - start));
 
 
             int[] copy2 = Arrays.copyOf(array, array.length);
@@ -50,7 +50,7 @@ public class Sorting {
             stop = System.currentTimeMillis();
 
 
-            System.out.println("---------- Time for --------- " +  (stop - start));
+            System.out.println("---------- Time for --------- " + (stop - start));
 
 
         }
@@ -58,8 +58,8 @@ public class Sorting {
 
     }
 
-    private static void quickSort(int[] array){
-        quickSort(array,        0, array.length-1);
+    private static void quickSort(int[] array) {
+        quickSort(array, 0, array.length - 1);
     }
 
     private static void quickSort(int[] array, int start, int end) {
@@ -85,7 +85,7 @@ public class Sorting {
             }
         }
         quickSort(array, start, cur);
-        quickSort(array, cur+1, end);
+        quickSort(array, cur + 1, end);
     }
 
 

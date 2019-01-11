@@ -1,7 +1,10 @@
 //package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -12,7 +15,6 @@ import static java.lang.Math.min;
 public class Pro15 {
 
     private void solve() throws IOException {
-
 
 
         int n = nextInt();
@@ -29,8 +31,7 @@ public class Pro15 {
         }
 
 
-
-        System.out.println(max(max(x, y), z) == 0 && min(min(x,y), x) == 0 ? "YES" :"NO");
+        System.out.println(max(max(x, y), z) == 0 && min(min(x, y), x) == 0 ? "YES" : "NO");
 
     }
 

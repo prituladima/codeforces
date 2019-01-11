@@ -1,4 +1,3 @@
-
 package com.prituladima.codeforce.contests.contest1036;
 
 import java.io.BufferedReader;
@@ -28,8 +27,8 @@ public class B {
 //                    else
 //                        ans = k;
 //                } else
-                    if (n % 2 == m % 2) {
-                    if (k % 2 == Math.min(n,m)%2) {
+                if (n % 2 == m % 2) {
+                    if (k % 2 == Math.min(n, m) % 2) {
                         ans = k;
                     } else {
                         ans = k - 2;

@@ -17,11 +17,11 @@ public class Pro64 {
 
         int n = nextInt(), k = nextInt();
 
-        if(n > 1 && k == 0){
+        if (n > 1 && k == 0) {
             sout("No solution");
-        }else {
+        } else {
             sout(k);
-            range(0, n-1).map(i->0).forEach(this::sout);
+            range(0, n - 1).map(i -> 0).forEach(this::sout);
         }
 
 

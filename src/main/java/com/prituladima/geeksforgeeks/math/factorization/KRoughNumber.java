@@ -4,6 +4,7 @@ import static java.lang.Math.min;
 
 /**
  * Created by prituladima on 8/5/18.
+ *
  * @see "https://www.geeksforgeeks.org/k-rough-number-k-jagged-number/"
  */
 public class KRoughNumber {

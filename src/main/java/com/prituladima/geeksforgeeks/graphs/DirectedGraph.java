@@ -97,7 +97,7 @@ public class DirectedGraph {
                     break;
                 }
             }
-            if(mother){
+            if (mother) {
                 arr.add(i);
             }
         }

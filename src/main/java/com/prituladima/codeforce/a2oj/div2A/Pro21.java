@@ -1,7 +1,10 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import static java.lang.Math.min;
 
@@ -18,7 +21,7 @@ public class Pro21 {
         int B = n / m * b + n % m * a;
         int C = (n + m - 1) / m * b;
 
-        System.out.println(min(min(A,B),C));
+        System.out.println(min(min(A, B), C));
 
     }
 

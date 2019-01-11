@@ -1,7 +1,10 @@
 package com.prituladima.codeforce.virtual.contest1029;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -19,7 +22,7 @@ public final class B {
         int ans = 1;
         for (int i = 0; i < n; i++) {
             int j = i;
-            while(j+1 <= n-1 && 2*a[j] >= a[j+1])
+            while (j + 1 <= n - 1 && 2 * a[j] >= a[j + 1])
                 j++;
             ans = max(ans, j - i + 1);
             i = j;

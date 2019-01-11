@@ -1,8 +1,7 @@
 package com.prituladima.codeforce.contests.contest1080;
 
+import com.prituladima.codeforce.GeekInteger;
 import com.prituladima.codeforce.InputReader;
-import com.prituladima.codeforce.GeekMath;
-
 
 import java.io.PrintWriter;
 
@@ -27,7 +26,7 @@ public class CMashaIDvaDruga {
             long whiteCounter = calcWhite(n, m);
             long blackCounter = calvBlack(n, m);
 
-            long excludeBlack = GeekMath.equalParity(x1, y1)
+            long excludeBlack = GeekInteger.equalParity(x1, y1)
                     ?
                     calvBlack(y2 - y1 + 1, x2 - x1 + 1)
                     :
@@ -36,7 +35,7 @@ public class CMashaIDvaDruga {
             blackCounter -= excludeBlack;
 
 
-            long excludeWhite = GeekMath.equalParity(x3, y3)
+            long excludeWhite = GeekInteger.equalParity(x3, y3)
                     ?
                     calcWhite(y4 - y3 + 1, x4 - x3 + 1)
                     :
@@ -50,7 +49,7 @@ public class CMashaIDvaDruga {
                     yc2 = Math.min(y2, y4);
 
             if (xc1 <= xc2 && yc1 <= yc2) {
-                long includeBlack = GeekMath.equalParity(xc1, yc1)
+                long includeBlack = GeekInteger.equalParity(xc1, yc1)
                         ?
                         calvBlack(yc2 - yc1 + 1, xc2 - xc1 + 1)
                         :

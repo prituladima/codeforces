@@ -16,7 +16,7 @@ public class B {
         int n = nextInt();
         String t = nextToken();
 
-        if(n == 1){
+        if (n == 1) {
             System.out.println(t);
 
             return;
@@ -31,7 +31,7 @@ public class B {
 
         Collections.sort(divisors, Comparator.naturalOrder());
 
-        for (int i = 0; i < divisors.size()-1; i++) {
+        for (int i = 0; i < divisors.size() - 1; i++) {
             String A = t.substring(0, divisors.get(i));
             A = new StringBuilder(A).reverse().toString();
             String B = t.substring(divisors.get(i));

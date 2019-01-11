@@ -1,6 +1,7 @@
 package com.prituladima.codeforce.contests.contest1043;
 
 import com.prituladima.codeforce.InputReader;
+
 import java.io.PrintWriter;
 
 public class AVibori {
@@ -19,7 +20,7 @@ public class AVibori {
         int all = max * n;
         int sum2 = all - sum;
         int k = max;
-        while (sum2 <= sum){
+        while (sum2 <= sum) {
             sum2 += n;
             k++;
         }

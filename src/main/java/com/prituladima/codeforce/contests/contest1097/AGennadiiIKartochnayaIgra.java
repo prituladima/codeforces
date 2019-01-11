@@ -1,6 +1,7 @@
 package com.prituladima.codeforce.contests.contest1097;
 
 import com.prituladima.codeforce.InputReader;
+
 import java.io.PrintWriter;
 
 public class AGennadiiIKartochnayaIgra {
@@ -12,7 +13,7 @@ public class AGennadiiIKartochnayaIgra {
         }
 
         for (int i = 1; i < 6; i++) {
-            if(input[0].charAt(0) == input[i].charAt(0) || input[0].charAt(1) == input[i].charAt(1)){
+            if (input[0].charAt(0) == input[i].charAt(0) || input[0].charAt(1) == input[i].charAt(1)) {
                 out.print("YES");
                 return;
             }

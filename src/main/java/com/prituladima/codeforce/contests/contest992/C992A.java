@@ -25,13 +25,11 @@ public class C992A {
         }
 
         int diff = 0;
-        if(set.contains(0)){
+        if (set.contains(0)) {
             diff = 1;
         }
 
-        System.out.println(set.size()  -diff);
-
-
+        System.out.println(set.size() - diff);
 
 
     }

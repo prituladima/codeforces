@@ -1,6 +1,7 @@
 package com.prituladima.codeforce.contests.contest1099;
 
 import com.prituladima.codeforce.InputReader;
+
 import java.io.PrintWriter;
 
 public class DSummaVDereve {

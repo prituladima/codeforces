@@ -13,7 +13,7 @@ public class Slope {
         second = y1 - y2;
 
         int gcd = gcd(first, second);
-        if(gcd != 0) {
+        if (gcd != 0) {
             first /= gcd;
             second /= gcd;
         }

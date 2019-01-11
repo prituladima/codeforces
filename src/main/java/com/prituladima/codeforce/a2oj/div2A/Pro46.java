@@ -1,7 +1,10 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 import static java.util.stream.IntStream.range;
 
@@ -25,7 +28,7 @@ public class Pro46 {
         char[] chars = String.valueOf(a).toCharArray();
         int res = 0;
         for (int i = 0; i < chars.length; i++) {
-            res += chars[i] == '4' || chars[i] == '7' ? 1:0;
+            res += chars[i] == '4' || chars[i] == '7' ? 1 : 0;
         }
         return res;
     }

@@ -26,12 +26,12 @@ public class BPoteryanniiMassiv {
         for (int k = 1; k <= n; k++) {
             boolean ans = true;
             for (int j = 0; j < b.length; j++) {
-                if(b[j] != b[j % k]){
+                if (b[j] != b[j % k]) {
                     ans = false;
                     break;
                 }
             }
-            if(ans) res.add(k);
+            if (ans) res.add(k);
         }
 
         out.println(res.size());

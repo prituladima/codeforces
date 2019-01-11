@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Comparator;
 import java.util.StringTokenizer;
 
 /**
@@ -17,9 +16,9 @@ public class Pro4 {
 
         int ans = nextToken().compareToIgnoreCase(nextToken());
 
-        if(ans < 0){
+        if (ans < 0) {
             ans = -1;
-        }else if(ans > 0) {
+        } else if (ans > 0) {
             ans = 1;
         }
         System.out.println(ans);

@@ -1,12 +1,15 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
-import java.util.stream.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
-
-import static java.util.stream.IntStream.range;
 import static java.lang.System.out;
+import static java.util.stream.IntStream.range;
 
 /**
  * Created by prituladima on 6/28/18.

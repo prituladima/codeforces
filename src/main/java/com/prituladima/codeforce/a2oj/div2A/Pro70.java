@@ -18,7 +18,7 @@ public class Pro70 {
         boolean isTwo = false;
 
         for (int i = 0; i < n; i++) {
-            for(int j = 0; j < m; j++) {
+            for (int j = 0; j < m; j++) {
                 a = nextInt();
                 if (a == 1) {
                     if (i == 0 || i == (n - 1))

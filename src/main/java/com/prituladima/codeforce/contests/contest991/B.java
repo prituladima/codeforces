@@ -18,9 +18,9 @@ public class B {
         int[] m = nextArr(n);
 
 
-        double min = 4.5*n;
+        double min = 4.5 * n;
 
-        int[] count =  new int[6];
+        int[] count = new int[6];
 
         double sum = 0;
 
@@ -33,10 +33,10 @@ public class B {
         int res = 0;
 
         for (int i = 2; i < 6 && sum < min; i++) {
-            while(count[i] >  0 && sum < min){
-                count[i] --;
+            while (count[i] > 0 && sum < min) {
+                count[i]--;
 
-                sum+= 5 - i;
+                sum += 5 - i;
                 res++;
 
             }

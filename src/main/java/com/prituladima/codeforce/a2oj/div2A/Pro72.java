@@ -34,7 +34,7 @@ public class Pro72 {
 
                 if (L1 < L2 && L2 < R1 && R1 < R2) {
                     ans = "yes";
-                }else if(L2 < L1 && L1 < R2 && R2 < R1){
+                } else if (L2 < L1 && L1 < R2 && R2 < R1) {
                     ans = "yes";
                 }
 

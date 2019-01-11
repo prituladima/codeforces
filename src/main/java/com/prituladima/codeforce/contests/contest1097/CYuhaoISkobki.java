@@ -4,9 +4,7 @@ import com.prituladima.codeforce.InputReader;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CYuhaoISkobki {
     public void solve(int testNumber, InputReader in, PrintWriter out) {
@@ -20,18 +18,18 @@ public class CYuhaoISkobki {
             int count = 0;
             for (int i = 0; i < s.length(); i++) {
                 char c = s.charAt(i);
-                if(c == '(') count++;
+                if (c == '(') count++;
                 else count--;
-                if(count < min) min = count;
+                if (count < min) min = count;
             }
-            if(min == 0){
-                if(count == 0){
+            if (min == 0) {
+                if (count == 0) {
                     correct++;
-                }else {
+                } else {
                     pos.add(count);
                 }
-            }else {
-                if(min == count){
+            } else {
+                if (min == count) {
                     neg.add(count);
                 }
             }
@@ -43,14 +41,14 @@ public class CYuhaoISkobki {
         for (Integer i : neg) {
             negg[-i]++;
         }
-        for (Integer i :pos) {
+        for (Integer i : pos) {
             poss[i]++;
         }
         int ans = 0;
         for (int i = 1; i < 500001; i++) {
             ans += Math.min(negg[i], poss[i]);
         }
-        ans  += correct / 2;
+        ans += correct / 2;
         out.print(ans);
     }
 }

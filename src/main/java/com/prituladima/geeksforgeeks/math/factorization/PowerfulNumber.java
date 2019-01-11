@@ -1,11 +1,12 @@
 package com.prituladima.geeksforgeeks.math.factorization;
 
-import java.util.*;
+import java.util.HashMap;
 
 import static java.lang.Math.min;
 
 /**
  * Created by prituladima on 8/5/18.
+ *
  * @see "https://www.geeksforgeeks.org/powerful-number/"
  */
 public class PowerfulNumber {

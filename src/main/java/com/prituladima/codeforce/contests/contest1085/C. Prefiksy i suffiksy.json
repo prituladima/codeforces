@@ -1,44 +1,48 @@
 {
-  "name" : "C. Префиксы и суффиксы",
-  "testType" : "SINGLE",
-  "input" : {
-    "type" : "STANDARD",
-    "fileName" : "input.txt"
+  "name": "C. Префиксы и суффиксы",
+  "testType": "SINGLE",
+  "input": {
+    "type": "STANDARD",
+    "fileName": "input.txt"
   },
-  "output" : {
-    "type" : "STANDARD",
-    "fileName" : "output.txt"
+  "output": {
+    "type": "STANDARD",
+    "fileName": "output.txt"
   },
-  "tests" : [ {
-    "input" : "5\nba\na\nabab\na\naba\nbaba\nab\naba\n",
-    "output" : "SPPSPSPS\n",
-    "index" : 0,
-    "active" : true
-  }, {
-    "input" : "3\na\naa\naa\na\n",
-    "output" : "PPSS\n",
-    "index" : 1,
-    "active" : true
-  }, {
-    "input" : "2\na\nc\n",
-    "output" : "PS\n",
-    "index" : 2,
-    "active" : true
-  } ],
-  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1085",
-  "vmArgs" : "-Xmx256M",
-  "mainClass" : "Main",
-  "taskClass" : "com.prituladima.codeforce.contests.contest1085.CPrefiksiISuffiksi",
-  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
-  "checkerParameters" : "",
-  "testClasses" : [ ],
-  "date" : "2018.12.23",
-  "contestName" : "Codeforces Round #527 (Div. 3)",
-  "truncate" : true,
-  "inputClass" : "com.prituladima.codeforce.InputReader",
-  "outputClass" : "java.io.PrintWriter",
-  "includeLocale" : false,
-  "failOnOverflow" : false,
-  "interactive" : false,
-  "interactor" : "net.egork.chelper.tester.Interactor"
+  "tests": [
+    {
+      "input": "5\nba\na\nabab\na\naba\nbaba\nab\naba\n",
+      "output": "SPPSPSPS\n",
+      "index": 0,
+      "active": true
+    },
+    {
+      "input": "3\na\naa\naa\na\n",
+      "output": "PPSS\n",
+      "index": 1,
+      "active": true
+    },
+    {
+      "input": "2\na\nc\n",
+      "output": "PS\n",
+      "index": 2,
+      "active": true
+    }
+  ],
+  "location": "src/main/java/com/prituladima/codeforce/contests/contest1085",
+  "vmArgs": "-Xmx256M",
+  "mainClass": "Main",
+  "taskClass": "com.prituladima.codeforce.contests.contest1085.CPrefiksiISuffiksi",
+  "checkerClass": "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters": "",
+  "testClasses": [],
+  "date": "2018.12.23",
+  "contestName": "Codeforces Round #527 (Div. 3)",
+  "truncate": true,
+  "inputClass": "com.prituladima.codeforce.InputReader",
+  "outputClass": "java.io.PrintWriter",
+  "includeLocale": false,
+  "failOnOverflow": false,
+  "interactive": false,
+  "interactor": "net.egork.chelper.tester.Interactor"
 }

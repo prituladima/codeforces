@@ -1,7 +1,10 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import static java.lang.Math.min;
 
@@ -15,7 +18,7 @@ public class Pro25 {
         final int n = nextInt(), m = nextInt();
         int ans = Integer.MAX_VALUE;
         for (int i = n; i >= n / 2 + n % 2; i--) {
-            if (i % m == 0 ) {
+            if (i % m == 0) {
                 ans = min(ans, i);
             }
         }

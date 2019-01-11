@@ -13,9 +13,9 @@ public class GCDofDigitsOfaGivenNumber {
 
     }
 
-    static long gcdDigits(long n){
+    static long gcdDigits(long n) {
         long ans = 0;
-        while (n > 0){
+        while (n > 0) {
             ans = gcd(n % 10, ans);
 
             if (ans == 1)
@@ -26,8 +26,8 @@ public class GCDofDigitsOfaGivenNumber {
         return ans;
     }
 
-    static long gcd (long a, long b){
-        return b == 0 ? a : gcd(b, a%b);
+    static long gcd(long a, long b) {
+        return b == 0 ? a : gcd(b, a % b);
     }
 
 }

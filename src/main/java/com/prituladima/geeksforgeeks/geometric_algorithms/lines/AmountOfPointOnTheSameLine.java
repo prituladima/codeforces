@@ -1,7 +1,9 @@
 package com.prituladima.geeksforgeeks.geometric_algorithms.lines;
 
-import com.prituladima.geeksforgeeks.geometric_algorithms.lines.slope.*;
-import java.util.*;
+import com.prituladima.geeksforgeeks.geometric_algorithms.lines.slope.Slope;
+
+import java.util.HashMap;
+import java.util.Scanner;
 
 import static java.util.stream.IntStream.range;
 

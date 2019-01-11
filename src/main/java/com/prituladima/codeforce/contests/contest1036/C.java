@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.*;
-import java.util.stream.IntStream;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -91,7 +90,7 @@ public class C {
     private void solve() {
         pregen();
         int k = nextInt();
-        while (k-- > 0){
+        while (k-- > 0) {
             soutnl(Classy_Numbers(nextLong(), nextLong()));
         }
 //        IntStream.range(0, nextInt()).forEach((i) -> soutnl(Classy_Numbers(nextLong(), nextLong())));

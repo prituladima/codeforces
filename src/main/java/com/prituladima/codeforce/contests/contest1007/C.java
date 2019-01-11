@@ -1,6 +1,9 @@
 package com.prituladima.codeforce.contests.contest1007;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.*;
 
 import static java.lang.Double.parseDouble;
@@ -15,8 +18,6 @@ import static java.util.stream.IntStream.range;
 public class C {
 
 
-
-
     private void solve() {
 
         int n = nextInt();
@@ -28,15 +29,15 @@ public class C {
 
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < list.size(); i++) {
-            map.merge(list.get(i), 1, (x, y)->x+y);
+            map.merge(list.get(i), 1, (x, y) -> x + y);
         }
 
         int max = Integer.MIN_VALUE;
         for (int i : map.keySet()) {
-            max = Math.max(max, map.get(i)-1);
+            max = Math.max(max, map.get(i) - 1);
         }
 
-        soutnl(n -1 -max);
+        soutnl(n - 1 - max);
 
     }
 

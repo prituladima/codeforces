@@ -1,8 +1,13 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
 
 /**
  * Created by prituladima on 6/28/18.
@@ -43,22 +48,22 @@ public class Pro24 {
             pqBonus.add(new Dragon(nextInt(), nextInt()));
         }
 
-        while (!pqBonus.isEmpty()){
+        while (!pqBonus.isEmpty()) {
 
             Dragon candidate = pqBonus.remove();
-            if(candidate.getPower() < s){
-                s+= candidate.getBonus();
-            }else {
+            if (candidate.getPower() < s) {
+                s += candidate.getBonus();
+            } else {
                 pqPower.add(candidate);
             }
         }
 
 
-        while (!pqPower.isEmpty()){
+        while (!pqPower.isEmpty()) {
             Dragon candidate = pqPower.remove();
-            if(candidate.getPower() < s){
+            if (candidate.getPower() < s) {
                 s += candidate.getBonus();
-            }else {
+            } else {
                 System.out.println("NO");
                 return;
             }

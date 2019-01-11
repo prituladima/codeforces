@@ -1,7 +1,10 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 import static java.lang.Math.max;
 
@@ -14,7 +17,7 @@ public class Pro22 {
         String input = new StringBuilder(nextToken()).reverse().toString();
 
         int A = Integer.parseInt(new StringBuilder(input.substring(1)).reverse().toString());
-        int B = Integer.parseInt(new StringBuilder(input.substring(0, 1) + (input.length() >= 3?input.substring(2):"")).reverse().toString());
+        int B = Integer.parseInt(new StringBuilder(input.substring(0, 1) + (input.length() >= 3 ? input.substring(2) : "")).reverse().toString());
         int C = Integer.parseInt(new StringBuilder(input).reverse().toString());
 
 

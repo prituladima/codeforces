@@ -1,7 +1,12 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.StringTokenizer;
 
 import static java.util.stream.IntStream.range;
 
@@ -21,21 +26,21 @@ public class Pro54 {
 
         for (int i = 0; i < n; i++) {
             int next = nextInt();
-            if(next == 0){
+            if (next == 0) {
                 zero.add(0);
-            }else if(next >0){
+            } else if (next > 0) {
                 pos.add(next);
-            }else {
+            } else {
                 neg.add(next);
             }
         }
 
-        if(pos.size() == 0){
+        if (pos.size() == 0) {
             pos.add(neg.remove(0));
             pos.add(neg.remove(0));
         }
 
-        if (neg.size()%2==0) {
+        if (neg.size() % 2 == 0) {
             zero.add(neg.remove(0));
         }
 
@@ -52,8 +57,6 @@ public class Pro54 {
             System.out.print(pos.get(i) + " ");
         }
         System.out.println();
-
-
 
 
         System.out.print(zero.size() + " ");

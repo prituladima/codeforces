@@ -1,49 +1,54 @@
 {
-  "name" : "B. Прощальная вечеринка",
-  "testType" : "SINGLE",
-  "input" : {
-    "type" : "STANDARD",
-    "fileName" : "input.txt"
+  "name": "B. Прощальная вечеринка",
+  "testType": "SINGLE",
+  "input": {
+    "type": "STANDARD",
+    "fileName": "input.txt"
   },
-  "output" : {
-    "type" : "STANDARD",
-    "fileName" : "output.txt"
+  "output": {
+    "type": "STANDARD",
+    "fileName": "output.txt"
   },
-  "tests" : [ {
-    "input" : "3\n0 0 0\n",
-    "output" : "Possible\n1 1 1 \n",
-    "index" : 0,
-    "active" : false
-  }, {
-    "input" : "5\n3 3 2 2 2\n",
-    "output" : "Possible\n1 1 2 2 2 \n",
-    "index" : 1,
-    "active" : false
-  }, {
-    "input" : "4\n0 1 2 3\n",
-    "output" : "Impossible\n",
-    "index" : 2,
-    "active" : false
-  }, {
-    "input" : "4\n2 2 2 2",
-    "output" : "Possible\n1 2 1 2 ",
-    "index" : 3,
-    "active" : true
-  } ],
-  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1081",
-  "vmArgs" : "-Xmx256M",
-  "mainClass" : "Main",
-  "taskClass" : "com.prituladima.codeforce.contests.contest1081.BProshalnayaVecherinka",
-  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
-  "checkerParameters" : "",
-  "testClasses" : [ ],
-  "date" : "2018.12.31",
-  "contestName" : "Avito Cool Challenge 2018",
-  "truncate" : true,
-  "inputClass" : "com.prituladima.codeforce.InputReader",
-  "outputClass" : "java.io.PrintWriter",
-  "includeLocale" : false,
-  "failOnOverflow" : false,
-  "interactive" : false,
-  "interactor" : "net.egork.chelper.tester.Interactor"
+  "tests": [
+    {
+      "input": "3\n0 0 0\n",
+      "output": "Possible\n1 1 1 \n",
+      "index": 0,
+      "active": false
+    },
+    {
+      "input": "5\n3 3 2 2 2\n",
+      "output": "Possible\n1 1 2 2 2 \n",
+      "index": 1,
+      "active": false
+    },
+    {
+      "input": "4\n0 1 2 3\n",
+      "output": "Impossible\n",
+      "index": 2,
+      "active": false
+    },
+    {
+      "input": "4\n2 2 2 2",
+      "output": "Possible\n1 2 1 2 ",
+      "index": 3,
+      "active": true
+    }
+  ],
+  "location": "src/main/java/com/prituladima/codeforce/contests/contest1081",
+  "vmArgs": "-Xmx256M",
+  "mainClass": "Main",
+  "taskClass": "com.prituladima.codeforce.contests.contest1081.BProshalnayaVecherinka",
+  "checkerClass": "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters": "",
+  "testClasses": [],
+  "date": "2018.12.31",
+  "contestName": "Avito Cool Challenge 2018",
+  "truncate": true,
+  "inputClass": "com.prituladima.codeforce.InputReader",
+  "outputClass": "java.io.PrintWriter",
+  "includeLocale": false,
+  "failOnOverflow": false,
+  "interactive": false,
+  "interactor": "net.egork.chelper.tester.Interactor"
 }

@@ -1,7 +1,7 @@
 package com.prituladima.geeksforgeeks.math.factorization;
 
 
-import java.util.*;
+import java.util.Scanner;
 
 import static java.lang.StrictMath.max;
 

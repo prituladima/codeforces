@@ -36,7 +36,7 @@ public class CSoediniteTroiku {
             return Objects.hash(x, y);
         }
 
-        public Pair cpy(){
+        public Pair cpy() {
             return new Pair(x, y);
         }
     }
@@ -48,11 +48,11 @@ public class CSoediniteTroiku {
         int[] B = in.nextArr(2);
         int[] C = in.nextArr(2);
 
-        if((A[0] - B[0])*(A[0] - B[0]) + (B[1] - A[1])*(B[1] - A[1]) <= (A[0] - C[0])*(A[0] - C[0]) + (C[1] - A[1])*(C[1] - A[1])){
+        if ((A[0] - B[0]) * (A[0] - B[0]) + (B[1] - A[1]) * (B[1] - A[1]) <= (A[0] - C[0]) * (A[0] - C[0]) + (C[1] - A[1]) * (C[1] - A[1])) {
             trav(new Pair(A[0], A[1]), new Pair(B[0], B[1]));
             trav(new Pair(C[0], C[1]), new Pair(B[0], B[1]));
 
-        }else {
+        } else {
             trav(new Pair(A[0], A[1]), new Pair(C[0], C[1]));
             trav(new Pair(B[0], B[1]), new Pair(C[0], C[1]));
         }
@@ -64,21 +64,21 @@ public class CSoediniteTroiku {
         }
     }
 
-    private void trav(Pair from,  Pair to){
+    private void trav(Pair from, Pair to) {
         set.add(from.cpy());
-        while (from.x != to.x){
-            if(from.x < to.x){
-                from.x ++;
-            }else{
-                from.x --;
+        while (from.x != to.x) {
+            if (from.x < to.x) {
+                from.x++;
+            } else {
+                from.x--;
             }
             set.add(from.cpy());
         }
-        while (from.y != to.y){
-            if(from.y < to.y){
-                from.y ++;
-            }else{
-                from.y --;
+        while (from.y != to.y) {
+            if (from.y < to.y) {
+                from.y++;
+            } else {
+                from.y--;
             }
             set.add(from.cpy());
         }

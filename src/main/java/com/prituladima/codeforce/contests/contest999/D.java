@@ -1,7 +1,9 @@
 package com.prituladima.codeforce.contests.contest999;
 
 import java.io.*;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.StringTokenizer;
+import java.util.TreeMap;
 
 /**
  * Created by prituladima on 6/23/18.
@@ -24,7 +26,6 @@ public class D {
         }
 
 
-
         int n = nextInt(), m = nextInt();
         int[] a = nextArr(n);
         LinkedList<Integer>[] c = new LinkedList[m];
@@ -33,7 +34,8 @@ public class D {
             c[i] = new LinkedList<>();
         }
 
-        long ans = 0;new TreeMap<>();
+        long ans = 0;
+        new TreeMap<>();
 
         int n_m = n / m;
 
@@ -43,7 +45,8 @@ public class D {
 
         while (true) {
             int c_index = 0;
-            for (; c_index < m && c[c_index].size() >= n_m; c_index++) {}
+            for (; c_index < m && c[c_index].size() >= n_m; c_index++) {
+            }
             if (c_index >= m) {
                 break;
             }

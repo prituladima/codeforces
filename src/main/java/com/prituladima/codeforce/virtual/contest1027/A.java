@@ -19,13 +19,13 @@ public class A {
     private void solve() {
 
         int t = nextInt();
-        while (t-- > 0){
+        while (t-- > 0) {
 
             int n = nextInt();
-            char[] ch  = nextToken().toCharArray();
+            char[] ch = nextToken().toCharArray();
 
             boolean ans = true;
-            for (int i = 0; i <= ch.length / 2 ; i++) {
+            for (int i = 0; i <= ch.length / 2; i++) {
                 ans &=
 
 //                        ch[i] == ch[ch.length - 1 - i]
@@ -33,12 +33,11 @@ public class A {
 //                        || ch[i] - 1 == ch[ch.length - 1 - i]
 //                        || ch[i] + 1 == ch[ch.length - 1 - i]
 
-                         ch[i] - 1 == ch[ch.length - 1 - i] + 1
-                        || ch[i] + 1 == ch[ch.length - 1 - i] + 1
+                        ch[i] - 1 == ch[ch.length - 1 - i] + 1
+                                || ch[i] + 1 == ch[ch.length - 1 - i] + 1
 
-                        || ch[i] - 1 == ch[ch.length - 1 - i] - 1
-                        || ch[i] + 1 == ch[ch.length - 1 - i] - 1
-
+                                || ch[i] - 1 == ch[ch.length - 1 - i] - 1
+                                || ch[i] + 1 == ch[ch.length - 1 - i] - 1
 
 
                 ;

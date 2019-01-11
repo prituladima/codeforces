@@ -1,7 +1,13 @@
 //package com.prituladima.codeforce.virtual.contest955;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.StringTokenizer;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -31,7 +37,6 @@ public final class C {
         all = Arrays.copyOf(all, p);
 
 
-
         HashSet<Long> set = new LinkedHashSet<>();
         for (int i = 0; i < p; i++) {
             set.add(all[i]);
@@ -42,7 +47,6 @@ public final class C {
         for (long cur : set) {
             uniq[k++] = cur;
         }
-
 
 
         all = uniq;

@@ -32,19 +32,17 @@ public class CheckIfFibonacci {
 
 
     // Data utility function that returns true if x is perfect square
-   static boolean isPerfectSquare(int x)
-    {
-        int s = (int)Math.sqrt(x);
-        return (s*s == x);
+    static boolean isPerfectSquare(int x) {
+        int s = (int) Math.sqrt(x);
+        return (s * s == x);
     }
 
     // Returns true if n is a Fibinacci Number, else false
-    static boolean isFibonacci(int n)
-    {
+    static boolean isFibonacci(int n) {
         // n is Fibinacci if one of 5*n*n + 4 or 5*n*n - 4 or both
         // is a perferct square
-        return isPerfectSquare(5*n*n + 4) ||
-                isPerfectSquare(5*n*n - 4);
+        return isPerfectSquare(5 * n * n + 4) ||
+                isPerfectSquare(5 * n * n - 4);
     }
 
 }

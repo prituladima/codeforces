@@ -1,5 +1,9 @@
 package com.prituladima.codeforce.contests.contest1082;
-import java.io.*;
+
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class D {
@@ -30,7 +34,7 @@ public class D {
             int n = io.nextInt();
             List<Integer> ones = new ArrayList<>();
             PriorityQueue<IDval> q = new PriorityQueue<>(Collections.reverseOrder());
-            for (int i=1; i<=n; i++) {
+            for (int i = 1; i <= n; i++) {
                 int v = io.nextInt();
                 if (v == 1) ones.add(i);
                 else q.add(new IDval(i, v));
@@ -41,10 +45,10 @@ public class D {
                 return;
             }
             if (ones.isEmpty()) {
-                io.println("YES " + (n-1));
-                io.println(n-1);
-                for (int i=2; i<=n; i++) {
-                    io.println((i-1) + " " + i);
+                io.println("YES " + (n - 1));
+                io.println(n - 1);
+                for (int i = 2; i <= n; i++) {
+                    io.println((i - 1) + " " + i);
                 }
                 return;
             }
@@ -52,7 +56,7 @@ public class D {
             int diameter = 0;
             List<IDval> inChain = new ArrayList<>();
             List<Integer> edges = new ArrayList<>();
-            IDval prev = new IDval(ones.remove(ones.size()-1), 1); // special: start chain with a onzie
+            IDval prev = new IDval(ones.remove(ones.size() - 1), 1); // special: start chain with a onzie
             while (!q.isEmpty()) {
                 IDval curr = q.poll();
                 edges.add(prev.id);
@@ -66,7 +70,7 @@ public class D {
             if (!ones.isEmpty()) {
                 // special: end chain with a onzie
                 edges.add(prev.id);
-                edges.add(ones.remove(ones.size()-1));
+                edges.add(ones.remove(ones.size() - 1));
                 prev.val--;
                 diameter++;
             }
@@ -74,29 +78,29 @@ public class D {
 
 
             while (!ones.isEmpty()) {
-                int curr = ones.remove(ones.size()-1);
+                int curr = ones.remove(ones.size() - 1);
                 if (inChain.isEmpty()) {
                     io.println("NO");
                     return;
                 }
-                IDval match = inChain.get(inChain.size()-1);
+                IDval match = inChain.get(inChain.size() - 1);
                 edges.add(curr);
                 edges.add(match.id);
                 match.val--;
-                if (match.val == 0) inChain.remove(inChain.size()-1);
+                if (match.val == 0) inChain.remove(inChain.size() - 1);
             }
 
 
             io.println("YES " + diameter);
-            io.println(edges.size()/2);
-            for (int i=0; i<edges.size();) {
+            io.println(edges.size() / 2);
+            for (int i = 0; i < edges.size(); ) {
                 io.println(edges.get(i++) + " " + edges.get(i++));
             }
         }
 
         /************************** UTILITY CODE BELOW THIS LINE **************************/
 
-        long MOD = (long)1e9 + 7;
+        long MOD = (long) 1e9 + 7;
 
         boolean closeToZero(double v) {
             // Check if double is close to zero, considering precision issues.
@@ -107,13 +111,13 @@ public class D {
 
             void draw(boolean[][] d) {
                 System.out.print("  ");
-                for (int x=0; x<d[0].length; x++) {
+                for (int x = 0; x < d[0].length; x++) {
                     System.out.print(" " + x + " ");
                 }
                 System.out.println("");
-                for (int y=0; y<d.length; y++) {
+                for (int y = 0; y < d.length; y++) {
                     System.out.print(y + " ");
-                    for (int x=0; x<d[0].length; x++) {
+                    for (int x = 0; x < d[0].length; x++) {
                         System.out.print((d[y][x] ? "[x]" : "[ ]"));
                     }
                     System.out.println("");
@@ -122,21 +126,21 @@ public class D {
 
             void draw(int[][] d) {
                 int max = 1;
-                for (int y=0; y<d.length; y++) {
-                    for (int x=0; x<d[0].length; x++) {
+                for (int y = 0; y < d.length; y++) {
+                    for (int x = 0; x < d[0].length; x++) {
                         max = Math.max(max, ("" + d[y][x]).length());
                     }
                 }
                 System.out.print("  ");
-                String format = "%" + (max+2) + "s";
-                for (int x=0; x<d[0].length; x++) {
+                String format = "%" + (max + 2) + "s";
+                for (int x = 0; x < d[0].length; x++) {
                     System.out.print(String.format(format, x) + " ");
                 }
                 format = "%" + (max) + "s";
                 System.out.println("");
-                for (int y=0; y<d.length; y++) {
+                for (int y = 0; y < d.length; y++) {
                     System.out.print(y + " ");
-                    for (int x=0; x<d[0].length; x++) {
+                    for (int x = 0; x < d[0].length; x++) {
                         System.out.print(" [" + String.format(format, (d[y][x])) + "]");
                     }
                     System.out.println("");
@@ -225,7 +229,9 @@ public class D {
         }
 
         class DisjointSet {
-            /** Union Find / Disjoint Set data structure. */
+            /**
+             * Union Find / Disjoint Set data structure.
+             */
             int[] size;
             int[] parent;
             int componentCount;
@@ -234,8 +240,8 @@ public class D {
                 componentCount = n;
                 size = new int[n];
                 parent = new int[n];
-                for (int i=0; i<n; i++) parent[i] = i;
-                for (int i=0; i<n; i++) size[i] = 1;
+                for (int i = 0; i < n; i++) parent[i] = i;
+                for (int i = 0; i < n; i++) size[i] = 1;
             }
 
             public void join(int a, int b) {
@@ -270,18 +276,20 @@ public class D {
             int[][] pointers;
             boolean[] end;
 
-            /** maxLenSum = maximum possible sum of length of words */
+            /**
+             * maxLenSum = maximum possible sum of length of words
+             */
             public Trie(int maxLenSum, int alphabetSize) {
                 this.N = maxLenSum;
                 this.Z = alphabetSize;
                 this.nextFreeId = 1;
-                pointers = new int[N+1][alphabetSize];
-                end = new boolean[N+1];
+                pointers = new int[N + 1][alphabetSize];
+                end = new boolean[N + 1];
             }
 
             public void addWord(String word) {
                 int curr = 0;
-                for (int j=0; j<word.length(); j++) {
+                for (int j = 0; j < word.length(); j++) {
                     int c = word.charAt(j) - 'a';
                     int next = pointers[curr][c];
                     if (next == 0) {
@@ -295,7 +303,7 @@ public class D {
 
             public boolean hasWord(String word) {
                 int curr = 0;
-                for (int j=0; j<word.length(); j++) {
+                for (int j = 0; j < word.length(); j++) {
                     int c = word.charAt(j) - 'a';
                     int next = pointers[curr][c];
                     if (next == 0) return false;
@@ -316,34 +324,45 @@ public class D {
              *      - add(), multiply() return new objects, can perform on nulls & NaNs.
              *      - get() returns probability as a readable double */
 
-            /** Logarithmized probability. Note: 0% represented by logP NaN. */
+            /**
+             * Logarithmized probability. Note: 0% represented by logP NaN.
+             */
             private double logP;
 
-            /** Construct instance with real probability. */
+            /**
+             * Construct instance with real probability.
+             */
             public Prob(double real) {
                 if (real > 0) this.logP = Math.log(real);
                 else this.logP = Double.NaN;
             }
 
-            /** Construct instance with already logarithmized value. */
+            /**
+             * Construct instance with already logarithmized value.
+             */
             static boolean dontLogAgain = true;
+
             public Prob(double logP, boolean anyBooleanHereToChooseThisConstructor) {
                 this.logP = logP;
             }
 
-            /** Returns real probability as a double. */
+            /**
+             * Returns real probability as a double.
+             */
             public double get() {
                 return Math.exp(logP);
             }
 
             @Override
             public String toString() {
-                return ""+get();
+                return "" + get();
             }
 
             /***************** STATIC METHODS BELOW ********************/
 
-            /** Note: returns NaN only when a && b are both NaN/null. */
+            /**
+             * Note: returns NaN only when a && b are both NaN/null.
+             */
             public static Prob add(Prob a, Prob b) {
                 if (nullOrNaN(a) && nullOrNaN(b)) return new Prob(Double.NaN, dontLogAgain);
                 if (nullOrNaN(a)) return copy(b);
@@ -355,18 +374,24 @@ public class D {
                 return new Prob(sum, dontLogAgain);
             }
 
-            /** Note: multiplying by null or NaN produces NaN (repping 0% real prob). */
+            /**
+             * Note: multiplying by null or NaN produces NaN (repping 0% real prob).
+             */
             public static Prob multiply(Prob a, Prob b) {
                 if (nullOrNaN(a) || nullOrNaN(b)) return new Prob(Double.NaN, dontLogAgain);
                 return new Prob(a.logP + b.logP, dontLogAgain);
             }
 
-            /** Returns true if p is null or NaN. */
+            /**
+             * Returns true if p is null or NaN.
+             */
             private static boolean nullOrNaN(Prob p) {
                 return (p == null || Double.isNaN(p.logP));
             }
 
-            /** Returns a new instance with the same value as original. */
+            /**
+             * Returns a new instance with the same value as original.
+             */
             private static Prob copy(Prob original) {
                 return new Prob(original.logP, dontLogAgain);
             }
@@ -376,7 +401,7 @@ public class D {
 
             /**
              * Use example: Binary b = new Binary(Long.toBinaryString(53249834L));
-             *
+             * <p>
              * When manipulating small binary strings, instantiate new Binary(string)
              * When just reading large binary strings, instantiate new Binary(string,true)
              * get(int i) returns a character '1' or '0', not an int.
@@ -390,37 +415,38 @@ public class D {
             public Binary(String binaryString) {
                 this(binaryString, false);
             }
+
             public Binary(String binaryString, boolean initWithMinArraySize) {
                 length = binaryString.length();
-                int size = Math.max(2*length, 1);
-                first = length/4;
+                int size = Math.max(2 * length, 1);
+                first = length / 4;
                 if (initWithMinArraySize) {
                     first = 0;
                     size = Math.max(length, 1);
                 }
                 d = new boolean[size];
-                for (int i=0; i<length; i++) {
-                    if (binaryString.charAt(i) == '1') d[i+first] = true;
+                for (int i = 0; i < length; i++) {
+                    if (binaryString.charAt(i) == '1') d[i + first] = true;
                 }
             }
 
             public void addFirst(char c) {
-                if (first-1 < 0) doubleArraySize();
+                if (first - 1 < 0) doubleArraySize();
                 first--;
                 d[first] = (c == '1' ? true : false);
                 length++;
             }
 
             public void addLast(char c) {
-                if (first+length >= d.length) doubleArraySize();
-                d[first+length] = (c == '1' ? true : false);
+                if (first + length >= d.length) doubleArraySize();
+                d[first + length] = (c == '1' ? true : false);
                 length++;
             }
 
             private void doubleArraySize() {
-                boolean[] bigArray = new boolean[(d.length+1) * 2];
+                boolean[] bigArray = new boolean[(d.length + 1) * 2];
                 int newFirst = bigArray.length / 4;
-                for (int i=0; i<length; i++) {
+                for (int i = 0; i < length; i++) {
                     bigArray[i + newFirst] = d[i + first];
                 }
                 first = newFirst;
@@ -428,25 +454,25 @@ public class D {
             }
 
             public boolean flip(int i) {
-                boolean value = (this.d[first+i] ? false : true);
-                this.d[first+i] = value;
+                boolean value = (this.d[first + i] ? false : true);
+                this.d[first + i] = value;
                 return value;
             }
 
             public void set(int i, char c) {
                 boolean value = (c == '1' ? true : false);
-                this.d[first+i] = value;
+                this.d[first + i] = value;
             }
 
             public char get(int i) {
-                return (this.d[first+i] ? '1' : '0');
+                return (this.d[first + i] ? '1' : '0');
             }
 
             @Override
             public int compareTo(Binary o) {
                 if (this.length != o.length) return this.length - o.length;
                 int len = this.length;
-                for (int i=0; i<len; i++) {
+                for (int i = 0; i < len; i++) {
                     int diff = this.get(i) - o.get(i);
                     if (diff != 0) return diff;
                 }
@@ -456,8 +482,8 @@ public class D {
             @Override
             public String toString() {
                 StringBuilder sb = new StringBuilder();
-                for (int i=0; i<length; i++) {
-                    sb.append(d[i+first] ? '1' : '0');
+                for (int i = 0; i < length; i++) {
+                    sb.append(d[i + first] ? '1' : '0');
                 }
                 return sb.toString();
             }
@@ -475,9 +501,9 @@ public class D {
 
             public FenwickMin(int n) {
                 this.n = n;
-                original = new long[n+2];
-                bottomUp = new long[n+2];
-                topDown = new long[n+2];
+                original = new long[n + 2];
+                bottomUp = new long[n + 2];
+                topDown = new long[n + 2];
             }
 
             public void set(int modifiedNode, long value) {
@@ -490,17 +516,17 @@ public class D {
                     if (v > bottomUp[i]) {
                         if (replaced == bottomUp[i]) {
                             v = Math.min(v, original[i]);
-                            for (int r=1 ;; r++) {
-                                int x = (i&-i)>>>r;
+                            for (int r = 1; ; r++) {
+                                int x = (i & -i) >>> r;
                                 if (x == 0) break;
-                                int child = i-x;
+                                int child = i - x;
                                 v = Math.min(v, bottomUp[child]);
                             }
                         } else break;
                     }
                     if (v == bottomUp[i]) break;
                     bottomUp[i] = v;
-                    i += (i&-i);
+                    i += (i & -i);
                 }
                 // Update right tree
                 i = modifiedNode;
@@ -509,37 +535,38 @@ public class D {
                     if (v > topDown[i]) {
                         if (replaced == topDown[i]) {
                             v = Math.min(v, original[i]);
-                            for (int r=1 ;; r++) {
-                                int x = (i&-i)>>>r;
+                            for (int r = 1; ; r++) {
+                                int x = (i & -i) >>> r;
                                 if (x == 0) break;
-                                int child = i+x;
-                                if (child > n+1) break;
+                                int child = i + x;
+                                if (child > n + 1) break;
                                 v = Math.min(v, topDown[child]);
                             }
                         } else break;
                     }
                     if (v == topDown[i]) break;
                     topDown[i] = v;
-                    i -= (i&-i);
+                    i -= (i & -i);
                 }
             }
 
             public long getMin(int a, int b) {
                 long min = original[a];
                 int prev = a;
-                int curr = prev + (prev&-prev); // parent right hand side
+                int curr = prev + (prev & -prev); // parent right hand side
                 while (curr <= b) {
                     min = Math.min(min, topDown[prev]); // value from the other tree
                     prev = curr;
-                    curr = prev + (prev&-prev);;
+                    curr = prev + (prev & -prev);
+                    ;
                 }
                 min = Math.min(min, original[prev]);
                 prev = b;
-                curr = prev - (prev&-prev); // parent left hand side
+                curr = prev - (prev & -prev); // parent left hand side
                 while (curr >= a) {
-                    min = Math.min(min,bottomUp[prev]); // value from the other tree
+                    min = Math.min(min, bottomUp[prev]); // value from the other tree
                     prev = curr;
-                    curr = prev - (prev&-prev);
+                    curr = prev - (prev & -prev);
                 }
                 return min;
             }
@@ -550,37 +577,43 @@ public class D {
             public long[] d;
 
             public FenwickSum(int n) {
-                d=new long[n+1];
+                d = new long[n + 1];
             }
 
-            /** a[0] must be unused. */
+            /**
+             * a[0] must be unused.
+             */
             public FenwickSum(long[] a) {
-                d=new long[a.length];
-                for (int i=1; i<a.length; i++) {
+                d = new long[a.length];
+                for (int i = 1; i < a.length; i++) {
                     modify(i, a[i]);
                 }
             }
 
-            /** Do not modify i=0. */
+            /**
+             * Do not modify i=0.
+             */
             void modify(int i, long v) {
-                while (i<d.length) {
+                while (i < d.length) {
                     d[i] += v;
                     // Move to next uplink on the RIGHT side of i
-                    i += (i&-i);
+                    i += (i & -i);
                 }
             }
 
-            /** Returns sum from a to b, *BOTH* inclusive. */
+            /**
+             * Returns sum from a to b, *BOTH* inclusive.
+             */
             long getSum(int a, int b) {
-                return getSum(b) - getSum(a-1);
+                return getSum(b) - getSum(a - 1);
             }
 
             private long getSum(int i) {
                 long sum = 0;
-                while (i>0) {
+                while (i > 0) {
                     sum += d[i];
                     // Move to next uplink on the LEFT side of i
-                    i -= (i&-i);
+                    i -= (i & -i);
                 }
                 return sum;
             }
@@ -607,18 +640,18 @@ public class D {
             }
 
             public SegmentTree(int n, boolean supportSum, boolean supportMin, boolean supportMax) {
-                for (N=2; N<n;) N*=2;
-                this.lazy = new long[2*N];
+                for (N = 2; N < n; ) N *= 2;
+                this.lazy = new long[2 * N];
                 this.supportSum = supportSum;
                 this.supportMin = supportMin;
                 this.supportMax = supportMax;
-                if (this.supportSum) this.sum = new long[2*N];
-                if (this.supportMin) this.min = new long[2*N];
-                if (this.supportMax) this.max = new long[2*N];
+                if (this.supportSum) this.sum = new long[2 * N];
+                if (this.supportMin) this.min = new long[2 * N];
+                if (this.supportMax) this.max = new long[2 * N];
             }
 
             void modifyRange(long x, int a, int b) {
-                modifyRec(a, b, 1, 0, N-1, x);
+                modifyRec(a, b, 1, 0, N - 1, x);
             }
 
             void setRange() {
@@ -626,15 +659,15 @@ public class D {
             }
 
             long getSum(int a, int b) {
-                return querySum(a, b, 1, 0, N-1);
+                return querySum(a, b, 1, 0, N - 1);
             }
 
             long getMin(int a, int b) {
-                return queryMin(a, b, 1, 0, N-1);
+                return queryMin(a, b, 1, 0, N - 1);
             }
 
             long getMax(int a, int b) {
-                return queryMax(a, b, 1, 0, N-1);
+                return queryMax(a, b, 1, 0, N - 1);
             }
 
             private long querySum(int wantedLeft, int wantedRight, int i, int actualLeft, int actualRight) {
@@ -647,8 +680,8 @@ public class D {
                 }
                 if (lazy[i] != 0) propagate(i, actualLeft, actualRight);
                 int d = (actualRight - actualLeft + 1) / 2;
-                long left = querySum(wantedLeft, min(actualLeft+d-1, wantedRight), 2*i, actualLeft, actualLeft+d-1);
-                long right = querySum(max(actualLeft+d, wantedLeft), wantedRight, 2*i+1, actualLeft+d, actualRight);
+                long left = querySum(wantedLeft, min(actualLeft + d - 1, wantedRight), 2 * i, actualLeft, actualLeft + d - 1);
+                long right = querySum(max(actualLeft + d, wantedLeft), wantedRight, 2 * i + 1, actualLeft + d, actualRight);
                 return left + right;
             }
 
@@ -661,8 +694,8 @@ public class D {
                 }
                 if (lazy[i] != 0) propagate(i, actualLeft, actualRight);
                 int d = (actualRight - actualLeft + 1) / 2;
-                long left = queryMin(wantedLeft, min(actualLeft+d-1, wantedRight), 2*i, actualLeft, actualLeft+d-1);
-                long right = queryMin(max(actualLeft+d, wantedLeft), wantedRight, 2*i+1, actualLeft+d, actualRight);
+                long left = queryMin(wantedLeft, min(actualLeft + d - 1, wantedRight), 2 * i, actualLeft, actualLeft + d - 1);
+                long right = queryMin(max(actualLeft + d, wantedLeft), wantedRight, 2 * i + 1, actualLeft + d, actualRight);
                 return min(left, right);
             }
 
@@ -675,8 +708,8 @@ public class D {
                 }
                 if (lazy[i] != 0) propagate(i, actualLeft, actualRight);
                 int d = (actualRight - actualLeft + 1) / 2;
-                long left = queryMax(wantedLeft, min(actualLeft+d-1, wantedRight), 2*i, actualLeft, actualLeft+d-1);
-                long right = queryMax(max(actualLeft+d, wantedLeft), wantedRight, 2*i+1, actualLeft+d, actualRight);
+                long left = queryMax(wantedLeft, min(actualLeft + d - 1, wantedRight), 2 * i, actualLeft, actualLeft + d - 1);
+                long right = queryMax(max(actualLeft + d, wantedLeft), wantedRight, 2 * i + 1, actualLeft + d, actualRight);
                 return max(left, right);
             }
 
@@ -690,16 +723,16 @@ public class D {
                 }
                 if (lazy[i] != 0) propagate(i, actualLeft, actualRight);
                 int d = (actualRight - actualLeft + 1) / 2;
-                modifyRec(wantedLeft, min(actualLeft+d-1, wantedRight), 2*i, actualLeft, actualLeft+d-1, value);
-                modifyRec(max(actualLeft+d, wantedLeft), wantedRight, 2*i+1, actualLeft+d, actualRight, value);
+                modifyRec(wantedLeft, min(actualLeft + d - 1, wantedRight), 2 * i, actualLeft, actualLeft + d - 1, value);
+                modifyRec(max(actualLeft + d, wantedLeft), wantedRight, 2 * i + 1, actualLeft + d, actualRight, value);
                 if (supportSum) sum[i] += value * (min(actualRight, wantedRight) - max(actualLeft, wantedLeft) + 1);
-                if (supportMin) min[i] = min(min[2*i] + lazy[2*i], min[2*i+1] + lazy[2*i+1]);
-                if (supportMax) max[i] = max(max[2*i] + lazy[2*i], max[2*i+1] + lazy[2*i+1]);
+                if (supportMin) min[i] = min(min[2 * i] + lazy[2 * i], min[2 * i + 1] + lazy[2 * i + 1]);
+                if (supportMax) max[i] = max(max[2 * i] + lazy[2 * i], max[2 * i + 1] + lazy[2 * i + 1]);
             }
 
             private void propagate(int i, int actualLeft, int actualRight) {
-                lazy[2*i] += lazy[i];
-                lazy[2*i+1] += lazy[i];
+                lazy[2 * i] += lazy[i];
+                lazy[2 * i + 1] += lazy[i];
                 if (supportSum) sum[i] += lazy[i] * (actualRight - actualLeft + 1);
                 if (supportMin) min[i] += lazy[i];
                 if (supportMax) max[i] += lazy[i];
@@ -712,9 +745,9 @@ public class D {
 
         List<Integer>[] toGraph(IO io, int n) {
             /* Trees only. */
-            List<Integer>[] g = new ArrayList[n+1];
-            for (int i=1; i<=n; i++) g[i] = new ArrayList<>();
-            for (int i=1; i<=n-1; i++) {
+            List<Integer>[] g = new ArrayList[n + 1];
+            for (int i = 1; i <= n; i++) g[i] = new ArrayList<>();
+            for (int i = 1; i <= n - 1; i++) {
                 int a = io.nextInt();
                 int b = io.nextInt();
                 g[a].add(b);
@@ -730,8 +763,8 @@ public class D {
 
             public Graph(int n) {
                 this.n = n;
-                edges = new ArrayList[n+1];
-                for (int i=1; i<=n; i++) edges[i] = new ArrayList<>();
+                edges = new ArrayList[n + 1];
+                for (int i = 1; i <= n; i++) edges[i] = new ArrayList<>();
             }
 
             void addBiEdge(int a, int b) {
@@ -748,23 +781,23 @@ public class D {
             ArrayList<Integer>[] bacw;
 
             public int getCount() {
-                bacw = new ArrayList[n+1];
-                for (int i=1; i<=n; i++) {
+                bacw = new ArrayList[n + 1];
+                for (int i = 1; i <= n; i++) {
                     bacw[i] = new ArrayList<Integer>();
                 }
-                for (int a=1; a<=n; a++) {
+                for (int a = 1; a <= n; a++) {
                     for (int b : edges[a]) {
                         bacw[b].add(a);
                     }
                 }
                 int count = 0;
                 List<Integer> list = new ArrayList<Integer>();
-                boolean[] visited = new boolean[n+1];
-                for (int i=1; i<=n; i++) {
+                boolean[] visited = new boolean[n + 1];
+                for (int i = 1; i <= n; i++) {
                     dfsForward(i, visited, list);
                 }
-                visited = new boolean[n+1];
-                for (int i=n-1; i>=0; i--) {
+                visited = new boolean[n + 1];
+                for (int i = n - 1; i >= 0; i--) {
                     int node = list.get(i);
                     if (visited[node]) continue;
                     count++;
@@ -801,8 +834,8 @@ public class D {
             // Returns nodes in topological order or null if cycle was found
             public List<Integer> topoSort() {
                 topoAns = new ArrayList<>();
-                vis = new int[n+1];
-                for (int i=1; i<=n; i++) {
+                vis = new int[n + 1];
+                for (int i = 1; i <= n; i++) {
                     if (!topoDFS(i)) return null;
                 }
                 Collections.reverse(topoAns);
@@ -839,14 +872,14 @@ public class D {
             FenwickMin fenwick;
 
             public LCAFinder(List<Integer>[] graph) {
-                this.nodes = new int[(int)10e6];
-                this.depths = new int[(int)10e6];
+                this.nodes = new int[(int) 10e6];
+                this.depths = new int[(int) 10e6];
                 this.entries = new int[graph.length];
                 this.pointer = 1;
-                boolean[] visited = new boolean[graph.length+1];
+                boolean[] visited = new boolean[graph.length + 1];
                 dfs(1, 0, graph, visited);
-                fenwick = new FenwickMin(pointer-1);
-                for (int i=1; i<pointer; i++) {
+                fenwick = new FenwickMin(pointer - 1);
+                for (int i = 1; i < pointer; i++) {
                     fenwick.set(i, depths[i] * 1000000L + i);
                 }
             }
@@ -859,7 +892,7 @@ public class D {
                 pointer++;
                 for (int neighbor : graph[node]) {
                     if (visited[neighbor]) continue;
-                    dfs(neighbor, depth+1, graph, visited);
+                    dfs(neighbor, depth + 1, graph, visited);
                     nodes[pointer] = node;
                     depths[pointer] = depth;
                     pointer++;
@@ -898,37 +931,37 @@ public class D {
             if (x1 == x2 && x3 == x4) {
                 // Both segments are vertical
                 if (x1 != x3) return false;
-                if (min(y1,y2) < min(y3,y4)) {
-                    return max(y1,y2) >= min(y3,y4);
+                if (min(y1, y2) < min(y3, y4)) {
+                    return max(y1, y2) >= min(y3, y4);
                 } else {
-                    return max(y3,y4) >= min(y1,y2);
+                    return max(y3, y4) >= min(y1, y2);
                 }
             }
             if (x1 == x2) {
                 // Only segment 1-2 is vertical. Does segment 3-4 cross it? y = a*x + b
-                double a34 = (y4-y3)/(x4-x3);
-                double b34 = y3 - a34*x3;
+                double a34 = (y4 - y3) / (x4 - x3);
+                double b34 = y3 - a34 * x3;
                 double y = a34 * x1 + b34;
-                return y >= min(y1,y2) && y <= max(y1,y2) && x1 >= min(x3,x4) && x1 <= max(x3,x4);
+                return y >= min(y1, y2) && y <= max(y1, y2) && x1 >= min(x3, x4) && x1 <= max(x3, x4);
             }
             if (x3 == x4) {
                 // Only segment 3-4 is vertical. Does segment 1-2 cross it? y = a*x + b
-                double a12 = (y2-y1)/(x2-x1);
-                double b12 = y1 - a12*x1;
+                double a12 = (y2 - y1) / (x2 - x1);
+                double b12 = y1 - a12 * x1;
                 double y = a12 * x3 + b12;
-                return y >= min(y3,y4) && y <= max(y3,y4) && x3 >= min(x1,x2) && x3 <= max(x1,x2);
+                return y >= min(y3, y4) && y <= max(y3, y4) && x3 >= min(x1, x2) && x3 <= max(x1, x2);
             }
-            double a12 = (y2-y1)/(x2-x1);
-            double b12 = y1 - a12*x1;
-            double a34 = (y4-y3)/(x4-x3);
-            double b34 = y3 - a34*x3;
+            double a12 = (y2 - y1) / (x2 - x1);
+            double b12 = y1 - a12 * x1;
+            double a34 = (y4 - y3) / (x4 - x3);
+            double b34 = y3 - a34 * x3;
             if (closeToZero(a12 - a34)) {
                 // Parallel lines
                 return closeToZero(b12 - b34);
             }
             // Non parallel non vertical lines intersect at x. Is x part of both segments?
-            double x = -(b12-b34)/(a12-a34);
-            return x >= min(x1,x2) && x <= max(x1,x2) && x >= min(x3,x4) && x <= max(x3,x4);
+            double x = -(b12 - b34) / (a12 - a34);
+            return x >= min(x1, x2) && x <= max(x1, x2) && x >= min(x3, x4) && x <= max(x3, x4);
         }
 
         boolean pointInsideRectangle(Point p, List<Point> r, boolean countBorderAsInside) {
@@ -951,7 +984,7 @@ public class D {
         }
 
         double areaOfTriangle(Point a, Point b, Point c) {
-            return 0.5 * Math.abs((a.x-c.x)*(b.y-a.y)-(a.x-b.x)*(c.y-a.y));
+            return 0.5 * Math.abs((a.x - c.x) * (b.y - a.y) - (a.x - b.x) * (c.y - a.y));
         }
 
         double areaOfRectangle(List<Point> r) {
@@ -977,7 +1010,7 @@ public class D {
             }
 
             private double distToSegmentSquared(double point_x, double point_y, double x1, double y1, double x2, double y2) {
-                double l2 = dist2(x1,y1,x2,y2);
+                double l2 = dist2(x1, y1, x2, y2);
                 if (l2 == 0) return dist2(point_x, point_y, x1, y1);
                 double t = ((point_x - x1) * (x2 - x1) + (point_y - y1) * (y2 - y1)) / l2;
                 if (t < 0) return dist2(point_x, point_y, x1, y1);
@@ -998,7 +1031,7 @@ public class D {
 
         long pow(long base, int exp) {
             if (exp == 0) return 1L;
-            long x = pow(base, exp/2);
+            long x = pow(base, exp / 2);
             long ans = x * x;
             if (exp % 2 != 0) ans *= base;
             return ans;
@@ -1008,7 +1041,7 @@ public class D {
             /** Chained calls to Euclidean algorithm. */
             if (v.length == 1) return v[0];
             long ans = gcd(v[1], v[0]);
-            for (int i=2; i<v.length; i++) {
+            for (int i = 2; i < v.length; i++) {
                 ans = gcd(ans, v[i]);
             }
             return ans;
@@ -1017,15 +1050,15 @@ public class D {
         long gcd(long a, long b) {
             /** Euclidean algorithm. */
             if (b == 0) return a;
-            return gcd(b, a%b);
+            return gcd(b, a % b);
         }
 
         int[] generatePrimesUpTo(int last) {
             /* Sieve of Eratosthenes. Practically O(n). Values of 0 indicate primes. */
-            int[] div = new int[last+1];
-            for (int x=2; x<=last; x++) {
+            int[] div = new int[last + 1];
+            for (int x = 2; x <= last; x++) {
                 if (div[x] > 0) continue;
-                for (int u=2*x; u<=last; u+=x) {
+                for (int u = 2 * x; u <= last; u += x) {
                     div[u] = x;
                 }
             }
@@ -1034,7 +1067,7 @@ public class D {
 
         long lcm(long a, long b) {
             /** Least common multiple */
-            return a * b / gcd(a,b);
+            return a * b / gcd(a, b);
         }
 
         class BaseConverter {
@@ -1059,7 +1092,9 @@ public class D {
             /** Total number of K sized unique combinations from pool of size N (unordered)
              N! / ( K! (N - K)! )   */
 
-            /** For simple queries where output fits in long. */
+            /**
+             * For simple queries where output fits in long.
+             */
             public long biCo(long n, long k) {
                 long r = 1;
                 if (k > n) return 0;
@@ -1070,25 +1105,29 @@ public class D {
                 return r;
             }
 
-            /** For multiple queries with same n, different k. */
+            /**
+             * For multiple queries with same n, different k.
+             */
             public long[] precalcBinomialCoefficientsK(int n, int maxK) {
-                long v[] = new long[maxK+1];
+                long v[] = new long[maxK + 1];
                 v[0] = 1; // nC0 == 1
-                for (int i=1; i<=n; i++) {
-                    for (int j=Math.min(i,maxK); j>0; j--) {
-                        v[j] = v[j] + v[j-1]; // Pascal's triangle
+                for (int i = 1; i <= n; i++) {
+                    for (int j = Math.min(i, maxK); j > 0; j--) {
+                        v[j] = v[j] + v[j - 1]; // Pascal's triangle
                     }
                 }
                 return v;
             }
 
-            /** When output needs % MOD. */
+            /**
+             * When output needs % MOD.
+             */
             public long[] precalcBinomialCoefficientsK(int n, int k, long M) {
-                long v[] = new long[k+1];
+                long v[] = new long[k + 1];
                 v[0] = 1; // nC0 == 1
-                for (int i=1; i<=n; i++) {
-                    for (int j=Math.min(i,k); j>0; j--) {
-                        v[j] = v[j] + v[j-1]; // Pascal's triangle
+                for (int i = 1; i <= n; i++) {
+                    for (int j = Math.min(i, k); j > 0; j--) {
+                        v[j] = v[j] + v[j - 1]; // Pascal's triangle
                         v[j] %= M;
                     }
                 }
@@ -1110,17 +1149,17 @@ public class D {
 
             public int pisinEsiintyma(String haku, String kohde) {
                 char[] s = new char[haku.length() + 1 + kohde.length()];
-                for (int i=0; i<haku.length(); i++) {
+                for (int i = 0; i < haku.length(); i++) {
                     s[i] = haku.charAt(i);
                 }
                 int j = haku.length();
                 s[j++] = '#';
-                for (int i=0; i<kohde.length(); i++) {
+                for (int i = 0; i < kohde.length(); i++) {
                     s[j++] = kohde.charAt(i);
                 }
                 int[] z = toZarray(s);
                 int max = 0;
-                for (int i=haku.length(); i<z.length; i++) {
+                for (int i = haku.length(); i < z.length; i++) {
                     max = Math.max(max, z[i]);
                 }
                 return max;
@@ -1132,9 +1171,8 @@ public class D {
                 int a = 0, b = 0;
                 for (int i = 1; i < n; i++) {
                     if (i > b) {
-                        for (int j = i; j < n && s[j - i] == s[j]; j++)  z[i]++;
-                    }
-                    else {
+                        for (int j = i; j < n && s[j - i] == s[j]; j++) z[i]++;
+                    } else {
                         z[i] = z[i - a];
                         if (i + z[i - a] > b) {
                             for (int j = b + 1; j < n && s[j - i] == s[j]; j++) z[i]++;
@@ -1149,17 +1187,17 @@ public class D {
             public List<Integer> getStartIndexesWhereWordIsFound(String haku, String kohde) {
                 // this is alternative use case
                 char[] s = new char[haku.length() + 1 + kohde.length()];
-                for (int i=0; i<haku.length(); i++) {
+                for (int i = 0; i < haku.length(); i++) {
                     s[i] = haku.charAt(i);
                 }
                 int j = haku.length();
                 s[j++] = '#';
-                for (int i=0; i<kohde.length(); i++) {
+                for (int i = 0; i < kohde.length(); i++) {
                     s[j++] = kohde.charAt(i);
                 }
                 int[] z = toZarray(s);
                 List<Integer> indexes = new ArrayList<>();
-                for (int i=haku.length(); i<z.length; i++) {
+                for (int i = haku.length(); i < z.length; i++) {
                     if (z[i] < haku.length()) continue;
                     indexes.add(i);
                 }
@@ -1193,9 +1231,9 @@ public class D {
                 long[] modifiers = new long[n];
                 hashes[0] = s.charAt(0);
                 modifiers[0] = 1;
-                for (int i=1; i<n; i++) {
-                    hashes[i] = (hashes[i-1] * P + s.charAt(i)) % M;
-                    modifiers[i] = (modifiers[i-1] * P) % M;
+                for (int i = 1; i < n; i++) {
+                    hashes[i] = (hashes[i - 1] * P + s.charAt(i)) % M;
+                    modifiers[i] = (modifiers[i - 1] * P) % M;
                 }
                 return new HashedString(hashes, modifiers);
             }
@@ -1207,13 +1245,12 @@ public class D {
                 long[] hashes = hashedString.hashes;
                 long[] modifiers = hashedString.modifiers;
                 long result = hashes[endIndex];
-                if (startIndex > 0) result -= (hashes[startIndex-1] * modifiers[endIndex-startIndex+1]) % M;
+                if (startIndex > 0) result -= (hashes[startIndex - 1] * modifiers[endIndex - startIndex + 1]) % M;
                 if (result < 0) result += M;
                 return result;
             }
 
             // Less interesting methods below
-
 
 
             /**
@@ -1233,10 +1270,10 @@ public class D {
                 secondHashes[0] = second.charAt(0);
                 array[1] = new HashedString(secondHashes, modifiers);
 
-                for (int i=1; i<n; i++) {
-                    modifiers[i] = (modifiers[i-1] * P) % M;
-                    firstHashes[i] = (firstHashes[i-1] * P + first.charAt(i)) % M;
-                    secondHashes[i] = (secondHashes[i-1] * P + second.charAt(i)) % M;
+                for (int i = 1; i < n; i++) {
+                    modifiers[i] = (modifiers[i - 1] * P) % M;
+                    firstHashes[i] = (firstHashes[i - 1] * P + first.charAt(i)) % M;
+                    secondHashes[i] = (secondHashes[i - 1] * P + second.charAt(i)) % M;
                 }
                 return array;
             }
@@ -1250,10 +1287,10 @@ public class D {
                 int n = strings[0].length();
                 long[] modifiers = new long[n];
                 modifiers[0] = 1;
-                for (int j=0; j<strings.length; j++) {
+                for (int j = 0; j < strings.length; j++) {
                     // if all strings are not same length, defer work to another method
                     if (strings[j].length() != n) {
-                        for (int i=0; i<n; i++) {
+                        for (int i = 0; i < n; i++) {
                             array[i] = hashString(strings[i]);
                         }
                         return array;
@@ -1264,12 +1301,12 @@ public class D {
                     hashes[0] = strings[j].charAt(0);
                     array[j] = new HashedString(hashes, modifiers);
                 }
-                for (int i=1; i<n; i++) {
-                    modifiers[i] = (modifiers[i-1] * P) % M;
-                    for (int j=0; j<strings.length; j++) {
+                for (int i = 1; i < n; i++) {
+                    modifiers[i] = (modifiers[i - 1] * P) % M;
+                    for (int j = 0; j < strings.length; j++) {
                         String s = strings[j];
                         long[] hashes = array[j].hashes;
-                        hashes[i] = (hashes[i-1] * P + s.charAt(i)) % M;
+                        hashes[i] = (hashes[i - 1] * P + s.charAt(i)) % M;
                     }
                 }
                 return array;
@@ -1300,19 +1337,19 @@ public class D {
         }
 
         int editDistance(String a, String b) {
-            a = "#"+a;
-            b = "#"+b;
+            a = "#" + a;
+            b = "#" + b;
             int n = a.length();
             int m = b.length();
-            int[][] dp = new int[n+1][m+1];
-            for (int y=0; y<=n; y++) {
-                for (int x=0; x<=m; x++) {
+            int[][] dp = new int[n + 1][m + 1];
+            for (int y = 0; y <= n; y++) {
+                for (int x = 0; x <= m; x++) {
                     if (y == 0) dp[y][x] = x;
                     else if (x == 0) dp[y][x] = y;
                     else {
-                        int e1 = dp[y-1][x] + 1;
-                        int e2 = dp[y][x-1] + 1;
-                        int e3 = dp[y-1][x-1] + (a.charAt(y-1) != b.charAt(x-1) ? 1 : 0);
+                        int e1 = dp[y - 1][x] + 1;
+                        int e2 = dp[y][x - 1] + 1;
+                        int e3 = dp[y - 1][x - 1] + (a.charAt(y - 1) != b.charAt(x - 1) ? 1 : 0);
                         dp[y][x] = min(e1, e2, e3);
                     }
                 }
@@ -1340,21 +1377,27 @@ public class D {
                 sb = new StringBuilder();
             }
 
-            /** Print, flush, return nextInt. */
+            /**
+             * Print, flush, return nextInt.
+             */
             private int queryInt(String s) {
                 io.println(s);
                 io.flush();
                 return nextInt();
             }
 
-            /** Print, flush, return nextLong. */
+            /**
+             * Print, flush, return nextLong.
+             */
             private long queryLong(String s) {
                 io.println(s);
                 io.flush();
                 return nextLong();
             }
 
-            /** Print, flush, return next word. */
+            /**
+             * Print, flush, return next word.
+             */
             private String queryNext(String s) {
                 io.println(s);
                 io.flush();
@@ -1364,9 +1407,9 @@ public class D {
             private void fillBuf() throws IOException {
                 bufi = 0;
                 bufc = 0;
-                while(bufc == 0) {
+                while (bufc == 0) {
                     bufc = r.read(buf, 0, BUFSIZE);
-                    if(bufc == -1) {
+                    if (bufc == -1) {
                         bufc = 0;
                         return;
                     }
@@ -1374,7 +1417,7 @@ public class D {
             }
 
             private boolean pumpBuf() throws IOException {
-                if(bufi == bufc) {
+                if (bufi == bufc) {
                     fillBuf();
                 }
                 return bufc != 0;
@@ -1385,13 +1428,13 @@ public class D {
             }
 
             private void eatDelimiters() throws IOException {
-                while(true) {
-                    if(bufi == bufc) {
+                while (true) {
+                    if (bufi == bufc) {
                         fillBuf();
-                        if(bufc == 0) throw new RuntimeException("IO: Out of input.");
+                        if (bufc == 0) throw new RuntimeException("IO: Out of input.");
                     }
 
-                    if(!isDelimiter(buf[bufi])) break;
+                    if (!isDelimiter(buf[bufi])) break;
                     ++bufi;
                 }
             }
@@ -1403,22 +1446,22 @@ public class D {
                     eatDelimiters();
                     int start = bufi;
 
-                    while(true) {
-                        if(bufi == bufc) {
+                    while (true) {
+                        if (bufi == bufc) {
                             sb.append(buf, start, bufi - start);
                             fillBuf();
                             start = 0;
-                            if(bufc == 0) break;
+                            if (bufc == 0) break;
                         }
 
-                        if(isDelimiter(buf[bufi])) break;
+                        if (isDelimiter(buf[bufi])) break;
                         ++bufi;
                     }
 
                     sb.append(buf, start, bufi - start);
 
                     return sb.toString();
-                } catch(IOException e) {
+                } catch (IOException e) {
                     throw new RuntimeException("IO.next: Caught IOException.");
                 }
             }
@@ -1430,26 +1473,26 @@ public class D {
                     eatDelimiters();
 
                     boolean positive = true;
-                    if(buf[bufi] == '-') {
+                    if (buf[bufi] == '-') {
                         ++bufi;
-                        if(!pumpBuf()) throw new RuntimeException("IO.nextInt: Invalid int.");
+                        if (!pumpBuf()) throw new RuntimeException("IO.nextInt: Invalid int.");
                         positive = false;
                     }
 
                     boolean first = true;
-                    while(true) {
-                        if(!pumpBuf()) break;
-                        if(isDelimiter(buf[bufi])) {
-                            if(first) throw new RuntimeException("IO.nextInt: Invalid int.");
+                    while (true) {
+                        if (!pumpBuf()) break;
+                        if (isDelimiter(buf[bufi])) {
+                            if (first) throw new RuntimeException("IO.nextInt: Invalid int.");
                             break;
                         }
                         first = false;
 
-                        if(buf[bufi] >= '0' && buf[bufi] <= '9') {
-                            if(ret < -214748364) throw new RuntimeException("IO.nextInt: Invalid int.");
+                        if (buf[bufi] >= '0' && buf[bufi] <= '9') {
+                            if (ret < -214748364) throw new RuntimeException("IO.nextInt: Invalid int.");
                             ret *= 10;
-                            ret -= (int)(buf[bufi] - '0');
-                            if(ret > 0) throw new RuntimeException("IO.nextInt: Invalid int.");
+                            ret -= (int) (buf[bufi] - '0');
+                            if (ret > 0) throw new RuntimeException("IO.nextInt: Invalid int.");
                         } else {
                             throw new RuntimeException("IO.nextInt: Invalid int.");
                         }
@@ -1457,13 +1500,13 @@ public class D {
                         ++bufi;
                     }
 
-                    if(positive) {
-                        if(ret == -2147483648) throw new RuntimeException("IO.nextInt: Invalid int.");
+                    if (positive) {
+                        if (ret == -2147483648) throw new RuntimeException("IO.nextInt: Invalid int.");
                         ret = -ret;
                     }
 
                     return ret;
-                } catch(IOException e) {
+                } catch (IOException e) {
                     throw new RuntimeException("IO.nextInt: Caught IOException.");
                 }
             }
@@ -1475,26 +1518,26 @@ public class D {
                     eatDelimiters();
 
                     boolean positive = true;
-                    if(buf[bufi] == '-') {
+                    if (buf[bufi] == '-') {
                         ++bufi;
-                        if(!pumpBuf()) throw new RuntimeException("IO.nextLong: Invalid long.");
+                        if (!pumpBuf()) throw new RuntimeException("IO.nextLong: Invalid long.");
                         positive = false;
                     }
 
                     boolean first = true;
-                    while(true) {
-                        if(!pumpBuf()) break;
-                        if(isDelimiter(buf[bufi])) {
-                            if(first) throw new RuntimeException("IO.nextLong: Invalid long.");
+                    while (true) {
+                        if (!pumpBuf()) break;
+                        if (isDelimiter(buf[bufi])) {
+                            if (first) throw new RuntimeException("IO.nextLong: Invalid long.");
                             break;
                         }
                         first = false;
 
-                        if(buf[bufi] >= '0' && buf[bufi] <= '9') {
-                            if(ret < -922337203685477580L) throw new RuntimeException("IO.nextLong: Invalid long.");
+                        if (buf[bufi] >= '0' && buf[bufi] <= '9') {
+                            if (ret < -922337203685477580L) throw new RuntimeException("IO.nextLong: Invalid long.");
                             ret *= 10;
-                            ret -= (long)(buf[bufi] - '0');
-                            if(ret > 0) throw new RuntimeException("IO.nextLong: Invalid long.");
+                            ret -= (long) (buf[bufi] - '0');
+                            if (ret > 0) throw new RuntimeException("IO.nextLong: Invalid long.");
                         } else {
                             throw new RuntimeException("IO.nextLong: Invalid long.");
                         }
@@ -1502,13 +1545,13 @@ public class D {
                         ++bufi;
                     }
 
-                    if(positive) {
-                        if(ret == -9223372036854775808L) throw new RuntimeException("IO.nextLong: Invalid long.");
+                    if (positive) {
+                        if (ret == -9223372036854775808L) throw new RuntimeException("IO.nextLong: Invalid long.");
                         ret = -ret;
                     }
 
                     return ret;
-                } catch(IOException e) {
+                } catch (IOException e) {
                     throw new RuntimeException("IO.nextLong: Caught IOException.");
                 }
             }
@@ -1535,7 +1578,7 @@ public class D {
 
         long min(long... v) {
             long ans = v[0];
-            for (int i=1; i<v.length; i++) {
+            for (int i = 1; i < v.length; i++) {
                 ans = Math.min(ans, v[i]);
             }
             return ans;
@@ -1543,7 +1586,7 @@ public class D {
 
         double min(double... v) {
             double ans = v[0];
-            for (int i=1; i<v.length; i++) {
+            for (int i = 1; i < v.length; i++) {
                 ans = Math.min(ans, v[i]);
             }
             return ans;
@@ -1551,7 +1594,7 @@ public class D {
 
         int min(int... v) {
             int ans = v[0];
-            for (int i=1; i<v.length; i++) {
+            for (int i = 1; i < v.length; i++) {
                 ans = Math.min(ans, v[i]);
             }
             return ans;
@@ -1559,7 +1602,7 @@ public class D {
 
         long max(long... v) {
             long ans = v[0];
-            for (int i=1; i<v.length; i++) {
+            for (int i = 1; i < v.length; i++) {
                 ans = Math.max(ans, v[i]);
             }
             return ans;
@@ -1567,7 +1610,7 @@ public class D {
 
         double max(double... v) {
             double ans = v[0];
-            for (int i=1; i<v.length; i++) {
+            for (int i = 1; i < v.length; i++) {
                 ans = Math.max(ans, v[i]);
             }
             return ans;
@@ -1575,7 +1618,7 @@ public class D {
 
         int max(int... v) {
             int ans = v[0];
-            for (int i=1; i<v.length; i++) {
+            for (int i = 1; i < v.length; i++) {
                 ans = Math.max(ans, v[i]);
             }
             return ans;

@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 import static java.lang.StrictMath.abs;
@@ -25,7 +24,7 @@ public class Pro11 {
 
 
         for (int i = a.length - 2; i >= 0; i--) {
-            if(a[leftMax] <= a[i]){
+            if (a[leftMax] <= a[i]) {
                 leftMax = i;
             }
         }
@@ -33,16 +32,16 @@ public class Pro11 {
         int rightMin = 0;
 
         for (int i = 1; i < a.length; i++) {
-            if(a[rightMin] >= a[i]){
+            if (a[rightMin] >= a[i]) {
                 rightMin = i;
             }
         }
 
-        if(rightMin > leftMax){
+        if (rightMin > leftMax) {
             ans = abs(rightMin - n + 1) + abs(leftMax);
-        }else if(rightMin < leftMax){
+        } else if (rightMin < leftMax) {
             ans = abs(rightMin - n + 1) + abs(leftMax) - 1;
-        }else {
+        } else {
             ans = 0;
         }
 
@@ -51,7 +50,7 @@ public class Pro11 {
 
     }
 
-    private void swap (int[] arr, int a1, int a2){
+    private void swap(int[] arr, int a1, int a2) {
         int buff = arr[a1];
         arr[a1] = arr[a2];
         arr[a2] = buff;

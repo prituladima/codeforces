@@ -1,7 +1,10 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 import static java.util.stream.IntStream.range;
 
@@ -20,12 +23,12 @@ public class Pro33 {
             for (int j = 0; j < n; j++) {
                 int ne = 0;
 
-                if(i - 1 >= 0 && mtx[i - 1][j] == 'o') ne++;
-                if(i + 1 < n && mtx[i + 1][j] == 'o') ne++;
-                if(j - 1 >= 0 && mtx[i][j-1] == 'o') ne++;
-                if(j + 1 < n && mtx[i][j+1] == 'o') ne++;
+                if (i - 1 >= 0 && mtx[i - 1][j] == 'o') ne++;
+                if (i + 1 < n && mtx[i + 1][j] == 'o') ne++;
+                if (j - 1 >= 0 && mtx[i][j - 1] == 'o') ne++;
+                if (j + 1 < n && mtx[i][j + 1] == 'o') ne++;
 
-                if(ne % 2 != 0){
+                if (ne % 2 != 0) {
                     System.out.println("NO");
                     return;
                 }
@@ -70,7 +73,7 @@ public class Pro33 {
         return Arrays.stream(new double[size]).map(c -> nextDouble()).toArray();
     }
 
-    char[][] nextCharMatrix(int n){
+    char[][] nextCharMatrix(int n) {
         return range(0, n).mapToObj(i -> nextToken().toCharArray()).toArray(char[][]::new);
     }
 

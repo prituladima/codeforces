@@ -3,9 +3,6 @@ package com.prituladima.codeforce.contests.contest1043;
 import com.prituladima.codeforce.InputReader;
 
 import java.io.PrintWriter;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class CNaimensheeSlovo {
     public void solve(int testNumber, InputReader in, PrintWriter out) {

@@ -1,6 +1,7 @@
 package com.prituladima.codeforce.contests.contest1091;
 
 import com.prituladima.codeforce.InputReader;
+
 import java.io.PrintWriter;
 
 public class DNoviiGodIKonkatenaciyaPerestanovok {

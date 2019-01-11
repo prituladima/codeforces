@@ -13,7 +13,7 @@ public class Pro93 {
 
         int[] st = new int[3];
         int i = nextInt();
-        st[i-1] = 1;
+        st[i - 1] = 1;
         for (int j = 0; j < 3; j++) {
             int f = nextInt(), s = nextInt();
             int buff = st[f - 1];
@@ -22,7 +22,7 @@ public class Pro93 {
         }
 
         for (int j = 0; j < st.length; j++) {
-            if (st[j] != 0){
+            if (st[j] != 0) {
                 sout(j + 1);
             }
         }

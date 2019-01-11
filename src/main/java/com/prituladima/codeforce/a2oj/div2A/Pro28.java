@@ -1,7 +1,11 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 /**
  * Created by prituladima on 6/28/18.
@@ -17,7 +21,7 @@ public class Pro28 {
         Arrays.fill(body, '#');
         Arrays.fill(right, '.');
         Arrays.fill(left, '.');
-        right[m -1] = '#';
+        right[m - 1] = '#';
         left[0] = '#';
 
         String bodyS = new StringBuffer().append(body).toString();
@@ -27,19 +31,16 @@ public class Pro28 {
         System.out.println(bodyS);
 
         boolean isRight = true;
-        for (int i = 1; i < n; i+=2) {
+        for (int i = 1; i < n; i += 2) {
 
-            if(isRight){
+            if (isRight) {
                 System.out.println(rightS);
-            }else {
+            } else {
                 System.out.println(leftS);
             }
             isRight = !isRight;
             System.out.println(bodyS);
         }
-
-
-
 
 
     }

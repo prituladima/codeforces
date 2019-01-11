@@ -3,7 +3,6 @@ package com.prituladima.codeforce.contests.contest1076;
 import com.prituladima.codeforce.InputReader;
 
 import java.io.PrintWriter;
-import java.util.Arrays;
 
 public class BVichitanieDelitelya {
     public void solve(int testNumber, InputReader in, PrintWriter out) {
@@ -12,8 +11,9 @@ public class BVichitanieDelitelya {
 
         for (long i = 2; i * i <= n; i++) {
             if (n % i == 0) {
-                out.print((n - i)/2+1);
-            return;}
+                out.print((n - i) / 2 + 1);
+                return;
+            }
         }
 
         out.print(1);

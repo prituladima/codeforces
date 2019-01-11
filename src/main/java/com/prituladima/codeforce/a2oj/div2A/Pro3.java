@@ -18,7 +18,7 @@ public class Pro3 {
 
         s = s.replaceAll("[AOYEUIaoyeui]{1}", "");
 
-        char[] chars= s.toLowerCase().toCharArray();
+        char[] chars = s.toLowerCase().toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
         for (char i : chars) {
             stringBuilder.append('.').append(i);

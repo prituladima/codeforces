@@ -1,6 +1,6 @@
 package com.prituladima.geeksforgeeks.math.fib.matrix;
 
-import java.util.*;
+import java.util.Scanner;
 
 import static java.lang.System.arraycopy;
 

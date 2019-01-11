@@ -1,6 +1,7 @@
 package com.prituladima.codeforce.contests.contest1076;
 
 import com.prituladima.codeforce.InputReader;
+
 import java.io.PrintWriter;
 
 public class CMemnayaZadacha {
@@ -10,14 +11,14 @@ public class CMemnayaZadacha {
             int d = in.nextInt();//, b = in.nextInt();
 
 
-            int D = d*d - 4*d;
-            if(D < 0){
+            int D = d * d - 4 * d;
+            if (D < 0) {
                 out.println("N");
-            }else {
+            } else {
                 double b = d + Math.sqrt(D);
                 b /= 2;
                 double a = b == 0 ? 0.0 : d / b;
-                out.println("Y " +a + " " + b);
+                out.println("Y " + a + " " + b);
             }
         }
 

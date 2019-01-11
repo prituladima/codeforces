@@ -1,6 +1,6 @@
 package com.prituladima.codeforce.contests.contest1079;
 
-import com.prituladima.codeforce.GeekMath;
+import com.prituladima.codeforce.GeekInteger;
 import com.prituladima.codeforce.InputReader;
 
 import java.io.PrintWriter;
@@ -12,7 +12,7 @@ public class BImennoiKubok {
 
         int length = s.length();
 
-        int row = GeekMath.ceiling(length, 20);
+        int row = GeekInteger.ceiling(length, 20);
 
         for (int i = row; i <= 5; i++) {
             for (int j = 1; j <= 20; j++) {

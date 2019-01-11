@@ -16,9 +16,9 @@ public class A {
 
         int A = nextInt(), B = nextInt(), C = nextInt(), N = nextInt();
 
-        if(A + B - C + 1 <= N && A >= C && B >= C && A + B - C + 1 >= 1){
+        if (A + B - C + 1 <= N && A >= C && B >= C && A + B - C + 1 >= 1) {
             System.out.println(N - (A + B - C));
-        }else {
+        } else {
             System.out.println(-1);
         }
     }

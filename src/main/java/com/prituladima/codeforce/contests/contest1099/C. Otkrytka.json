@@ -1,49 +1,55 @@
 {
-  "name" : "C. Открытка",
-  "testType" : "SINGLE",
-  "input" : {
-    "type" : "STANDARD",
-    "fileName" : "input.txt"
+  "name": "C. Открытка",
+  "testType": "SINGLE",
+  "input": {
+    "type": "STANDARD",
+    "fileName": "input.txt"
   },
-  "output" : {
-    "type" : "STANDARD",
-    "fileName" : "output.txt"
+  "output": {
+    "type": "STANDARD",
+    "fileName": "output.txt"
   },
-  "tests" : [ {
-    "input" : "hw?ap*yn?eww*ye*ar\n12\n",
-    "index" : 0,
-    "active" : true
-  }, {
-    "input" : "ab?a\n2\n",
-    "index" : 1,
-    "active" : true
-  }, {
-    "input" : "ab?a\n3\n",
-    "index" : 2,
-    "active" : true
-  }, {
-    "input" : "ababb\n5\n",
-    "index" : 3,
-    "active" : true
-  }, {
-    "input" : "ab?a\n1\n",
-    "index" : 4,
-    "active" : true
-  } ],
-  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1099",
-  "vmArgs" : "-Xmx256M",
-  "mainClass" : "Main",
-  "taskClass" : "com.prituladima.codeforce.contests.contest1099.COtkritka",
-  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
-  "checkerParameters" : "",
-  "testClasses" : [ ],
-  "date" : "2019.01.05",
-  "contestName" : "Codeforces Round #530 (Div. 2)",
-  "truncate" : true,
-  "inputClass" : "com.prituladima.codeforce.InputReader",
-  "outputClass" : "java.io.PrintWriter",
-  "includeLocale" : false,
-  "failOnOverflow" : false,
-  "interactive" : false,
-  "interactor" : "net.egork.chelper.tester.Interactor"
+  "tests": [
+    {
+      "input": "hw?ap*yn?eww*ye*ar\n12\n",
+      "index": 0,
+      "active": true
+    },
+    {
+      "input": "ab?a\n2\n",
+      "index": 1,
+      "active": true
+    },
+    {
+      "input": "ab?a\n3\n",
+      "index": 2,
+      "active": true
+    },
+    {
+      "input": "ababb\n5\n",
+      "index": 3,
+      "active": true
+    },
+    {
+      "input": "ab?a\n1\n",
+      "index": 4,
+      "active": true
+    }
+  ],
+  "location": "src/main/java/com/prituladima/codeforce/contests/contest1099",
+  "vmArgs": "-Xmx256M",
+  "mainClass": "Main",
+  "taskClass": "com.prituladima.codeforce.contests.contest1099.COtkritka",
+  "checkerClass": "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters": "",
+  "testClasses": [],
+  "date": "2019.01.05",
+  "contestName": "Codeforces Round #530 (Div. 2)",
+  "truncate": true,
+  "inputClass": "com.prituladima.codeforce.InputReader",
+  "outputClass": "java.io.PrintWriter",
+  "includeLocale": false,
+  "failOnOverflow": false,
+  "interactive": false,
+  "interactor": "net.egork.chelper.tester.Interactor"
 }

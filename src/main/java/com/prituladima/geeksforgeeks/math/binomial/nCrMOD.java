@@ -65,7 +65,7 @@ public class nCrMOD {
             // Compute next row of pascal
             // triangle using the previous row
             for (int j = Math.min(i, k); j > 0; j--)
-                C[j] = (C[j] + C[j - 1])%modulo;
+                C[j] = (C[j] + C[j - 1]) % modulo;
 
         }
         return C[k];

@@ -24,9 +24,9 @@ public class C {
             int n = nextInt();
             long[] a = nextArrL(n);
 
-            if(a.length == 4) {
+            if (a.length == 4) {
                 souf("%d %d %d %d\n", a[0], a[1], a[2], a[3]);//not fear trick since tests are weak
-               continue;
+                continue;
             }
 
             ArrayList<Long> pairs = new ArrayList<>();

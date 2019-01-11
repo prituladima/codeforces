@@ -1,7 +1,8 @@
 package com.prituladima.codeforce.contests.contest926;
 
-import com.prituladima.codeforce.GeekMath;
+import com.prituladima.codeforce.GeekInteger;
 import com.prituladima.codeforce.InputReader;
+
 import java.io.PrintWriter;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ public class BDobavlenieTochek {
         int n = in.nextInt();
         int[] x = in.nextArr(n);
 
-        GeekMath.save_sort(x);
+        GeekInteger.save_sort(x);
 
         long ans = 0;
 
@@ -19,11 +20,11 @@ public class BDobavlenieTochek {
             dist[i] = x[i + 1] - x[i];
         }
 
-        Map<Integer, Integer> ms = GeekMath.multiSet(dist);
+        Map<Integer, Integer> ms = GeekInteger.multiSet(dist);
 
-        dist = GeekMath.toArray(ms.keySet());
+        dist = GeekInteger.toArray(ms.keySet());
 
-        int gcd = GeekMath.gcd(dist);
+        int gcd = GeekInteger.gcd(dist);
 
 
         for (int i = 0; i < dist.length; i++) {

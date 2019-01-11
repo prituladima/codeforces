@@ -22,12 +22,12 @@ public class A {
         int N = scanner.nextInt();
 
 
-        int L = 20*60-(hh*60+mm);
+        int L = 20 * 60 - (hh * 60 + mm);
         double ans = Double.POSITIVE_INFINITY;
-        if(hh < 20){
-            ans = Math.min(ans, (H+N-1)/N*C);
+        if (hh < 20) {
+            ans = Math.min(ans, (H + N - 1) / N * C);
         }
-        ans = Math.min(ans, (H+Math.max(L, 0)*D+N-1)/N*C*0.8);
+        ans = Math.min(ans, (H + Math.max(L, 0) * D + N - 1) / N * C * 0.8);
 
         System.out.printf("%.4f", ans);
 

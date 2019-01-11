@@ -1,39 +1,42 @@
 {
-  "name" : "A. Новый год и рождественский орнамент",
-  "testType" : "SINGLE",
-  "input" : {
-    "type" : "STANDARD",
-    "fileName" : "input.txt"
+  "name": "A. Новый год и рождественский орнамент",
+  "testType": "SINGLE",
+  "input": {
+    "type": "STANDARD",
+    "fileName": "input.txt"
   },
-  "output" : {
-    "type" : "STANDARD",
-    "fileName" : "output.txt"
+  "output": {
+    "type": "STANDARD",
+    "fileName": "output.txt"
   },
-  "tests" : [ {
-    "input" : "8 13 9\n",
-    "output" : "24\n",
-    "index" : 0,
-    "active" : true
-  }, {
-    "input" : "13 3 6\n",
-    "output" : "9\n",
-    "index" : 1,
-    "active" : true
-  } ],
-  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1091",
-  "vmArgs" : "-Xmx256M",
-  "mainClass" : "Main",
-  "taskClass" : "com.prituladima.codeforce.contests.contest1091.ANoviiGodIRozhdestvenskiiOrnament",
-  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
-  "checkerParameters" : "",
-  "testClasses" : [ ],
-  "date" : "2018.12.30",
-  "contestName" : "Good Bye 2018",
-  "truncate" : true,
-  "inputClass" : "com.prituladima.codeforce.InputReader",
-  "outputClass" : "java.io.PrintWriter",
-  "includeLocale" : false,
-  "failOnOverflow" : false,
-  "interactive" : false,
-  "interactor" : "net.egork.chelper.tester.Interactor"
+  "tests": [
+    {
+      "input": "8 13 9\n",
+      "output": "24\n",
+      "index": 0,
+      "active": true
+    },
+    {
+      "input": "13 3 6\n",
+      "output": "9\n",
+      "index": 1,
+      "active": true
+    }
+  ],
+  "location": "src/main/java/com/prituladima/codeforce/contests/contest1091",
+  "vmArgs": "-Xmx256M",
+  "mainClass": "Main",
+  "taskClass": "com.prituladima.codeforce.contests.contest1091.ANoviiGodIRozhdestvenskiiOrnament",
+  "checkerClass": "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters": "",
+  "testClasses": [],
+  "date": "2018.12.30",
+  "contestName": "Good Bye 2018",
+  "truncate": true,
+  "inputClass": "com.prituladima.codeforce.InputReader",
+  "outputClass": "java.io.PrintWriter",
+  "includeLocale": false,
+  "failOnOverflow": false,
+  "interactive": false,
+  "interactor": "net.egork.chelper.tester.Interactor"
 }

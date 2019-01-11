@@ -1,7 +1,13 @@
 package com.prituladima.codeforce.contests.contest1007;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.StringTokenizer;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -15,11 +21,11 @@ import static java.util.stream.IntStream.range;
 public class A {
     private void solve() {
 
-        Set<Character> set = new HashSet<>(Arrays.asList('a', 'o', 'u', 'i',  'e'));
+        Set<Character> set = new HashSet<>(Arrays.asList('a', 'o', 'u', 'i', 'e'));
 
         char[] chars = nextToken().toCharArray();
 
-        if(!set.contains(chars[chars.length - 1]) && chars[chars.length - 1] != 'n'){
+        if (!set.contains(chars[chars.length - 1]) && chars[chars.length - 1] != 'n') {
             soutnl("NO");
             return;
         }
@@ -27,23 +33,19 @@ public class A {
         boolean expectedGlass = false;
 
         for (int i = 0; i < chars.length; i++) {
-            if(expectedGlass && !set.contains(chars[i])){
+            if (expectedGlass && !set.contains(chars[i])) {
                 soutnl("NO");
                 return;
             }
 
             if (!set.contains(chars[i]) && chars[i] != 'n') {
                 expectedGlass = true;
-            }else{
+            } else {
                 expectedGlass = false;
             }
         }
 
-        soutnl(expectedGlass ? "NO":"YES");
-
-
-
-
+        soutnl(expectedGlass ? "NO" : "YES");
 
 
     }

@@ -1,7 +1,13 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.StringTokenizer;
 
 /**
  * Created by prituladima on 6/27/18.
@@ -11,7 +17,7 @@ public class Pro18 {
     private void solve() throws IOException {
 
         Scanner scanner = new Scanner(System.in);
-        String input  = scanner.nextLine();
+        String input = scanner.nextLine();
         input = input.replace('}', ' ').replace('{', ' ');
 
         String[] sps = input.split(",");
@@ -22,7 +28,7 @@ public class Pro18 {
         for (int i = 0; i < sps.length; i++) {
             String can = sps[i].trim();
 
-            if(!can.isEmpty()){
+            if (!can.isEmpty()) {
                 set.add(can);
             }
         }

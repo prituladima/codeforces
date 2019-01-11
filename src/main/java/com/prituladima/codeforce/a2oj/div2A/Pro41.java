@@ -1,8 +1,12 @@
 package com.prituladima.codeforce.a2oj.div2A;
 
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 import static java.util.stream.IntStream.range;
 

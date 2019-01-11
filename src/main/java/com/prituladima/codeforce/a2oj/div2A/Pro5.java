@@ -25,7 +25,7 @@ public class Pro5 {
             System.out.print(plus);
             System.out.print(numbers[i]);
         }
-        
+
 
     }
 

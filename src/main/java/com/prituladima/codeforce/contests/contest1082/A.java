@@ -33,25 +33,25 @@ public final class A {
             return abs / d;
         }
 
-        if(second){
+        if (second) {
             return -1;
         }
 
         int P = minStep(n, 1, y, d, true);
-        if(P == -1) {
+        if (P == -1) {
             P = Integer.MAX_VALUE;
-        }else {
+        } else {
             P += ((x - 1) + d - 1) / d;
         }
 
         int Q = minStep(n, n, y, d, true);
-        if(Q == -1) {
+        if (Q == -1) {
             Q = Integer.MAX_VALUE;
-        }else {
+        } else {
             Q += ((n - x) + d - 1) / d;
         }
 
-        if(Math.min(P, Q) == Integer.MAX_VALUE){
+        if (Math.min(P, Q) == Integer.MAX_VALUE) {
             return -1;
         }
 

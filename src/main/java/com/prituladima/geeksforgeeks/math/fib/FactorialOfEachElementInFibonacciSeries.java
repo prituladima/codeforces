@@ -32,7 +32,7 @@ public class FactorialOfEachElementInFibonacciSeries {
             }
 
             fac[i] = fac[i - 1];
-            for(int m = fib[i-1] + 1; m <= fib[i]; m++){
+            for (int m = fib[i - 1] + 1; m <= fib[i]; m++) {
                 fac[i] = fac[i].multiply(BigInteger.valueOf(m));
             }
 

@@ -1,8 +1,12 @@
 package com.prituladima.codeforce.contests.contest1082;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
-import java.util.*;
-import java.io.*;
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.Random;
 
 
 public class C implements Runnable {
@@ -27,33 +31,33 @@ public class C implements Runnable {
             need[i] = new long[count[i]];
         }
 
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             need[arr[i][0]][--count[arr[i][0]]] = -arr[i][1];
         }
 
-        for(int i = 0; i <= m; i++) {
+        for (int i = 0; i <= m; i++) {
             need[i] = scn.shuffle(need[i]);
             Arrays.sort(need[i]);
 
-            for(int j = 0; j < need[i].length; j++) {
+            for (int j = 0; j < need[i].length; j++) {
                 need[i][j] *= -1;
             }
 
-            for(int j = 1; j < need[i].length; j++) {
+            for (int j = 1; j < need[i].length; j++) {
                 need[i][j] += need[i][j - 1];
             }
         }
 
-        long[] ans = new long[Math.max(n , m)];
-        for(int i = 0; i <= m; i++) {
-            for(int j = 0; j < need[i].length; j++) {
-                if(need[i][j] >= 0) {
+        long[] ans = new long[Math.max(n, m)];
+        for (int i = 0; i <= m; i++) {
+            for (int j = 0; j < need[i].length; j++) {
+                if (need[i][j] >= 0) {
                     ans[j] += need[i][j];
                 }
             }
         }
         long max = 0;
-        for(long z : ans) {
+        for (long z : ans) {
             max = Math.max(max, z);
         }
         out.println(max);
@@ -67,7 +71,7 @@ public class C implements Runnable {
         solve();
         out.flush();
         if (!oj) {
-            System.out.println(Arrays.deepToString(new Object[] { System.currentTimeMillis() - time + " ms" }));
+            System.out.println(Arrays.deepToString(new Object[]{System.currentTimeMillis() - time + " ms"}));
         }
     }
 

@@ -1,34 +1,36 @@
 {
-  "name" : "C. Мемная задача",
-  "testType" : "SINGLE",
-  "input" : {
-    "type" : "STANDARD",
-    "fileName" : "input.txt"
+  "name": "C. Мемная задача",
+  "testType": "SINGLE",
+  "input": {
+    "type": "STANDARD",
+    "fileName": "input.txt"
   },
-  "output" : {
-    "type" : "STANDARD",
-    "fileName" : "output.txt"
+  "output": {
+    "type": "STANDARD",
+    "fileName": "output.txt"
   },
-  "tests" : [ {
-    "input" : "7\n69\n0\n1\n4\n5\n999\n1000\n",
-    "output" : "Y 67.985071301 1.014928699\nY 0.000000000 0.000000000\nN\nY 2.000000000 2.000000000\nY 3.618033989 1.381966011\nY 997.998996990 1.001003010\nY 998.998997995 1.001002005\n",
-    "index" : 0,
-    "active" : true
-  } ],
-  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1076",
-  "vmArgs" : "-Xmx256M",
-  "mainClass" : "Main",
-  "taskClass" : "com.prituladima.codeforce.contests.contest1076.CMemnayaZadacha",
-  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
-  "checkerParameters" : "",
-  "testClasses" : [ ],
-  "date" : "2019.01.06",
-  "contestName" : "Educational Codeforces Round 54 (рейтинговый для Див. 2)",
-  "truncate" : true,
-  "inputClass" : "com.prituladima.codeforce.InputReader",
-  "outputClass" : "java.io.PrintWriter",
-  "includeLocale" : false,
-  "failOnOverflow" : false,
-  "interactive" : false,
-  "interactor" : "net.egork.chelper.tester.Interactor"
+  "tests": [
+    {
+      "input": "7\n69\n0\n1\n4\n5\n999\n1000\n",
+      "output": "Y 67.985071301 1.014928699\nY 0.000000000 0.000000000\nN\nY 2.000000000 2.000000000\nY 3.618033989 1.381966011\nY 997.998996990 1.001003010\nY 998.998997995 1.001002005\n",
+      "index": 0,
+      "active": true
+    }
+  ],
+  "location": "src/main/java/com/prituladima/codeforce/contests/contest1076",
+  "vmArgs": "-Xmx256M",
+  "mainClass": "Main",
+  "taskClass": "com.prituladima.codeforce.contests.contest1076.CMemnayaZadacha",
+  "checkerClass": "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters": "",
+  "testClasses": [],
+  "date": "2019.01.06",
+  "contestName": "Educational Codeforces Round 54 (рейтинговый для Див. 2)",
+  "truncate": true,
+  "inputClass": "com.prituladima.codeforce.InputReader",
+  "outputClass": "java.io.PrintWriter",
+  "includeLocale": false,
+  "failOnOverflow": false,
+  "interactive": false,
+  "interactor": "net.egork.chelper.tester.Interactor"
 }

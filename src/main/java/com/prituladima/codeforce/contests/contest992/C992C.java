@@ -11,12 +11,13 @@ import java.util.StringTokenizer;
  */
 public class C992C {
     long MOD = 1000000007;
+
     private void solve() throws IOException {
 
 
         long x = nextLong(), k = nextLong();
 
-        if(x == 0){
+        if (x == 0) {
             System.out.println(0);
             return;
         }

@@ -5,7 +5,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.StringTokenizer;
 
 import static java.util.stream.IntStream.range;
 
@@ -28,7 +31,7 @@ public class Pro75 {
                     set.add(gen2[i]);
                 }
             }
-            sout(diff == 2 && set.size()==2 ? "YES" : "NO");
+            sout(diff == 2 && set.size() == 2 ? "YES" : "NO");
         } else {
             sout("NO");
         }

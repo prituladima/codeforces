@@ -1,6 +1,6 @@
 package com.prituladima.codeforce.contests.contest1097;
 
-import com.prituladima.codeforce.GeekMath;
+import com.prituladima.codeforce.GeekInteger;
 import com.prituladima.codeforce.InputReader;
 
 import java.io.PrintWriter;
@@ -15,7 +15,7 @@ public class BPetrIKodoviiZamok {
 
         for (int i = 1; i < MAX; i++) {
             long res = 0L;
-            char[] arr = GeekMath.toBitString(i, n).toCharArray();
+            char[] arr = GeekInteger.toBitString(i, n).toCharArray();
             int k = 0;
             for (char c : arr) {
                 res += (c == '1') ? a[k] : -a[k];

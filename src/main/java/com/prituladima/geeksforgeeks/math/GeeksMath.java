@@ -118,24 +118,24 @@ public class GeeksMath {
         return ans;
     }
 
-    long digitsInFactorizationWithExponental(long n){
+    long digitsInFactorizationWithExponental(long n) {
         Map<Long, Long> expCounter = new HashMap<>();
-        while (n % 2 == 0){
-            expCounter.merge(2L, 1L , (x, y) -> x + y);
+        while (n % 2 == 0) {
+            expCounter.merge(2L, 1L, (x, y) -> x + y);
             n /= 2;
         }
 
         long f = 3;
-        while (f * f <= n){
-            if(n % f == 0){
-                expCounter.merge(f, 1L, (x, y)->x+y);
+        while (f * f <= n) {
+            if (n % f == 0) {
+                expCounter.merge(f, 1L, (x, y) -> x + y);
                 n /= f;
-            }else {
+            } else {
                 f += 2;
             }
         }
 
-        if(n!=1) expCounter.merge(n, 1L, (x, y)-> x + y);
+        if (n != 1) expCounter.merge(n, 1L, (x, y) -> x + y);
 
 
         long sum = 0;
@@ -149,10 +149,10 @@ public class GeeksMath {
     }
 
 
-    long digits(long n){
+    long digits(long n) {
         long amount = 0;
-        while (n != 0){
-            amount ++;
+        while (n != 0) {
+            amount++;
             n /= 10;
         }
         return amount;
@@ -254,7 +254,6 @@ public class GeeksMath {
     long[][] matrixNxN(int n) {
         return new long[n][n];
     }
-
 
 
 }

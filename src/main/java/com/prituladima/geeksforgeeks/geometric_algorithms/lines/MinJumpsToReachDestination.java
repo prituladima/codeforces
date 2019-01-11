@@ -1,7 +1,9 @@
 package com.prituladima.geeksforgeeks.geometric_algorithms.lines;
 
-import com.prituladima.geeksforgeeks.geometric_algorithms.lines.line.*;
-import java.util.*;
+import com.prituladima.geeksforgeeks.geometric_algorithms.lines.line.Line2D;
+import com.prituladima.geeksforgeeks.geometric_algorithms.lines.line.Point2D;
+
+import java.util.List;
 
 /**
  * Created by prituladima on 7/14/18.

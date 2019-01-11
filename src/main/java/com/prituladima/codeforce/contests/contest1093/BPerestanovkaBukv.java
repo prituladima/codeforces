@@ -1,26 +1,26 @@
 package com.prituladima.codeforce.contests.contest1093;
 
 import com.prituladima.codeforce.InputReader;
+
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class BPerestanovkaBukv {
     public void solve(int testNumber, InputReader in, PrintWriter out) {
         int t = in.nextInt();
-        while (t-->0){
+        while (t-- > 0) {
             String s = in.nextToken();
             Set<Character> set = new HashSet<>();
             for (int i = 0; i < s.length(); i++) {
                 set.add(s.charAt(i));
             }
-            if(set.size() == 1){
+            if (set.size() == 1) {
                 out.println(-1);
                 continue;
             }
 
-            if(!s.equals(new StringBuilder(s).reverse().toString())){
+            if (!s.equals(new StringBuilder(s).reverse().toString())) {
                 out.println(s);
                 continue;
             }
