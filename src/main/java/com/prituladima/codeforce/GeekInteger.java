@@ -6,6 +6,10 @@ import java.util.*;
 // TODO: 30.12.2018 Rename ti something like GeekLong
 public class GeekInteger {
 
+    public static int posMod(int a, int b) {
+        return (a % b + b) % b;
+    }
+
     public static List<Integer> toList(int[] arr) {
         List<Integer> ans = new ArrayList<>();
         for (int i : arr) ans.add(i);

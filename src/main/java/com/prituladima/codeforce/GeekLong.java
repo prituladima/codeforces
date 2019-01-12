@@ -4,6 +4,10 @@ import java.util.*;
 
 public class GeekLong {
 
+    public static long posMod(long a, long b) {
+        return (a % b + b) % b;
+    }
+
     public static List<Long> toList(long[] arr) {
         List<Long> ans = new ArrayList<>();
         for (long i : arr) ans.add(i);
