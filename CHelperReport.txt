@@ -1,2 +1,3 @@
-85 src/main/java/com/prituladima/codeforce/contests/contest926/B. Dobavlenie tochek.json
+85 src/main/java/com/prituladima/codeforce/contests/contest1087/C. Soedinite trojku.json
+1
 0
