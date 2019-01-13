@@ -4,7 +4,17 @@ import java.util.*;
 
 public class GeekLong {
 
-    public static long posMod(long a, long b) {
+    public static long binpow(long a, long n) {
+        long res = 1;
+        while (n > 0) {
+            res = (n & 1) != 0 ? (res * a) : 1;
+            n >>= 1;
+            a *= a;
+        }
+        return res;
+    }
+
+    public static long positiveMod(long a, long b) {
         return (a % b + b) % b;
     }
 

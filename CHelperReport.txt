@@ -1,5 +1,3 @@
-96 src/main/java/com/prituladima/codeforce/contests/contest1087/D. Derevo minimalnogo diametra.json
-3
-0
+87 src/main/java/com/prituladima/codeforce/contests/contest1100/C. NN i obman zrenija.json
 1
-2
+0

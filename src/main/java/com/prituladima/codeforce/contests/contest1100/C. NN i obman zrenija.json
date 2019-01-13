@@ -1,0 +1,44 @@
+{
+  "name" : "C. NN и обман зрения",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "3 1\n",
+    "output" : "6.4641016\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "6 1\n",
+    "output" : "1.0000000\n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "100 100\n",
+    "output" : "3.2429391\n",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1100",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1100.CNNIObmanZreniya",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.13",
+  "contestName" : "Codeforces Round #532 (Div. 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : false,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
