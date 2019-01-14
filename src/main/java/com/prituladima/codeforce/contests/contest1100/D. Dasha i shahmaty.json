@@ -1,0 +1,34 @@
+{
+  "name" : "D. Даша и шахматы",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "999 999\n1 1\n1 2\n2 1\n2 2\n1 3\n2 3\n&lt;...&gt;\n26 13\n26 14\n26 15\n26 16\n\n1 700 800\n\n2 1 2\n\n&lt;...&gt;\n\n-1 -1 -1\n",
+    "output" : "\n\n\n\n\n\n\n\n\n\n\n999 998\n\n999 997\n\n&lt;...&gt;\n\n999 26\n",
+    "index" : 0,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1100",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1100.DDashaIShahmati",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.13",
+  "contestName" : "Codeforces Round #532 (Div. 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : false,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
