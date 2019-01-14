@@ -1,3 +1,2 @@
 79 src/main/java/com/prituladima/codeforce/contests/contest1065/D. Tri figury.json
-1
 0
