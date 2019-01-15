@@ -1,2 +1,2 @@
-79 src/main/java/com/prituladima/codeforce/contests/contest1065/D. Tri figury.json
+91 src/main/java/com/prituladima/codeforce/contests/contest1051/C. Vasja i multimnojestva.json
 0

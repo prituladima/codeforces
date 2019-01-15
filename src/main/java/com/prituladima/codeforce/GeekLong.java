@@ -14,6 +14,18 @@ public class GeekLong {
         return res;
     }
 
+    public static long binpowmod(long a, long n, long modulo) {
+        long res = 1;
+        a %= modulo;
+        while (n > 0) {
+            res = (n & 1) != 0 ? (res * a) % modulo : 1;
+            n >>= 1;
+            a *= a;
+            a %= modulo;
+        }
+        return res;
+    }
+
     public static long positiveMod(long a, long b) {
         return (a % b + b) % b;
     }
@@ -100,6 +112,10 @@ public class GeekLong {
     public static void save_sort(long[] array) {
         shuffle(array);
         Arrays.sort(array);
+    }
+
+    public static long gcd(long a, long b) {
+        return b == 0 ? a : gcd(b, a % b);
     }
 
     public static void swap(long[] arr, int i, int j) {
