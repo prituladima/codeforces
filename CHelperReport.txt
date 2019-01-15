@@ -1,2 +1,2 @@
-91 src/main/java/com/prituladima/codeforce/contests/contest1051/C. Vasja i multimnojestva.json
+91 src/main/java/com/prituladima/codeforce/contests/contest1051/A. Znakoperemennaja summa.json
 0

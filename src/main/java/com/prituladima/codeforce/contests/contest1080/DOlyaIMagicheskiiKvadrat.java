@@ -11,14 +11,14 @@ public class DOlyaIMagicheskiiKvadrat {
 //        int[] maxLimit = new int[(int)1e9];
         long[] need = new long[32];
         for (int i = 1; i < need.length; i++) {
-            need[i] = (GeekLong.binpow(2, i) - 1) * 2 - i;
+            need[i] = (GeekLong.bpow(2, i) - 1) * 2 - i;
         }
 
         int t = in.nextInt();
         while (t-- > 0) {
             long n = in.nextLong();
             long k = in.nextLong();
-            long maxAllowed = GeekLong.binpow(4, n) - 1;
+            long maxAllowed = GeekLong.bpow(4, n) - 1;
             maxAllowed /= 3;
 
             if (maxAllowed > k) {

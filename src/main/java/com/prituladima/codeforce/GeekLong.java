@@ -4,7 +4,9 @@ import java.util.*;
 
 public class GeekLong {
 
-    public static long binpow(long a, long n) {
+
+    @Deprecated
+    public static long bpow(long a, long n) {
         long res = 1;
         while (n > 0) {
             res = (n & 1) != 0 ? (res * a) : 1;
@@ -14,16 +16,20 @@ public class GeekLong {
         return res;
     }
 
-    public static long binpowmod(long a, long n, long modulo) {
-        long res = 1;
-        a %= modulo;
-        while (n > 0) {
-            res = (n & 1) != 0 ? (res * a) % modulo : 1;
-            n >>= 1;
-            a *= a;
-            a %= modulo;
+    public static long inv(long x, long mod) {
+        return bpow(x, mod - 2, mod);
+    }
+
+    public static long bpow(long x, long n, long mod) {
+        if (n != 0) {
+            if (n % 2 == 1) {
+                return x * bpow(x, n - 1, mod) % mod;
+            } else {
+                return bpow(x * x % mod, n / 2, mod);
+            }
+        } else {
+            return 1;
         }
-        return res;
     }
 
     public static long positiveMod(long a, long b) {

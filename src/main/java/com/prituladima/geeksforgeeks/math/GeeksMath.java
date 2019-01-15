@@ -12,6 +12,8 @@ import static java.util.Arrays.fill;
  */
 public class GeeksMath {
 
+
+    @Deprecated
     long bin_pow(long a, long n) {
         long res = 1;
         while (n > 0) {
@@ -22,16 +24,8 @@ public class GeeksMath {
         return res;
     }
 
-    public static long bin_pow_mod(long a, long n, long modulo) {
-        long res = 1;
-        a %= modulo;
-        while (n > 0) {
-            res = (n & 1) != 0 ? (res * a) % modulo : 1;
-            n >>= 1;
-            a *= a;
-            a %= modulo;
-        }
-        return res;
+    public static long bpow(long x, long n, long mod) {
+        return n != 0 ? n % 2 == 1 ? x * bpow(x, n - 1, mod) % mod : bpow(x * x % mod, n / 2, mod) : 1;
     }
 
     long gcd(long a, long b) {
