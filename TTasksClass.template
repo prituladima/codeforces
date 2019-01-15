@@ -12,20 +12,21 @@ public class %TaskClass% {
     int ans;
     int min = -INF, max = INF;
     String s;
-
+    int t;
 
     public void solve(int testNumber, %InputClass% in, %OutputClass% out) {
+        t = in.nextInt();
+        while (t-- > 0) {
+            n = in.nextInt();
+            m = in.nextInt();
+            a = in.nextArr(n);
+            s = in.nextToken();
+            char[] chars = s.toCharArray();
+            L = in.nextLong();
+            R = in.nextLong();
 
-        n = in.nextInt();
-        m = in.nextInt();
-        a = in.nextArr(n);
-        s = in.nextToken();
-        char[] chars = s.toCharArray();
-        L = in.nextLong();
-        R = in.nextLong();
-
-
-        out.println(ans);
+            out.println(ans);
+        }
 
     }
 

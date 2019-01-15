@@ -1,48 +1,44 @@
 {
-  "name": "B. Потерянный массив",
-  "testType": "SINGLE",
-  "input": {
-    "type": "STANDARD",
-    "fileName": "input.txt"
+  "name" : "B. Потерянный массив",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
   },
-  "output": {
-    "type": "STANDARD",
-    "fileName": "output.txt"
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
   },
-  "tests": [
-    {
-      "input": "5\n1 2 3 4 5\n",
-      "output": "5\n1 2 3 4 5 \n",
-      "index": 0,
-      "active": true
-    },
-    {
-      "input": "5\n1 3 5 6 8\n",
-      "output": "2\n3 5 \n",
-      "index": 1,
-      "active": true
-    },
-    {
-      "input": "3\n1 5 3\n",
-      "output": "1\n3 \n",
-      "index": 2,
-      "active": true
-    }
-  ],
-  "location": "src/main/java/com/prituladima/codeforce/contests/contest1043",
-  "vmArgs": "-Xmx256M",
-  "mainClass": "Main",
-  "taskClass": "com.prituladima.codeforce.contests.contest1043.BPoteryanniiMassiv",
-  "checkerClass": "net.egork.chelper.checkers.TokenChecker",
-  "checkerParameters": "",
-  "testClasses": [],
-  "date": "2019.01.06",
-  "contestName": "Codeforces Round #519 by Botan Investments",
-  "truncate": true,
-  "inputClass": "com.prituladima.codeforce.InputReader",
-  "outputClass": "java.io.PrintWriter",
-  "includeLocale": false,
-  "failOnOverflow": false,
-  "interactive": false,
-  "interactor": "net.egork.chelper.tester.Interactor"
+  "tests" : [ {
+    "input" : "5\n1 2 3 4 5\n",
+    "output" : "5\n1 2 3 4 5 \n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "5\n1 3 5 6 8\n",
+    "output" : "2\n3 5 \n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "3\n1 5 3\n",
+    "output" : "1\n3 \n",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1043",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1043.BPoteryanniiMassiv",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.06",
+  "contestName" : "Codeforces Round #519 by Botan Investments",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : false,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
 }
