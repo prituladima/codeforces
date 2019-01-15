@@ -10,7 +10,7 @@ public class %TaskClass% {
     int[] a;
     long L, R;
     int ans;
-    int min = -INF, max = INF;
+    int min = INF, max = -INF;
     String s;
 
 
