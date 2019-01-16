@@ -1,7 +1,16 @@
 package %package%;
 
+import static com.prituladima.codeforce.GeekDP.Pair;
+
 import %InputClassFQN%;
 import %OutputClassFQN%;
+
+import java.util.*;
+import static java.lang.Math.*;
+import static java.util.Arrays.*;
+import static java.util.Collections.*;
+import static java.util.Comparator.*;
+
 
 public class %TaskClass% {
     final long MODULO = (long) 1e9 + 9;
@@ -13,6 +22,7 @@ public class %TaskClass% {
     int min = INF, max = -INF;
     String s;
     int t;
+    private List<Pair> pairs = new ArrayList<>();
 
     public void solve(int testNumber, %InputClass% in, %OutputClass% out) {
         t = in.nextInt();
@@ -24,6 +34,7 @@ public class %TaskClass% {
             char[] chars = s.toCharArray();
             L = in.nextLong();
             R = in.nextLong();
+            for (int i = 0; i < m; i++) pairs.add(new Pair(i, in.nextInt(), in.nextInt()));
 
             out.println(ans);
         }

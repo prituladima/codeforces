@@ -4,6 +4,8 @@ import com.prituladima.codeforce.InputReader;
 
 import java.io.PrintWriter;
 
+import static java.lang.Integer.MIN_VALUE;
+
 public class ENovayaRabotaPolikarpa {
     final long MODULO = (long) 1e9 + 9;
     final int INF = (int) 1e9;
@@ -17,8 +19,8 @@ public class ENovayaRabotaPolikarpa {
 
     public void solve(int testNumber, InputReader in, PrintWriter out) {
         t = in.nextInt();
-        int maxX = Integer.MIN_VALUE;
-        int maxY = Integer.MIN_VALUE;
+        int maxX = MIN_VALUE;
+        int maxY = MIN_VALUE;
 
 //        int maxH2 = Integer.MIN_VALUE;
 //        int maxW1 = Integer.MIN_VALUE;

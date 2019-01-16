@@ -8,6 +8,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static java.util.Collections.sort;
+import static java.util.Comparator.comparingInt;
+
 public class CRazbienieIObedinenie {
 
     private class Trip {
@@ -56,7 +59,7 @@ public class CRazbienieIObedinenie {
             }
 
             int[] ans = new int[n];
-            Collections.sort(list, Comparator.comparingInt(Trip::getL).thenComparing(Trip::getR));
+            sort(list, comparingInt(Trip::getL).thenComparing(Trip::getR));
             boolean trig = false;
 
             int maxR = Integer.MIN_VALUE;
