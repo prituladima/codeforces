@@ -1,2 +1,2 @@
-91 src/main/java/com/prituladima/codeforce/contests/contest1051/A. Znakoperemennaja summa.json
+92 src/main/java/com/prituladima/codeforce/contests/contest1101/E. Novaja rabota Polikarpa.json
 0
