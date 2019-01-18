@@ -1,2 +1,2 @@
-92 src/main/java/com/prituladima/codeforce/contests/contest1101/E. Novaja rabota Polikarpa.json
+77 src/main/java/com/prituladima/codeforce/contests/contest1061/C. Delimost.json
 0
