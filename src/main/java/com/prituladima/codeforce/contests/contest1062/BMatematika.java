@@ -1,16 +1,21 @@
 package com.prituladima.codeforce.contests.contest1062;
 
+import static com.prituladima.codeforce.GeekBit.isPowerOfTwo;
+import static com.prituladima.codeforce.GeekBit.nextPowerOf2;
 import static com.prituladima.codeforce.GeekDP.Pair;
 
 import com.prituladima.codeforce.InputReader;
+import com.prituladima.yaal.generated.collections.pair.LongIntPair;
+
 import java.io.PrintWriter;
 
 import java.util.*;
+
+import static com.prituladima.yaal.numbers.IntegerUtils.factorize;
 import static java.lang.Math.*;
 import static java.util.Arrays.*;
 import static java.util.Collections.*;
 import static java.util.Comparator.*;
-
 
 
 public class BMatematika {
@@ -57,93 +62,7 @@ public class BMatematika {
 
         out.printf("%d %d\n", ans, pow);
     }
-    static long nextPowerOf2(long n)
-    {
-        n--;
-        n |= n >> 1;
-        n |= n >> 2;
-        n |= n >> 4;
-        n |= n >> 8;
-        n |= n >> 16;
-        n++;
 
-        return n;
-    }
-
-    static boolean isPowerOfTwo (long x)
-    {
-        return x!=0 && ((x&(x-1)) == 0);
-
-    }
-
-    public static List<LongIntPair> factorize(long number) {
-        List<LongIntPair> result = new ArrayList<>();
-        for (long i = 2; i * i <= number; i++) {
-            if (number % i == 0) {
-                int power = 0;
-                do {
-                    power++;
-                    number /= i;
-                } while (number % i == 0);
-                result.add(LongIntPair.makePair(i, power));
-            }
-        }
-
-
-        if (number != 1) {
-            result.add(LongIntPair.makePair(number, 1));
-        }
-        return result;
-    }
-
-    public static class LongIntPair implements Comparable<LongIntPair> {
-        public final long first;
-        public final int second;
-
-        public static LongIntPair makePair(long first, int second) {
-            return new LongIntPair(first, second);
-        }
-
-        public LongIntPair(long first, int second) {
-            this.first = first;
-            this.second = second;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
-            if (o == null || getClass() != o.getClass()) {
-                return false;
-            }
-
-            LongIntPair pair = (LongIntPair) o;
-
-            return first == pair.first && second == pair.second;
-        }
-
-        @Override
-        public int hashCode() {
-            int result = Long.hashCode(first);
-            result = 31 * result + Integer.hashCode(second);
-            return result;
-        }
-
-        @Override
-        public String toString() {
-            return "(" + first + "," + second + ")";
-        }
-
-        @SuppressWarnings({"unchecked"})
-        public int compareTo(LongIntPair o) {
-            int value = Long.compare(first, o.first);
-            if (value != 0) {
-                return value;
-            }
-            return Integer.compare(second, o.second);
-        }
-    }
 
 
 

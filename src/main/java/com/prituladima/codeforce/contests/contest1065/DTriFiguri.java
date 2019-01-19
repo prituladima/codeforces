@@ -1,7 +1,6 @@
 package com.prituladima.codeforce.contests.contest1065;
 
 import com.prituladima.codeforce.InputReader;
-import com.sun.deploy.pings.Pings;
 
 import java.io.PrintWriter;
 import java.util.Arrays;
