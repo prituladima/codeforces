@@ -54,4 +54,12 @@ public class Pair<U, V> implements Comparable<Pair<U, V>> {
         }
         return ((Comparable<V>) second).compareTo(o.second);
     }
+
+    public U getFirst() {
+        return first;
+    }
+
+    public V getSecond() {
+        return second;
+    }
 }

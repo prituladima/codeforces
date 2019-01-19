@@ -2,6 +2,8 @@ package com.prituladima.stankevich.data_stractures.priority_queue;
 
 
 import java.util.*;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -9,7 +11,7 @@ import org.junit.runners.Parameterized;
 import static com.prituladima.geeksforgeeks.util.PrintWrapper.soutln;
 import static com.prituladima.geeksforgeeks.util.TestSetWrapper.item;
 import static com.prituladima.geeksforgeeks.util.TestSetWrapper.testSet;
-
+@Ignore
 @RunWith(value = Parameterized.class)
 public class LeftistHeapFromArrayBenchmarkTest {
 

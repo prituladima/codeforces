@@ -1,7 +1,7 @@
 package com.prituladima.geeksforgeeks.geometric_algorithms.lines;
 
 import com.prituladima.geeksforgeeks.geometric_algorithms.lines.klee.LSegment;
-import org.apache.commons.math3.util.Pair;
+import com.prituladima.yaal.collections.Pair;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,8 +25,8 @@ class LengthOfUnionOfSegmentsOfALine {
 
         ArrayList<Pair<Integer, Boolean>> points = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            points.add(new Pair<>(segments.get(i).getFirst(), false));
-            points.add(new Pair<>(segments.get(i).getSecond(), true));
+            points.add(Pair.makePair(segments.get(i).getFirst(), false));
+            points.add(Pair.makePair(segments.get(i).getSecond(), true));
         }
 
         Collections.sort(points, Comparator.comparingInt(Pair::getFirst)); //O(n * lon (n))
