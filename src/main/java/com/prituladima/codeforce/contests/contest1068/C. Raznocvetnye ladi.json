@@ -1,0 +1,44 @@
+{
+  "name" : "C. Разноцветные ладьи",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "3 2\n1 2\n2 3\n",
+    "output" : "2\n3 4\n1 4\n4\n1 2\n2 2\n2 4\n5 4\n1\n5 1\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "3 3\n1 2\n2 3\n3 1\n",
+    "output" : "1\n1 1\n1\n1 2\n1\n1 3\n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "3 1\n1 3\n",
+    "output" : "1\n1 1\n1\n2 2\n1\n3 1\n",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1068",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1068.CRaznocvetnieLadi",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.21",
+  "contestName" : "Codeforces Round #518 (Div. 2) [спасибо, Mail.Ru!]",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

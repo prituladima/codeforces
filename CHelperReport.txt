@@ -1,2 +1,2 @@
-79 src/main/java/com/prituladima/codeforce/contests/contest1062/B. Matematika.json
+99 src/main/java/com/prituladima/codeforce/contests/contest1068/D. Massiv bez lokalnyh maksimumov.json
 0
