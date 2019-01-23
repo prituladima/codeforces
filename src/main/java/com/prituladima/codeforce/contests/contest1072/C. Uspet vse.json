@@ -1,0 +1,43 @@
+{
+  "name" : "C. Успеть все",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "3 3\n",
+    "output" : "1\n3 \n2\n2 1 \n",
+    "index" : 0,
+    "active" : false
+  }, {
+    "input" : "9 12\n",
+    "output" : "2\n3 6\n4\n1 2 4 5\n",
+    "index" : 1,
+    "active" : false
+  }, {
+    "input" : "1000000000 1000000000",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1072",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1072.CUspetVse",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.22",
+  "contestName" : "Codeforces Round #517 (Div. 2, основан на Отборочном раунде 2 Технокубка 2019)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

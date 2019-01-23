@@ -1,2 +1,3 @@
-99 src/main/java/com/prituladima/codeforce/contests/contest1068/D. Massiv bez lokalnyh maksimumov.json
-0
+83 src/main/java/com/prituladima/codeforce/contests/contest1072/D. Minimalnyj put.json
+1
+1
