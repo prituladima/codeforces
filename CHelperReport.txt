@@ -1,3 +1,3 @@
-83 src/main/java/com/prituladima/codeforce/contests/contest1072/D. Minimalnyj put.json
+84 src/main/java/com/prituladima/codeforce/contests/contest1104/C. Igra na tablice.json
 1
-1
+0

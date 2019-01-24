@@ -1,0 +1,39 @@
+{
+  "name" : "E. Джони Солвинг",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "4 6 2\n1 2\n1 3\n1 4\n2 3\n2 4\n3 4\n",
+    "output" : "PATH\n4\n1 2 3 4 \n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "10 18 2\n1 2\n1 3\n1 4\n1 5\n1 6\n1 7\n1 8\n1 9\n1 10\n2 3\n3 4\n2 4\n5 6\n6 7\n5 7\n8 9\n9 10\n8 10\n",
+    "output" : "CYCLES\n4\n4 1 2 3 \n4\n7 1 5 6 \n",
+    "index" : 1,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1104",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1104.EDzhoniSolving",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.24",
+  "contestName" : "Codeforces Round #534 (Div. 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
