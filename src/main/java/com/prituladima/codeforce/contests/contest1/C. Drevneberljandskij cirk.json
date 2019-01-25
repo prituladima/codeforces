@@ -1,0 +1,34 @@
+{
+  "name" : "C. Древнеберляндский цирк",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "0.000000 0.000000\n1.000000 1.000000\n0.000000 1.000000\n",
+    "output" : "1.00000000\n",
+    "index" : 0,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1",
+  "vmArgs" : "-Xmx64M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1.CDrevneberlyandskiiCirk",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.20",
+  "contestName" : "Codeforces Beta Round #1",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

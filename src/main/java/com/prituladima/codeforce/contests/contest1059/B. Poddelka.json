@@ -1,0 +1,49 @@
+{
+  "name" : "B. Подделка",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "3 3\n###\n#.#\n###\n",
+    "output" : "YES\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "3 3\n###\n###\n###\n",
+    "output" : "NO\n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "4 3\n###\n###\n###\n###\n",
+    "output" : "YES\n",
+    "index" : 2,
+    "active" : true
+  }, {
+    "input" : "5 7\n.......\n.#####.\n.#.#.#.\n.#####.\n.......\n",
+    "output" : "YES\n",
+    "index" : 3,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1059",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1059.BPoddelka",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.25",
+  "contestName" : "Codeforces Round #514 (Div. 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.codeforce.InputReader",
+  "outputClass" : "java.io.PrintWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

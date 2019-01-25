@@ -1,3 +1,2 @@
-84 src/main/java/com/prituladima/codeforce/contests/contest1104/C. Igra na tablice.json
-1
+101 src/main/java/com/prituladima/codeforce/contests/contest1059/C. Preobrazovanie posledovatelnosti.json
 0

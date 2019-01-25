@@ -9,47 +9,13 @@ import java.util.StringTokenizer;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
-import static java.util.Arrays.fill;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
 public final class STemplate {
 
     private void solve() {
-        int n = nextInt();
-//        int k = 10;
-
-        int[][] steps = {
-                {4, 6},
-                {6, 8},
-                {7, 9},
-                {4, 8},
-                {3, 9, 0},
-
-                {},
-                {1, 7, 0},
-                {2, 6},
-                {1, 3},
-                {2, 4}
-        };
-
-
-        int[][] dp = new int[n + 1][10];
-        fill(dp[1], 1);
-        dp[1][0] = 0;
-        dp[1][8] = 0;
-
-        for (int i = 2; i <= n; i++) {
-            for (int j = 0; j < 10; j++) {
-                for (int k : steps[j])
-                    dp[i][j] += dp[i - 1][k];
-            }
-        }
-        int ans = 0;
-        for (int j = 0; j < 10; j++) {
-            ans += dp[n][j];
-        }
-        sout(ans);
+        //solution is here
     }
 
     public static void main(String[] args) {
