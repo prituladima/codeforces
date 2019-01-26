@@ -8,11 +8,7 @@ import java.io.InputStream;
 import java.math.BigInteger;
 import java.util.InputMismatchException;
 
-/**
- *  */
 public class InputReader {
-    private boolean finished = false;
-
     private InputStream stream;
     private byte[] buf = new byte[1024];
     private int curChar;
@@ -23,7 +19,7 @@ public class InputReader {
         this.stream = stream;
     }
 
-    public double[] readDoubleArray(int size) {
+    public double[] nextDoubleArray(int size) {
         double[] array = new double[size];
         for (int i = 0; i < size; i++) {
             array[i] = readDouble();
@@ -31,15 +27,15 @@ public class InputReader {
         return array;
     }
 
-    public String[] readStringArray(int size) {
+    public String[] nextStringArray(int size) {
         String[] array = new String[size];
         for (int i = 0; i < size; i++) {
-            array[i] = readString();
+            array[i] = nextString();
         }
         return array;
     }
 
-    public char[] readCharArray(int size) {
+    public char[] nextCharArray(int size) {
         char[] array = new char[size];
         for (int i = 0; i < size; i++) {
             array[i] = readCharacter();
@@ -47,18 +43,18 @@ public class InputReader {
         return array;
     }
 
-    public IntIntPair[] readIntPairArray(int size) {
+    public IntIntPair[] nextIntPairArray(int size) {
         IntIntPair[] result = new IntIntPair[size];
         for (int i = 0; i < size; i++) {
-            result[i] = readIntPair();
+            result[i] = nextIntPair();
         }
         return result;
     }
 
-    public LongLongPair[] readLongPairArray(int size) {
+    public LongLongPair[] nextLongPairArray(int size) {
         LongLongPair[] result = new LongLongPair[size];
         for (int i = 0; i < size; i++) {
-            result[i] = readLongPair();
+            result[i] = nextLongPair();
         }
         return result;
     }
@@ -66,7 +62,7 @@ public class InputReader {
     public void readIntArrays(int[]... arrays) {
         for (int i = 0; i < arrays[0].length; i++) {
             for (int j = 0; j < arrays.length; j++) {
-                arrays[j][i] = readInt();
+                arrays[j][i] = nextInt();
             }
         }
     }
@@ -74,7 +70,7 @@ public class InputReader {
     public void readLongArrays(long[]... arrays) {
         for (int i = 0; i < arrays[0].length; i++) {
             for (int j = 0; j < arrays.length; j++) {
-                arrays[j][i] = readLong();
+                arrays[j][i] = nextLong();
             }
         }
     }
@@ -87,47 +83,47 @@ public class InputReader {
         }
     }
 
-    public char[][] readTable(int rowCount, int columnCount) {
+    public char[][] nextCharMatrix(int rowCount, int columnCount) {
         char[][] table = new char[rowCount][];
         for (int i = 0; i < rowCount; i++) {
-            table[i] = this.readCharArray(columnCount);
+            table[i] = this.nextCharArray(columnCount);
         }
         return table;
     }
 
-    public int[][] readIntTable(int rowCount, int columnCount) {
+    public int[][] nextIntMatrix(int rowCount, int columnCount) {
         int[][] table = new int[rowCount][];
         for (int i = 0; i < rowCount; i++) {
-            table[i] = readIntArray(columnCount);
+            table[i] = nextIntArray(columnCount);
         }
         return table;
     }
 
-    public double[][] readDoubleTable(int rowCount, int columnCount) {
+    public double[][] nextDoubleMatrix(int rowCount, int columnCount) {
         double[][] table = new double[rowCount][];
         for (int i = 0; i < rowCount; i++) {
-            table[i] = this.readDoubleArray(columnCount);
+            table[i] = this.nextDoubleArray(columnCount);
         }
         return table;
     }
 
-    public long[][] readLongTable(int rowCount, int columnCount) {
+    public long[][] nextLongMatrix(int rowCount, int columnCount) {
         long[][] table = new long[rowCount][];
         for (int i = 0; i < rowCount; i++) {
-            table[i] = readLongArray(columnCount);
+            table[i] = nextLongArray(columnCount);
         }
         return table;
     }
 
-    public String[][] readStringTable(int rowCount, int columnCount) {
+    public String[][] nextStringMatrix(int rowCount, int columnCount) {
         String[][] table = new String[rowCount][];
         for (int i = 0; i < rowCount; i++) {
-            table[i] = this.readStringArray(columnCount);
+            table[i] = this.nextStringArray(columnCount);
         }
         return table;
     }
 
-    public String readText() {
+    public String nextToken() {
         StringBuilder result = new StringBuilder();
         while (true) {
             int character = read();
@@ -142,43 +138,43 @@ public class InputReader {
         return result.toString();
     }
 
-    public void readStringArrays(String[]... arrays) {
+    public void nextStringArray(String[]... arrays) {
         for (int i = 0; i < arrays[0].length; i++) {
             for (int j = 0; j < arrays.length; j++) {
-                arrays[j][i] = readString();
+                arrays[j][i] = nextString();
             }
         }
     }
 
-    public long[] readLongArray(int size) {
+    public long[] nextLongArray(int size) {
         long[] array = new long[size];
         for (int i = 0; i < size; i++) {
-            array[i] = readLong();
+            array[i] = nextLong();
         }
         return array;
     }
 
-    public int[] readIntArray(int size) {
+    public int[] nextIntArray(int size) {
         int[] array = new int[size];
         for (int i = 0; i < size; i++) {
-            array[i] = readInt();
+            array[i] = nextInt();
         }
         return array;
     }
 
-    public LongLongPair readLongPair() {
-        long first = readLong();
-        long second = readLong();
+    public LongLongPair nextLongPair() {
+        long first = nextLong();
+        long second = nextLong();
         return new LongLongPair(first, second);
     }
 
-    public IntIntPair readIntPair() {
-        int first = readInt();
-        int second = readInt();
+    public IntIntPair nextIntPair() {
+        int first = nextInt();
+        int second = nextInt();
         return new IntIntPair(first, second);
     }
 
-    public int read() {
+    private int read() {
         if (numChars == -1) {
             throw new InputMismatchException();
         }
@@ -221,7 +217,7 @@ public class InputReader {
         return peek();
     }
 
-    public int readInt() {
+    public int nextInt() {
         int c = read();
         while (isSpaceChar(c)) {
             c = read();
@@ -243,7 +239,7 @@ public class InputReader {
         return res * sgn;
     }
 
-    public long readLong() {
+    public long nextLong() {
         int c = read();
         while (isSpaceChar(c)) {
             c = read();
@@ -265,7 +261,7 @@ public class InputReader {
         return res * sgn;
     }
 
-    public String readString() {
+    public String nextString() {
         int c = read();
         while (isSpaceChar(c)) {
             c = read();
@@ -280,14 +276,14 @@ public class InputReader {
         return res.toString();
     }
 
-    public boolean isSpaceChar(int c) {
+    private boolean isSpaceChar(int c) {
         if (filter != null) {
             return filter.isSpaceChar(c);
         }
         return isWhitespace(c);
     }
 
-    public static boolean isWhitespace(int c) {
+    private static boolean isWhitespace(int c) {
         return c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == -1;
     }
 
@@ -303,7 +299,7 @@ public class InputReader {
         return buf.toString();
     }
 
-    public String readLine() {
+    private String readLine() {
         String s = readLine0();
         while (s.trim().length() == 0) {
             s = readLine0();
@@ -321,7 +317,7 @@ public class InputReader {
 
     public BigInteger readBigInteger() {
         try {
-            return new BigInteger(readString());
+            return new BigInteger(nextString());
         } catch (NumberFormatException e) {
             throw new InputMismatchException();
         }
@@ -348,7 +344,7 @@ public class InputReader {
         double res = 0;
         while (!isSpaceChar(c) && c != '.') {
             if (c == 'e' || c == 'E') {
-                return res * Math.pow(10, readInt());
+                return res * Math.pow(10, nextInt());
             }
             if (c < '0' || c > '9') {
                 throw new InputMismatchException();
@@ -362,7 +358,7 @@ public class InputReader {
             double m = 1;
             while (!isSpaceChar(c)) {
                 if (c == 'e' || c == 'E') {
-                    return res * Math.pow(10, readInt());
+                    return res * Math.pow(10, nextInt());
                 }
                 if (c < '0' || c > '9') {
                     throw new InputMismatchException();
@@ -384,7 +380,7 @@ public class InputReader {
     }
 
     public String next() {
-        return readString();
+        return nextString();
     }
 
     public SpaceCharFilter getFilter() {

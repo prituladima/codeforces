@@ -13,7 +13,7 @@ public class Scheduler {
 
     public Scheduler(InputReader in, OutputWriter out, TaskFactory factory, int numParallel) {
         try {
-            testsRemaining = new AtomicInteger(in.readInt());
+            testsRemaining = new AtomicInteger(in.nextInt());
             threadsRemaining = new AtomicInteger(numParallel);
             Task[] tasks = new Task[testsRemaining.get()];
             for (int i = 0; i < tasks.length; i++) {

@@ -1,2 +1,2 @@
-101 src/main/java/com/prituladima/codeforce/contests/contest1059/C. Preobrazovanie posledovatelnosti.json
+94 src/main/java/com/prituladima/codeforce/contests/test/C. Preobrazovanie posledovatelnosti.json
 0
