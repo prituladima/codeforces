@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class GeekDP {
 
+    @Deprecated
     public static class Pair {
 
         int id;

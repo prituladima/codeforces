@@ -1,6 +1,6 @@
 package %package%;
 
-import static com.prituladima.codeforce.GeekDP.Pair;
+import com.prituladima.yaal.generated.collections.pair.IntIntPair;
 
 import %InputClassFQN%;
 import %OutputClassFQN%;
@@ -11,32 +11,32 @@ import static java.util.Arrays.*;
 import static java.util.Collections.*;
 import static java.util.Comparator.*;
 
-
-
 public class %TaskClass% {
-    final long MODULO = (long) 1e9 + 9;
-    final int INF = (int) 1e9;
-    int n, m;
-    int[] a;
+    int t, n, m, k, ans;
+    int[] array, arrayAns;
     long L, R;
-    int ans;
-    int min = INF, max = -INF;
     String s;
-    private List<Pair> pairs = new ArrayList<>();
+    char[] chars;
+    IntIntPair[] pairs, pairsAns;
 
     public void solve(int testNumber, %InputClass% in, %OutputClass% out) {
 
+        t = in.nextInt();
         n = in.nextInt();
         m = in.nextInt();
-        a = in.nextArr(n);
+        array = in.nextIntArray(n);
         s = in.nextToken();
-        char[] chars = s.toCharArray();
+        chars = s.toCharArray();
+
         L = in.nextLong();
         R = in.nextLong();
-        for (int i = 0; i < m; i++) pairs.add(new Pair(i, in.nextInt(), in.nextInt()));
 
+        pairs = in.nextIntPairArray(n);
 
-        out.println(ans);
+        sort(pairs);
+
+        out.printLine(ans);
+        out.printPairList(pairsAns);
 
     }
 

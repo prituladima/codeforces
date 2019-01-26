@@ -144,7 +144,7 @@ public class OutputWriter {
         }
     }
 
-    public void printPairList(List<IntIntPair> answer) {
+    public void printPairList(IntIntPair... answer) {
         for (IntIntPair pair : answer) {
             printLine(pair.first, pair.second);
         }
