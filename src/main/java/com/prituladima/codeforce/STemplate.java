@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
@@ -40,6 +40,10 @@ public final class STemplate {
         }
     }
 
+
+    private int nextInt(int radix) {
+        return parseInt(nextToken(), radix);
+    }
     private int nextInt() {
         return parseInt(nextToken());
     }

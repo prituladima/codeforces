@@ -1,2 +1,2 @@
-94 src/main/java/com/prituladima/codeforce/contests/test/C. Preobrazovanie posledovatelnosti.json
+78 src/main/java/com/prituladima/codeforce/contests/contest1107/C. Brutality.json
 0

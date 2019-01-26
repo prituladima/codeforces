@@ -30,7 +30,7 @@ public class InputReader {
     public String[] nextStringArray(int size) {
         String[] array = new String[size];
         for (int i = 0; i < size; i++) {
-            array[i] = nextString();
+            array[i] = nextToken();
         }
         return array;
     }
@@ -123,7 +123,7 @@ public class InputReader {
         return table;
     }
 
-    public String nextToken() {
+    private String getAll() {
         StringBuilder result = new StringBuilder();
         while (true) {
             int character = read();
@@ -141,7 +141,7 @@ public class InputReader {
     public void nextStringArray(String[]... arrays) {
         for (int i = 0; i < arrays[0].length; i++) {
             for (int j = 0; j < arrays.length; j++) {
-                arrays[j][i] = nextString();
+                arrays[j][i] = nextToken();
             }
         }
     }
@@ -261,7 +261,7 @@ public class InputReader {
         return res * sgn;
     }
 
-    public String nextString() {
+    public String nextToken() {
         int c = read();
         while (isSpaceChar(c)) {
             c = read();
@@ -317,7 +317,7 @@ public class InputReader {
 
     public BigInteger readBigInteger() {
         try {
-            return new BigInteger(nextString());
+            return new BigInteger(nextToken());
         } catch (NumberFormatException e) {
             throw new InputMismatchException();
         }
@@ -380,7 +380,7 @@ public class InputReader {
     }
 
     public String next() {
-        return nextString();
+        return nextToken();
     }
 
     public SpaceCharFilter getFilter() {

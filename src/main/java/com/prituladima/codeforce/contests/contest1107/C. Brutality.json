@@ -1,0 +1,59 @@
+{
+  "name" : "C. Brutality",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "7 3\n1 5 16 18 7 2 10\nbaaaaca\n",
+    "output" : "54\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "5 5\n2 4 1 3 1000\naaaaa\n",
+    "output" : "1010\n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "5 4\n2 4 1 3 1000\naaaaa\n",
+    "output" : "1009\n",
+    "index" : 2,
+    "active" : true
+  }, {
+    "input" : "8 1\n10 15 2 1 4 8 15 16\nqqwweerr\n",
+    "output" : "41\n",
+    "index" : 3,
+    "active" : true
+  }, {
+    "input" : "6 3\n14 18 9 19 2 15\ncccccc\n",
+    "output" : "52\n",
+    "index" : 4,
+    "active" : true
+  }, {
+    "input" : "2 1\n10 10\nqq\n",
+    "output" : "10\n",
+    "index" : 5,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce/contests/contest1107",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.contests.contest1107.CBrutality",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.01.26",
+  "contestName" : "Educational Codeforces Round 59 (рейтинговый для Див. 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
