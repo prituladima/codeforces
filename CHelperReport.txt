@@ -1,2 +1,2 @@
-78 src/main/java/com/prituladima/codeforce/contests/contest1107/C. Brutality.json
+83 src/main/java/com/prituladima/codeforce/contests/contest1107/B. Cifrovoj koren.json
 0
