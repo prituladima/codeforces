@@ -1,7 +1,5 @@
 package com.prituladima.yaal.generated.collections.comparator;
 
-/**
- *  */
 public interface IntComparator {
     public static final IntComparator DEFAULT = (first, second) -> {
         if (first < second) {

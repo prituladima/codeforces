@@ -132,6 +132,7 @@ public interface IntStream extends Iterable<Integer>, Comparable<IntStream> {
         return result;
     }
 
+    @Deprecated
     default public int min() {
         int result = Integer.MAX_VALUE;
         for (IntIterator it = intIterator(); it.isValid(); it.advance()) {

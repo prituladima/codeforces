@@ -19,7 +19,7 @@ public class MinimalSpanningTree {
         }
         ArrayUtils.sort(edgeOrder, new IntComparator() {
             public int compare(int first, int second) {
-                return IntegerUtils.longCompare(graph.weight(first), graph.weight(second));
+                return Long.compare(graph.weight(first), graph.weight(second));
             }
         });
         IndependentSetSystem setSystem = new RecursiveIndependentSetSystem(graph.vertexCount);

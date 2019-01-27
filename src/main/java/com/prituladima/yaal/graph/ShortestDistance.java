@@ -22,7 +22,7 @@ public class ShortestDistance {
         if (graph.isSparse()) {
             Heap heap = new Heap(vertexCount, new IntComparator() {
                 public int compare(int first, int second) {
-                    return IntegerUtils.longCompare(distance[first], distance[second]);
+                    return Long.compare(distance[first], distance[second]);
                 }
             }, vertexCount);
             heap.add(source);

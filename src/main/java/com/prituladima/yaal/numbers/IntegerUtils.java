@@ -36,6 +36,17 @@ public class IntegerUtils {
         return a;
     }
 
+    public static boolean[] eratosthenesSieve(int n) {
+        boolean[] sieve = new boolean[n + 1];
+        Arrays.fill(sieve, true);
+        sieve[0] = sieve[1] = false;
+        for (int i = 2; i * i <= n; i++)
+            if (sieve[i])
+                for (long j = i * i; j <= n; j += i)
+                    sieve[(int) j] = false;
+        return sieve;
+    }
+
     public static int[] generatePrimes(int upTo) {
         int[] isPrime = generateBitPrimalityTable(upTo);
         IntList primes = new IntArrayList();
@@ -104,6 +115,7 @@ public class IntegerUtils {
         return result;
     }
 
+    @Deprecated
     public static int sumDigits(CharSequence number) {
         int result = 0;
         for (int i = number.length() - 1; i >= 0; i--) {
@@ -112,6 +124,7 @@ public class IntegerUtils {
         return result;
     }
 
+    @Deprecated
     public static int digitValue(char digit) {
         if (Character.isDigit(digit)) {
             return digit - '0';
@@ -122,15 +135,6 @@ public class IntegerUtils {
         return digit + 10 - 'a';
     }
 
-    public static int longCompare(long a, long b) {
-        if (a < b) {
-            return -1;
-        }
-        if (a > b) {
-            return 1;
-        }
-        return 0;
-    }
 
     public static long[][] generateBinomialCoefficients(int n) {
         long[][] result = new long[n + 1][n + 1];

@@ -35,7 +35,7 @@ public class MinCostFlow {
         if (graph.isSparse()) {
             heap = new Heap(vertexCount, new IntComparator() {
                 public int compare(int first, int second) {
-                    return IntegerUtils.longCompare(dijkstraResult[first], dijkstraResult[second]);
+                    return Long.compare(dijkstraResult[first], dijkstraResult[second]);
                 }
             }, vertexCount);
             visited = null;
