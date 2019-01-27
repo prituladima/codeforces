@@ -1,23 +1,27 @@
 package com.prituladima.codeforce;
+
+import com.prituladima.yaal.misc.ArrayUtils;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.IntStream;
 
 
 /**
  * Generator which creates a test where Java 7 dual-pivot quicksort algorithm runs in O(n^2) time.
- *
+ * <p>
  * Number of operations is not the best possible:
  * maximal recursion depth is about n^2 / 5 while best possible result is n^2 / 4.
- *
+ * <p>
  * It's because Java 7 checks if array is nearly sorted.
  * If it is, a strange algorithm with something called 'runs' is used.
  * In our case it is not, but in process of this checking Java 7 swaps some elements.
  * I didn't figure out how to maintain these swaps yet. Feel free to improve it!
  *
  * @author Alexey Dergunov
- * @since  1.7
+ * @since 1.7
  */
 public class Java8QuicksortKiller implements Runnable {
 
@@ -84,8 +88,10 @@ public class Java8QuicksortKiller implements Runnable {
                     int p1 = p[k], p2 = p[left];
 
                     if (a1 < a2) {
-                        a2 = a1; a1 = a[left];
-                        p2 = p1; p1 = p[left];
+                        a2 = a1;
+                        a1 = a[left];
+                        p2 = p1;
+                        p1 = p[left];
                     }
                     while (a1 < a[--k]) {
                         a[k + 2] = a[k];
@@ -138,36 +144,78 @@ public class Java8QuicksortKiller implements Runnable {
         if (a[e2] == NO_VALUE) a[e2] = MAX_VALUE--;
 
         // Sort these elements using insertion sort
-        if (less(a[e2], a[e1])) { int t = a[e2]; a[e2] = a[e1]; a[e1] = t;
-            int s = p[e2]; p[e2] = p[e1]; p[e1] = s; }
-
-        if (less(a[e3], a[e2])) { int t = a[e3]; a[e3] = a[e2]; a[e2] = t;
-            int s = p[e3]; p[e3] = p[e2]; p[e2] = s;
-            if (less(t, a[e1])) { a[e2] = a[e1]; a[e1] = t;
-                p[e2] = p[e1]; p[e1] = s; }
+        if (less(a[e2], a[e1])) {
+            int t = a[e2];
+            a[e2] = a[e1];
+            a[e1] = t;
+            int s = p[e2];
+            p[e2] = p[e1];
+            p[e1] = s;
         }
-        if (less(a[e4], a[e3])) { int t = a[e4]; a[e4] = a[e3]; a[e3] = t;
-            int s = p[e4]; p[e4] = p[e3]; p[e3] = s;
-            if (less(t, a[e2])) { a[e3] = a[e2]; a[e2] = t;
-                p[e3] = p[e2]; p[e2] = s;
-                if (less(t, a[e1])) { a[e2] = a[e1]; a[e1] = t;
-                    p[e2] = p[e1]; p[e1] = s; }
+
+        if (less(a[e3], a[e2])) {
+            int t = a[e3];
+            a[e3] = a[e2];
+            a[e2] = t;
+            int s = p[e3];
+            p[e3] = p[e2];
+            p[e2] = s;
+            if (less(t, a[e1])) {
+                a[e2] = a[e1];
+                a[e1] = t;
+                p[e2] = p[e1];
+                p[e1] = s;
             }
         }
-        if (less(a[e5], a[e4])) { int t = a[e5]; a[e5] = a[e4]; a[e4] = t;
-            int s = p[e5]; p[e5] = p[e4]; p[e4] = s;
-            if (less(t, a[e3])) { a[e4] = a[e3]; a[e3] = t;
-                p[e4] = p[e3]; p[e3] = s;
-                if (less(t, a[e2])) { a[e3] = a[e2]; a[e2] = t;
-                    p[e3] = p[e2]; p[e2] = s;
-                    if (less(t, a[e1])) { a[e2] = a[e1]; a[e1] = t;
-                        p[e2] = p[e1]; p[e1] = s; }
+        if (less(a[e4], a[e3])) {
+            int t = a[e4];
+            a[e4] = a[e3];
+            a[e3] = t;
+            int s = p[e4];
+            p[e4] = p[e3];
+            p[e3] = s;
+            if (less(t, a[e2])) {
+                a[e3] = a[e2];
+                a[e2] = t;
+                p[e3] = p[e2];
+                p[e2] = s;
+                if (less(t, a[e1])) {
+                    a[e2] = a[e1];
+                    a[e1] = t;
+                    p[e2] = p[e1];
+                    p[e1] = s;
+                }
+            }
+        }
+        if (less(a[e5], a[e4])) {
+            int t = a[e5];
+            a[e5] = a[e4];
+            a[e4] = t;
+            int s = p[e5];
+            p[e5] = p[e4];
+            p[e4] = s;
+            if (less(t, a[e3])) {
+                a[e4] = a[e3];
+                a[e3] = t;
+                p[e4] = p[e3];
+                p[e3] = s;
+                if (less(t, a[e2])) {
+                    a[e3] = a[e2];
+                    a[e2] = t;
+                    p[e3] = p[e2];
+                    p[e2] = s;
+                    if (less(t, a[e1])) {
+                        a[e2] = a[e1];
+                        a[e1] = t;
+                        p[e2] = p[e1];
+                        p[e1] = s;
+                    }
                 }
             }
         }
 
         // Pointers
-        int less  = left;  // The index of the first element of center part
+        int less = left;  // The index of the first element of center part
         int great = right; // The index before the first element of right part
 
         if (a[e1] != a[e2] && a[e2] != a[e3] && a[e3] != a[e4] && a[e4] != a[e5]) {
@@ -197,8 +245,8 @@ public class Java8QuicksortKiller implements Runnable {
              */
             //while (a[++less] < pivot1);
             //while (a[--great] > pivot2);
-            while (less(a[++less], pivot1));
-            while (greater(a[--great], pivot2));
+            while (less(a[++less], pivot1)) ;
+            while (greater(a[--great], pivot2)) ;
 
             /*
              * Partitioning:
@@ -264,10 +312,14 @@ public class Java8QuicksortKiller implements Runnable {
             }
 
             // Swap pivots into their final positions
-            a[left]  = a[less  - 1]; a[less  - 1] = pivot1;
-            a[right] = a[great + 1]; a[great + 1] = pivot2;
-            p[left]  = p[less  - 1]; p[less  - 1] = ppivot1;
-            p[right] = p[great + 1]; p[great + 1] = ppivot2;
+            a[left] = a[less - 1];
+            a[less - 1] = pivot1;
+            a[right] = a[great + 1];
+            a[great + 1] = pivot2;
+            p[left] = p[less - 1];
+            p[less - 1] = ppivot1;
+            p[right] = p[great + 1];
+            p[great + 1] = ppivot2;
 
 
             // Sort left and right parts recursively, excluding known pivots
@@ -474,7 +526,7 @@ public class Java8QuicksortKiller implements Runnable {
     }
 
     public void run() {
-        int n = 60000;
+        int n = (int) 2e5;
 
         int[] a = new int[n];
         int[] p = new int[n];
@@ -489,16 +541,18 @@ public class Java8QuicksortKiller implements Runnable {
         long t1, t2;
 
         t1 = System.currentTimeMillis();
-        hackedSort(a, p, 0, n-1, true);
+        hackedSort(a, p, 0, n - 1, true);
         Arrays.sort(a);
         t2 = System.currentTimeMillis();
         System.out.println("Generation time = " + (t2 - t1) + " ms.");
 
         checkValues(a, 1, n);
-        checkValues(p, 0, n-1);
+        checkValues(p, 0, n - 1);
 
         applyPermutation(a, p);
 
+        int[] sorted = IntStream.range(0, n).toArray();
+        int[] random = GeekInteger.shuffle(sorted.clone());
 
         try {
             printArray(a, new PrintWriter("Java7QuicksortKiller.txt"));
@@ -506,12 +560,80 @@ public class Java8QuicksortKiller implements Runnable {
             throw new RuntimeException(e);
         }
 
+        System.out.println("n = " + n);
+        testForArray(a, "Worst case from generator");
+        testForArray(sorted, "Sorted array");
+        testForArray(random, "Randomly shuffled array");
 
-        t1 = System.currentTimeMillis();
-        Arrays.sort(a.clone());
-        t2 = System.currentTimeMillis();
-        System.out.println("Sorting time = " + (t2 - t1) + " ms.");
     }
+
+    /**
+     * Generation time = 33245 ms.
+     *
+     * n = 200000
+     *
+     * Worst case from generator
+     * Sorting time Arrays.sort = 11078 ms.
+     * Sorting time Arrays.sort boxed = 134 ms.
+     * Sorting time shuffle before dual pivot quick sort = 32 ms.
+     * Sorting time sorting by yaal = 77 ms.
+     *
+     * Sorted array
+     * Sorting time Arrays.sort = 0 ms.
+     * Sorting time Arrays.sort boxed = 1 ms.
+     * Sorting time shuffle before dual pivot quick sort = 26 ms.
+     * Sorting time sorting by yaal = 10 ms.
+     *
+     * Randomly shuffled array
+     * Sorting time Arrays.sort = 20 ms.
+     * Sorting time Arrays.sort boxed = 250 ms.
+     * Sorting time shuffle before dual pivot quick sort = 26 ms.
+     * Sorting time sorting by yaal = 24 ms.
+     *
+     * @param a
+     * @param testName
+     */
+
+
+    private void testForArray(int[] a, String testName) {
+        System.out.println(testName);
+
+        long t1, t2;
+
+        int[] copy = a.clone();
+        t1 = System.currentTimeMillis();
+        Arrays.sort(copy);
+        t2 = System.currentTimeMillis();
+
+        System.out.println("Sorting time Arrays.sort = " + (t2 - t1) + " ms.");
+
+
+        Integer[] boxed = Arrays.stream(a.clone()).boxed().toArray(Integer[]::new);
+        t1 = System.currentTimeMillis();
+        Arrays.sort(boxed);
+        t2 = System.currentTimeMillis();
+
+
+        System.out.println("Sorting time Arrays.sort boxed = " + (t2 - t1) + " ms.");
+
+        copy = a.clone();
+        t1 = System.currentTimeMillis();
+        GeekInteger.save_sort(copy);
+        t2 = System.currentTimeMillis();
+
+        System.out.println("Sorting time shuffle before dual pivot quick sort = " + (t2 - t1) + " ms.");
+
+        copy = a.clone();
+        t1 = System.currentTimeMillis();
+        ArrayUtils.sort(copy);
+        t2 = System.currentTimeMillis();
+
+        System.out.println("Sorting time sorting by yaal = " + (t2 - t1) + " ms.");
+        System.out.println();
+
+        /////////////////
+    }
+
 
     private void applyPermutation(int[] a, int[] pos) {
         int n = a.length;
@@ -540,13 +662,14 @@ public class Java8QuicksortKiller implements Runnable {
         pw.println(n);
         for (int i = 0; i < n; i++) {
             pw.print(a[i]);
-            if (i == n-1) pw.println(); else pw.print(' ');
+            if (i == n - 1) pw.println();
+            else pw.print(' ');
         }
         pw.close();
     }
 
     public static void main(String[] args) {
-        new Thread(null, new Java8QuicksortKiller(), "", 128*1024*1024).start();
+        new Thread(null, new Java8QuicksortKiller(), "", 128 * 1024 * 1024).start();
     }
 
 }

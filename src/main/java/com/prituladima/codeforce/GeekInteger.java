@@ -1,6 +1,7 @@
 package com.prituladima.codeforce;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 //use long only
 // TODO: 30.12.2018 Rename ti something like GeekLong
@@ -122,21 +123,17 @@ public class GeekInteger {
         Arrays.sort(array);
     }
 
-    public static int[] shuffle(int[] arr) {
-        Random r = new Random();
-        for (int i = 1, j; i < arr.length; i++) {
-            j = r.nextInt(i);
-            swap(arr, i, j);
+    public static int[] shuffle(int[] array) {
+        int n = array.length;
+        Random random = new Random();
+        for (int i = 0, j; i < n; i++) {
+            j = i + random.nextInt(n-i);
+            int randomElement = array[j];
+            array[j] = array[i];
+            array[i] = randomElement;
         }
-        return arr;
+        return array;
     }
-
-    public static void swap(int[] arr, int i, int j) {
-        arr[i] = arr[i] ^ arr[j];
-        arr[j] = arr[i] ^ arr[j];
-        arr[i] = arr[i] ^ arr[j];
-    }
-
 
     static int[] uniq(int[] arr) {
         shuffle(arr);
@@ -188,5 +185,12 @@ public class GeekInteger {
         return b == 0 ? a : gcd(b, a % b);
     }
 
+
+    public static void main(String[] args) {
+        int[] ints = IntStream.range(0, 11).toArray();
+        System.out.println(Arrays.toString(ints));
+        shuffle(ints);
+        System.out.println(Arrays.toString(ints));
+    }
 
 }
