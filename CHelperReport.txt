@@ -1,2 +1,2 @@
-83 src/main/java/com/prituladima/codeforce/contests/contest1107/B. Cifrovoj koren.json
+82 src/main/java/com/prituladima/codeforce/contests/contest1047/C. Uvelichit NOD.json
 0

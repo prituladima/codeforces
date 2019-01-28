@@ -1,10 +1,16 @@
 package com.prituladima.yaal.generated.collections.pair;
 
-/**
- *  */
 public class IntIntPair implements Comparable<IntIntPair> {
     public final int first;
     public final int second;
+
+    public int getFirst() {
+        return first;
+    }
+
+    public int getSecond() {
+        return second;
+    }
 
     public static IntIntPair makePair(int first, int second) {
         return new IntIntPair(first, second);
