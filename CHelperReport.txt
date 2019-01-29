@@ -1,2 +1,2 @@
-82 src/main/java/com/prituladima/codeforce/contests/contest1047/C. Uvelichit NOD.json
+84 src/main/java/com/prituladima/codeforce/contests/contest1004/D. Sonja i matrica.json
 0
