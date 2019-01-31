@@ -1,2 +1,3 @@
-71 src/main/java/com/prituladima/codeforce/contests/contest1013/B - I.json
+81 src/main/java/com/prituladima/codeforce/contests/contest1003/C. Silnaja jara.json
+1
 0
