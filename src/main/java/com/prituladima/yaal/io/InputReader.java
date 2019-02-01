@@ -2,11 +2,16 @@ package com.prituladima.yaal.io;
 
 import com.prituladima.yaal.generated.collections.pair.IntIntPair;
 import com.prituladima.yaal.generated.collections.pair.LongLongPair;
+import com.prituladima.yaal.geometry.RectangleUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
+
+import static com.prituladima.yaal.geometry.RectangleUtil.*;
 
 public class InputReader {
     private InputStream stream;
@@ -389,6 +394,14 @@ public class InputReader {
 
     public void setFilter(SpaceCharFilter filter) {
         this.filter = filter;
+    }
+
+    public List<Rect> nextRectangleArray(int n) {
+        List<Rect> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(new Rect(nextInt(), nextInt(), nextInt(), nextInt()));
+        }
+        return list;
     }
 
     public interface SpaceCharFilter {

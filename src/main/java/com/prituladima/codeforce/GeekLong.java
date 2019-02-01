@@ -16,7 +16,7 @@ public class GeekLong {
 //        return res;
 //    }
 
-    public static long inv(long x, long mod) {
+    public static long modularMultiplicativeInverse(long x, long mod) {
         return bpow(x, mod - 2, mod);
     }
 

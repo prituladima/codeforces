@@ -32,7 +32,7 @@ public class AZnakoperemennayaSumma {
     }
 
     private long inv(long c) {
-        return GeekLong.inv(c, mod);
+        return GeekLong.modularMultiplicativeInverse(c, mod);
     }
 
     private long geom(long c, long k) {

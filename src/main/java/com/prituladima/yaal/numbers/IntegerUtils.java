@@ -394,6 +394,7 @@ public class IntegerUtils {
     private static long _x;
     private static long _y;
 
+    @Deprecated
     public static long reverse(long number, long modulo) {
         extGcd(number, modulo);
         return trueMod(_x, modulo);

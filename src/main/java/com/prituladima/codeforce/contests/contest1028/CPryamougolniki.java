@@ -1,12 +1,16 @@
 package com.prituladima.codeforce.contests.contest1028;
 
 import com.prituladima.yaal.generated.collections.pair.IntIntPair;
+import com.prituladima.yaal.geometry.RectangleUtil;
 import com.prituladima.yaal.io.InputReader;
 import com.prituladima.yaal.io.OutputWriter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.prituladima.yaal.geometry.RectangleUtil.*;
+import static com.prituladima.yaal.greedy.GreedyUtil.calculatePrefix;
+import static com.prituladima.yaal.greedy.GreedyUtil.calculateSuffix;
 import static java.lang.Integer.max;
 import static java.lang.Math.min;
 
@@ -27,21 +31,10 @@ public class CPryamougolniki {
             return;
         }
 
-        List<RectS> list = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            list.add(new RectS(in.nextInt(), in.nextInt(), in.nextInt(), in.nextInt()));
-        }
+        List<Rect> list = in.nextRectangleArray(n);
 
-        List<RectS> pref = new ArrayList<>(list);
-        List<RectS> suff = new ArrayList<>(list);
-
-        for (int i = 1; i < n; i++) {
-            pref.set(i, common(pref.get(i - 1), pref.get(i)));
-        }
-        for (int i = n - 2; i >= 0; i--) {
-            suff.set(i, common(suff.get(i + 1), suff.get(i)));
-        }
-
+        List<Rect> pref = calculatePrefix(list, RectangleUtil::intersection);
+        List<Rect> suff = calculateSuffix(list, RectangleUtil::intersection);
 
         if (pref.get(n - 1) == null && pref.get(n - 2) != null) {
             out.printLine(pref.get(n - 2).x1 + " " + pref.get(n - 2).y1);
@@ -54,7 +47,7 @@ public class CPryamougolniki {
         }
 
         for (int i = 1; i < n - 1; i++) {
-            RectS res = common(pref.get(i - 1), suff.get(i + 1));
+            Rect res = RectangleUtil.intersection(pref.get(i - 1), suff.get(i + 1));
             if (res != null) {
                 out.printLine(res.x1 + " " + res.y1);
                 return;
@@ -64,44 +57,10 @@ public class CPryamougolniki {
 
         if (pref.get(n - 1) != null) {
             out.printLine(pref.get(n - 1).x1 + " " + pref.get(n - 1).y1);
-//            return;
         }
 
 
     }
 
-    private static RectS common(RectS a, RectS b) {
-        if (a == null || b == null) {
-            return null;
-        }
 
-        int x5 = max(a.x1, b.x1);
-        int y5 = max(a.y1, b.y1);
-
-        int x6 = min(a.x2, b.x2);
-        int y6 = min(a.y2, b.y2);
-
-        if (x5 > x6 || y5 > y6) {
-            return null;
-        }
-
-        return new RectS(x5, y5, x6, y6);
-    }
-
-
-    private static class RectS {
-        int x1;
-        int y1;
-        int x2;
-        int y2;
-
-        public RectS(int x1, int y1, int x2, int y2) {
-            this.x1 = x1;
-            this.y1 = y1;
-            this.x2 = x2;
-            this.y2 = y2;
-        }
-
-
-    }
 }
