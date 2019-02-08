@@ -106,18 +106,6 @@ public class GeekInteger {
         return low;
     }
 
-
-    public static long[] shuffle(long[] arr) {
-        Random r = new Random();
-        for (int i = 1, j; i < arr.length; i++) {
-            j = r.nextInt(i);
-            arr[i] = arr[i] ^ arr[j];
-            arr[j] = arr[i] ^ arr[j];
-            arr[i] = arr[i] ^ arr[j];
-        }
-        return arr;
-    }
-
     public static void save_sort(int[] array) {
         shuffle(array);
         Arrays.sort(array);
@@ -127,7 +115,7 @@ public class GeekInteger {
         int n = array.length;
         Random random = new Random();
         for (int i = 0, j; i < n; i++) {
-            j = i + random.nextInt(n-i);
+            j = i + random.nextInt(n - i);
             int randomElement = array[j];
             array[j] = array[i];
             array[i] = randomElement;

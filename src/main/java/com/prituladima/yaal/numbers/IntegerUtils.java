@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Arrays.*;
+
 /**
  *  */
 public class IntegerUtils {
@@ -57,12 +59,15 @@ public class IntegerUtils {
 
     public static boolean[] eratosthenesSieve(int n) {
         boolean[] sieve = new boolean[n + 1];
-        Arrays.fill(sieve, true);
+        fill(sieve, true);
         sieve[0] = sieve[1] = false;
-        for (int i = 2; i * i <= n; i++)
-            if (sieve[i])
-                for (long j = i * i; j <= n; j += i)
+        for (int i = 2; i * i <= n; i++) {
+            if (sieve[i]) {
+                for (long j = i * i; j <= n; j += i) {
                     sieve[(int) j] = false;
+                }
+            }
+        }
         return sieve;
     }
 
@@ -82,7 +87,7 @@ public class IntegerUtils {
         if (upTo < 2) {
             return isPrime;
         }
-        Arrays.fill(isPrime, true);
+        fill(isPrime, true);
         isPrime[0] = isPrime[1] = false;
         for (int i = 2; i * i < upTo; i++) {
             if (isPrime[i]) {
@@ -99,7 +104,7 @@ public class IntegerUtils {
         if (upTo < 2) {
             return isPrime;
         }
-        Arrays.fill(isPrime, -1);
+        fill(isPrime, -1);
         isPrime[0] &= -4;
         for (int i = 2; i * i < upTo; i++) {
             if ((isPrime[i >> 5] >>> (i & 31) & 1) == 1) {
@@ -394,7 +399,6 @@ public class IntegerUtils {
     private static long _x;
     private static long _y;
 
-    @Deprecated
     public static long reverse(long number, long modulo) {
         extGcd(number, modulo);
         return trueMod(_x, modulo);
