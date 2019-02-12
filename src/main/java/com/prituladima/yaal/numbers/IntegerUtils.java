@@ -68,18 +68,11 @@ public class IntegerUtils {
 
     public static boolean[] generatePrimalityTable(int upTo) {
         boolean[] isPrime = new boolean[upTo];
-        if (upTo < 2) {
-            return isPrime;
-        }
-        fill(isPrime, true);
-        isPrime[0] = isPrime[1] = false;
-        for (int i = 2; i * i < upTo; i++) {
-            if (isPrime[i]) {
-                for (int j = i * i; j < upTo; j += i) {
-                    isPrime[j] = false;
-                }
-            }
-        }
+        if (upTo < 2) return isPrime;
+        fill(isPrime, 2, upTo, true);
+        for (int i = 2; i * i < upTo; i++)
+            if (isPrime[i])
+                for (int j = i * i; j < upTo; j += i) isPrime[j] = false;
         return isPrime;
     }
 
