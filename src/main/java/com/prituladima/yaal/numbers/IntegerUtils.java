@@ -8,14 +8,12 @@ import com.prituladima.yaal.generated.collections.pair.LongIntPair;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static java.util.Arrays.*;
+import static java.util.Arrays.fill;
 
-/**
- *  */
 public class IntegerUtils {
+
     public static long gcd(long a, long b) {
         a = Math.abs(a);
         b = Math.abs(b);
@@ -57,20 +55,6 @@ public class IntegerUtils {
         return lpf;
     }
 
-    public static boolean[] eratosthenesSieve(int n) {
-        boolean[] sieve = new boolean[n + 1];
-        fill(sieve, true);
-        sieve[0] = sieve[1] = false;
-        for (int i = 2; i * i <= n; i++) {
-            if (sieve[i]) {
-                for (long j = i * i; j <= n; j += i) {
-                    sieve[(int) j] = false;
-                }
-            }
-        }
-        return sieve;
-    }
-
     public static int[] generatePrimes(int upTo) {
         int[] isPrime = generateBitPrimalityTable(upTo);
         IntList primes = new IntArrayList();
@@ -98,6 +82,28 @@ public class IntegerUtils {
         }
         return isPrime;
     }
+
+    public static void main(String[] args) {
+
+        int INF = (int) 1e7;
+        long start = System.currentTimeMillis();
+        boolean[] primalityTable = generatePrimalityTable(INF);
+        long finsh = System.currentTimeMillis();
+
+        double d = (double) (finsh - start) / 1000;
+        System.out.println(d);
+
+
+        start = System.currentTimeMillis();
+        int[] bitPrimalityTable = generateBitPrimalityTable(INF);
+        finsh = System.currentTimeMillis();
+
+        d = (double) (finsh - start) / 1000;
+        System.out.println(d);
+
+
+    }
+
 
     public static int[] generateBitPrimalityTable(int upTo) {
         int[] isPrime = new int[(upTo + 31) >> 5];
