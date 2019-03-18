@@ -6,7 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- *  */
+ *
+ */
 public class Polygon {
     public final Point[] vertices;
     private Segment[] sides;

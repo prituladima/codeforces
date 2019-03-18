@@ -4,7 +4,8 @@ import com.prituladima.yaal.generated.collections.list.IntArray;
 import com.prituladima.yaal.generated.collections.list.IntList;
 
 /**
- *  */
+ *
+ */
 public class Range {
     public static IntList range(int from, int to) {
         int[] result = new int[Math.abs(from - to)];

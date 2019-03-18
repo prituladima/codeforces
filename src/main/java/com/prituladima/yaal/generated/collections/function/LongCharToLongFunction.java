@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.function;
 
 /**
- *  */
+ *
+ */
 public interface LongCharToLongFunction {
     public long value(long first, char second);
 

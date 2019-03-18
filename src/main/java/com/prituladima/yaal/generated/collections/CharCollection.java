@@ -3,7 +3,8 @@ package com.prituladima.yaal.generated.collections;
 import com.prituladima.yaal.generated.collections.iterator.CharIterator;
 
 /**
- *  */
+ *
+ */
 public interface CharCollection extends CharStream {
     //abstract
     public int size();

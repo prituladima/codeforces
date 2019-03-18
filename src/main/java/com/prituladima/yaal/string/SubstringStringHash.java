@@ -1,7 +1,8 @@
 package com.prituladima.yaal.string;
 
 /**
- *  */
+ *
+ */
 public class SubstringStringHash extends AbstractStringHash {
     private final StringHash base;
     private final int from;

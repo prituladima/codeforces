@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.function;
 
 /**
- *  */
+ *
+ */
 public interface CharCharPredicate {
     public boolean value(char first, char second);
 

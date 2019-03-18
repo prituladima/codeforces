@@ -6,7 +6,8 @@ import com.prituladima.yaal.generated.collections.queue.IntQueue;
 import java.util.Arrays;
 
 /**
- *  */
+ *
+ */
 public class MaxFlow {
     private final Graph graph;
     private int source;

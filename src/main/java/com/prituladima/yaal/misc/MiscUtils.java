@@ -5,7 +5,8 @@ import com.prituladima.yaal.generated.collections.list.IntArrayList;
 import com.prituladima.yaal.generated.collections.list.IntList;
 
 /**
- *  */
+ *
+ */
 public class MiscUtils {
     public static final int[] DX4 = {1, 0, -1, 0};
     public static final int[] DY4 = {0, -1, 0, 1};

@@ -3,7 +3,8 @@ package com.prituladima.yaal.numbers;
 import java.util.Arrays;
 
 /**
- *  */
+ *
+ */
 public class PrimeFastFourierTransform {
     private final long MOD;
     private final long root;

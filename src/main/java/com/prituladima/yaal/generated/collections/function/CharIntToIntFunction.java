@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.function;
 
 /**
- *  */
+ *
+ */
 public interface CharIntToIntFunction {
     public int value(char first, int second);
 

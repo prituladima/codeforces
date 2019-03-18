@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.function;
 
 /**
- *  */
+ *
+ */
 public interface DoubleLongToLongFunction {
     public long value(double first, long second);
 

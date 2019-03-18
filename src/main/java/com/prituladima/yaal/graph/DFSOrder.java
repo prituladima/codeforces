@@ -1,7 +1,8 @@
 package com.prituladima.yaal.graph;
 
 /**
- *  */
+ *
+ */
 public class DFSOrder {
     public final int[] position;
     public final int[] end;

@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.function;
 
 /**
- *  */
+ *
+ */
 public interface IntFilter {
     public boolean accept(int value);
 

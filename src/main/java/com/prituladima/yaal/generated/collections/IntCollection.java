@@ -3,7 +3,8 @@ package com.prituladima.yaal.generated.collections;
 import com.prituladima.yaal.generated.collections.iterator.IntIterator;
 
 /**
- *  */
+ *
+ */
 public interface IntCollection extends IntStream {
     //abstract
     public int size();

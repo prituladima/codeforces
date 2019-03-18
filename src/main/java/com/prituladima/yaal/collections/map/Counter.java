@@ -1,7 +1,8 @@
 package com.prituladima.yaal.collections.map;
 
 /**
- *  */
+ *
+ */
 public class Counter<K> extends EHashMap<K, Long> {
     public Counter() {
         super();

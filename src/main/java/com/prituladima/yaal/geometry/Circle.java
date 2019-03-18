@@ -1,7 +1,8 @@
 package com.prituladima.yaal.geometry;
 
 /**
- *  */
+ *
+ */
 public class Circle {
     public final Point center;
     public final double radius;

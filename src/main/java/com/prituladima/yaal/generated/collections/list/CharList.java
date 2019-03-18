@@ -2,16 +2,12 @@ package com.prituladima.yaal.generated.collections.list;
 
 import com.prituladima.yaal.generated.collections.CharReversableCollection;
 import com.prituladima.yaal.generated.collections.comparator.CharComparator;
-import com.prituladima.yaal.generated.collections.function.CharCharPredicate;
-import com.prituladima.yaal.generated.collections.function.CharDoublePredicate;
-import com.prituladima.yaal.generated.collections.function.CharFilter;
-import com.prituladima.yaal.generated.collections.function.CharIntPredicate;
-import com.prituladima.yaal.generated.collections.function.CharLongPredicate;
-import com.prituladima.yaal.generated.collections.function.IntToCharFunction;
+import com.prituladima.yaal.generated.collections.function.*;
 import com.prituladima.yaal.generated.collections.iterator.CharIterator;
 
 /**
- *  */
+ *
+ */
 public interface CharList extends CharReversableCollection {
     public static final CharList EMPTY = new CharArray(new char[0]);
 

@@ -1,7 +1,8 @@
 package com.prituladima.yaal.geometry;
 
 /**
- *  */
+ *
+ */
 public class Angle {
     public final Point o;
     public final Point a;

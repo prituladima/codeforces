@@ -1,7 +1,8 @@
 package com.prituladima.yaal.graph;
 
 /**
- *  */
+ *
+ */
 public class BidirectionalGraph extends Graph {
     public int[] transposedEdge;
 

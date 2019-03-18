@@ -6,7 +6,8 @@ import com.prituladima.yaal.io.OutputWriter;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- *  */
+ *
+ */
 public class Scheduler {
     private final AtomicInteger testsRemaining;
     private final AtomicInteger threadsRemaining;

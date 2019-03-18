@@ -8,7 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  */
+ *
+ */
 public class SuffixAutomaton {
     private final boolean useMap;
     public final int[] length;

@@ -1,7 +1,8 @@
 package com.prituladima.yaal.numbers;
 
 /**
- *  */
+ *
+ */
 public class FastFourierTransform {
     public static void fft(double[] a, double[] b, boolean invert) {
         int count = a.length;

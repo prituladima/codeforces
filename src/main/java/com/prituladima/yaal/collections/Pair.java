@@ -1,7 +1,8 @@
 package com.prituladima.yaal.collections;
 
 /**
- *  */
+ *
+ */
 public class Pair<U, V> implements Comparable<Pair<U, V>> {
     public final U first;
     public final V second;

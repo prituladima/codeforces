@@ -1,7 +1,8 @@
 package com.prituladima.yaal.datetime;
 
 /**
- *  */
+ *
+ */
 public enum Month {
     NULL(null),
     JANUARY("January"),

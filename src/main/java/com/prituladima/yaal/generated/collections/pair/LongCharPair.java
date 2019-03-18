@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.pair;
 
 /**
- *  */
+ *
+ */
 public class LongCharPair implements Comparable<LongCharPair> {
     public final long first;
     public final char second;

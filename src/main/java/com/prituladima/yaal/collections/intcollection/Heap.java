@@ -8,7 +8,8 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 /**
- *  */
+ *
+ */
 public class Heap implements IntQueue {
     private IntComparator comparator;
     private int size = 0;

@@ -1,7 +1,8 @@
 package com.prituladima.yaal.graph;
 
 /**
- *  */
+ *
+ */
 public interface Edge {
     public int getSource();
 

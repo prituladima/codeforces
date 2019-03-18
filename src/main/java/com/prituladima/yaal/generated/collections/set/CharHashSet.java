@@ -11,7 +11,8 @@ import java.util.NoSuchElementException;
 import java.util.Random;
 
 /**
- *  */
+ *
+ */
 public class CharHashSet extends CharAbstractStream implements CharSet {
     private static final Random RND = new Random();
     private static final int[] SHIFTS = new int[4];

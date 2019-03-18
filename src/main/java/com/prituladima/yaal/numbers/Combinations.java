@@ -4,7 +4,8 @@ import static com.prituladima.yaal.numbers.IntegerUtils.generateFactorial;
 import static com.prituladima.yaal.numbers.IntegerUtils.generateReverseFactorials;
 
 /**
- *  */
+ *
+ */
 public class Combinations {
     private final long mod;
     private final long[] factorial;

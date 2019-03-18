@@ -1,7 +1,8 @@
 package com.prituladima.yaal.geometry;
 
 /**
- *  */
+ *
+ */
 public class Line {
     public final double a;
     public final double b;

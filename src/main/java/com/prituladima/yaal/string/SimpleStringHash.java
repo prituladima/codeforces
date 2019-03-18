@@ -1,7 +1,8 @@
 package com.prituladima.yaal.string;
 
 /**
- *  */
+ *
+ */
 public class SimpleStringHash extends AbstractStringHash {
     public static long[] firstReversePower = new long[0];
     public static long[] secondReversePower = new long[0];

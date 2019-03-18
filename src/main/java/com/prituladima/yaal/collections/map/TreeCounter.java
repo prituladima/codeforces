@@ -3,7 +3,8 @@ package com.prituladima.yaal.collections.map;
 import java.util.TreeMap;
 
 /**
- *  */
+ *
+ */
 public class TreeCounter<K> extends TreeMap<K, Long> {
     public TreeCounter() {
         super();

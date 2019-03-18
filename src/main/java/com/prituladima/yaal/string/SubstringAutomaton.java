@@ -7,7 +7,8 @@ import com.prituladima.yaal.graph.Graph;
 import java.util.Arrays;
 
 /**
- *  */
+ *
+ */
 public class SubstringAutomaton {
     public int[][] edges;
     public int[] ends;

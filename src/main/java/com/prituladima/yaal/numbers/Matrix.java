@@ -3,7 +3,8 @@ package com.prituladima.yaal.numbers;
 import java.util.Arrays;
 
 /**
- *  */
+ *
+ */
 public class Matrix {
     public static long mod = Long.MAX_VALUE;
     public final long[][] data;

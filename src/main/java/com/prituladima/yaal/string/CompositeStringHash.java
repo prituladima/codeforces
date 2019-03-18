@@ -1,7 +1,8 @@
 package com.prituladima.yaal.string;
 
 /**
- *  */
+ *
+ */
 public class CompositeStringHash extends AbstractStringHash {
     private static long[] firstPower = new long[0];
     private static long[] secondPower = new long[0];

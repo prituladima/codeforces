@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.function;
 
 /**
- *  */
+ *
+ */
 public interface DoubleIntToIntFunction {
     public int value(double first, int second);
 

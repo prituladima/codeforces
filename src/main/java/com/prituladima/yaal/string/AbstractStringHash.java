@@ -5,7 +5,8 @@ import com.prituladima.yaal.numbers.IntegerUtils;
 import java.util.Random;
 
 /**
- *  */
+ *
+ */
 public abstract class AbstractStringHash implements StringHash {
     public static final long MULTIPLIER;
     protected static final long FIRST_REVERSE_MULTIPLIER;

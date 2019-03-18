@@ -7,7 +7,8 @@ import static java.lang.Math.max;
 import static java.util.Arrays.copyOf;
 
 /**
- *  */
+ *
+ */
 public class LongInteger implements Cloneable, Comparable<LongInteger> {
     private static final int MOD = 1000;
     private static final int MULTIPLY_THRESHOLD = 50;
@@ -211,11 +212,11 @@ public class LongInteger implements Cloneable, Comparable<LongInteger> {
             int current = digits[i];
 //            if (current < 1000) {
 //                result.append('0');
-                if (current < 100) {
+            if (current < 100) {
+                result.append('0');
+                if (current < 10) {
                     result.append('0');
-                    if (current < 10) {
-                        result.append('0');
-                    }
+                }
 //                }
             }
             result.append(current);

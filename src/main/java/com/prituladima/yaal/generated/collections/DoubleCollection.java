@@ -3,7 +3,8 @@ package com.prituladima.yaal.generated.collections;
 import com.prituladima.yaal.generated.collections.iterator.DoubleIterator;
 
 /**
- *  */
+ *
+ */
 public interface DoubleCollection extends DoubleStream {
     //abstract
     public int size();

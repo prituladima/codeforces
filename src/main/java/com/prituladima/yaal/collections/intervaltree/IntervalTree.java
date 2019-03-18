@@ -1,7 +1,8 @@
 package com.prituladima.yaal.collections.intervaltree;
 
 /**
- *  */
+ *
+ */
 public abstract class IntervalTree {
     protected int size;
 

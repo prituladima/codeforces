@@ -3,7 +3,8 @@ package com.prituladima.yaal.collections.map;
 import com.prituladima.yaal.misc.Factory;
 
 /**
- *  */
+ *
+ */
 public class CPPMap<K, V> extends EHashMap<K, V> {
     private final Factory<V> defaultValueFactory;
 

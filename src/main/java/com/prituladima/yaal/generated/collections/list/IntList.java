@@ -2,16 +2,12 @@ package com.prituladima.yaal.generated.collections.list;
 
 import com.prituladima.yaal.generated.collections.IntReversableCollection;
 import com.prituladima.yaal.generated.collections.comparator.IntComparator;
-import com.prituladima.yaal.generated.collections.function.IntCharPredicate;
-import com.prituladima.yaal.generated.collections.function.IntDoublePredicate;
-import com.prituladima.yaal.generated.collections.function.IntFilter;
-import com.prituladima.yaal.generated.collections.function.IntIntPredicate;
-import com.prituladima.yaal.generated.collections.function.IntLongPredicate;
-import com.prituladima.yaal.generated.collections.function.IntToIntFunction;
+import com.prituladima.yaal.generated.collections.function.*;
 import com.prituladima.yaal.generated.collections.iterator.IntIterator;
 
 /**
- *  */
+ *
+ */
 public interface IntList extends IntReversableCollection {
     public static final IntList EMPTY = new IntArray(new int[0]);
 

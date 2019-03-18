@@ -5,7 +5,8 @@ import com.prituladima.yaal.graph.Graph;
 import java.util.Arrays;
 
 /**
- *  */
+ *
+ */
 public class LCA {
     private final long[] order;
     private final int[] position;

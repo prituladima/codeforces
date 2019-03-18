@@ -2,16 +2,12 @@ package com.prituladima.yaal.generated.collections.list;
 
 import com.prituladima.yaal.generated.collections.LongReversableCollection;
 import com.prituladima.yaal.generated.collections.comparator.LongComparator;
-import com.prituladima.yaal.generated.collections.function.IntToLongFunction;
-import com.prituladima.yaal.generated.collections.function.LongCharPredicate;
-import com.prituladima.yaal.generated.collections.function.LongDoublePredicate;
-import com.prituladima.yaal.generated.collections.function.LongFilter;
-import com.prituladima.yaal.generated.collections.function.LongIntPredicate;
-import com.prituladima.yaal.generated.collections.function.LongLongPredicate;
+import com.prituladima.yaal.generated.collections.function.*;
 import com.prituladima.yaal.generated.collections.iterator.LongIterator;
 
 /**
- *  */
+ *
+ */
 public interface LongList extends LongReversableCollection {
     public static final LongList EMPTY = new LongArray(new long[0]);
 

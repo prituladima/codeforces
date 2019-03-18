@@ -1,7 +1,8 @@
 package com.prituladima.yaal.geometry;
 
 /**
- *  */
+ *
+ */
 public class Vector {
     public final double x;
     public final double y;

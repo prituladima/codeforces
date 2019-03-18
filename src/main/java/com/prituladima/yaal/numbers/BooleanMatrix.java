@@ -1,7 +1,8 @@
 package com.prituladima.yaal.numbers;
 
 /**
- *  */
+ *
+ */
 public class BooleanMatrix {
     public final boolean[][] data;
     public final int rowCount;

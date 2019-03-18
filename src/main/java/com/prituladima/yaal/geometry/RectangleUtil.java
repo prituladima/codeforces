@@ -1,9 +1,5 @@
 package com.prituladima.yaal.geometry;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.BinaryOperator;
-
 import static java.lang.Integer.max;
 import static java.lang.Math.min;
 
@@ -41,10 +37,6 @@ public class RectangleUtil {
 
         return new Rect(x5, y5, x6, y6);
     }
-
-
-
-
 
 
 }

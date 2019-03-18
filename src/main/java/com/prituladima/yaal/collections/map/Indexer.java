@@ -1,7 +1,8 @@
 package com.prituladima.yaal.collections.map;
 
 /**
- *  */
+ *
+ */
 public class Indexer<K> extends EHashMap<K, Integer> {
     private int index = 0;
 

@@ -1,7 +1,8 @@
 package com.prituladima.yaal.collections.intervaltree;
 
 /**
- *  */
+ *
+ */
 public class SumIntervalTree extends LongIntervalTree {
     private final long[] array;
 

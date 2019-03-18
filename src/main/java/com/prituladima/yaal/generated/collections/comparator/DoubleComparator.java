@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.comparator;
 
 /**
- *  */
+ *
+ */
 public interface DoubleComparator {
     public static final DoubleComparator DEFAULT = (first, second) -> {
         if (first < second) {

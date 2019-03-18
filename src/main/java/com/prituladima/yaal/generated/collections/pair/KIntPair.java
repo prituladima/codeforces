@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.pair;
 
 /**
- *  */
+ *
+ */
 public class KIntPair<K> implements Comparable<KIntPair<K>> {
     public final K first;
     public final int second;

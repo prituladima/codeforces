@@ -1,7 +1,8 @@
 package com.prituladima.yaal.numbers;
 
 /**
- *  */
+ *
+ */
 public abstract class MultiplicativeFunction {
     public static final MultiplicativeFunction DIVISOR_COUNT = new MultiplicativeFunction() {
         @Override

@@ -3,7 +3,8 @@ package com.prituladima.yaal.generated.collections.iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  */
+ *
+ */
 public interface DoubleIterator {
     public double value() throws NoSuchElementException;
 

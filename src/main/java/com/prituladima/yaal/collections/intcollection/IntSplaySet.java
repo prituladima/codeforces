@@ -8,7 +8,8 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 /**
- *  */
+ *
+ */
 public class IntSplaySet implements IntSet {
     protected int[] value;
     protected int[] left;

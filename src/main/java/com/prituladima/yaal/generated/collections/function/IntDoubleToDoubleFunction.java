@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.function;
 
 /**
- *  */
+ *
+ */
 public interface IntDoubleToDoubleFunction {
     public double value(int first, double second);
 

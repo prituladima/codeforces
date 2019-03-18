@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.comparator;
 
 /**
- *  */
+ *
+ */
 public interface CharComparator {
     public static final CharComparator DEFAULT = (first, second) -> {
         if (first < second) {

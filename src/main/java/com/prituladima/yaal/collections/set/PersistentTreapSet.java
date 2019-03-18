@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  */
+ *
+ */
 public class PersistentTreapSet<K> extends TreapSet<K> implements PersistentSet<K> {
     private Map<Object, Node> states = new HashMap<Object, Node>();
 

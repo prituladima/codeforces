@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.pair;
 
 /**
- *  */
+ *
+ */
 public class KCharPair<K> implements Comparable<KCharPair<K>> {
     public final K first;
     public final char second;

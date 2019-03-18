@@ -3,7 +3,8 @@ package com.prituladima.yaal.generated.collections.iterator;
 import java.util.NoSuchElementException;
 
 /**
- *  */
+ *
+ */
 public interface LongIterator {
     public long value() throws NoSuchElementException;
 

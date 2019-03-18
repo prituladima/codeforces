@@ -4,17 +4,14 @@ import com.prituladima.yaal.generated.collections.IntAbstractStream;
 import com.prituladima.yaal.generated.collections.IntStream;
 import com.prituladima.yaal.generated.collections.comparator.IntComparator;
 import com.prituladima.yaal.generated.collections.iterator.IntIterator;
-import com.prituladima.yaal.generated.collections.list.IntArray;
-import com.prituladima.yaal.generated.collections.list.IntArrayList;
-import com.prituladima.yaal.generated.collections.list.IntList;
-import com.prituladima.yaal.generated.collections.list.LongArrayList;
-import com.prituladima.yaal.generated.collections.list.LongList;
+import com.prituladima.yaal.generated.collections.list.*;
 import com.prituladima.yaal.generated.collections.set.IntSet;
 
 import java.util.Random;
 
 /**
- *  */
+ *
+ */
 public class IntTreeSet extends IntAbstractStream implements IntSet {
     private int root;
     private final IntList value = new IntArrayList();

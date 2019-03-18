@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.comparator;
 
 /**
- *  */
+ *
+ */
 public class ReverseComparators {
     private ReverseComparators() {
     }

@@ -3,7 +3,8 @@ package com.prituladima.yaal.collections.iss;
 import static java.util.Arrays.fill;
 
 /**
- *  */
+ *
+ */
 public class RecursiveIndependentSetSystem implements IndependentSetSystem {
     private final int[] color;
     private final int[] rank;

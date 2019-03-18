@@ -2,7 +2,6 @@ package com.prituladima.yaal.io;
 
 import com.prituladima.yaal.generated.collections.pair.IntIntPair;
 import com.prituladima.yaal.generated.collections.pair.LongLongPair;
-import com.prituladima.yaal.geometry.RectangleUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 
-import static com.prituladima.yaal.geometry.RectangleUtil.*;
+import static com.prituladima.yaal.geometry.RectangleUtil.Rect;
 
 public class InputReader {
     private InputStream stream;

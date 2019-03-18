@@ -2,16 +2,12 @@ package com.prituladima.yaal.generated.collections.list;
 
 import com.prituladima.yaal.generated.collections.DoubleReversableCollection;
 import com.prituladima.yaal.generated.collections.comparator.DoubleComparator;
-import com.prituladima.yaal.generated.collections.function.DoubleCharPredicate;
-import com.prituladima.yaal.generated.collections.function.DoubleDoublePredicate;
-import com.prituladima.yaal.generated.collections.function.DoubleFilter;
-import com.prituladima.yaal.generated.collections.function.DoubleIntPredicate;
-import com.prituladima.yaal.generated.collections.function.DoubleLongPredicate;
-import com.prituladima.yaal.generated.collections.function.IntToDoubleFunction;
+import com.prituladima.yaal.generated.collections.function.*;
 import com.prituladima.yaal.generated.collections.iterator.DoubleIterator;
 
 /**
- *  */
+ *
+ */
 public interface DoubleList extends DoubleReversableCollection {
     public static final DoubleList EMPTY = new DoubleArray(new double[0]);
 

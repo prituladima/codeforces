@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.hashing;
 
 /**
- *  */
+ *
+ */
 public class DoubleHash {
     private DoubleHash() {
     }

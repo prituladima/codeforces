@@ -1,7 +1,8 @@
 package com.prituladima.yaal.collections.intervaltree;
 
 /**
- *  */
+ *
+ */
 public abstract class ReadOnlyIntervalTree extends IntervalTree {
     protected long[] value;
     protected long[] array;

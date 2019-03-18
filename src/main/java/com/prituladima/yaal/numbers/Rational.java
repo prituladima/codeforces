@@ -1,7 +1,8 @@
 package com.prituladima.yaal.numbers;
 
 /**
- *  */
+ *
+ */
 public class Rational implements Comparable<Rational> {
     public static final Rational MAX_VALUE = new Rational(Integer.MAX_VALUE, 1);
     public static final Rational MIN_VALUE = new Rational(Integer.MIN_VALUE, 1);

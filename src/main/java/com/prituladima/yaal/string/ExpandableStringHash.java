@@ -1,12 +1,11 @@
 package com.prituladima.yaal.string;
 
+import static com.prituladima.yaal.string.SimpleStringHash.*;
 import static java.util.Arrays.copyOf;
-import static com.prituladima.yaal.string.SimpleStringHash.ensureCapacity;
-import static com.prituladima.yaal.string.SimpleStringHash.firstReversePower;
-import static com.prituladima.yaal.string.SimpleStringHash.secondReversePower;
 
 /**
- *  */
+ *
+ */
 public class ExpandableStringHash extends AbstractStringHash {
     private long[] firstHash;
     private long[] secondHash;

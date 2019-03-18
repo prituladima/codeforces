@@ -3,7 +3,8 @@ package com.prituladima.yaal.misc;
 import java.util.Random;
 
 /**
- *  */
+ *
+ */
 public class ExtendedRandom extends Random {
     public ExtendedRandom(long seed) {
         super(seed);

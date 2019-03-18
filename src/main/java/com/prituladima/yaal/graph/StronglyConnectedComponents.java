@@ -7,7 +7,8 @@ import java.util.Arrays;
 import static com.prituladima.yaal.misc.ArrayUtils.createArray;
 
 /**
- *  */
+ *
+ */
 public class StronglyConnectedComponents {
     private final Graph graph;
     private int[] order;

@@ -1,7 +1,8 @@
 package com.prituladima.yaal.numbers;
 
 /**
- *  */
+ *
+ */
 public abstract class NumberIterator {
     protected final long base;
     protected final long[] power;

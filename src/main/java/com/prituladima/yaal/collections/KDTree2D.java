@@ -4,7 +4,8 @@ import com.prituladima.yaal.generated.collections.comparator.IntComparator;
 import com.prituladima.yaal.misc.ArrayUtils;
 
 /**
- *  */
+ *
+ */
 public class KDTree2D {
     private final int[] weight;
     private final int[] x;

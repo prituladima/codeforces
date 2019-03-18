@@ -9,7 +9,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- *  */
+ *
+ */
 public class CollectionUtils {
     public static int[] toArray(Collection<Integer> collection) {
         int[] array = new int[collection.size()];

@@ -3,7 +3,8 @@ package com.prituladima.yaal.string;
 import java.util.Arrays;
 
 /**
- *  */
+ *
+ */
 public class StringUtils {
     public static String reverse(String sample) {
         StringBuilder result = new StringBuilder(sample);

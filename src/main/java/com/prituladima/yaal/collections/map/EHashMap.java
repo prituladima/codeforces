@@ -1,16 +1,10 @@
 package com.prituladima.yaal.collections.map;
 
-import java.util.AbstractMap;
-import java.util.AbstractSet;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 /**
- *  */
+ *
+ */
 public class EHashMap<E, V> extends AbstractMap<E, V> {
     private static final int[] shifts = new int[10];
 

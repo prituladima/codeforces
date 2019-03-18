@@ -1,7 +1,8 @@
 package com.prituladima.yaal.misc;
 
 /**
- *  */
+ *
+ */
 public abstract class MapVisitor {
     protected final int rowCount;
     protected final int columnCount;

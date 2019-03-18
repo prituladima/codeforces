@@ -1,7 +1,8 @@
 package com.prituladima.yaal.datetime;
 
 /**
- *  */
+ *
+ */
 public class DateTimeUtils {
     public static Time timePassed(Time from, Time to) {
         int hours = to.getHours() - from.getHours();

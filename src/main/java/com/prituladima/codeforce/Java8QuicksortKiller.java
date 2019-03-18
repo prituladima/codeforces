@@ -569,21 +569,21 @@ public class Java8QuicksortKiller implements Runnable {
 
     /**
      * Generation time = 33245 ms.
-     *
+     * <p>
      * n = 200000
-     *
+     * <p>
      * Worst case from generator
      * Sorting time Arrays.sort = 11078 ms.
      * Sorting time Arrays.sort boxed = 134 ms.
      * Sorting time shuffle before dual pivot quick sort = 32 ms.
      * Sorting time sorting by yaal = 77 ms.
-     *
+     * <p>
      * Sorted array
      * Sorting time Arrays.sort = 0 ms.
      * Sorting time Arrays.sort boxed = 1 ms.
      * Sorting time shuffle before dual pivot quick sort = 26 ms.
      * Sorting time sorting by yaal = 10 ms.
-     *
+     * <p>
      * Randomly shuffled array
      * Sorting time Arrays.sort = 20 ms.
      * Sorting time Arrays.sort boxed = 250 ms.

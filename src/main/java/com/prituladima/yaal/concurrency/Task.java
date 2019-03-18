@@ -4,7 +4,8 @@ import com.prituladima.yaal.io.InputReader;
 import com.prituladima.yaal.io.OutputWriter;
 
 /**
- *  */
+ *
+ */
 public interface Task {
     public void read(InputReader in);
 

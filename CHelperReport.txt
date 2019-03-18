@@ -1,3 +1,2 @@
-92 src/main/java/com/prituladima/codeforce/contests/contest1028/B. Neestestvennye uslovija.json
-1
+68 src/main/java/com/prituladima/codeforce/A. Teatralnaja ploschad.json
 0

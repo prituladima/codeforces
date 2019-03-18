@@ -5,7 +5,8 @@ import com.prituladima.yaal.misc.Factory;
 import java.util.TreeMap;
 
 /**
- *  */
+ *
+ */
 public class CPPTreeMap<K, V> extends TreeMap<K, V> {
     private final Factory<V> defaultValueFactory;
 

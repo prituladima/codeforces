@@ -1,7 +1,8 @@
 package com.prituladima.yaal.geometry;
 
 /**
- *  */
+ *
+ */
 public class GeometryUtils {
     public static double epsilon = 1e-8;
 

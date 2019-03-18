@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.comparator;
 
 /**
- *  */
+ *
+ */
 public interface LongComparator {
     public static final LongComparator DEFAULT = (first, second) -> {
         if (first < second) {

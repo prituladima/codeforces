@@ -12,7 +12,8 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
- *  */
+ *
+ */
 public class ArrayUtils {
     public static void fill(short[][] array, short value) {
         for (short[] row : array) {
@@ -239,7 +240,7 @@ public class ArrayUtils {
         });
     }
 
-    public static<T extends Comparable<T>> int[] order(final T[] array) {
+    public static <T extends Comparable<T>> int[] order(final T[] array) {
         return sort(createOrder(array.length), new IntComparator() {
             public int compare(int first, int second) {
                 return array[first].compareTo(array[second]);

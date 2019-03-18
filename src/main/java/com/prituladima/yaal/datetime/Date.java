@@ -1,7 +1,8 @@
 package com.prituladima.yaal.datetime;
 
 /**
- *  */
+ *
+ */
 public class Date implements Comparable<Date> {
     private static final int[] DAYS_IN_MONTH = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     public static final String[] WEEKDAYS =
@@ -132,23 +133,23 @@ public class Date implements Comparable<Date> {
         for (int i = pattern.length() - 1; i >= 0; i--) {
             char character = pattern.charAt(i);
             switch (character) {
-            case 'D':
-            case 'd':
-                result.append(copyDay % 10);
-                copyDay /= 10;
-                break;
-            case 'M':
-            case 'm':
-                result.append(copyMonth % 10);
-                copyMonth /= 10;
-                break;
-            case 'Y':
-            case 'y':
-                result.append(copyYear % 10);
-                copyYear /= 10;
-                break;
-            default:
-                result.append(character);
+                case 'D':
+                case 'd':
+                    result.append(copyDay % 10);
+                    copyDay /= 10;
+                    break;
+                case 'M':
+                case 'm':
+                    result.append(copyMonth % 10);
+                    copyMonth /= 10;
+                    break;
+                case 'Y':
+                case 'y':
+                    result.append(copyYear % 10);
+                    copyYear /= 10;
+                    break;
+                default:
+                    result.append(character);
             }
         }
         return result.reverse().toString();

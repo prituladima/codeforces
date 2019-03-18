@@ -1,7 +1,8 @@
 package com.prituladima.yaal.geometry;
 
 /**
- *  */
+ *
+ */
 public class Quaternion {
     public final double s;
     public final double x;
@@ -47,7 +48,7 @@ public class Quaternion {
     }
 
     public static Quaternion divide(Quaternion a, double b) {
-        return new Quaternion(a.s / b, a.x  / b, a.y / b, a.z / b);
+        return new Quaternion(a.s / b, a.x / b, a.y / b, a.z / b);
     }
 
     public static double scalarProduct(Quaternion a, Quaternion b) {

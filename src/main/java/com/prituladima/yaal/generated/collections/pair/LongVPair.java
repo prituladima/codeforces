@@ -1,7 +1,8 @@
 package com.prituladima.yaal.generated.collections.pair;
 
 /**
- *  */
+ *
+ */
 public class LongVPair<V> implements Comparable<LongVPair<V>> {
     public final long first;
     public final V second;

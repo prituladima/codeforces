@@ -1,7 +1,8 @@
 package com.prituladima.yaal.misc;
 
 /**
- *  */
+ *
+ */
 public abstract class SimpleMapVisitor extends MapVisitor {
     protected final boolean[][] processed;
 

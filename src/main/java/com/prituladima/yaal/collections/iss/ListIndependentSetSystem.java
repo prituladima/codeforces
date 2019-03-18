@@ -5,7 +5,8 @@ import com.prituladima.yaal.generated.collections.list.IntArrayList;
 import com.prituladima.yaal.generated.collections.list.IntList;
 
 /**
- *  */
+ *
+ */
 public class ListIndependentSetSystem implements IndependentSetSystem {
     private final IntList[] lists;
     private int[] parent;

@@ -1,7 +1,8 @@
 package com.prituladima.yaal.collections;
 
 /**
- *  */
+ *
+ */
 public class FenwickTree {
     private final long[] value;
 

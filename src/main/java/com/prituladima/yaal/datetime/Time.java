@@ -3,7 +3,8 @@ package com.prituladima.yaal.datetime;
 import com.prituladima.yaal.numbers.IntegerUtils;
 
 /**
- *  */
+ *
+ */
 public class Time implements Comparable<Time> {
     private final int hours;
     private final int minutes;
@@ -67,23 +68,23 @@ public class Time implements Comparable<Time> {
         for (int i = pattern.length() - 1; i >= 0; i--) {
             char character = pattern.charAt(i);
             switch (character) {
-            case 'S':
-            case 's':
-                result.append(copySeconds % 10);
-                copySeconds /= 10;
-                break;
-            case 'M':
-            case 'm':
-                result.append(copyMinutes % 10);
-                copyMinutes /= 10;
-                break;
-            case 'H':
-            case 'h':
-                result.append(copyHours % 10);
-                copyHours /= 10;
-                break;
-            default:
-                result.append(character);
+                case 'S':
+                case 's':
+                    result.append(copySeconds % 10);
+                    copySeconds /= 10;
+                    break;
+                case 'M':
+                case 'm':
+                    result.append(copyMinutes % 10);
+                    copyMinutes /= 10;
+                    break;
+                case 'H':
+                case 'h':
+                    result.append(copyHours % 10);
+                    copyHours /= 10;
+                    break;
+                default:
+                    result.append(character);
             }
         }
         return result.reverse().toString();

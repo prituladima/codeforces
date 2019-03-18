@@ -8,7 +8,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- *  */
+ *
+ */
 public class IntTreapArray extends IntAbstractStream implements IntList {
     private int[] left;
     private int[] right;

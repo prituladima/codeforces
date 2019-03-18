@@ -5,12 +5,12 @@ import com.prituladima.yaal.collections.intcollection.Heap;
 import com.prituladima.yaal.generated.collections.comparator.IntComparator;
 import com.prituladima.yaal.generated.collections.list.IntArrayList;
 import com.prituladima.yaal.generated.collections.list.IntList;
-import com.prituladima.yaal.numbers.IntegerUtils;
 
 import java.util.Arrays;
 
 /**
- *  */
+ *
+ */
 public class ShortestDistance {
     public static Pair<long[], int[]> dijkstraAlgorithm(Graph graph, int source) {
         int vertexCount = graph.vertexCount();

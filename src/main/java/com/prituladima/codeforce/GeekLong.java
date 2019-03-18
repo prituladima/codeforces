@@ -4,18 +4,6 @@ import java.util.*;
 
 public class GeekLong {
 
-
-//    @Deprecated
-//    public static long bpow(long a, long n) {
-//        long res = 1;
-//        while (n > 0) {
-//            res = (n & 1) != 0 ? (res * a) : 1;
-//            n >>= 1;
-//            a *= a;
-//        }
-//        return res;
-//    }
-
     public static long modularMultiplicativeInverse(long x, long mod) {
         return bpow(x, mod - 2, mod);
     }
@@ -32,13 +20,12 @@ public class GeekLong {
         }
     }
 
-
     public static long bpow(long x, long n) {
         if (n != 0) {
             if (n % 2 == 1) {
                 return x * bpow(x, n - 1);
             } else {
-                return bpow(x * x , n / 2);
+                return bpow(x * x, n / 2);
             }
         } else {
             return 1;

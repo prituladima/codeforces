@@ -1,7 +1,8 @@
 package com.prituladima.yaal.string;
 
 /**
- *  */
+ *
+ */
 public class Trie {
     private Node root = new Node();
 

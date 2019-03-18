@@ -1,7 +1,8 @@
 package com.prituladima.yaal.graph;
 
 /**
- *  */
+ *
+ */
 public class GraphAlgorithms {
     public static int[] topologicalSort(Graph graph) {
         int count = graph.vertexCount();

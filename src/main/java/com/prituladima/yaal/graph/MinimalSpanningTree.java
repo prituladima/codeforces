@@ -6,10 +6,10 @@ import com.prituladima.yaal.generated.collections.comparator.IntComparator;
 import com.prituladima.yaal.generated.collections.set.IntHashSet;
 import com.prituladima.yaal.generated.collections.set.IntSet;
 import com.prituladima.yaal.misc.ArrayUtils;
-import com.prituladima.yaal.numbers.IntegerUtils;
 
 /**
- *  */
+ *
+ */
 public class MinimalSpanningTree {
     public static IntSet minimalTree(final BidirectionalGraph graph) {
         IntSet result = new IntHashSet(graph.vertexCount - 1);

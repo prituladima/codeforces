@@ -1,7 +1,8 @@
 package com.prituladima.yaal.numbers;
 
 /**
- *  */
+ *
+ */
 public class Interpolation {
     private long[] values;
     private long[] coef;

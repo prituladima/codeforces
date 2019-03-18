@@ -8,7 +8,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- *  */
+ *
+ */
 public class EHashSet<E> extends AbstractSet<E> {
     private static final Object VALUE = new Object();
     private final Map<E, Object> map;
