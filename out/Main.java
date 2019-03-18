@@ -4,14 +4,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.BufferedWriter;
-import java.util.function.BiFunction;
-import java.util.InputMismatchException;
-import java.io.IOException;
-import java.util.function.BinaryOperator;
-import java.util.ArrayList;
-import java.util.List;
 import java.io.Writer;
 import java.io.OutputStreamWriter;
+import java.util.InputMismatchException;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -26,50 +22,127 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        CPryamougolniki solver = new CPryamougolniki();
+        CNastyaTransponiruetMatricu solver = new CNastyaTransponiruetMatricu();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class CPryamougolniki {
+    static class CNastyaTransponiruetMatricu {
         int n;
+        int m;
+        int[][] A;
+        int[][] B;
+        static int R = 3;
+        static int C = 3;
 
         public void solve(int testNumber, InputReader in, OutputWriter out) {
+            R = n = in.nextInt();
+            C = m = in.nextInt();
+            A = in.nextIntMatrix(n, m);
+            B = in.nextIntMatrix(n, m);
 
-            n = in.nextInt();
-            if (n == 2) {
-                out.printLine(in.nextInt() + " " + in.nextInt());
-                return;
+//        HashMap<Integer, Integer> ms1 = new HashMap<>();
+//        HashMap<Integer, Integer> ms2 = new HashMap<>();
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < m; j++) {
+//                ms1.merge(A[i][j], 1, Integer::sum);
+//                ms2.merge(B[i][j], 1, Integer::sum);
+//            }
+//        }
+
+            out.printLine(rankOfMatrix(A) == rankOfMatrix(B) ? "YES" : "NO");
+
+        }
+
+        static void swap(int mat[][],
+                         int row1, int row2, int col) {
+            for (int i = 0; i < col; i++) {
+                int temp = mat[row1][i];
+                mat[row1][i] = mat[row2][i];
+                mat[row2][i] = temp;
             }
+        }
 
-            List<RectangleUtil.Rect> list = in.nextRectangleArray(n);
+        static int rankOfMatrix(int mat[][]) {
 
-            List<RectangleUtil.Rect> pref = GreedyUtil.calculatePrefix(list, RectangleUtil::intersection);
-            List<RectangleUtil.Rect> suff = GreedyUtil.calculateSuffix(list, RectangleUtil::intersection);
+            int rank = C;
 
-            if (pref.get(n - 1) == null && pref.get(n - 2) != null) {
-                out.printLine(pref.get(n - 2).x1 + " " + pref.get(n - 2).y1);
-                return;
-            }
+            for (int row = 0; row < rank; row++) {
 
-            if (suff.get(0) == null && suff.get(1) != null) {
-                out.printLine(suff.get(1).x1 + " " + suff.get(1).y1);
-                return;
-            }
+                // Before we visit current row
+                // 'row', we make sure that
+                // mat[row][0],....mat[row][row-1]
+                // are 0.
 
-            for (int i = 1; i < n - 1; i++) {
-                RectangleUtil.Rect res = RectangleUtil.intersection(pref.get(i - 1), suff.get(i + 1));
-                if (res != null) {
-                    out.printLine(res.x1 + " " + res.y1);
-                    return;
+                // Diagonal element is not zero
+                if (mat[row][row] != 0) {
+                    for (int col = 0; col < R; col++) {
+                        if (col != row) {
+                            // This makes all entries
+                            // of current column
+                            // as 0 except entry
+                            // 'mat[row][row]'
+                            double mult =
+                                    (double) mat[col][row] /
+                                            mat[row][row];
+
+                            for (int i = 0; i < rank; i++)
+
+                                mat[col][i] -= mult
+                                        * mat[row][i];
+                        }
+                    }
                 }
+
+                // Diagonal element is already zero.
+                // Two cases arise:
+                // 1) If there is a row below it
+                // with non-zero entry, then swap
+                // this row with that row and process
+                // that row
+                // 2) If all elements in current
+                // column below mat[r][row] are 0,
+                // then remvoe this column by
+                // swapping it with last column and
+                // reducing number of columns by 1.
+                else {
+                    boolean reduce = true;
+
+                    // Find the non-zero element
+                    // in current column
+                    for (int i = row + 1; i < R; i++) {
+                        // Swap the row with non-zero
+                        // element with this row.
+                        if (mat[i][row] != 0) {
+                            swap(mat, row, i, rank);
+                            reduce = false;
+                            break;
+                        }
+                    }
+
+                    // If we did not find any row with
+                    // non-zero element in current
+                    // columnm, then all values in
+                    // this column are 0.
+                    if (reduce) {
+                        // Reduce number of columns
+                        rank--;
+
+                        // Copy the last column here
+                        for (int i = 0; i < R; i++)
+                            mat[i][row] = mat[i][rank];
+                    }
+
+                    // Process this row again
+                    row--;
+                }
+
+                // Uncomment these lines to see
+                // intermediate results display(mat, R, C);
+                // printf("\n");
             }
 
-
-            if (pref.get(n - 1) != null) {
-                out.printLine(pref.get(n - 1).x1 + " " + pref.get(n - 1).y1);
-            }
-
+            return rank;
         }
 
     }
@@ -105,42 +178,6 @@ public class Main {
 
     }
 
-    static class RectangleUtil {
-        public static RectangleUtil.Rect intersection(RectangleUtil.Rect a, RectangleUtil.Rect b) {
-            if (a == null || b == null) {
-                return null;
-            }
-
-            int x5 = Integer.max(a.x1, b.x1);
-            int y5 = Integer.max(a.y1, b.y1);
-
-            int x6 = Math.min(a.x2, b.x2);
-            int y6 = Math.min(a.y2, b.y2);
-
-            if (x5 > x6 || y5 > y6) {
-                return null;
-            }
-
-            return new RectangleUtil.Rect(x5, y5, x6, y6);
-        }
-
-        public static class Rect {
-            public int x1;
-            public int y1;
-            public int x2;
-            public int y2;
-
-            public Rect(int x1, int y1, int x2, int y2) {
-                this.x1 = x1;
-                this.y1 = y1;
-                this.x2 = x2;
-                this.y2 = y2;
-            }
-
-        }
-
-    }
-
     static class InputReader {
         private InputStream stream;
         private byte[] buf = new byte[1024];
@@ -150,6 +187,22 @@ public class Main {
 
         public InputReader(InputStream stream) {
             this.stream = stream;
+        }
+
+        public int[][] nextIntMatrix(int rowCount, int columnCount) {
+            int[][] table = new int[rowCount][];
+            for (int i = 0; i < rowCount; i++) {
+                table[i] = nextIntArray(columnCount);
+            }
+            return table;
+        }
+
+        public int[] nextIntArray(int size) {
+            int[] array = new int[size];
+            for (int i = 0; i < size; i++) {
+                array[i] = nextInt();
+            }
+            return array;
         }
 
         private int read() {
@@ -203,36 +256,9 @@ public class Main {
             return c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == -1;
         }
 
-        public List<RectangleUtil.Rect> nextRectangleArray(int n) {
-            List<RectangleUtil.Rect> list = new ArrayList<>();
-            for (int i = 0; i < n; i++) {
-                list.add(new RectangleUtil.Rect(nextInt(), nextInt(), nextInt(), nextInt()));
-            }
-            return list;
-        }
-
         public interface SpaceCharFilter {
             public boolean isSpaceChar(int ch);
 
-        }
-
-    }
-
-    static class GreedyUtil {
-        public static <T> List<T> calculatePrefix(List<T> init, BinaryOperator<T> operator) {
-            List<T> pref = new ArrayList<>(init);
-            for (int i = 1; i < init.size(); i++) {
-                pref.set(i, operator.apply(pref.get(i - 1), pref.get(i)));
-            }
-            return pref;
-        }
-
-        public static <T> List<T> calculateSuffix(List<T> init, BinaryOperator<T> operator) {
-            List<T> suff = new ArrayList<>(init);
-            for (int i = init.size() - 2; i >= 0; i--) {
-                suff.set(i, operator.apply(suff.get(i + 1), suff.get(i)));
-            }
-            return suff;
         }
 
     }

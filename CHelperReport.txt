@@ -1,2 +1,3 @@
-68 src/main/java/com/prituladima/codeforce/A. Teatralnaja ploschad.json
-0
+76 src/main/java/com/prituladima/codeforce/C. Nastja transponiruet matricu.json
+1
+2
