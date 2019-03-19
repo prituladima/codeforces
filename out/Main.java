@@ -3,11 +3,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.io.BufferedWriter;
-import java.io.Writer;
-import java.io.OutputStreamWriter;
+import java.util.Set;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Map;
+import java.io.Writer;
+import java.io.OutputStreamWriter;
 import java.io.InputStream;
 
 /**
@@ -22,127 +27,46 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        CNastyaTransponiruetMatricu solver = new CNastyaTransponiruetMatricu();
+        DNastyaIdetVStolovuyu solver = new DNastyaIdetVStolovuyu();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class CNastyaTransponiruetMatricu {
+    static class DNastyaIdetVStolovuyu {
         int n;
         int m;
-        int[][] A;
-        int[][] B;
-        static int R = 3;
-        static int C = 3;
+        int[] array;
+        IntIntPair[] pairs;
 
         public void solve(int testNumber, InputReader in, OutputWriter out) {
-            R = n = in.nextInt();
-            C = m = in.nextInt();
-            A = in.nextIntMatrix(n, m);
-            B = in.nextIntMatrix(n, m);
-
-//        HashMap<Integer, Integer> ms1 = new HashMap<>();
-//        HashMap<Integer, Integer> ms2 = new HashMap<>();
-//        for (int i = 0; i < n; i++) {
-//            for (int j = 0; j < m; j++) {
-//                ms1.merge(A[i][j], 1, Integer::sum);
-//                ms2.merge(B[i][j], 1, Integer::sum);
-//            }
-//        }
-
-            out.printLine(rankOfMatrix(A) == rankOfMatrix(B) ? "YES" : "NO");
-
-        }
-
-        static void swap(int mat[][],
-                         int row1, int row2, int col) {
-            for (int i = 0; i < col; i++) {
-                int temp = mat[row1][i];
-                mat[row1][i] = mat[row2][i];
-                mat[row2][i] = temp;
-            }
-        }
-
-        static int rankOfMatrix(int mat[][]) {
-
-            int rank = C;
-
-            for (int row = 0; row < rank; row++) {
-
-                // Before we visit current row
-                // 'row', we make sure that
-                // mat[row][0],....mat[row][row-1]
-                // are 0.
-
-                // Diagonal element is not zero
-                if (mat[row][row] != 0) {
-                    for (int col = 0; col < R; col++) {
-                        if (col != row) {
-                            // This makes all entries
-                            // of current column
-                            // as 0 except entry
-                            // 'mat[row][row]'
-                            double mult =
-                                    (double) mat[col][row] /
-                                            mat[row][row];
-
-                            for (int i = 0; i < rank; i++)
-
-                                mat[col][i] -= mult
-                                        * mat[row][i];
-                        }
-                    }
-                }
-
-                // Diagonal element is already zero.
-                // Two cases arise:
-                // 1) If there is a row below it
-                // with non-zero entry, then swap
-                // this row with that row and process
-                // that row
-                // 2) If all elements in current
-                // column below mat[r][row] are 0,
-                // then remvoe this column by
-                // swapping it with last column and
-                // reducing number of columns by 1.
-                else {
-                    boolean reduce = true;
-
-                    // Find the non-zero element
-                    // in current column
-                    for (int i = row + 1; i < R; i++) {
-                        // Swap the row with non-zero
-                        // element with this row.
-                        if (mat[i][row] != 0) {
-                            swap(mat, row, i, rank);
-                            reduce = false;
-                            break;
-                        }
-                    }
-
-                    // If we did not find any row with
-                    // non-zero element in current
-                    // columnm, then all values in
-                    // this column are 0.
-                    if (reduce) {
-                        // Reduce number of columns
-                        rank--;
-
-                        // Copy the last column here
-                        for (int i = 0; i < R; i++)
-                            mat[i][row] = mat[i][rank];
-                    }
-
-                    // Process this row again
-                    row--;
-                }
-
-                // Uncomment these lines to see
-                // intermediate results display(mat, R, C);
-                // printf("\n");
+            n = in.nextInt();
+            m = in.nextInt();
+            array = in.nextIntArray(n);
+            int last = array[array.length - 1];
+            pairs = in.nextIntPairArray(m);
+            Set<IntIntPair> pairsSet = new HashSet<>(Arrays.asList(pairs));
+            Map<Integer, Set<Integer>> optimized = new HashMap<>();
+            for (IntIntPair intIntPair : pairsSet) {
+                int first = intIntPair.getFirst();
+                int second = intIntPair.getSecond();
+                optimized.computeIfAbsent(first, k -> new HashSet<>());
+                optimized.get(first).add(second);
             }
 
-            return rank;
+            Set<Integer> P = new HashSet<>();
+            for (int i = array.length - 2; i >= 0; i--) {
+                boolean acceptAll = true;
+                Set<Integer> opt = optimized.get(array[i]);
+                if (opt != null) {
+                    for (Integer j : P) {
+                        acceptAll &= opt.contains(j);
+                        if (!acceptAll) break;
+                    }
+                    acceptAll &= opt.contains(last);
+                }
+                if (!acceptAll || opt == null) P.add(array[i]);
+            }
+            out.printLine(n - 1 - P.size());
         }
 
     }
@@ -158,22 +82,12 @@ public class Main {
             this.writer = new PrintWriter(writer);
         }
 
-        public void print(Object... objects) {
-            for (int i = 0; i < objects.length; i++) {
-                if (i != 0) {
-                    writer.print(' ');
-                }
-                writer.print(objects[i]);
-            }
-        }
-
-        public void printLine(Object... objects) {
-            print(objects);
-            writer.println();
-        }
-
         public void close() {
             writer.close();
+        }
+
+        public void printLine(int i) {
+            writer.println(i);
         }
 
     }
@@ -189,12 +103,12 @@ public class Main {
             this.stream = stream;
         }
 
-        public int[][] nextIntMatrix(int rowCount, int columnCount) {
-            int[][] table = new int[rowCount][];
-            for (int i = 0; i < rowCount; i++) {
-                table[i] = nextIntArray(columnCount);
+        public IntIntPair[] nextIntPairArray(int size) {
+            IntIntPair[] result = new IntIntPair[size];
+            for (int i = 0; i < size; i++) {
+                result[i] = nextIntPair();
             }
-            return table;
+            return result;
         }
 
         public int[] nextIntArray(int size) {
@@ -203,6 +117,12 @@ public class Main {
                 array[i] = nextInt();
             }
             return array;
+        }
+
+        public IntIntPair nextIntPair() {
+            int first = nextInt();
+            int second = nextInt();
+            return new IntIntPair(first, second);
         }
 
         private int read() {
@@ -259,6 +179,56 @@ public class Main {
         public interface SpaceCharFilter {
             public boolean isSpaceChar(int ch);
 
+        }
+
+    }
+
+    static class IntIntPair implements Comparable<IntIntPair> {
+        public final int first;
+        public final int second;
+
+        public int getFirst() {
+            return first;
+        }
+
+        public int getSecond() {
+            return second;
+        }
+
+        public IntIntPair(int first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+
+            IntIntPair pair = (IntIntPair) o;
+
+            return first == pair.first && second == pair.second;
+        }
+
+        public int hashCode() {
+            int result = first;
+            result = 31 * result + second;
+            return result;
+        }
+
+        public String toString() {
+            return "(" + first + "," + second + ")";
+        }
+
+        public int compareTo(IntIntPair o) {
+            int value = Integer.compare(first, o.first);
+            if (value != 0) {
+                return value;
+            }
+            return Integer.compare(second, o.second);
         }
 
     }

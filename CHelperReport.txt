@@ -1,3 +1,2 @@
-76 src/main/java/com/prituladima/codeforce/C. Nastja transponiruet matricu.json
-1
-2
+71 src/main/java/com/prituladima/codeforce/D. Nastja idet v stolovuju.json
+0
