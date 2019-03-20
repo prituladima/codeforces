@@ -18,6 +18,7 @@ public class %TaskClass% {
     String s;
     char[] chars;
     IntIntPair[] pairs, pairsAns;
+    String YES = "Yes", NO = "No";
 
     public void solve(int testNumber, %InputClass% in, %OutputClass% out) {
 
