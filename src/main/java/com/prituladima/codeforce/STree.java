@@ -1,6 +1,8 @@
 package com.prituladima.codeforce;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.stream.IntStream;
 
 // TODO: 3/20/2019
@@ -28,6 +30,13 @@ public class STree {
         build(a, 1, 0, a.length - 1);
     }
 
+    /**
+     * build segment tree
+     * @param a array with n length
+     * @param v temp index (by default is 1)
+     * @param tl temp left index of current node inclusive (by default is 0)
+     * @param tr temp right index of current node inclusive (by default is n - 1)
+     */
     void build(int a[], int v, int tl, int tr) {
         if (tl == tr)
             t[v] = a[tl];
@@ -39,6 +48,17 @@ public class STree {
         }
     }
 
+    /**
+     *  Not Java style, but works very good.
+     * todo Make not recursive optimization
+     * todo Make general solution to be able using BinaryOperator
+     * @param v temp index (by default is 1)
+     * @param tl temp left index of current node inclusive (by default is 0)
+     * @param tr temp right index of current node inclusive (by default is n - 1)
+     * @param l range query inclusive (0 based)
+     * @param r range query inclusive (0 based)
+     * @return result on the range inclusive
+     */
     int sum(int v, int tl, int tr, int l, int r) {
         if (l > r)
             return 0;
@@ -48,6 +68,14 @@ public class STree {
         return sum(v * 2, tl, tm, l, Math.min(r, tm)) + sum(v * 2 + 1, tm + 1, tr, Math.max(l, tm + 1), r);
     }
 
+    /**
+     * update
+     * @param v temp index (by default is 1)
+     * @param tl temp left index of current node inclusive (by default is 0)
+     * @param tr temp right index of current node inclusive (by default is n - 1)
+     * @param pos index to update
+     * @param new_val value to put
+     */
     void update(int v, int tl, int tr, int pos, int new_val) {
         if (tl == tr)
             t[v] = new_val;
@@ -63,12 +91,13 @@ public class STree {
 
     public static void main(String[] args) {
 
-        int[] array = IntStream.rangeClosed(1, 32).toArray();
-
+        int[] array = IntStream.rangeClosed(0, 10).toArray();
+//        https://codeforces.com/contest/1136/submission/51197694
+        System.out.println(Arrays.toString(array));
         STree tree = new STree(array);
-        System.out.println(tree.sum(1, 0, array.length - 1, 0, 9));
-        tree.update(1, 0, array.length - 1, 10, 70);
-        System.out.println(tree.sum(1, 0, array.length - 1, 8, 11));
+        System.out.println(tree.sum(1, 0, array.length - 1, 0, 10));
+        tree.update(1, 0, array.length - 1, 9, 70);
+        System.out.println(tree.sum(1, 0, array.length - 1, 8, 8));
 
 
     }
