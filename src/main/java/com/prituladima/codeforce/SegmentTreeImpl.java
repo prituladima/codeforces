@@ -3,7 +3,7 @@ package com.prituladima.codeforce;
 import java.util.Arrays;
 
 public class SegmentTreeImpl {
-    long DEFAULT = Long.MIN_VALUE;
+    long DEFAULT = (long)-1e18;
     long[] t, len, sum, add_mod, set_mod;
     int n;
 
@@ -159,6 +159,7 @@ public class SegmentTreeImpl {
         long res = get_sum(l, r, 1, 0, n - 1);
         return res;
     }
+
 
     int lower_bound(long val) {
         if (get_t(1) < val) {

@@ -32,7 +32,7 @@ public class STree {
 
     /**
      * build segment tree
-     * @param a array with n length
+     * @param a a with n length
      * @param v temp index (by default is 1)
      * @param tl temp left index of current node inclusive (by default is 0)
      * @param tr temp right index of current node inclusive (by default is n - 1)

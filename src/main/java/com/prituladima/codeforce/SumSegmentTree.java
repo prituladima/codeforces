@@ -35,7 +35,7 @@ public class SumSegmentTree implements SegmentTree<Integer> {
 //                update (v*2, tl, tm, pos, new_val);
 //            else
 //                update (v*2+1, tm+1, tr, pos, new_val);
-//            tree[v] = t[v*2] + t[v*2+1];
+//            tree[v] = prefK[v*2] + prefK[v*2+1];
         }
     }
 

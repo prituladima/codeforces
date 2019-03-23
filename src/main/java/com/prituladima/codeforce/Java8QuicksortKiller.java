@@ -15,10 +15,10 @@ import java.util.stream.IntStream;
  * Number of operations is not the best possible:
  * maximal recursion depth is about n^2 / 5 while best possible result is n^2 / 4.
  * <p>
- * It's because Java 7 checks if array is nearly sorted.
+ * It's because Java 7 checks if a is nearly sorted.
  * If it is, a strange algorithm with something called 'runs' is used.
  * In our case it is not, but in process of this checking Java 7 swaps some elements.
- * I didn't figure out how to maintain these swaps yet. Feel free to improve it!
+ * I didn'prefK figure out how to maintain these swaps yet. Feel free to improve it!
  *
  * @author Alexey Dergunov
  * @since 1.7
@@ -222,7 +222,7 @@ public class Java8QuicksortKiller implements Runnable {
             /*
              * Use the second and fourth of the five sorted elements as pivots.
              * These values are inexpensive approximations of the first and
-             * second terciles of the array. Note that pivot1 <= pivot2.
+             * second terciles of the a. Note that pivot1 <= pivot2.
              */
             int pivot1 = a[e2];
             int pivot2 = a[e4];
@@ -327,7 +327,7 @@ public class Java8QuicksortKiller implements Runnable {
             hackedSort(a, p, great + 2, right, false);
 
             /*
-             * If center part is too large (comprises > 4/7 of the array),
+             * If center part is too large (comprises > 4/7 of the a),
              * swap internal pivot values to ends.
              */
             if (less < e1 && e5 < great) {
@@ -562,8 +562,8 @@ public class Java8QuicksortKiller implements Runnable {
 
         System.out.println("n = " + n);
         testForArray(a, "Worst case from generator");
-        testForArray(sorted, "Sorted array");
-        testForArray(random, "Randomly shuffled array");
+        testForArray(sorted, "Sorted a");
+        testForArray(random, "Randomly shuffled a");
 
     }
 
@@ -578,13 +578,13 @@ public class Java8QuicksortKiller implements Runnable {
      * Sorting time shuffle before dual pivot quick sort = 32 ms.
      * Sorting time sorting by yaal = 77 ms.
      * <p>
-     * Sorted array
+     * Sorted a
      * Sorting time Arrays.sort = 0 ms.
      * Sorting time Arrays.sort boxed = 1 ms.
      * Sorting time shuffle before dual pivot quick sort = 26 ms.
      * Sorting time sorting by yaal = 10 ms.
      * <p>
-     * Randomly shuffled array
+     * Randomly shuffled a
      * Sorting time Arrays.sort = 20 ms.
      * Sorting time Arrays.sort boxed = 250 ms.
      * Sorting time shuffle before dual pivot quick sort = 26 ms.

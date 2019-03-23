@@ -1,2 +1,2 @@
-71 src/main/java/com/prituladima/codeforce/D. Nastja idet v stolovuju.json
+75 src/main/java/com/prituladima/codeforce/E. Nastja ne pridumala legendu.json
 0
