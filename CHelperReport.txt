@@ -1,2 +1,2 @@
-75 src/main/java/com/prituladima/codeforce/E. Nastja ne pridumala legendu.json
+63 src/main/java/com/prituladima/codeforce/C. Derevo i rjobra.json
 0
