@@ -1,0 +1,44 @@
+{
+  "name" : "E. Максимизировать mex",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "5 3\n0 1 2 2 0\n1 2 2 3 2\n5\n3\n2\n4\n5\n1\n",
+    "output" : "3\n1\n1\n1\n0\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "5 3\n0 1 2 2 1\n1 3 2 3 2\n5\n4\n2\n3\n5\n1\n",
+    "output" : "3\n2\n2\n1\n0\n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "5 5\n0 1 2 4 5\n1 2 3 4 5\n4\n2\n3\n5\n4\n",
+    "output" : "1\n1\n1\n1\n",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.EMaksimizirovatMex",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.03.27",
+  "contestName" : "Codeforces Round #548 (Div. 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
