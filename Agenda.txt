@@ -22,3 +22,11 @@ https://codeforces.com/contest/1104/problem/D
 
 https://codeforces.com/contest/1059/problem/C
 https://codeforces.com/contest/1059/problem/D
+
+https://codeforces.com/contest/1139/submission/51652104
+https://pastebin.com/FN3jWty6
+
+https://codeforces.com/blog/entry/54090
+https://codeforces.com/blog/entry/53925
+
+https://en.wikipedia.org/wiki/Arithmetico%E2%80%93geometric_sequence
