@@ -30,3 +30,6 @@ https://codeforces.com/blog/entry/54090
 https://codeforces.com/blog/entry/53925
 
 https://en.wikipedia.org/wiki/Arithmetico%E2%80%93geometric_sequence
+
+https://codeforces.com/blog/entry/18051
+
