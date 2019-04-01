@@ -1,3 +1,2 @@
-64 src/main/java/com/prituladima/codeforce/D. Poluchit edinicu.json
-1
-1
+74 src/main/java/com/prituladima/codeforce/D. Minimalnaja trianguljacija.json
+0
