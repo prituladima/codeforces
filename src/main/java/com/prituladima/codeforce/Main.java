@@ -12,14 +12,14 @@ import static java.lang.Long.parseLong;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-public final class STemplate {
+public final class Main {
 
     private void solve() {
-        //solution is here
+        //put your solution here
     }
 
     public static void main(String[] args) {
-        new STemplate().run();
+        new Main().run();
     }
 
     private BufferedReader reader;
@@ -109,12 +109,8 @@ public final class STemplate {
         newLine();
     }
 
-    private int max(int a, int b) {
-        return Math.max(a, b);
-    }
-
-    private int min(int a, int b) {
-        return Math.min(a, b);
+    private void flush() {
+        writer.flush();
     }
 
 }
