@@ -4,10 +4,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.BufferedWriter;
-import java.io.Writer;
-import java.io.OutputStreamWriter;
 import java.util.InputMismatchException;
 import java.io.IOException;
+import java.io.Writer;
+import java.io.OutputStreamWriter;
 import java.io.InputStream;
 
 /**
@@ -22,38 +22,75 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        DMinimalnayaTriangulyaciya solver = new DMinimalnayaTriangulyaciya();
+        DNichya solver = new DNichya();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class DMinimalnayaTriangulyaciya {
+    static class DNichya {
         int n;
+        int ans;
+        IntIntPair[] pairs;
+        IntIntPair[] pairsAns;
 
         public void solve(int testNumber, InputReader in, OutputWriter out) {
-
             n = in.nextInt();
-            long min = Integer.MAX_VALUE;
-
-            if (n == 3) {
-                out.printLine(6);
-                return;
+            pairs = in.nextIntPairArray(n);
+            pairsAns = new IntIntPair[n + 1];
+            pairsAns[0] = new IntIntPair(0, 0);
+            for (int i = 1; i < pairsAns.length; i++) {
+                pairsAns[i] = pairs[i - 1];
             }
-            for (int i = 1; i <= n; i++) {
-                long localLong = 0;
-                for (int j = 1; j <= n - 1; j++) {
-                    localLong += j * (j + 1);
-                }
-                localLong += n;
-                if (i == 1) localLong -= (n + 2);
-                else if (i == n) localLong -= (n + n * (n - 1));
-                else localLong -= (i * (i - 1) + i * (i + 1));
-
-                min = Math.min(min, i * localLong);
+            pairs = pairsAns;
+            for (int i = 0; i < pairs.length - 1; i++) {
+                int min = Math.min(pairs[i + 1].first, pairs[i + 1].second);
+                int max = Math.max(pairs[i].first, pairs[i].second);
+                ans += Math.max(0, min - max + ((pairs[i].first == pairs[i].second) ? 0 : 1));
             }
-            out.printLine(min);
+            out.printLine(ans + 1);
 
+        }
 
+    }
+
+    static class IntIntPair implements Comparable<IntIntPair> {
+        public final int first;
+        public final int second;
+
+        public IntIntPair(int first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+
+            IntIntPair pair = (IntIntPair) o;
+
+            return first == pair.first && second == pair.second;
+        }
+
+        public int hashCode() {
+            int result = first;
+            result = 31 * result + second;
+            return result;
+        }
+
+        public String toString() {
+            return "(" + first + "," + second + ")";
+        }
+
+        public int compareTo(IntIntPair o) {
+            int value = Integer.compare(first, o.first);
+            if (value != 0) {
+                return value;
+            }
+            return Integer.compare(second, o.second);
         }
 
     }
@@ -73,10 +110,6 @@ public class Main {
             writer.close();
         }
 
-        public void printLine(long i) {
-            writer.println(i);
-        }
-
         public void printLine(int i) {
             writer.println(i);
         }
@@ -92,6 +125,20 @@ public class Main {
 
         public InputReader(InputStream stream) {
             this.stream = stream;
+        }
+
+        public IntIntPair[] nextIntPairArray(int size) {
+            IntIntPair[] result = new IntIntPair[size];
+            for (int i = 0; i < size; i++) {
+                result[i] = nextIntPair();
+            }
+            return result;
+        }
+
+        public IntIntPair nextIntPair() {
+            int first = nextInt();
+            int second = nextInt();
+            return new IntIntPair(first, second);
         }
 
         private int read() {

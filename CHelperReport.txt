@@ -1,2 +1,2 @@
-74 src/main/java/com/prituladima/codeforce/D. Minimalnaja trianguljacija.json
+55 src/main/java/com/prituladima/codeforce/D. Nichja!.json
 0

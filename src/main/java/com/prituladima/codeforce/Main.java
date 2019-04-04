@@ -16,6 +16,7 @@ public final class Main {
 
     private void solve() {
         //put your solution here
+        sout("No solution");
     }
 
     public static void main(String[] args) {
