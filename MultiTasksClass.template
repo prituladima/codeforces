@@ -12,6 +12,7 @@ import static java.util.Collections.*;
 import static java.util.Comparator.*;
 
 public class %TaskClass% {
+    int INF = Integer.MAX_VALUE;
     int t, n, m, k, ans;
     int[] array, arrayAns;
     long L, R;

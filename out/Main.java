@@ -4,10 +4,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.BufferedWriter;
-import java.util.InputMismatchException;
-import java.io.IOException;
 import java.io.Writer;
 import java.io.OutputStreamWriter;
+import java.util.InputMismatchException;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -22,75 +22,50 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        DNichya solver = new DNichya();
+        IAlisaIParikmaher solver = new IAlisaIParikmaher();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class DNichya {
+    static class IAlisaIParikmaher {
         int n;
-        int ans;
-        IntIntPair[] pairs;
-        IntIntPair[] pairsAns;
+        int m;
+        int l;
+        long[] a;
 
         public void solve(int testNumber, InputReader in, OutputWriter out) {
             n = in.nextInt();
-            pairs = in.nextIntPairArray(n);
-            pairsAns = new IntIntPair[n + 1];
-            pairsAns[0] = new IntIntPair(0, 0);
-            for (int i = 1; i < pairsAns.length; i++) {
-                pairsAns[i] = pairs[i - 1];
+            m = in.nextInt();
+            l = in.nextInt();
+            a = in.nextLongArray(n);
+
+            int answer = 0;
+            for (int i = 0; i < n; i++) {
+                if (a[i] > l) {
+                    if (i + 1 == n || a[i + 1] <= l) {
+                        answer++;
+                    }
+                }
             }
-            pairs = pairsAns;
-            for (int i = 0; i < pairs.length - 1; i++) {
-                int min = Math.min(pairs[i + 1].first, pairs[i + 1].second);
-                int max = Math.max(pairs[i].first, pairs[i].second);
-                ans += Math.max(0, min - max + ((pairs[i].first == pairs[i].second) ? 0 : 1));
+            for (int i = 0; i < m; i++) {
+                int t = in.nextInt();
+                if (t == 0) {
+                    out.printLine(answer);
+                } else {
+                    int p = in.nextInt() - 1;
+                    int d = in.nextInt();
+                    if (a[p] <= l && a[p] + d > l) {
+                        answer++;
+                        if (p > 0 && a[p - 1] > l) {
+                            answer--;
+                        }
+                        if (p + 1 < n && a[p + 1] > l) {
+                            answer--;
+                        }
+                    }
+                    a[p] += d;
+                }
             }
-            out.printLine(ans + 1);
-
-        }
-
-    }
-
-    static class IntIntPair implements Comparable<IntIntPair> {
-        public final int first;
-        public final int second;
-
-        public IntIntPair(int first, int second) {
-            this.first = first;
-            this.second = second;
-        }
-
-        public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
-            if (o == null || getClass() != o.getClass()) {
-                return false;
-            }
-
-            IntIntPair pair = (IntIntPair) o;
-
-            return first == pair.first && second == pair.second;
-        }
-
-        public int hashCode() {
-            int result = first;
-            result = 31 * result + second;
-            return result;
-        }
-
-        public String toString() {
-            return "(" + first + "," + second + ")";
-        }
-
-        public int compareTo(IntIntPair o) {
-            int value = Integer.compare(first, o.first);
-            if (value != 0) {
-                return value;
-            }
-            return Integer.compare(second, o.second);
         }
 
     }
@@ -127,18 +102,12 @@ public class Main {
             this.stream = stream;
         }
 
-        public IntIntPair[] nextIntPairArray(int size) {
-            IntIntPair[] result = new IntIntPair[size];
+        public long[] nextLongArray(int size) {
+            long[] array = new long[size];
             for (int i = 0; i < size; i++) {
-                result[i] = nextIntPair();
+                array[i] = nextLong();
             }
-            return result;
-        }
-
-        public IntIntPair nextIntPair() {
-            int first = nextInt();
-            int second = nextInt();
-            return new IntIntPair(first, second);
+            return array;
         }
 
         private int read() {
@@ -170,6 +139,28 @@ public class Main {
                 c = read();
             }
             int res = 0;
+            do {
+                if (c < '0' || c > '9') {
+                    throw new InputMismatchException();
+                }
+                res *= 10;
+                res += c - '0';
+                c = read();
+            } while (!isSpaceChar(c));
+            return res * sgn;
+        }
+
+        public long nextLong() {
+            int c = read();
+            while (isSpaceChar(c)) {
+                c = read();
+            }
+            int sgn = 1;
+            if (c == '-') {
+                sgn = -1;
+                c = read();
+            }
+            long res = 0;
             do {
                 if (c < '0' || c > '9') {
                     throw new InputMismatchException();

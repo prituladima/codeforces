@@ -121,8 +121,9 @@ public class OutputWriter {
         writer.println(i);
     }
 
-    public void print(int i) {
+    public OutputWriter print(int i) {
         writer.print(i);
+        return this;
     }
 
     public void printLine(int i) {

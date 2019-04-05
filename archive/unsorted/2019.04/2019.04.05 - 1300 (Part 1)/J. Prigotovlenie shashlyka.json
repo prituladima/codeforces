@@ -1,0 +1,43 @@
+{
+  "name" : "J. Приготовление шашлыка",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "7 2\n",
+    "output" : "2\n1 6 \n",
+    "index" : 0,
+    "active" : false
+  }, {
+    "input" : "5 1\n",
+    "output" : "2\n1 4 \n",
+    "index" : 1,
+    "active" : false
+  }, {
+    "input" : "100 2",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx512M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.JPrigotovlenieShashlika",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.04.05",
+  "contestName" : "1300 (Part 1)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
