@@ -14,7 +14,7 @@ import static java.util.Comparator.*;
 public class %TaskClass% {
     int INF = Integer.MAX_VALUE;
     int t, n, m, k, ans;
-    int[] array, arrayAns;
+    int[] a, arrayAns;
     long L, R;
     String s;
     char[] chars;
@@ -30,7 +30,7 @@ public class %TaskClass% {
         while (t-- > 0) {
             n = in.nextInt();
             m = in.nextInt();
-            array = in.nextIntArray(n);
+            a = in.nextIntArray(n);
             s = in.nextToken();
             chars = s.toCharArray();
 

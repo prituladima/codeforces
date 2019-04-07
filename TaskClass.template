@@ -13,7 +13,7 @@ import static java.util.Comparator.*;
 
 public class %TaskClass% {
     int t, n, m, k, ans = 0, INF = Integer.MAX_VALUE;
-    int[] array, arrayAns;
+    int[] a, arrayAns;
     long L, R;
     String s;
     char[] chars;
@@ -27,7 +27,7 @@ public class %TaskClass% {
         t = in.nextInt();
         n = in.nextInt();
         m = in.nextInt();
-        array = in.nextIntArray(n);
+        a = in.nextIntArray(n);
         s = in.nextToken();
         chars = s.toCharArray();
 
