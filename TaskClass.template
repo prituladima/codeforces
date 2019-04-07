@@ -12,14 +12,15 @@ import static java.util.Collections.*;
 import static java.util.Comparator.*;
 
 public class %TaskClass% {
-    int INF = Integer.MAX_VALUE;
-    int t, n, m, k, ans;
+    int t, n, m, k, ans = 0, INF = Integer.MAX_VALUE;
     int[] array, arrayAns;
     long L, R;
     String s;
     char[] chars;
     IntIntPair[] pairs, pairsAns;
     String YES = "Yes", NO = "No";
+    boolean[] used;
+    Map<Integer, Set<Integer>> graph;
 
     public void solve(int testNumber, %InputClass% in, %OutputClass% out) {
 

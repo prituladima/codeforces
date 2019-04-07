@@ -1,11 +1,14 @@
 package com.prituladima.geeksforgeeks.dp;
 
+import com.prituladima.Reliable;
+import com.prituladima.TwoPointers;
+
 import static java.lang.Math.max;
 
 /**
  * @see "https://www.geeksforgeeks.org/dynamic-programming/"
  */
-class DynamicProgramming {
+public class DynamicProgramming {
 
     /**
      * @see "https://www.geeksforgeeks.org/modulo-1097-1000000007/"
@@ -154,7 +157,9 @@ class DynamicProgramming {
         return min;
     }
 
-    int[] kadane_max_full(int[] a, int n) {
+    @Reliable
+    @TwoPointers
+    public static int[] kadane_max_full(int[] a, int n) {
         int maxL = 0, maxR = 0;
 
         int nonNegativeSum = 0;
@@ -179,8 +184,9 @@ class DynamicProgramming {
         return new int[]{max, maxL, maxR};
     }
 
-
-    int[] kadane_min_full(int[] a, int n) {
+    @Reliable
+    @TwoPointers
+    public static int[] kadane_min_full(int[] a, int n) {
         int minL = 0, minR = 0;
 
         int nonPositiveSum = 0;

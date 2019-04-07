@@ -167,4 +167,8 @@ public class OutputWriter {
             this.printLine(pair.first, pair.second);
         }
     }
+
+    public void printNoAns() {
+        this.printLine(-1);
+    }
 }

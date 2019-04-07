@@ -20,6 +20,9 @@ public class %TaskClass% {
     char[] chars;
     IntIntPair[] pairs, pairsAns;
     String YES = "Yes", NO = "No";
+    boolean[] used;
+    Map<Integer, Set<Integer>> graph;
+
 
     public void solve(int testNumber, %InputClass% in, %OutputClass% out) {
 

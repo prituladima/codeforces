@@ -1,5 +1,8 @@
 package com.prituladima.codeforce;
 
+import com.prituladima.Naive;
+import com.prituladima.Reliable;
+
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -66,14 +69,17 @@ public class GeekInteger {
         return ans;
     }
 
+    @Reliable
     public static long ceiling(long n, long k) {
         return (n + k - 1) / k;
     }
 
+    @Reliable
     public static int ceiling(int n, int k) {
         return (n + k - 1) / k;
     }
 
+    @Reliable
     public static boolean equalParity(long a, long b) {
         return a % 2 == b % 2;
     }
@@ -106,11 +112,13 @@ public class GeekInteger {
         return low;
     }
 
+    @Reliable
     public static void save_sort(int[] array) {
         shuffle(array);
         Arrays.sort(array);
     }
 
+    @Reliable
     public static int[] shuffle(int[] array) {
         int n = array.length;
         Random random = new Random();
@@ -123,7 +131,9 @@ public class GeekInteger {
         return array;
     }
 
-    static int[] uniq(int[] arr) {
+    @Reliable
+    public static int[] uniq(int[] arr) {
+        arr = arr.clone();
         shuffle(arr);
         Arrays.sort(arr);
         int pos = 0;
@@ -136,8 +146,8 @@ public class GeekInteger {
         return Arrays.copyOf(arr, pos);
     }
 
-    @Deprecated
-    static int[] uniqUsingSet(int[] array) {
+    @Naive
+    public static int[] uniqUsingSet(int[] array) {
         Set<Integer> set = new HashSet<>();
         for (int i = 0; i < array.length; i++) {
             set.add(array[i]);

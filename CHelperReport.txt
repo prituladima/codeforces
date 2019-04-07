@@ -1,2 +1,2 @@
-66 src/main/java/com/prituladima/codeforce/I. Alisa i parikmaher.json
+56 src/main/java/com/prituladima/codeforce/D. Soedinit.json
 0
