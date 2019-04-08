@@ -1,2 +1,2 @@
-56 src/main/java/com/prituladima/codeforce/D. Soedinit.json
+74 src/main/java/com/prituladima/codeforce/E. Summiruj do stepeni dvojki.json
 0
