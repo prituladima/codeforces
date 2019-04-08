@@ -33,9 +33,29 @@ public class GeekInteger {
         return array;
     }
 
+    public static long[] calculatePrefixSum(long[] a) {
+        long[] pref = new long[a.length];
+        pref[0] = a[0];
+        for (int i = 1; i < a.length; i++) pref[i] = pref[i - 1] + a[i];
+        return pref;
+    }
+
+    public static long[] calculateSuffixSum(long[] a) {
+        long[] suff = new long[a.length];
+        suff[a.length - 1] = a[a.length - 1];
+        for (int i = a.length - 2; i >= 0; i--) suff[i] = suff[i + 1] + a[i];
+        return suff;
+    }
+
     public static Map<Integer, Integer> multiSet(int[] arr) {
         Map<Integer, Integer> co = new HashMap<>();
         for (int i : arr) co.merge(i, 1, Integer::sum);
+        return co;
+    }
+
+    public static Map<Long, Integer> multiSet(long[] arr) {
+        Map<Long, Integer> co = new HashMap<>();
+        for (long i : arr) co.merge(i, 1, Integer::sum);
         return co;
     }
 

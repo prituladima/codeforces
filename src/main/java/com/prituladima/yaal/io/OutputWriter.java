@@ -3,6 +3,7 @@ package com.prituladima.yaal.io;
 import com.prituladima.yaal.generated.collections.pair.IntIntPair;
 
 import java.io.*;
+import java.util.Collection;
 import java.util.List;
 
 public class OutputWriter {
@@ -160,6 +161,10 @@ public class OutputWriter {
         for (Object o : answer) {
             this.printLine(o);
         }
+    }
+
+    public void printListInOneLine(Collection<?> answer) {
+        for (Object o : answer) this.print(o).printSpace();
     }
 
     public void printPairList(IntIntPair... answer) {
