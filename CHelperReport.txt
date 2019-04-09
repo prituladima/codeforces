@@ -1,2 +1,3 @@
-74 src/main/java/com/prituladima/codeforce/E. Summiruj do stepeni dvojki.json
-0
+64 src/main/java/com/prituladima/codeforce/F. Odinakovye summy.json
+1
+2

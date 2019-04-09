@@ -47,6 +47,50 @@ public class GeekInteger {
         return suff;
     }
 
+    public static long[] calculateRemSum(long[] pref, long[] suff) {
+        int len = pref.length;
+        long[] rem = new long[len];
+        for (int i = 0; i < len; i++) {
+            rem[i] = 0;
+            if (i > 0) {
+                rem[i] += pref[i - 1];
+            }
+            if (i < len - 1) {
+                rem[i] += suff[i + 1];
+            }
+        }
+        return rem;
+    }
+
+    public static int[] calculatePrefixSum(int[] a) {
+        int[] pref = new int[a.length];
+        pref[0] = a[0];
+        for (int i = 1; i < a.length; i++) pref[i] = pref[i - 1] + a[i];
+        return pref;
+    }
+
+    public static int[] calculateSuffixSum(int[] a) {
+        int[] suff = new int[a.length];
+        suff[a.length - 1] = a[a.length - 1];
+        for (int i = a.length - 2; i >= 0; i--) suff[i] = suff[i + 1] + a[i];
+        return suff;
+    }
+
+    public static int[] calculateRemSum(int[] pref, int[] suff) {
+        int len = pref.length;
+        int[] rem = new int[len];
+        for (int i = 0; i < len; i++) {
+            rem[i] = 0;
+            if (i > 0) {
+                rem[i] += pref[i - 1];
+            }
+            if (i < len - 1) {
+                rem[i] += suff[i + 1];
+            }
+        }
+        return rem;
+    }
+
     public static Map<Integer, Integer> multiSet(int[] arr) {
         Map<Integer, Integer> co = new HashMap<>();
         for (int i : arr) co.merge(i, 1, Integer::sum);
