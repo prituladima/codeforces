@@ -4,6 +4,7 @@ import com.prituladima.Naive;
 import com.prituladima.Reliable;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 //use long only
@@ -152,12 +153,25 @@ public class GeekInteger {
         int low = 0;
         int high = length;
         while (low < high) {
-            final int mid = (low + high) / 2;
-            if (value >= array[mid]) {
+            int mid = (low + high) >> 1;
+            if (value >= array[mid])
                 low = mid + 1;
-            } else {
+            else
                 high = mid;
-            }
+
+        }
+        return low;
+    }
+
+    public static int upperBound(long[] array, int length, long value) {
+        int low = 0;
+        int high = length;
+        while (low < high) {
+            int mid = (low + high) >> 1;
+            if (value >= array[mid])
+                low = mid + 1;
+            else
+                high = mid;
         }
         return low;
     }
@@ -166,12 +180,26 @@ public class GeekInteger {
         int low = 0;
         int high = length;
         while (low < high) {
-            final int mid = (low + high) / 2;
-            if (value <= array[mid]) {
+            int mid = (low + high) >> 1;
+            if (value <= array[mid])
                 high = mid;
-            } else {
+            else
                 low = mid + 1;
-            }
+
+        }
+        return low;
+    }
+
+    public static int lowerBound(long[] array, int length, long value) {
+        int low = 0;
+        int high = length;
+        while (low < high) {
+            int mid = (low + high) >> 1;
+            if (value <= array[mid])
+                high = mid;
+            else
+                low = mid + 1;
+
         }
         return low;
     }
@@ -247,6 +275,38 @@ public class GeekInteger {
         return b == 0 ? a : gcd(b, a % b);
     }
 
+    @Reliable
+    @Naive
+    public static List<List<Integer>> getAllPermutationsUpTo(int upTo) {
+        int[] array = new int[upTo];
+        for (int i = 0; i < upTo; i++) {
+            array[i] = i;
+        }
+        List<List<Integer>> perm = new ArrayList<>();
+        permute(array, 0, array.length - 1, perm);
+        return perm;
+    }
+
+    private static void permute(int[] a, int l, int r, List<List<Integer>> perm) {
+        int i;
+        if (l == r)
+            perm.add(Arrays.stream(a).boxed().collect(Collectors.toList()));
+        else {
+            for (i = l; i <= r; i++) {
+                swap(a, l, i);
+                permute(a, l + 1, r, perm);
+                swap(a, l, i); //backtrack
+            }
+        }
+    }
+
+
+    private static void swap(int[] a, int i, int j) {
+        int temp;
+        temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
 
     public static void main(String[] args) {
         int[] ints = IntStream.range(0, 11).toArray();

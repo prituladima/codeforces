@@ -1,0 +1,44 @@
+{
+  "name" : "I. Подели на три, умножь на два",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "6\n4 8 6 3 12 9\n",
+    "output" : "9 3 6 12 4 8 \n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "4\n42 28 84 126\n",
+    "output" : "126 42 84 28 \n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "2\n1000000000000000000 3000000000000000000\n",
+    "output" : "3000000000000000000 1000000000000000000 \n",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.IPodeliNaTriUmnozhNaDva",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.04.09",
+  "contestName" : "1400 (Part 2)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

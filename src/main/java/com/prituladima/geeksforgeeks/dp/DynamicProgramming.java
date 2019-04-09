@@ -1,5 +1,6 @@
 package com.prituladima.geeksforgeeks.dp;
 
+import com.prituladima.DP;
 import com.prituladima.Reliable;
 import com.prituladima.TwoPointers;
 
@@ -90,7 +91,9 @@ public class DynamicProgramming {
     /**
      * @see "https://practice.geeksforgeeks.org/problems/longest-common-subsequence/0"
      */
-    int lcs(char[] X, char[] Y, int m, int n) {
+    @Reliable
+    @DP
+    public static int lcs(char[] X, char[] Y, int m, int n) {
         int L[][] = new int[m + 1][n + 1];
 
     /* Following steps build L[m+1][n+1] in bottom up fashion. Note
