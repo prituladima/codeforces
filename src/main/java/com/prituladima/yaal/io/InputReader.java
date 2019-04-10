@@ -6,9 +6,7 @@ import com.prituladima.yaal.generated.collections.pair.LongLongPair;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
+import java.util.*;
 
 import static com.prituladima.yaal.geometry.RectangleUtil.Rect;
 
@@ -401,6 +399,19 @@ public class InputReader {
             list.add(new Rect(nextInt(), nextInt(), nextInt(), nextInt()));
         }
         return list;
+    }
+
+    public Map<Integer, Set<Integer>> readTree(int n) {
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int from = this.nextInt();
+            int to = this.nextInt();
+            graph.computeIfAbsent(from, (key) -> new HashSet<>());
+            graph.computeIfAbsent(to, (key) -> new HashSet<>());
+            graph.get(from).add(to);
+            graph.get(to).add(from);
+        }
+        return graph;
     }
 
     public interface SpaceCharFilter {
