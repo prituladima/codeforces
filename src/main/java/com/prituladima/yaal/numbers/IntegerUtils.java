@@ -138,7 +138,6 @@ public class IntegerUtils {
         return result;
     }
 
-    @Deprecated
     public static int sumDigits(CharSequence number) {
         int result = 0;
         for (int i = number.length() - 1; i >= 0; i--) {
@@ -147,7 +146,6 @@ public class IntegerUtils {
         return result;
     }
 
-    @Deprecated
     public static int digitValue(char digit) {
         if (Character.isDigit(digit)) {
             return digit - '0';

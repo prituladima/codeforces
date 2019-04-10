@@ -7,8 +7,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-//use long only
-// TODO: 30.12.2018 Rename ti something like GeekLong
 public class GeekInteger {
 
     public static int posMod(int a, int b) {
@@ -135,12 +133,12 @@ public class GeekInteger {
     }
 
     @Reliable
-    public static long ceiling(long n, long k) {
+    public static long ceilingDivide(long n, long k) {
         return (n + k - 1) / k;
     }
 
     @Reliable
-    public static int ceiling(int n, int k) {
+    public static int ceilingDivide(int n, int k) {
         return (n + k - 1) / k;
     }
 
