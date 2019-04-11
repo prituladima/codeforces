@@ -1,0 +1,44 @@
+{
+  "name" : "B. Мистическая мозаика",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "5 8\n.#.#..#.\n.....#..\n.#.#..#.\n#.#....#\n.....#..\n",
+    "output" : "Yes\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "5 5\n..#..\n..#..\n#####\n..#..\n..#..\n",
+    "output" : "No\n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "5 9\n........#\n#........\n..##.#...\n.......#.\n....#.#.#\n",
+    "output" : "No\n",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.BMisticheskayaMozaika",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.04.11",
+  "contestName" : "1400 (Part 3)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

@@ -1,3 +1,2 @@
-64 src/main/java/com/prituladima/codeforce/F. Odinakovye summy.json
-1
-2
+69 src/main/java/com/prituladima/codeforce/C. Klonirovanie igrushek.json
+0

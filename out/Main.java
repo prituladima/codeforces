@@ -4,11 +4,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.BufferedWriter;
-import java.util.Map;
 import java.io.Writer;
 import java.io.OutputStreamWriter;
 import java.util.InputMismatchException;
-import java.util.HashMap;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -24,40 +22,33 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        ESummiruiDoStepeniDvoiki solver = new ESummiruiDoStepeniDvoiki();
+        CKlonirovanieIgrushek solver = new CKlonirovanieIgrushek();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class ESummiruiDoStepeniDvoiki {
-        int n;
-        int ans = 0;
-        long[] a;
+    static class CKlonirovanieIgrushek {
+        long x;
+        long y;
+        String YES = "Yes";
+        String NO = "No";
 
         public void solve(int testNumber, InputReader in, OutputWriter out) {
 
-            n = in.nextInt();
-            a = in.nextLongArray(n);
+            x = in.nextInt();
+            y = in.nextInt();
 
-            Map<Long, Integer> ms = GeekInteger.multiSet(a);
-
-            for (long key : ms.keySet()) {
-
-                boolean ok = false;
-                for (long p = 1; p < 32; p++) {
-                    long x = (1 << p) - key;
-                    if (ms.containsKey(x) && (ms.get(x) > 1 || x != key)) ok = true;
+            if (y == 1) {
+                if (x == 0) {
+                    out.printLine(YES);
+                } else {
+                    out.printLine(NO);
                 }
-                if (!ok)
-                    ans += ms.get(key);
-
+            } else if (x - (y - 1) >= 0 && (x - (y - 1)) % 2 == 0 && y - 1 >= 0) {
+                out.printLine(YES);
+            } else {
+                out.printLine(NO);
             }
-
-            if (n - ans == 1) out.printLine(n);
-            else
-                out.printLine(ans);
-
-
         }
 
     }
@@ -71,14 +62,6 @@ public class Main {
 
         public InputReader(InputStream stream) {
             this.stream = stream;
-        }
-
-        public long[] nextLongArray(int size) {
-            long[] array = new long[size];
-            for (int i = 0; i < size; i++) {
-                array[i] = nextLong();
-            }
-            return array;
         }
 
         private int read() {
@@ -121,28 +104,6 @@ public class Main {
             return res * sgn;
         }
 
-        public long nextLong() {
-            int c = read();
-            while (isSpaceChar(c)) {
-                c = read();
-            }
-            int sgn = 1;
-            if (c == '-') {
-                sgn = -1;
-                c = read();
-            }
-            long res = 0;
-            do {
-                if (c < '0' || c > '9') {
-                    throw new InputMismatchException();
-                }
-                res *= 10;
-                res += c - '0';
-                c = read();
-            } while (!isSpaceChar(c));
-            return res * sgn;
-        }
-
         private boolean isSpaceChar(int c) {
             if (filter != null) {
                 return filter.isSpaceChar(c);
@@ -172,22 +133,24 @@ public class Main {
             this.writer = new PrintWriter(writer);
         }
 
-        public void close() {
-            writer.close();
-        }
-
-        public OutputWriter printLine(int i) {
-            writer.println(i);
+        public OutputWriter print(Object... objects) {
+            for (int i = 0; i < objects.length; i++) {
+                if (i != 0) {
+                    writer.print(' ');
+                }
+                writer.print(objects[i]);
+            }
             return this;
         }
 
-    }
+        public OutputWriter printLine(Object... objects) {
+            print(objects);
+            writer.println();
+            return this;
+        }
 
-    static class GeekInteger {
-        public static Map<Long, Integer> multiSet(long[] arr) {
-            Map<Long, Integer> co = new HashMap<>();
-            for (long i : arr) co.merge(i, 1, Integer::sum);
-            return co;
+        public void close() {
+            writer.close();
         }
 
     }
