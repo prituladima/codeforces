@@ -1,0 +1,44 @@
+{
+  "name" : "F. Крестики-нолики",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "... ... ...\n... ... ...\n... ... ...\n\n... ... ...\n... ... ...\n... x.. ...\n\n... ... ...\n... ... ...\n... ... ...\n6 4\n",
+    "output" : "... ... ... \n... ... ... \n... ... ... \n\n... ... ... \n... ... ... \n... x.. ... \n\n!!! ... ... \n!!! ... ... \n!!! ... ... \n\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "xoo x.. x..\nooo ... ...\nooo ... ...\n\nx.. x.. x..\n... ... ...\n... ... ...\n\nx.. x.. x..\n... ... ...\n... ... ...\n7 4\n",
+    "output" : "xoo x!! x!! \nooo !!! !!! \nooo !!! !!! \n\nx!! x!! x!! \n!!! !!! !!! \n!!! !!! !!! \n\nx!! x!! x!! \n!!! !!! !!! \n!!! !!! !!! \n\n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "o.. ... ...\n... ... ...\n... ... ...\n\n... xxx ...\n... xox ...\n... ooo ...\n\n... ... ...\n... ... ...\n... ... ...\n5 5\n",
+    "output" : "o!! !!! !!! \n!!! !!! !!! \n!!! !!! !!! \n\n!!! xxx !!! \n!!! xox !!! \n!!! ooo !!! \n\n!!! !!! !!! \n!!! !!! !!! \n!!! !!! !!! \n\n",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.FKrestikiNoliki",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.04.12",
+  "contestName" : "1400 (Part 3)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
