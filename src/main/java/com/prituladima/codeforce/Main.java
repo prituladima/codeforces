@@ -50,6 +50,10 @@ public final class Main {
         return parseInt(nextToken());
     }
 
+    private long nextLong(int radix) {
+        return parseLong(nextToken(), radix);
+    }
+
     private long nextLong() {
         return parseLong(nextToken());
     }
@@ -78,8 +82,8 @@ public final class Main {
         return range(0, n).mapToObj(i -> nextArr(m)).toArray(int[][]::new);
     }
 
-    private double[][] nextDoubleMatrix(int n, int m) {
-        return range(0, n).mapToObj(i -> nextArr(m)).toArray(double[][]::new);
+    private double[][] nextDoubleMatrix(final int n, final int m) {
+        return range(0, n).mapToObj(i -> nextArrD(m)).toArray(double[][]::new);
     }
 
     private String nextToken() {
