@@ -22,33 +22,159 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        CKlonirovanieIgrushek solver = new CKlonirovanieIgrushek();
+        CServalISkobochnayaPosledovatelnost solver = new CServalISkobochnayaPosledovatelnost();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class CKlonirovanieIgrushek {
-        long x;
-        long y;
-        String YES = "Yes";
-        String NO = "No";
+    static class CServalISkobochnayaPosledovatelnost {
+        int n;
+        String s;
+        char[] chars;
+        String NO_ANS = ":(";
 
         public void solve(int testNumber, InputReader in, OutputWriter out) {
-
-            x = in.nextInt();
-            y = in.nextInt();
-
-            if (y == 1) {
-                if (x == 0) {
-                    out.printLine(YES);
-                } else {
-                    out.printLine(NO);
-                }
-            } else if (x - (y - 1) >= 0 && (x - (y - 1)) % 2 == 0 && y - 1 >= 0) {
-                out.printLine(YES);
-            } else {
-                out.printLine(NO);
+            n = in.nextInt();
+            if (n % 2 == 1) {
+                out.print(NO_ANS);
+                return;
             }
+
+            s = in.nextToken();
+            chars = s.toCharArray();
+            if (chars[0] == ')' || chars[n - 1] == '(') {
+                out.print(NO_ANS);
+                return;
+            }
+            chars[0] = '(';
+            chars[n - 1] = ')';
+
+            int z1 = 0;
+
+            for (int i = 1; i < n / 2; i++) {
+                int j = n - i - 1;
+                if (i == 1) {
+                    if (chars[i] == ')'
+                            || chars[j] == '('
+                    ) {
+                        out.print(NO_ANS);
+                        return;
+                    }
+                    chars[i] = '(';
+                    chars[j] = ')';
+                    z1 = 1;
+                } else {
+                    if (chars[i] == ')' && chars[j] == '(') {
+                        if (z1 <= 0) {
+                            out.print(NO_ANS);
+                            return;
+                        }
+                        if (chars[i] == '(') z1++;
+                        else z1--;
+                        continue;
+                    }
+                    if (chars[i] == ')' && chars[j] == '?') {
+                        if (z1 <= 0) {
+                            out.print(NO_ANS);
+                            return;
+                        }
+                        chars[i] = ')';
+                        chars[j] = '(';
+                        if (chars[i] == '(') z1++;
+                        else z1--;
+                        continue;
+                    }
+
+                    if (chars[i] == '(' && chars[j] == ')') {
+                        if (chars[i] == '(') z1++;
+                        else z1--;
+                        continue;
+                    }
+                    if (chars[i] == '(' && chars[j] == '?') {
+                        chars[i] = '(';
+                        chars[j] = ')';
+                        if (chars[i] == '(') z1++;
+                        else z1--;
+                        continue;
+
+                    }
+
+
+                    if (chars[i] == '?' && chars[j] == '?') {
+
+                        chars[i] = '(';
+                        chars[j] = ')';
+                        if (chars[i] == '(') z1++;
+                        else z1--;
+                        continue;
+                    }
+
+
+                    if (chars[i] == '?' && chars[j] == ')') {
+                        chars[i] = '(';
+                        chars[j] = ')';
+                        if (chars[i] == '(') z1++;
+                        else z1--;
+                        continue;
+                    }
+                    if (chars[i] == '?' && chars[j] == '(') {
+                        if (z1 <= 0) {
+                            out.print(NO_ANS);
+                            return;
+
+                        }
+                        chars[i] = ')';
+                        chars[j] = '(';
+                        if (chars[i] == '(') z1++;
+                        else z1--;
+                        continue;
+                    }
+
+                    out.print(NO_ANS);
+                    return;
+
+                }
+//            if(chars[i] == '(') z1++;
+//            else z1--;
+//            chars[i] == '('
+            }
+
+
+            out.printLine(new StringBuilder().append(chars).toString());
+
+        }
+
+    }
+
+    static class OutputWriter {
+        private final PrintWriter writer;
+
+        public OutputWriter(OutputStream outputStream) {
+            writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outputStream)));
+        }
+
+        public OutputWriter(Writer writer) {
+            this.writer = new PrintWriter(writer);
+        }
+
+        public OutputWriter print(Object... objects) {
+            for (int i = 0; i < objects.length; i++) {
+                if (i != 0) {
+                    writer.print(' ');
+                }
+                writer.print(objects[i]);
+            }
+            return this;
+        }
+
+        public OutputWriter printLine(Object... objects) {
+            print(objects);
+            writer.println();
+            return this;
+        }
+
+        public void close() {
+            writer.close();
         }
 
     }
@@ -104,6 +230,21 @@ public class Main {
             return res * sgn;
         }
 
+        public String nextToken() {
+            int c = read();
+            while (isSpaceChar(c)) {
+                c = read();
+            }
+            StringBuilder res = new StringBuilder();
+            do {
+                if (Character.isValidCodePoint(c)) {
+                    res.appendCodePoint(c);
+                }
+                c = read();
+            } while (!isSpaceChar(c));
+            return res.toString();
+        }
+
         private boolean isSpaceChar(int c) {
             if (filter != null) {
                 return filter.isSpaceChar(c);
@@ -118,39 +259,6 @@ public class Main {
         public interface SpaceCharFilter {
             public boolean isSpaceChar(int ch);
 
-        }
-
-    }
-
-    static class OutputWriter {
-        private final PrintWriter writer;
-
-        public OutputWriter(OutputStream outputStream) {
-            writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outputStream)));
-        }
-
-        public OutputWriter(Writer writer) {
-            this.writer = new PrintWriter(writer);
-        }
-
-        public OutputWriter print(Object... objects) {
-            for (int i = 0; i < objects.length; i++) {
-                if (i != 0) {
-                    writer.print(' ');
-                }
-                writer.print(objects[i]);
-            }
-            return this;
-        }
-
-        public OutputWriter printLine(Object... objects) {
-            print(objects);
-            writer.println();
-            return this;
-        }
-
-        public void close() {
-            writer.close();
         }
 
     }

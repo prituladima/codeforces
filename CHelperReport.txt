@@ -1,2 +1,2 @@
-69 src/main/java/com/prituladima/codeforce/C. Klonirovanie igrushek.json
+85 src/main/java/com/prituladima/codeforce/C. Serval i skobochnaja posledovatelnost.json
 0
