@@ -12,25 +12,25 @@ import static java.util.Collections.*;
 import static java.util.Comparator.*;
 
 public class %TaskClass% {
-    int t, n, m, k, ans = 0, INF = Integer.MAX_VALUE;
-    int[] a, arrayAns;
+    int t, n, m, k, ans = 0, ansInd = -1, INF = Integer.MAX_VALUE;
+    int[] a, b;
     long L, R;
-    String s;
-    char[] chars;
+    char[] s;
     IntIntPair[] pairs, pairsAns;
     String YES = "Yes", NO = "No";
     boolean[] used;
     Map<Integer, Set<Integer>> graph;
 
     public void solve(int testNumber, %InputClass% in, %OutputClass% out) {
-
         t = in.nextInt();
+        while(t-- > 0);
         n = in.nextInt();
         m = in.nextInt();
-        a = in.nextIntArray(n);
-        s = in.nextToken();
-        chars = s.toCharArray();
 
+        a = in.nextIntArray(n);
+        b = in.nextIntArray(m);
+
+        s = in.nextToken().toCharArray();
         L = in.nextLong();
         R = in.nextLong();
 
@@ -40,6 +40,7 @@ public class %TaskClass% {
 
         out.printLine(ans);
         out.printPairList(pairsAns);
+        out.printLine(String.valueOf(s));
 
     }
 
