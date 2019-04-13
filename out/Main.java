@@ -29,8 +29,7 @@ public class Main {
 
     static class CServalISkobochnayaPosledovatelnost {
         int n;
-        String s;
-        char[] chars;
+        char[] s;
         String NO_ANS = ":(";
 
         public void solve(int testNumber, InputReader in, OutputWriter out) {
@@ -40,107 +39,53 @@ public class Main {
                 return;
             }
 
-            s = in.nextToken();
-            chars = s.toCharArray();
-            if (chars[0] == ')' || chars[n - 1] == '(') {
+            s = in.nextToken().toCharArray();
+            if (s[0] == ')' || s[n - 1] == '(') {
                 out.print(NO_ANS);
                 return;
             }
-            chars[0] = '(';
-            chars[n - 1] = ')';
+            s[0] = '(';
+            s[n - 1] = ')';
 
-            int z1 = 0;
-
-            for (int i = 1; i < n / 2; i++) {
-                int j = n - i - 1;
-                if (i == 1) {
-                    if (chars[i] == ')'
-                            || chars[j] == '('
-                    ) {
-                        out.print(NO_ANS);
-                        return;
-                    }
-                    chars[i] = '(';
-                    chars[j] = ')';
-                    z1 = 1;
-                } else {
-                    if (chars[i] == ')' && chars[j] == '(') {
-                        if (z1 <= 0) {
-                            out.print(NO_ANS);
-                            return;
-                        }
-                        if (chars[i] == '(') z1++;
-                        else z1--;
-                        continue;
-                    }
-                    if (chars[i] == ')' && chars[j] == '?') {
-                        if (z1 <= 0) {
-                            out.print(NO_ANS);
-                            return;
-                        }
-                        chars[i] = ')';
-                        chars[j] = '(';
-                        if (chars[i] == '(') z1++;
-                        else z1--;
-                        continue;
-                    }
-
-                    if (chars[i] == '(' && chars[j] == ')') {
-                        if (chars[i] == '(') z1++;
-                        else z1--;
-                        continue;
-                    }
-                    if (chars[i] == '(' && chars[j] == '?') {
-                        chars[i] = '(';
-                        chars[j] = ')';
-                        if (chars[i] == '(') z1++;
-                        else z1--;
-                        continue;
-
-                    }
+            int lev = 0;
+            int L_REMIND = 0;
 
 
-                    if (chars[i] == '?' && chars[j] == '?') {
+            for (int i = 1; i < n - 1; i++) {
+                char c = s[i];
+                if (c == '(') L_REMIND++;
+            }
+            L_REMIND = (n - 2) / 2 - L_REMIND;
 
-                        chars[i] = '(';
-                        chars[j] = ')';
-                        if (chars[i] == '(') z1++;
-                        else z1--;
-                        continue;
-                    }
-
-
-                    if (chars[i] == '?' && chars[j] == ')') {
-                        chars[i] = '(';
-                        chars[j] = ')';
-                        if (chars[i] == '(') z1++;
-                        else z1--;
-                        continue;
-                    }
-                    if (chars[i] == '?' && chars[j] == '(') {
-                        if (z1 <= 0) {
-                            out.print(NO_ANS);
-                            return;
-
-                        }
-                        chars[i] = ')';
-                        chars[j] = '(';
-                        if (chars[i] == '(') z1++;
-                        else z1--;
-                        continue;
-                    }
-
-                    out.print(NO_ANS);
-                    return;
-
-                }
-//            if(chars[i] == '(') z1++;
-//            else z1--;
-//            chars[i] == '('
+            if (L_REMIND < 0) {
+                out.print(NO_ANS);
+                return;
             }
 
+            for (int i = 1; i < n - 1; i++) {
 
-            out.printLine(new StringBuilder().append(chars).toString());
+                if (s[i] == '?') {
+                    if (L_REMIND > 0) {
+                        s[i] = '(';
+                        L_REMIND--;
+                    } else {
+                        s[i] = ')';
+                    }
+                }
+
+                if (s[i] == '(') {
+                    lev++;
+                } else if (s[i] == ')') {
+                    lev--;
+                }
+
+                if (lev < 0) {
+                    out.print(NO_ANS);
+                    return;
+                }
+            }
+
+            out.printLine(lev != 0 ? NO_ANS : String.valueOf(s));
 
         }
 
