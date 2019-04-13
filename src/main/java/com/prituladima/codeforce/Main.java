@@ -15,7 +15,6 @@ import static java.util.stream.IntStream.range;
 public final class Main {
 
     private void solve() {
-        //put your solution here
         sout("No solution");
     }
 
@@ -28,13 +27,12 @@ public final class Main {
     private PrintWriter writer;
 
     private void run() {
-        try {
-            reader = new BufferedReader(new InputStreamReader(System.in));
-            tokenizer = null;
-            writer = new PrintWriter(System.out);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+             PrintWriter writer = new PrintWriter(System.out)) {
+            this.reader = reader;
+            this.writer = writer;
+            this.tokenizer = null;
             solve();
-            reader.close();
-            writer.close();
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
