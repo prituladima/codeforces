@@ -1,2 +1,2 @@
-85 src/main/java/com/prituladima/codeforce/C. Serval i skobochnaja posledovatelnost.json
+82 src/main/java/com/prituladima/codeforce/N. Sortirovka podposledovatelnostjami.json
 0

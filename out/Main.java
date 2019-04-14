@@ -3,11 +3,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.io.BufferedWriter;
-import java.io.Writer;
-import java.io.OutputStreamWriter;
+import java.util.Collection;
+import java.util.Set;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Map;
+import java.io.Writer;
+import java.io.OutputStreamWriter;
 import java.io.InputStream;
 
 /**
@@ -22,104 +29,60 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        CServalISkobochnayaPosledovatelnost solver = new CServalISkobochnayaPosledovatelnost();
+        NSortirovkaPodposledovatelnostyami solver = new NSortirovkaPodposledovatelnostyami();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class CServalISkobochnayaPosledovatelnost {
+    static class NSortirovkaPodposledovatelnostyami {
         int n;
-        char[] s;
-        String NO_ANS = ":(";
+        int[] a;
+        int[] b;
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        boolean[] used;
 
         public void solve(int testNumber, InputReader in, OutputWriter out) {
             n = in.nextInt();
-            if (n % 2 == 1) {
-                out.print(NO_ANS);
-                return;
+            a = in.nextIntArray(n);
+            b = a.clone();
+            used = new boolean[n + 20];
+            Arrays.sort(b);
+
+            Map<Integer, Integer> ValueToInd = new HashMap<>();
+            for (int i = 0; i < n; i++) {
+                ValueToInd.put(b[i], i);
             }
 
-            s = in.nextToken().toCharArray();
-            if (s[0] == ')' || s[n - 1] == '(') {
-                out.print(NO_ANS);
-                return;
-            }
-            s[0] = '(';
-            s[n - 1] = ')';
-
-            int lev = 0;
-            int L_REMIND = 0;
-
-
-            for (int i = 1; i < n - 1; i++) {
-                char c = s[i];
-                if (c == '(') L_REMIND++;
-            }
-            L_REMIND = (n - 2) / 2 - L_REMIND;
-
-            if (L_REMIND < 0) {
-                out.print(NO_ANS);
-                return;
+            for (int i = 0; i < n; i++) {
+                int j = ValueToInd.get(a[i]);
+                graph.computeIfAbsent(i + 1, key -> new HashSet<>());
+                graph.computeIfAbsent(j + 1, key -> new HashSet<>());
+                graph.get(j + 1).add(i + 1);
+                graph.get(i + 1).add(j + 1);
             }
 
-            for (int i = 1; i < n - 1; i++) {
-
-                if (s[i] == '?') {
-                    if (L_REMIND > 0) {
-                        s[i] = '(';
-                        L_REMIND--;
-                    } else {
-                        s[i] = ')';
-                    }
-                }
-
-                if (s[i] == '(') {
-                    lev++;
-                } else if (s[i] == ')') {
-                    lev--;
-                }
-
-                if (lev < 0) {
-                    out.print(NO_ANS);
-                    return;
+            ArrayList<Set<Integer>> res = new ArrayList<>();
+            for (int from = 1; from <= n; from++) {
+                if (!used[from]) {
+                    Set<Integer> curRes = new HashSet<>();
+                    dfs(from, curRes);
+                    res.add(curRes);
                 }
             }
 
-            out.printLine(lev != 0 ? NO_ANS : String.valueOf(s));
-
-        }
-
-    }
-
-    static class OutputWriter {
-        private final PrintWriter writer;
-
-        public OutputWriter(OutputStream outputStream) {
-            writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outputStream)));
-        }
-
-        public OutputWriter(Writer writer) {
-            this.writer = new PrintWriter(writer);
-        }
-
-        public OutputWriter print(Object... objects) {
-            for (int i = 0; i < objects.length; i++) {
-                if (i != 0) {
-                    writer.print(' ');
-                }
-                writer.print(objects[i]);
+            int size = res.size();
+            out.printLine(size);
+            for (Set<Integer> re : res) {
+                out.print(re.size()).space().printListInOneLine(re).printLine();
             }
-            return this;
         }
 
-        public OutputWriter printLine(Object... objects) {
-            print(objects);
-            writer.println();
-            return this;
-        }
-
-        public void close() {
-            writer.close();
+        private void dfs(int from, Set<Integer> compMember) {
+            compMember.add(from);
+            used[from] = true;
+            for (int to : graph.getOrDefault(from, new HashSet<>())) {
+                if (!used[to]) dfs(to, compMember);
+            }
         }
 
     }
@@ -133,6 +96,14 @@ public class Main {
 
         public InputReader(InputStream stream) {
             this.stream = stream;
+        }
+
+        public int[] nextIntArray(int size) {
+            int[] array = new int[size];
+            for (int i = 0; i < size; i++) {
+                array[i] = nextInt();
+            }
+            return array;
         }
 
         private int read() {
@@ -175,21 +146,6 @@ public class Main {
             return res * sgn;
         }
 
-        public String nextToken() {
-            int c = read();
-            while (isSpaceChar(c)) {
-                c = read();
-            }
-            StringBuilder res = new StringBuilder();
-            do {
-                if (Character.isValidCodePoint(c)) {
-                    res.appendCodePoint(c);
-                }
-                c = read();
-            } while (!isSpaceChar(c));
-            return res.toString();
-        }
-
         private boolean isSpaceChar(int c) {
             if (filter != null) {
                 return filter.isSpaceChar(c);
@@ -204,6 +160,58 @@ public class Main {
         public interface SpaceCharFilter {
             public boolean isSpaceChar(int ch);
 
+        }
+
+    }
+
+    static class OutputWriter {
+        private final PrintWriter writer;
+
+        public OutputWriter(OutputStream outputStream) {
+            writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outputStream)));
+        }
+
+        public OutputWriter(Writer writer) {
+            this.writer = new PrintWriter(writer);
+        }
+
+        public OutputWriter print(Object... objects) {
+            for (int i = 0; i < objects.length; i++) {
+                if (i != 0) {
+                    writer.print(' ');
+                }
+                writer.print(objects[i]);
+            }
+            return this;
+        }
+
+        public OutputWriter printLine() {
+            writer.println();
+            return this;
+        }
+
+        public OutputWriter space() {
+            writer.print(' ');
+            return this;
+        }
+
+        public void close() {
+            writer.close();
+        }
+
+        public OutputWriter print(int i) {
+            writer.print(i);
+            return this;
+        }
+
+        public OutputWriter printLine(int i) {
+            writer.println(i);
+            return this;
+        }
+
+        public OutputWriter printListInOneLine(Collection<?> answer) {
+            for (Object o : answer) this.print(o).space();
+            return this;
         }
 
     }

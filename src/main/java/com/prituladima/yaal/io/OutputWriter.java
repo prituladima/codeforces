@@ -98,7 +98,7 @@ public class OutputWriter {
         return this;
     }
 
-    public OutputWriter printSpace() {
+    public OutputWriter space() {
         writer.print(' ');
         return this;
     }
@@ -163,17 +163,20 @@ public class OutputWriter {
         }
     }
 
-    public void printListInOneLine(Collection<?> answer) {
-        for (Object o : answer) this.print(o).printSpace();
+    public OutputWriter printListInOneLine(Collection<?> answer) {
+        for (Object o : answer) this.print(o).space();
+        return this;
     }
 
-    public void printPairList(IntIntPair... answer) {
+    public OutputWriter printPairList(IntIntPair... answer) {
         for (IntIntPair pair : answer) {
             this.printLine(pair.first, pair.second);
         }
+        return this;
     }
 
-    public void printNoAns() {
+    public OutputWriter noAns() {
         this.printLine(-1);
+        return this;
     }
 }

@@ -1,0 +1,44 @@
+{
+  "name" : "H. Телефонные номера",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "2\nivan 1 00123\nmasha 1 00123\n",
+    "output" : "2\nmasha 1 00123 \nivan 1 00123 \n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "3\nkarl 2 612 12\npetr 1 12\nkatya 1 612\n",
+    "output" : "3\nkatya 1 612 \npetr 1 12 \nkarl 1 612 \n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "4\nivan 3 123 123 456\nivan 2 456 456\nivan 8 789 3 23 6 56 9 89 2\ndasha 2 23 789\n",
+    "output" : "2\ndasha 2 23 789 \nivan 4 789 123 2 456 \n",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.HTelefonnieNomera",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.04.14",
+  "contestName" : "1400 (Part 3)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
