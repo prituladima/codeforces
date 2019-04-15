@@ -1,2 +1,2 @@
-82 src/main/java/com/prituladima/codeforce/N. Sortirovka podposledovatelnostjami.json
+54 src/main/java/com/prituladima/codeforce/C. Eklery.json
 0

@@ -3,18 +3,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.io.BufferedWriter;
-import java.util.Collection;
-import java.util.Set;
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Map;
 import java.io.Writer;
 import java.io.OutputStreamWriter;
+import java.util.InputMismatchException;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -29,60 +22,41 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        NSortirovkaPodposledovatelnostyami solver = new NSortirovkaPodposledovatelnostyami();
+        CEkleri solver = new CEkleri();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class NSortirovkaPodposledovatelnostyami {
-        int n;
-        int[] a;
-        int[] b;
-        Map<Integer, Set<Integer>> graph = new HashMap<>();
-        boolean[] used;
+    static class CEkleri {
+        long n;
+        long ans = 0;
 
         public void solve(int testNumber, InputReader in, OutputWriter out) {
-            n = in.nextInt();
-            a = in.nextIntArray(n);
-            b = a.clone();
-            used = new boolean[n + 20];
-            Arrays.sort(b);
-
-            Map<Integer, Integer> ValueToInd = new HashMap<>();
-            for (int i = 0; i < n; i++) {
-                ValueToInd.put(b[i], i);
-            }
-
-            for (int i = 0; i < n; i++) {
-                int j = ValueToInd.get(a[i]);
-                graph.computeIfAbsent(i + 1, key -> new HashSet<>());
-                graph.computeIfAbsent(j + 1, key -> new HashSet<>());
-                graph.get(j + 1).add(i + 1);
-                graph.get(i + 1).add(j + 1);
-            }
-
-            ArrayList<Set<Integer>> res = new ArrayList<>();
-            for (int from = 1; from <= n; from++) {
-                if (!used[from]) {
-                    Set<Integer> curRes = new HashSet<>();
-                    dfs(from, curRes);
-                    res.add(curRes);
+            n = in.nextLong();
+            long L = 1;
+            long R = n;
+            ans = R;
+            while (L <= R) {
+                long M = (L + R) >> 1;
+                if (check(n, M)) {
+                    R = M - 1;
+                    ans = M;
+                } else {
+                    L = M + 1;
                 }
             }
-
-            int size = res.size();
-            out.printLine(size);
-            for (Set<Integer> re : res) {
-                out.print(re.size()).space().printListInOneLine(re).printLine();
-            }
+            out.printLine(ans);
         }
 
-        private void dfs(int from, Set<Integer> compMember) {
-            compMember.add(from);
-            used[from] = true;
-            for (int to : graph.getOrDefault(from, new HashSet<>())) {
-                if (!used[to]) dfs(to, compMember);
+        private boolean check(long n, long k) {
+            long g = n;
+            long sum = 0;
+            while (n > 0) {
+                sum += Math.min(k, n);
+                n -= Math.min(k, n);
+                n -= n / 10;
             }
+            return sum * 2 >= g;
         }
 
     }
@@ -96,14 +70,6 @@ public class Main {
 
         public InputReader(InputStream stream) {
             this.stream = stream;
-        }
-
-        public int[] nextIntArray(int size) {
-            int[] array = new int[size];
-            for (int i = 0; i < size; i++) {
-                array[i] = nextInt();
-            }
-            return array;
         }
 
         private int read() {
@@ -124,7 +90,7 @@ public class Main {
             return buf[curChar++];
         }
 
-        public int nextInt() {
+        public long nextLong() {
             int c = read();
             while (isSpaceChar(c)) {
                 c = read();
@@ -134,7 +100,7 @@ public class Main {
                 sgn = -1;
                 c = read();
             }
-            int res = 0;
+            long res = 0;
             do {
                 if (c < '0' || c > '9') {
                     throw new InputMismatchException();
@@ -175,42 +141,12 @@ public class Main {
             this.writer = new PrintWriter(writer);
         }
 
-        public OutputWriter print(Object... objects) {
-            for (int i = 0; i < objects.length; i++) {
-                if (i != 0) {
-                    writer.print(' ');
-                }
-                writer.print(objects[i]);
-            }
-            return this;
-        }
-
-        public OutputWriter printLine() {
-            writer.println();
-            return this;
-        }
-
-        public OutputWriter space() {
-            writer.print(' ');
-            return this;
-        }
-
         public void close() {
             writer.close();
         }
 
-        public OutputWriter print(int i) {
-            writer.print(i);
-            return this;
-        }
-
-        public OutputWriter printLine(int i) {
+        public OutputWriter printLine(long i) {
             writer.println(i);
-            return this;
-        }
-
-        public OutputWriter printListInOneLine(Collection<?> answer) {
-            for (Object o : answer) this.print(o).space();
             return this;
         }
 
