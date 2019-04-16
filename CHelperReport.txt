@@ -1,2 +1,2 @@
-54 src/main/java/com/prituladima/codeforce/C. Eklery.json
+55 src/main/java/com/prituladima/codeforce/D. Mentory.json
 0

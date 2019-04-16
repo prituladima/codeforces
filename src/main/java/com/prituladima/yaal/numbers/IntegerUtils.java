@@ -7,10 +7,7 @@ import com.prituladima.yaal.generated.collections.list.LongList;
 import com.prituladima.yaal.generated.collections.pair.LongIntPair;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.util.Arrays.fill;
 
@@ -38,7 +35,7 @@ public class IntegerUtils {
         return a;
     }
 
-    private Map<Integer, Integer> valueToIndex(int[] a) {
+    public static Map<Integer, Integer> valueToIndex(int[] a) {
         Map<Integer, Integer> res = new HashMap<>();
         for (int i = 0; i < a.length; i++) {
             res.put(a[i], i);
@@ -46,10 +43,28 @@ public class IntegerUtils {
         return res;
     }
 
-    private Map<Long, Integer> valueToIndex(long[] a) {
+    public static Map<Integer, Set<Integer>> valueToIndexSet(int[] a) {
+        Map<Integer, Set<Integer>> res = new HashMap<>();
+        for (int i = 0; i < a.length; i++) {
+            res.computeIfAbsent(a[i], key -> new HashSet<>());
+            res.get(a[i]).add(i);
+        }
+        return res;
+    }
+
+    public static Map<Long, Integer> valueToIndex(long[] a) {
         Map<Long, Integer> res = new HashMap<>();
         for (int i = 0; i < a.length; i++) {
             res.put(a[i], i);
+        }
+        return res;
+    }
+
+    public static Map<Long, Set<Integer>> valueToIndexSet(long[] a) {
+        Map<Long, Set<Integer>> res = new HashMap<>();
+        for (int i = 0; i < a.length; i++) {
+            res.computeIfAbsent(a[i], key -> new HashSet<>());
+            res.get(a[i]).add(i);
         }
         return res;
     }
