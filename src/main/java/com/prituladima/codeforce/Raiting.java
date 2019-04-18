@@ -18,7 +18,7 @@ public final class Raiting {
     private void solve() {
         int len = 40;
         double cur = 1346;
-        for (int i = 0; i <= 3000; i += 100) {
+        for (int i = 3000; i >= 0; i -= 100) {
             double prob = 1.0 / (1 + (Math.pow(10, (i - cur) / 400)));
             char[] chars = new char[len];
             Arrays.fill(chars, ' ');
