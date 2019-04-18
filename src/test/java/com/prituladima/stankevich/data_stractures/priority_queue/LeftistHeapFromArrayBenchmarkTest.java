@@ -18,15 +18,18 @@ public class LeftistHeapFromArrayBenchmarkTest {
     private int generated_size;
     private int[] randomNumbers;
     private ArrayList<Integer> randomNumbersList;
+    private ArrayList<Double> randomNumbersListPriority;
 
     public LeftistHeapFromArrayBenchmarkTest(int generated_size) {
         this.generated_size = generated_size;
         randomNumbers = new int[generated_size];
         randomNumbersList = new ArrayList<>();
+        randomNumbersListPriority = new ArrayList<>();
         Random r = new Random();
         for (int i = 0; i < generated_size; i++) {
             randomNumbers[i] = r.nextInt(1000);
             randomNumbersList.add(randomNumbers[i]);
+            randomNumbersListPriority.add((double)randomNumbers[i]);
         }
     }
 
@@ -96,6 +99,13 @@ public class LeftistHeapFromArrayBenchmarkTest {
         BinaryHeap binaryHeap1 = new BinaryHeap(randomNumbers);
         soutln("binaryHeap - n " + (System.currentTimeMillis() - current_time) );
 
+        current_time = System.currentTimeMillis();
+        FibonacciHeap<Integer> fibonacciHeap = new FibonacciHeap<>();
+        for (int i = 0; i < generated_size; i++) {
+//            binaryHeap.add(randomNumbers[i]);
+            fibonacciHeap.enqueue(randomNumbers[i], randomNumbersListPriority.get(i));
+        }
+        soutln("fibonacciHeap - O(n)* " + (System.currentTimeMillis() - current_time) );
     }
 
 }

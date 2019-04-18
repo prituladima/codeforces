@@ -5,13 +5,13 @@ import com.prituladima.Reliable;
 import java.util.Arrays;
 
 @Reliable
-public class SegmentTree {
+public class AllInSegmentTree {
 
     private long DEFAULT = (long) -1e18;
     private long[] t, len, sum, add_mod, set_mod;
     private int n;
 
-    public SegmentTree(long[] a) {
+    public AllInSegmentTree(long[] a) {
         n = a.length;
         t = new long[4 * n];
         sum = new long[4 * n];

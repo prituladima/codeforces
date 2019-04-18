@@ -1,2 +1,2 @@
-55 src/main/java/com/prituladima/codeforce/D. Mentory.json
+60 src/main/java/com/prituladima/codeforce/E. Karen i kofe.json
 0
