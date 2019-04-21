@@ -1,2 +1,3 @@
-60 src/main/java/com/prituladima/codeforce/E. Karen i kofe.json
+62 src/main/java/com/prituladima/codeforce/C. Diametr dereva.json
+1
 0

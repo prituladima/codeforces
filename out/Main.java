@@ -8,6 +8,7 @@ import java.io.Writer;
 import java.io.OutputStreamWriter;
 import java.util.InputMismatchException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.io.InputStream;
 
 /**
@@ -22,48 +23,43 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        EKarenIKofe solver = new EKarenIKofe();
+        CDiametrDereva solver = new CDiametrDereva();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class EKarenIKofe {
-        int MAXN = (int) 2e6 + 3;
-        int q;
-        int n;
-        int k;
-        int[] pointsOK = new int[MAXN];
-        int[] countLessOrEq = new int[MAXN];
-        boolean[] enough = new boolean[MAXN];
-
+    static class CDiametrDereva {
         public void solve(int testNumber, InputReader in, OutputWriter out) {
-            n = in.nextInt();
-            k = in.nextInt();
-            q = in.nextInt();
-            for (int i = 0; i < n; i++) {
-                int l = in.nextInt();
-                int r = in.nextInt();
-                pointsOK[l]++;
-                pointsOK[r + 1]--;
+            int tt = in.nextInt();
+            while (tt-- > 0) {
+                int n = in.nextInt();
+                int ans = 0;
+                for (int bit = 0; bit < 9; bit++) {
+                    ArrayList<Integer> a = new ArrayList<>();
+                    ArrayList<Integer> b = new ArrayList<>();
+                    for (int i = 0; i < n; i++) {
+                        if ((i >> bit) % 2 == 1) {
+                            a.add(i);
+                        } else {
+                            b.add(i);
+                        }
+                    }
+                    if (a.isEmpty() || b.isEmpty()) {
+                        continue;
+                    }
+                    out.print(a.size()).space().print(b.size());
+                    for (int x : a) {
+                        out.space().print(x + 1);
+                    }
+                    for (int x : b) {
+                        out.space().print(x + 1);
+                    }
+                    out.printLine().flush();
+                    int foo = in.nextInt();
+                    ans = Math.max(ans, foo);
+                }
+                out.print(-1).space().print(ans).printLine().flush();
             }
-            int current = 0;
-            for (int i = 0; i < MAXN; i++) {
-                current += pointsOK[i];
-                if (current >= k) enough[i] = true;
-            }
-            int count = 0;
-            for (int i = 0; i < MAXN; i++) {
-                if (enough[i]) count++;
-                countLessOrEq[i] = count;
-            }
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < q; i++) {
-                int a = in.nextInt();
-                int b = in.nextInt();
-
-                stringBuilder.append(countLessOrEq[b] - countLessOrEq[a - 1]).append('\n');
-            }
-            out.print(stringBuilder.toString());
         }
 
     }
@@ -79,18 +75,27 @@ public class Main {
             this.writer = new PrintWriter(writer);
         }
 
-        public OutputWriter print(Object... objects) {
-            for (int i = 0; i < objects.length; i++) {
-                if (i != 0) {
-                    writer.print(' ');
-                }
-                writer.print(objects[i]);
-            }
+        public OutputWriter printLine() {
+            writer.println();
+            return this;
+        }
+
+        public OutputWriter space() {
+            writer.print(' ');
             return this;
         }
 
         public void close() {
             writer.close();
+        }
+
+        public void flush() {
+            writer.flush();
+        }
+
+        public OutputWriter print(int i) {
+            writer.print(i);
+            return this;
         }
 
     }
