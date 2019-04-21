@@ -1,0 +1,49 @@
+{
+  "name" : "B. Ненавидьте \"A\"",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "aaaaa\n",
+    "output" : "aaaaa\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "aacaababc\n",
+    "output" : ":(\n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "ababacacbbcc\n",
+    "output" : "ababacac\n",
+    "index" : 2,
+    "active" : true
+  }, {
+    "input" : "baba\n",
+    "output" : ":(\n",
+    "index" : 3,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.BNenavidteA",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.04.20",
+  "contestName" : "Forethought Future Cup - Elimination Round",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
