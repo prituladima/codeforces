@@ -1,3 +1,2 @@
-62 src/main/java/com/prituladima/codeforce/C. Diametr dereva.json
-1
+60 src/main/java/com/prituladima/codeforce/I. Oni povsjudu.json
 0

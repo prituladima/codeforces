@@ -221,8 +221,34 @@ public class GeekInteger {
         return array;
     }
 
+    public static char[] shuffle(char[] array) {
+        int n = array.length;
+        Random random = new Random();
+        for (int i = 0, j; i < n; i++) {
+            j = i + random.nextInt(n - i);
+            char randomElement = array[j];
+            array[j] = array[i];
+            array[i] = randomElement;
+        }
+        return array;
+    }
+
     @Reliable
     public static int[] uniq(int[] arr) {
+        arr = arr.clone();
+        shuffle(arr);
+        Arrays.sort(arr);
+        int pos = 0;
+        arr[pos++] = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] != arr[i - 1]) {
+                arr[pos++] = arr[i];
+            }
+        }
+        return Arrays.copyOf(arr, pos);
+    }
+
+    public static char[] uniq(char[] arr) {
         arr = arr.clone();
         shuffle(arr);
         Arrays.sort(arr);
