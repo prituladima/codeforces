@@ -1,0 +1,39 @@
+{
+  "name" : "M. Порядок чатов",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "4\nalex\nivan\nroman\nivan\n",
+    "output" : "ivan\nroman\nalex\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "8\nalina\nmaria\nekaterina\ndarya\ndarya\nekaterina\nmaria\nalina\n",
+    "output" : "alina\nmaria\nekaterina\ndarya\n",
+    "index" : 1,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.MPoryadokChatov",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.04.23",
+  "contestName" : "Binary search 1400-1500",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

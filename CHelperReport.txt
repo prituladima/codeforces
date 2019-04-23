@@ -1,2 +1,2 @@
-60 src/main/java/com/prituladima/codeforce/I. Oni povsjudu.json
+72 src/main/java/com/prituladima/codeforce/N. Korovam - kolokolchikov!.json
 0

@@ -1,0 +1,44 @@
+{
+  "name" : "N. Коровам - колокольчиков!",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "2 1\n2 5\n",
+    "output" : "7\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "4 3\n2 3 5 9\n",
+    "output" : "9\n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "3 2\n3 5 7\n",
+    "output" : "8\n",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.NKorovamKolokolchikov",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.04.23",
+  "contestName" : "Binary search 1400-1500",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

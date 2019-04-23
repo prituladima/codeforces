@@ -165,6 +165,13 @@ public class OutputWriter {
 
     public OutputWriter printListInOneLine(Collection<?> answer) {
         for (Object o : answer) this.print(o).space();
+        this.print('\n');
+        return this;
+    }
+
+    public OutputWriter printListSeparatedLines(Collection<?> answer) {
+        for (Object o : answer) this.printLine(o);
+        this.print('\n');
         return this;
     }
 

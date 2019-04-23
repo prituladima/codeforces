@@ -3,14 +3,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.io.PrintStream;
-import java.util.Arrays;
 import java.io.BufferedWriter;
-import java.util.InputMismatchException;
-import java.io.IOException;
-import java.util.Random;
 import java.io.Writer;
 import java.io.OutputStreamWriter;
+import java.util.InputMismatchException;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -25,109 +22,51 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        IOniPovsyudu solver = new IOniPovsyudu();
+        NKorovamKolokolchikov solver = new NKorovamKolokolchikov();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class IOniPovsyudu {
+    static class NKorovamKolokolchikov {
+        int INF = (int) 2e6;
         int n;
-        char[] s;
-        static final int no_of_chars = 256;
+        int k;
+        int[] s;
 
         public void solve(int testNumber, InputReader in, OutputWriter out) {
             n = in.nextInt();
-            s = in.nextToken().toCharArray();
-            out.printLine(findSubString(String.valueOf(s), String.valueOf(GeekInteger.uniq(s))).length());
-        }
+            k = in.nextInt();
+            s = in.nextIntArray(n);
 
-        static String findSubString(String str, String pat) {
-            int len1 = str.length();
-            int len2 = pat.length();
-
-            // check if string's length is less than pattern's
-            // length. If yes then no such window can exist
-            if (len1 < len2) {
-                System.out.println("No such window exists");
-                return "";
-            }
-
-            int hash_pat[] = new int[no_of_chars];
-            int hash_str[] = new int[no_of_chars];
-
-            // store occurrence ofs characters of pattern
-            for (int i = 0; i < len2; i++)
-                hash_pat[pat.charAt(i)]++;
-
-            int start = 0, start_index = -1, min_len = Integer.MAX_VALUE;
-
-            // start traversing the string
-            int count = 0; // count of characters
-            for (int j = 0; j < len1; j++) {
-                // count occurrence of characters of string
-                hash_str[str.charAt(j)]++;
-
-                // If string's char matches with pattern's char
-                // then increment count
-                if (hash_pat[str.charAt(j)] != 0 &&
-                        hash_str[str.charAt(j)] <= hash_pat[str.charAt(j)])
-                    count++;
-
-                // if all the characters are matched
-                if (count == len2) {
-                    // Try to minimize the window i.e., check if
-                    // any character is occurring more no. of times
-                    // than its occurrence in pattern, if yes
-                    // then remove it from starting and also remove
-                    // the useless characters.
-                    while (hash_str[str.charAt(start)] > hash_pat[str.charAt(start)]
-                            || hash_pat[str.charAt(start)] == 0) {
-
-                        if (hash_str[str.charAt(start)] > hash_pat[str.charAt(start)])
-                            hash_str[str.charAt(start)]--;
-                        start++;
-                    }
-
-                    // update window size
-                    int len_window = j - start + 1;
-                    if (min_len > len_window) {
-                        min_len = len_window;
-                        start_index = start;
-                    }
+            int ansS = INF;
+            int L = 1;
+            int R = INF;
+            while (L <= R) {
+                int M = (L + R) >>> 1;
+                if (can4(M)) {
+                    ansS = M;
+                    R = M - 1;
+                } else {
+                    L = M + 1;
                 }
             }
 
-            // If no window found
-            if (start_index == -1) {
-                System.out.println("No such window exists");
-                return "";
+            out.printLine(ansS);
+        }
+
+        private boolean can4(int localAns) {
+            int y = Math.min(n, 2 * k - n);
+            for (int i = n - 1; i >= n - y; i--) {
+                if (localAns < s[i]) return false;
             }
 
-            // Return substring starting from start_index
-            // and length min_len
-            return str.substring(start_index, start_index + min_len);
-        }
-
-    }
-
-    static class OutputWriter {
-        private final PrintWriter writer;
-
-        public OutputWriter(OutputStream outputStream) {
-            writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outputStream)));
-        }
-
-        public OutputWriter(Writer writer) {
-            this.writer = new PrintWriter(writer);
-        }
-
-        public void close() {
-            writer.close();
-        }
-
-        public OutputWriter printLine(int i) {
-            writer.println(i);
-            return this;
+            int len = n - y;
+            for (int i = 0; i < len; i++) {
+                if (localAns < s[i] + s[len - 1 - i]) {
+                    return false;
+                }
+            }
+            return true;
         }
 
     }
@@ -141,6 +80,14 @@ public class Main {
 
         public InputReader(InputStream stream) {
             this.stream = stream;
+        }
+
+        public int[] nextIntArray(int size) {
+            int[] array = new int[size];
+            for (int i = 0; i < size; i++) {
+                array[i] = nextInt();
+            }
+            return array;
         }
 
         private int read() {
@@ -183,21 +130,6 @@ public class Main {
             return res * sgn;
         }
 
-        public String nextToken() {
-            int c = read();
-            while (isSpaceChar(c)) {
-                c = read();
-            }
-            StringBuilder res = new StringBuilder();
-            do {
-                if (Character.isValidCodePoint(c)) {
-                    res.appendCodePoint(c);
-                }
-                c = read();
-            } while (!isSpaceChar(c));
-            return res.toString();
-        }
-
         private boolean isSpaceChar(int c) {
             if (filter != null) {
                 return filter.isSpaceChar(c);
@@ -216,31 +148,24 @@ public class Main {
 
     }
 
-    static class GeekInteger {
-        public static char[] shuffle(char[] array) {
-            int n = array.length;
-            Random random = new Random();
-            for (int i = 0, j; i < n; i++) {
-                j = i + random.nextInt(n - i);
-                char randomElement = array[j];
-                array[j] = array[i];
-                array[i] = randomElement;
-            }
-            return array;
+    static class OutputWriter {
+        private final PrintWriter writer;
+
+        public OutputWriter(OutputStream outputStream) {
+            writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outputStream)));
         }
 
-        public static char[] uniq(char[] arr) {
-            arr = arr.clone();
-            shuffle(arr);
-            Arrays.sort(arr);
-            int pos = 0;
-            arr[pos++] = arr[0];
-            for (int i = 1; i < arr.length; i++) {
-                if (arr[i] != arr[i - 1]) {
-                    arr[pos++] = arr[i];
-                }
-            }
-            return Arrays.copyOf(arr, pos);
+        public OutputWriter(Writer writer) {
+            this.writer = new PrintWriter(writer);
+        }
+
+        public void close() {
+            writer.close();
+        }
+
+        public OutputWriter printLine(int i) {
+            writer.println(i);
+            return this;
         }
 
     }
