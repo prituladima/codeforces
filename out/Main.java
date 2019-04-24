@@ -3,11 +3,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.io.BufferedWriter;
-import java.io.Writer;
-import java.io.OutputStreamWriter;
 import java.util.InputMismatchException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.Writer;
+import java.io.OutputStreamWriter;
 import java.io.InputStream;
 
 /**
@@ -22,51 +25,49 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        NKorovamKolokolchikov solver = new NKorovamKolokolchikov();
+        BKoshachePreobrazovanieFurfure solver = new BKoshachePreobrazovanieFurfure();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class NKorovamKolokolchikov {
-        int INF = (int) 2e6;
-        int n;
-        int k;
-        int[] s;
+    static class BKoshachePreobrazovanieFurfure {
+        int x;
 
         public void solve(int testNumber, InputReader in, OutputWriter out) {
-            n = in.nextInt();
-            k = in.nextInt();
-            s = in.nextIntArray(n);
-
-            int ansS = INF;
-            int L = 1;
-            int R = INF;
-            while (L <= R) {
-                int M = (L + R) >>> 1;
-                if (can4(M)) {
-                    ansS = M;
-                    R = M - 1;
-                } else {
-                    L = M + 1;
-                }
+            x = in.nextInt();
+            List<Integer> res = new ArrayList<>();
+            int counter = 0;
+            while (!ok(x)) {
+                String s = Integer.toBinaryString(x);
+                int len = s.length();
+                int i = s.indexOf('0');
+                char[] m = new char[len - i];
+                Arrays.fill(m, '1');
+                int step = Integer.parseInt(String.valueOf(m), 2);
+                x ^= step;
+                res.add(String.valueOf(m).length());
+                counter++;
+                if (ok(x)) break;
+                x += 1;
+                counter++;
             }
 
-            out.printLine(ansS);
+//        out.printLine(res.size()res.size());
+            out.printLine(counter);
+            for (Integer re : res) {
+                out.print(re).space();
+            }
+            out.printLine();
+
         }
 
-        private boolean can4(int localAns) {
-            int y = Math.min(n, 2 * k - n);
-            for (int i = n - 1; i >= n - y; i--) {
-                if (localAns < s[i]) return false;
+        private boolean ok(int x) {
+            char[] s = Integer.toBinaryString(x).toCharArray();
+            boolean ok = true;
+            for (int i = 0; i < s.length; i++) {
+                ok &= s[i] == '1';
             }
-
-            int len = n - y;
-            for (int i = 0; i < len; i++) {
-                if (localAns < s[i] + s[len - 1 - i]) {
-                    return false;
-                }
-            }
-            return true;
+            return ok;
         }
 
     }
@@ -80,14 +81,6 @@ public class Main {
 
         public InputReader(InputStream stream) {
             this.stream = stream;
-        }
-
-        public int[] nextIntArray(int size) {
-            int[] array = new int[size];
-            for (int i = 0; i < size; i++) {
-                array[i] = nextInt();
-            }
-            return array;
         }
 
         private int read() {
@@ -159,8 +152,23 @@ public class Main {
             this.writer = new PrintWriter(writer);
         }
 
+        public OutputWriter printLine() {
+            writer.println();
+            return this;
+        }
+
+        public OutputWriter space() {
+            writer.print(' ');
+            return this;
+        }
+
         public void close() {
             writer.close();
+        }
+
+        public OutputWriter print(int i) {
+            writer.print(i);
+            return this;
         }
 
         public OutputWriter printLine(int i) {

@@ -1,2 +1,2 @@
-72 src/main/java/com/prituladima/codeforce/N. Korovam - kolokolchikov!.json
+79 src/main/java/com/prituladima/codeforce/B. Koshache preobrazovanie furfure.json
 0
