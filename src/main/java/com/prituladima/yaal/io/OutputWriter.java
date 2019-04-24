@@ -151,38 +151,31 @@ public class OutputWriter {
         return this;
     }
 
-    public void separateLines(int[] array) {
-        for (int i : array) {
-            this.printLine(i);
-        }
-    }
-
-    public void printList(List<?> answer) {
-        for (Object o : answer) {
-            this.printLine(o);
-        }
-    }
-
-    public OutputWriter printListInOneLine(Collection<?> answer) {
-        for (Object o : answer) this.print(o).space();
-        this.print('\n');
+    public OutputWriter printArray(int[] array, char delimiter) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i : array) stringBuilder.append(i).append(delimiter);
+        if (delimiter == ' ') stringBuilder.append('\n');
+        this.print(stringBuilder);
         return this;
     }
 
-    public OutputWriter printListSeparatedLines(Collection<?> answer) {
-        for (Object o : answer) this.printLine(o);
-        this.print('\n');
+    public OutputWriter printArray(long[] array, char delimiter) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (long i : array) stringBuilder.append(i).append(delimiter);
+        if (delimiter == ' ') stringBuilder.append('\n');
+        this.print(stringBuilder);
         return this;
     }
 
-    public OutputWriter printPairList(IntIntPair... answer) {
-        for (IntIntPair pair : answer) {
-            this.printLine(pair.first, pair.second);
-        }
+    public OutputWriter printCollection(Collection<?> answer, char delimiter) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Object o : answer) stringBuilder.append(o).append(delimiter);
+        if (delimiter == ' ') stringBuilder.append('\n');
+        this.print(stringBuilder);
         return this;
     }
 
-    public OutputWriter noAns() {
+    public OutputWriter prinNoAns() {
         this.printLine(-1);
         return this;
     }
