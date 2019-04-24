@@ -48,7 +48,7 @@ public class IntIntPair implements Comparable<IntIntPair> {
 
     @Override
     public String toString() {
-        return "(" + first + "," + second + ")";
+        return first + " " + second;
     }
 
     @SuppressWarnings({"unchecked"})
