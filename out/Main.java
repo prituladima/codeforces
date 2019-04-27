@@ -3,14 +3,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.io.BufferedWriter;
-import java.util.InputMismatchException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.io.Writer;
 import java.io.OutputStreamWriter;
+import java.util.InputMismatchException;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -25,49 +22,53 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        BKoshachePreobrazovanieFurfure solver = new BKoshachePreobrazovanieFurfure();
+        BMaksimalniiPodpryamougolnik solver = new BMaksimalniiPodpryamougolnik();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class BKoshachePreobrazovanieFurfure {
-        int x;
-
+    static class BMaksimalniiPodpryamougolnik {
         public void solve(int testNumber, InputReader in, OutputWriter out) {
-            x = in.nextInt();
-            List<Integer> res = new ArrayList<>();
-            int counter = 0;
-            while (!ok(x)) {
-                String s = Integer.toBinaryString(x);
-                int len = s.length();
-                int i = s.indexOf('0');
-                char[] m = new char[len - i];
-                Arrays.fill(m, '1');
-                int step = Integer.parseInt(String.valueOf(m), 2);
-                x ^= step;
-                res.add(String.valueOf(m).length());
-                counter++;
-                if (ok(x)) break;
-                x += 1;
-                counter++;
+            int n = in.nextInt();
+            int m = in.nextInt();
+            long[] a = in.nextLongArray1(n);
+            long[] b = in.nextLongArray1(m);
+
+            long[] ansA = new long[n + 1];
+            long[] ansB = new long[m + 1];
+
+            long x = in.nextLong();
+            a = GeekInteger.calculatePrefixSum(a);
+            b = GeekInteger.calculatePrefixSum(b);
+
+            for (int i = 1; i <= n; i++) {
+                long mi = (int) 1e9 + 2;
+                for (int j = 0; j <= (n - i); j++) {
+                    mi = Math.min(a[j + i] - a[j], mi);
+                }
+                ansA[i] = mi;
+            }
+            //
+            for (int i = 1; i <= m; i++) {
+                long mi = (int) 1e9 + 2;
+                for (int j = 0; j <= (m - i); j++) {
+                    mi = Math.min(b[j + i] - b[j], mi);
+                }
+                ansB[i] = mi;
             }
 
-//        out.printLine(res.size()res.size());
-            out.printLine(counter);
-            for (Integer re : res) {
-                out.print(re).space();
+            long ans = 0;
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= m; j++) {
+                    long z = ansA[i] * ansB[j];
+                    if (z <= x) {
+                        ans = Math.max(ans, i * j);
+                    }
+                }
             }
-            out.printLine();
 
-        }
+            out.printLine(ans);
 
-        private boolean ok(int x) {
-            char[] s = Integer.toBinaryString(x).toCharArray();
-            boolean ok = true;
-            for (int i = 0; i < s.length; i++) {
-                ok &= s[i] == '1';
-            }
-            return ok;
         }
 
     }
@@ -123,6 +124,28 @@ public class Main {
             return res * sgn;
         }
 
+        public long nextLong() {
+            int c = read();
+            while (isSpaceChar(c)) {
+                c = read();
+            }
+            int sgn = 1;
+            if (c == '-') {
+                sgn = -1;
+                c = read();
+            }
+            long res = 0;
+            do {
+                if (c < '0' || c > '9') {
+                    throw new InputMismatchException();
+                }
+                res *= 10;
+                res += c - '0';
+                c = read();
+            } while (!isSpaceChar(c));
+            return res * sgn;
+        }
+
         private boolean isSpaceChar(int c) {
             if (filter != null) {
                 return filter.isSpaceChar(c);
@@ -132,6 +155,14 @@ public class Main {
 
         private static boolean isWhitespace(int c) {
             return c == ' ' || c == '\n' || c == '\r' || c == '\t' || c == -1;
+        }
+
+        public long[] nextLongArray1(int size) {
+            long[] array = new long[size + 1];
+            for (int i = 1; i <= size; i++) {
+                array[i] = nextLong();
+            }
+            return array;
         }
 
         public interface SpaceCharFilter {
@@ -152,28 +183,23 @@ public class Main {
             this.writer = new PrintWriter(writer);
         }
 
-        public OutputWriter printLine() {
-            writer.println();
-            return this;
-        }
-
-        public OutputWriter space() {
-            writer.print(' ');
-            return this;
-        }
-
         public void close() {
             writer.close();
         }
 
-        public OutputWriter print(int i) {
-            writer.print(i);
+        public OutputWriter printLine(long i) {
+            writer.println(i);
             return this;
         }
 
-        public OutputWriter printLine(int i) {
-            writer.println(i);
-            return this;
+    }
+
+    static class GeekInteger {
+        public static long[] calculatePrefixSum(long[] a) {
+            long[] pref = new long[a.length];
+            pref[0] = a[0];
+            for (int i = 1; i < a.length; i++) pref[i] = pref[i - 1] + a[i];
+            return pref;
         }
 
     }

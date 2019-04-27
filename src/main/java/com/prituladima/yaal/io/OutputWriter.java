@@ -175,7 +175,7 @@ public class OutputWriter {
         return this;
     }
 
-    public OutputWriter prinNoAns() {
+    public OutputWriter printNoAns() {
         this.printLine(-1);
         return this;
     }

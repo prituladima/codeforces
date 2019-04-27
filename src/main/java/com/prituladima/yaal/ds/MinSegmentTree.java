@@ -1,5 +1,7 @@
 package com.prituladima.yaal.ds;
 
+import java.util.Arrays;
+
 public class MinSegmentTree {
 
     int INF = Integer.MAX_VALUE;
@@ -9,6 +11,7 @@ public class MinSegmentTree {
     public MinSegmentTree(int[] a) {
         n = a.length;
         t = new int[4 * n];
+        Arrays.fill(t, INF);
         build(a, 1, 0, n - 1);
     }
 

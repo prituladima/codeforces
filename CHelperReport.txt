@@ -1,2 +1,2 @@
-79 src/main/java/com/prituladima/codeforce/B. Koshache preobrazovanie furfure.json
+76 src/main/java/com/prituladima/codeforce/B. Maksimalnyj podprjamougolnik.json
 0

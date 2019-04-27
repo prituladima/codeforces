@@ -39,7 +39,6 @@ public class %TaskClass% {
         sort(pairs);
 
         out.printLine(ans);
-        out.printPairList(pairsAns);
         out.printLine(String.valueOf(s));
 
     }

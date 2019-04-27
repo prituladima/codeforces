@@ -414,6 +414,14 @@ public class InputReader {
         return graph;
     }
 
+    public long[] nextLongArray1(int size) {
+        long[] array = new long[size+1];
+        for (int i = 1; i <= size; i++) {
+            array[i] = nextLong();
+        }
+        return array;
+    }
+
     public interface SpaceCharFilter {
         public boolean isSpaceChar(int ch);
     }
