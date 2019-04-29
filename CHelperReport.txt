@@ -1,2 +1,3 @@
-76 src/main/java/com/prituladima/codeforce/B. Maksimalnyj podprjamougolnik.json
+72 src/main/java/com/prituladima/codeforce/C. Prostye prefiksnye summy.json
+1
 0
