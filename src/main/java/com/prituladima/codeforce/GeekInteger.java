@@ -9,6 +9,31 @@ import java.util.stream.IntStream;
 
 public class GeekInteger {
 
+    public static int max(int... a){
+        return Arrays.stream(a).max().getAsInt();
+    }
+
+    public static int min(int... a){
+        return Arrays.stream(a).min().getAsInt();
+    }
+
+    public static int sum(int... a){
+        return Arrays.stream(a).sum();
+    }
+
+    public static long max(long... a){
+        return Arrays.stream(a).max().getAsLong();
+    }
+
+    public static long min(long... a){
+        return Arrays.stream(a).min().getAsLong();
+    }
+
+    public static long sum(long... a){
+        return Arrays.stream(a).sum();
+    }
+
+
     public static int posMod(int a, int b) {
         return (a % b + b) % b;
     }
