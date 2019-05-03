@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.io.BufferedWriter;
 import java.io.Writer;
 import java.io.OutputStreamWriter;
@@ -23,55 +22,54 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        CSoedinenieTochek solver = new CSoedinenieTochek();
+        GNeobichnayaIgraNaMatrice solver = new GNeobichnayaIgraNaMatrice();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class CSoedinenieTochek {
-        int z;
-        int n;
-        int ans;
-        int[] x;
-
+    static class GNeobichnayaIgraNaMatrice {
         public void solve(int testNumber, InputReader in, OutputWriter out) {
-            n = in.nextInt();
-            z = in.nextInt();
-            x = in.nextIntArray(n);
-            Arrays.sort(x);
-
-            ans = 0;
-            for (int i = n / 2, j = 0; i < n; i++) {
-                if (j >= n / 2) break;
-                if (x[i] - x[j] >= z) {
-                    ans++;
-                    j++;
+            final int n = in.nextInt();
+            final int m = in.nextInt();
+            final int k = in.nextInt();
+            final int[][] a = in.nextIntMatrix(n, m);
+            int finalAnsSum = 0;
+            int toRemove = 0;
+            for (int j = 0; j < m; j++) {
+                int minI = -1;
+                for (int i = 0; i < n; i++) {
+                    if (a[i][j] == 1) {
+                        minI = i;
+                        break;
+                    }
                 }
-
+                if (minI == -1) continue;
+                int curSum = 0;
+                int maxSum = 0;
+                int L = 0;
+//            int R = 0;
+                for (int i = minI; i < Math.min(n, minI + k); i++) {
+                    curSum += a[i][j];
+                }
+                maxSum = curSum;
+                L = minI;
+//            R = Math.min(n, minI + k);
+                for (int i = minI + k; i < n; i++) {
+                    curSum += a[i][j];
+                    curSum -= a[i - k][j];
+                    if (maxSum < curSum) {
+                        L = i - k + 1;
+                        maxSum = curSum;
+//                    R = i - k + 1;
+                    }
+                }
+                for (int i = 0; i < L; i++) {
+                    if (a[i][j] == 1) toRemove++;
+                }
+                finalAnsSum += maxSum;
             }
-            out.printLine(ans);
-        }
+            out.print(finalAnsSum).space().printLine(toRemove);
 
-    }
-
-    static class OutputWriter {
-        private final PrintWriter writer;
-
-        public OutputWriter(OutputStream outputStream) {
-            writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outputStream)));
-        }
-
-        public OutputWriter(Writer writer) {
-            this.writer = new PrintWriter(writer);
-        }
-
-        public void close() {
-            writer.close();
-        }
-
-        public OutputWriter printLine(int i) {
-            writer.println(i);
-            return this;
         }
 
     }
@@ -85,6 +83,14 @@ public class Main {
 
         public InputReader(InputStream stream) {
             this.stream = stream;
+        }
+
+        public int[][] nextIntMatrix(int rowCount, int columnCount) {
+            int[][] table = new int[rowCount][];
+            for (int i = 0; i < rowCount; i++) {
+                table[i] = nextIntArray(columnCount);
+            }
+            return table;
         }
 
         public int[] nextIntArray(int size) {
@@ -149,6 +155,38 @@ public class Main {
         public interface SpaceCharFilter {
             public boolean isSpaceChar(int ch);
 
+        }
+
+    }
+
+    static class OutputWriter {
+        private final PrintWriter writer;
+
+        public OutputWriter(OutputStream outputStream) {
+            writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outputStream)));
+        }
+
+        public OutputWriter(Writer writer) {
+            this.writer = new PrintWriter(writer);
+        }
+
+        public OutputWriter space() {
+            writer.print(' ');
+            return this;
+        }
+
+        public void close() {
+            writer.close();
+        }
+
+        public OutputWriter print(int i) {
+            writer.print(i);
+            return this;
+        }
+
+        public OutputWriter printLine(int i) {
+            writer.println(i);
+            return this;
         }
 
     }

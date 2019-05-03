@@ -1,2 +1,2 @@
-65 src/main/java/com/prituladima/codeforce/C. Soedinenie tochek.json
+75 src/main/java/com/prituladima/codeforce/G. Neobychnaja igra na matrice.json
 0

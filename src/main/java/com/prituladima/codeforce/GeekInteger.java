@@ -9,27 +9,27 @@ import java.util.stream.IntStream;
 
 public class GeekInteger {
 
-    public static int max(int... a){
+    public static int max(int... a) {
         return Arrays.stream(a).max().getAsInt();
     }
 
-    public static int min(int... a){
+    public static int min(int... a) {
         return Arrays.stream(a).min().getAsInt();
     }
 
-    public static int sum(int... a){
+    public static int sum(int... a) {
         return Arrays.stream(a).sum();
     }
 
-    public static long max(long... a){
+    public static long max(long... a) {
         return Arrays.stream(a).max().getAsLong();
     }
 
-    public static long min(long... a){
+    public static long min(long... a) {
         return Arrays.stream(a).min().getAsLong();
     }
 
-    public static long sum(long... a){
+    public static long sum(long... a) {
         return Arrays.stream(a).sum();
     }
 
@@ -355,6 +355,20 @@ public class GeekInteger {
         temp = a[i];
         a[i] = a[j];
         a[j] = temp;
+    }
+
+    public static int[] reverse(int[] a) {
+        int[] r = new int[a.length];
+        int k = a.length - 1;
+        for (int val : a) r[k--] = val;
+        return r;
+    }
+
+    public static long[] reverse(long[] a) {
+        long[] r = new long[a.length];
+        int k = a.length - 1;
+        for (long val : a) r[k--] = val;
+        return r;
     }
 
     public static void main(String[] args) {
