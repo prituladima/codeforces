@@ -1,2 +1,5 @@
-75 src/main/java/com/prituladima/codeforce/G. Neobychnaja igra na matrice.json
+67 src/main/java/com/prituladima/codeforce/H. Pylkij potok ljubvi.json
+3
 0
+1
+2

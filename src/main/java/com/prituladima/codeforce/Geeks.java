@@ -7,32 +7,61 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class GeekInteger {
+public class Geeks {
 
-    public static int max(int... a) {
-        return Arrays.stream(a).max().getAsInt();
+    public static double max(double req, double... opt) {
+        if(opt.length == 0) return req;
+        double max = req;
+        for (double value : opt) max = Math.max(max, value);
+        return max;
     }
 
-    public static int min(int... a) {
-        return Arrays.stream(a).min().getAsInt();
+    public static double min(double req, double... opt) {
+        if(opt.length == 0) return req;
+        double min = req;
+        for (double value : opt) min = Math.min(min, value);
+        return min;
+    }
+
+    public static double sum(double... a) {
+        return Arrays.stream(a).sum();
+    }
+
+    public static int max(int req, int... opt) {
+        if(opt.length == 0) return req;
+        int max = req;
+        for (int value : opt) max = Math.max(max, value);
+        return max;
+    }
+
+    public static int min(int req, int... opt) {
+        if(opt.length == 0) return req;
+        int min = req;
+        for (int value : opt) min = Math.min(min, value);
+        return min;
     }
 
     public static int sum(int... a) {
         return Arrays.stream(a).sum();
     }
 
-    public static long max(long... a) {
-        return Arrays.stream(a).max().getAsLong();
+    public static long max(long req, long... opt) {
+        if(opt.length == 0) return req;
+        long max = req;
+        for (long value : opt) max = Math.max(max, value);
+        return max;
     }
 
-    public static long min(long... a) {
-        return Arrays.stream(a).min().getAsLong();
+    public static long min(long req, long... opt) {
+        if(opt.length == 0) return req;
+        long min = req;
+        for (long value : opt) min = Math.min(min, value);
+        return min;
     }
 
     public static long sum(long... a) {
         return Arrays.stream(a).sum();
     }
-
 
     public static int posMod(int a, int b) {
         return (a % b + b) % b;
@@ -71,6 +100,11 @@ public class GeekInteger {
         return suff;
     }
 
+
+    public static long[] calculateRemSum(long[] a) {
+        return calculateRemSum(calculatePrefixSum(a), calculateSuffixSum(a));
+    }
+
     public static long[] calculateRemSum(long[] pref, long[] suff) {
         int len = pref.length;
         long[] rem = new long[len];
@@ -100,6 +134,10 @@ public class GeekInteger {
         return suff;
     }
 
+    public static int[] calculateRemSum(int[] a) {
+        return calculateRemSum(calculatePrefixSum(a), calculateSuffixSum(a));
+    }
+
     public static int[] calculateRemSum(int[] pref, int[] suff) {
         int len = pref.length;
         int[] rem = new int[len];
@@ -127,7 +165,6 @@ public class GeekInteger {
         return co;
     }
 
-    @Deprecated
     public static String toBitString(int number, int len) {
         String bits = Integer.toString(number, 2);
         StringBuilder sb = new StringBuilder();
@@ -138,20 +175,18 @@ public class GeekInteger {
         return sb.toString();
     }
 
-    @Deprecated
-    public static long multiplication(long modulo, List<Long> list) {
-        long[] arr = new long[list.size()];
+    public static long productModulo(long modulo, Collection<Long> collection) {
+        long[] arr = new long[collection.size()];
         int k = 0;
-        for (long i : list)
+        for (long i : collection)
             arr[k++] = i;
-
-        return multiplication(modulo, arr);
+        return productModulo(modulo, arr);
     }
 
-    public static long multiplication(long modulo, long... arr) {
+    public static long productModulo(long modulo, long... arr) {
         long ans = 1;
-        for (long l : arr) {
-            ans *= l;
+        for (long var : arr) {
+            ans *= var;
             ans %= modulo;
         }
         return ans;
@@ -229,7 +264,7 @@ public class GeekInteger {
 
     @Reliable
     public static void save_sort(int[] array) {
-        shuffle(array);
+        Geeks.shuffle(array);
         Arrays.sort(array);
     }
 

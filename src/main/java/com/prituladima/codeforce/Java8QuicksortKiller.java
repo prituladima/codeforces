@@ -552,7 +552,7 @@ public class Java8QuicksortKiller implements Runnable {
         applyPermutation(a, p);
 
         int[] sorted = IntStream.range(0, n).toArray();
-        int[] random = GeekInteger.shuffle(sorted.clone());
+        int[] random = Geeks.shuffle(sorted.clone());
 
         try {
             printArray(a, new PrintWriter("Java7QuicksortKiller.txt"));
@@ -618,7 +618,7 @@ public class Java8QuicksortKiller implements Runnable {
 
         copy = a.clone();
         t1 = System.currentTimeMillis();
-        GeekInteger.save_sort(copy);
+        Geeks.save_sort(copy);
         t2 = System.currentTimeMillis();
 
         System.out.println("Sorting time shuffle before dual pivot quick sort = " + (t2 - t1) + " ms.");

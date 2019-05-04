@@ -4,10 +4,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.BufferedWriter;
-import java.io.Writer;
-import java.io.OutputStreamWriter;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.io.IOException;
+import java.util.Map;
+import java.io.Writer;
+import java.io.OutputStreamWriter;
 import java.io.InputStream;
 
 /**
@@ -22,54 +24,42 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        GNeobichnayaIgraNaMatrice solver = new GNeobichnayaIgraNaMatrice();
+        HPilkiiPotokLyubvi solver = new HPilkiiPotokLyubvi();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class GNeobichnayaIgraNaMatrice {
+    static class HPilkiiPotokLyubvi {
         public void solve(int testNumber, InputReader in, OutputWriter out) {
             final int n = in.nextInt();
-            final int m = in.nextInt();
-            final int k = in.nextInt();
-            final int[][] a = in.nextIntMatrix(n, m);
-            int finalAnsSum = 0;
-            int toRemove = 0;
-            for (int j = 0; j < m; j++) {
-                int minI = -1;
-                for (int i = 0; i < n; i++) {
-                    if (a[i][j] == 1) {
-                        minI = i;
-                        break;
-                    }
-                }
-                if (minI == -1) continue;
-                int curSum = 0;
-                int maxSum = 0;
-                int L = 0;
-//            int R = 0;
-                for (int i = minI; i < Math.min(n, minI + k); i++) {
-                    curSum += a[i][j];
-                }
-                maxSum = curSum;
-                L = minI;
-//            R = Math.min(n, minI + k);
-                for (int i = minI + k; i < n; i++) {
-                    curSum += a[i][j];
-                    curSum -= a[i - k][j];
-                    if (maxSum < curSum) {
-                        L = i - k + 1;
-                        maxSum = curSum;
-//                    R = i - k + 1;
-                    }
-                }
-                for (int i = 0; i < L; i++) {
-                    if (a[i][j] == 1) toRemove++;
-                }
-                finalAnsSum += maxSum;
-            }
-            out.print(finalAnsSum).space().printLine(toRemove);
+            final char[] s = in.nextToken().toCharArray();
 
+            Map<String, Integer> ans = new HashMap<>();
+            for (int c = 0; c < 26; c++) {
+                for (int i = 0; i < n; i++) {
+                    int replace_ct = 0;
+                    for (int j = i; j < n; ++j) {
+                        if (s[j] != c) ++replace_ct;
+                        int value = Math.max(ans.get(replace_ct + String.valueOf(c + 'a')), j - i + 1);
+                        ans.put(replace_ct + String.valueOf(c + 'a'), value);
+                    }
+                }
+
+
+                for (int i = 1; i < n; i++) {
+                    int value = Math.max(ans.get(i + String.valueOf(c + 'a')), ans.get((i - 1) + String.valueOf(c + 'a')));
+                    ans.put(i + String.valueOf(c + 'a'), value);
+                }
+
+            }
+
+
+            final int q = in.nextInt();
+            for (int i = 0; i < q; i++) {
+                final int m = in.nextInt();
+                final String c = in.nextToken();
+                out.printLine(ans.get(m + c));
+            }
         }
 
     }
@@ -83,22 +73,6 @@ public class Main {
 
         public InputReader(InputStream stream) {
             this.stream = stream;
-        }
-
-        public int[][] nextIntMatrix(int rowCount, int columnCount) {
-            int[][] table = new int[rowCount][];
-            for (int i = 0; i < rowCount; i++) {
-                table[i] = nextIntArray(columnCount);
-            }
-            return table;
-        }
-
-        public int[] nextIntArray(int size) {
-            int[] array = new int[size];
-            for (int i = 0; i < size; i++) {
-                array[i] = nextInt();
-            }
-            return array;
         }
 
         private int read() {
@@ -141,6 +115,21 @@ public class Main {
             return res * sgn;
         }
 
+        public String nextToken() {
+            int c = read();
+            while (isSpaceChar(c)) {
+                c = read();
+            }
+            StringBuilder res = new StringBuilder();
+            do {
+                if (Character.isValidCodePoint(c)) {
+                    res.appendCodePoint(c);
+                }
+                c = read();
+            } while (!isSpaceChar(c));
+            return res.toString();
+        }
+
         private boolean isSpaceChar(int c) {
             if (filter != null) {
                 return filter.isSpaceChar(c);
@@ -170,18 +159,8 @@ public class Main {
             this.writer = new PrintWriter(writer);
         }
 
-        public OutputWriter space() {
-            writer.print(' ');
-            return this;
-        }
-
         public void close() {
             writer.close();
-        }
-
-        public OutputWriter print(int i) {
-            writer.print(i);
-            return this;
         }
 
         public OutputWriter printLine(int i) {
