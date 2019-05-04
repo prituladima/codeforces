@@ -1,5 +1,2 @@
-67 src/main/java/com/prituladima/codeforce/H. Pylkij potok ljubvi.json
-3
+61 src/main/java/com/prituladima/codeforce/D. Figury Hladni.json
 0
-1
-2

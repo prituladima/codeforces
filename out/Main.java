@@ -4,12 +4,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.BufferedWriter;
-import java.util.HashMap;
+import java.util.Set;
 import java.util.InputMismatchException;
 import java.io.IOException;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.io.Writer;
 import java.io.OutputStreamWriter;
+import java.util.Comparator;
 import java.io.InputStream;
 
 /**
@@ -24,42 +27,96 @@ public class Main {
         OutputStream outputStream = System.out;
         InputReader in = new InputReader(inputStream);
         OutputWriter out = new OutputWriter(outputStream);
-        HPilkiiPotokLyubvi solver = new HPilkiiPotokLyubvi();
+        DFiguriHladni solver = new DFiguriHladni();
         solver.solve(1, in, out);
         out.close();
     }
 
-    static class HPilkiiPotokLyubvi {
+    static class DFiguriHladni {
         public void solve(int testNumber, InputReader in, OutputWriter out) {
             final int n = in.nextInt();
-            final char[] s = in.nextToken().toCharArray();
+            if (n == 2) {
+                out.printLine("YES");
+                return;
+            }
+            final int m = in.nextInt();
 
-            Map<String, Integer> ans = new HashMap<>();
-            for (int c = 0; c < 26; c++) {
-                for (int i = 0; i < n; i++) {
-                    int replace_ct = 0;
-                    for (int j = i; j < n; ++j) {
-                        if (s[j] != c) ++replace_ct;
-                        int value = Math.max(ans.get(replace_ct + String.valueOf(c + 'a')), j - i + 1);
-                        ans.put(replace_ct + String.valueOf(c + 'a'), value);
+            int[] ley = new int[n + 2];
+
+            for (int i = 0; i < m; i++) {
+                int a = in.nextInt();
+                int b = in.nextInt();
+                int min = Math.min(a, b);
+                int max = Math.max(a, b);
+                a = min;
+                b = max;
+                int h = n / 2;
+                if (b - a > h) {
+                    color(ley, b, ley.length - 1);
+                    color(ley, 1, a + 1);
+                } else if (b - a < h) {
+                    color(ley, a, b + 1);
+                } else
+//                if (n >= 4)
+                {
+                    int Q1 = a + 1, Q2 = b - 1, P1 = b + 1, P2 = a - 1;
+                    if (P2 == 0) {
+                        P2 = n;
+                        color(ley, P1, ley.length - 1);
+                    } else {
+                        color(ley, P1, ley.length - 1);
+                        color(ley, 1, P2 + 1);
                     }
+
+
+                    color(ley, Q1, Q2 + 1);
+
+
                 }
-
-
-                for (int i = 1; i < n; i++) {
-                    int value = Math.max(ans.get(i + String.valueOf(c + 'a')), ans.get((i - 1) + String.valueOf(c + 'a')));
-                    ans.put(i + String.valueOf(c + 'a'), value);
-                }
-
+            }
+            for (int i = 1; i < ley.length; i++) {
+                ley[i] += ley[i - 1];
             }
 
-
-            final int q = in.nextInt();
-            for (int i = 0; i < q; i++) {
-                final int m = in.nextInt();
-                final String c = in.nextToken();
-                out.printLine(ans.get(m + c));
+//        out.print(ley);
+            Set<Integer> divisors = new HashSet<>();
+            for (int i = 1; i * i <= n; i++) {
+                if (n % i == 0) {
+                    divisors.add(i);
+                    divisors.add(n / i);
+                }
             }
+
+            divisors.remove(n);
+            List<Integer> list = new ArrayList<>(divisors);
+            list.sort(Comparator.reverseOrder());
+
+            boolean ok = false;
+            for (int div : list) {
+                ok |= okWithK(ley, div);
+            }
+            if (ok) {
+                out.printLine("Yes");
+            } else {
+                out.printLine("No");
+            }
+
+        }
+
+        private void color(int[] lay, int L, int R) {
+            lay[L]++;
+            lay[R]--;
+        }
+
+        private boolean okWithK(int[] a, int p) {
+            boolean ok = true;
+            for (int i = 1; i <= p; i++) {
+                int cur = a[i];
+                for (int j = i + p; j <= a.length - 2; j += p) {
+                    ok &= cur == a[j];
+                }
+            }
+            return ok;
         }
 
     }
@@ -115,21 +172,6 @@ public class Main {
             return res * sgn;
         }
 
-        public String nextToken() {
-            int c = read();
-            while (isSpaceChar(c)) {
-                c = read();
-            }
-            StringBuilder res = new StringBuilder();
-            do {
-                if (Character.isValidCodePoint(c)) {
-                    res.appendCodePoint(c);
-                }
-                c = read();
-            } while (!isSpaceChar(c));
-            return res.toString();
-        }
-
         private boolean isSpaceChar(int c) {
             if (filter != null) {
                 return filter.isSpaceChar(c);
@@ -159,13 +201,24 @@ public class Main {
             this.writer = new PrintWriter(writer);
         }
 
-        public void close() {
-            writer.close();
+        public OutputWriter print(Object... objects) {
+            for (int i = 0; i < objects.length; i++) {
+                if (i != 0) {
+                    writer.print(' ');
+                }
+                writer.print(objects[i]);
+            }
+            return this;
         }
 
-        public OutputWriter printLine(int i) {
-            writer.println(i);
+        public OutputWriter printLine(Object... objects) {
+            print(objects);
+            writer.println();
             return this;
+        }
+
+        public void close() {
+            writer.close();
         }
 
     }
