@@ -85,45 +85,44 @@ public class InputReader {
         }
     }
 
+
+    /**
+     * Reading Matrix for char, int, long, char, string
+     **/
     public char[][] nextCharMatrix(int rowCount, int columnCount) {
         char[][] table = new char[rowCount][];
-        for (int i = 0; i < rowCount; i++) {
-            table[i] = this.nextCharArray(columnCount);
-        }
+        for (int i = 0; i < rowCount; i++) table[i] = this.nextCharArray(columnCount);
         return table;
     }
 
     public int[][] nextIntMatrix(int rowCount, int columnCount) {
         int[][] table = new int[rowCount][];
-        for (int i = 0; i < rowCount; i++) {
-            table[i] = nextIntArray(columnCount);
-        }
-        return table;
-    }
-
-    public double[][] nextDoubleMatrix(int rowCount, int columnCount) {
-        double[][] table = new double[rowCount][];
-        for (int i = 0; i < rowCount; i++) {
-            table[i] = this.nextDoubleArray(columnCount);
-        }
+        for (int i = 0; i < rowCount; i++) table[i] = this.nextIntArray(columnCount);
         return table;
     }
 
     public long[][] nextLongMatrix(int rowCount, int columnCount) {
         long[][] table = new long[rowCount][];
-        for (int i = 0; i < rowCount; i++) {
-            table[i] = nextLongArray(columnCount);
-        }
+        for (int i = 0; i < rowCount; i++) table[i] = this.nextLongArray(columnCount);
+        return table;
+    }
+
+    public double[][] nextDoubleMatrix(int rowCount, int columnCount) {
+        double[][] table = new double[rowCount][];
+        for (int i = 0; i < rowCount; i++) table[i] = this.nextDoubleArray(columnCount);
         return table;
     }
 
     public String[][] nextStringMatrix(int rowCount, int columnCount) {
         String[][] table = new String[rowCount][];
-        for (int i = 0; i < rowCount; i++) {
-            table[i] = this.nextStringArray(columnCount);
-        }
+        for (int i = 0; i < rowCount; i++) table[i] = this.nextStringArray(columnCount);
         return table;
     }
+
+    /**
+     * End Reading Matrix for char, int, long, char, string
+     */
+
 
     private String getAll() {
         StringBuilder result = new StringBuilder();
@@ -220,25 +219,10 @@ public class InputReader {
     }
 
     public int nextInt() {
-        int c = read();
-        while (isSpaceChar(c)) {
-            c = read();
-        }
-        int sgn = 1;
-        if (c == '-') {
-            sgn = -1;
-            c = read();
-        }
-        int res = 0;
-        do {
-            if (c < '0' || c > '9') {
-                throw new InputMismatchException();
-            }
-            res *= 10;
-            res += c - '0';
-            c = read();
-        } while (!isSpaceChar(c));
-        return res * sgn;
+        long val = nextLong();
+        boolean inIntRange = Integer.MIN_VALUE <= val && val <= Integer.MAX_VALUE;
+        if(!inIntRange) throw new InputMismatchException("Integer is not enough.");
+        return (int)nextLong();
     }
 
     public long nextLong() {
@@ -401,7 +385,7 @@ public class InputReader {
         return list;
     }
 
-    public Map<Integer, Set<Integer>> readTree(int n) {
+    public Map<Integer, Set<Integer>> readGraph(int n) {
         Map<Integer, Set<Integer>> graph = new HashMap<>();
         for (int i = 0; i < n; i++) {
             int from = this.nextInt();
