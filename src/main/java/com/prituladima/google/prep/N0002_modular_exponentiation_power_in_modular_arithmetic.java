@@ -9,64 +9,64 @@ import static java.lang.Long.parseLong;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-/**
- * https://www.geeksforgeeks.org/sum-of-bit-differences-among-all-pairs/
- * https://practice.geeksforgeeks.org/problems/find-sum-of-different-corresponding-bits-for-all-pairs/0
- * Simple Solution
- * bitCount TLE
- * Efficient Solution
- */
-public class N0001_Find_sum_of_different_corresponding_bits_for_all_pairs {
+public class N0002_modular_exponentiation_power_in_modular_arithmetic {
 
     private void solve() {
-        final int MOD = (int) 1e9 + 7;
         int T = nextInt();
-        while (T-- > 0) {
+        for (int qq = 0; qq < T; qq++) {
             int N = nextInt();
             int[] A = nextArr(N);
-            int sum = 0;
-            if (false) {
-                for (int i = 0; i < N; i++) {
-                    for (int j = 0; j < N; j++) {
-                        int xor = A[i] ^ A[j];
-                        int localSum = bitCount(xor);
-                        sum += localSum;
-                        sum %= MOD;
-                    }
-                }
-            } else {
-                for (int bit = 0; bit < 32; bit++) {
-                    int amountOfZero = 0;
-                    for (int i = 0; i < N; i++)
-                        if ((A[i] & (1 << bit)) == 0)
-                            amountOfZero++;
-                    sum += (amountOfZero * (N - amountOfZero));
-                    if (sum > 0)
-                        sum -= MOD;
-
-                }
+            int min = Integer.MAX_VALUE;
+            int max = Integer.MIN_VALUE;
+            for (int i = 0; i < N; i++) {
+                min = Math.min(min, A[i]);
+                max = Math.max(max, A[i]);
             }
-            soutnl(sum * 2 % MOD);
+            int minC = 0;
+            int maxC = 0;
+            for (int i = 0; i < N; i++) {
+                minC += A[i] == min ? 1 : 0;
+                maxC += A[i] == max ? 1 : 0;
+            }
+            soutnl((binpow(2, maxC) - 1) + " " +
+                    (binpow(2, minC) - 1));
         }
     }
 
-    int bitCount(int n) {
-        if (false)
-            return Integer.bitCount(n);
-        else {
-            int c = 0; // c accumulates the total bits set in v
+    int MODULO = (int) 1e9 + 7;
 
-            for (; n > 0; n >>= 1) {
-                c += n & 1;
-            }
-            return c;
+    long pow(long base, long pow) {
+        if (pow == 1) return base;
+        if (pow == 0) return 1;
+        if (pow % 2 == 0) {
+            long temp = pow(base, pow / 2) % MODULO;
+            temp *= temp;
+            temp %= MODULO;
+            return temp;
+        } else {
+            long temp = pow(base, pow - 1) % MODULO;
+            temp *= base;
+            temp %= MODULO;
+            return temp;
         }
-
     }
 
+    long binpow (long a, long n) {
+        long res = 1;
+        while (n != 0) {
+            if ((n & 1) != 0){
+                res *= a;
+                res %= MODULO;
+            }
+            a *= a;
+            a %= MODULO;
+            n >>= 1;
+        }
+        return res;
+    }
 
     public static void main(String[] args) {
-        new N0001_Find_sum_of_different_corresponding_bits_for_all_pairs().run();
+        new N0002_modular_exponentiation_power_in_modular_arithmetic().run();
     }
 
     private BufferedReader reader;

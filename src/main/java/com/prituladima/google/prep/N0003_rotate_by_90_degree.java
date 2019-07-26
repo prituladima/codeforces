@@ -1,5 +1,6 @@
 package com.prituladima.google.prep;
 
+
 import java.io.*;
 import java.util.StringTokenizer;
 
@@ -9,64 +10,28 @@ import static java.lang.Long.parseLong;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-/**
- * https://www.geeksforgeeks.org/sum-of-bit-differences-among-all-pairs/
- * https://practice.geeksforgeeks.org/problems/find-sum-of-different-corresponding-bits-for-all-pairs/0
- * Simple Solution
- * bitCount TLE
- * Efficient Solution
- */
-public class N0001_Find_sum_of_different_corresponding_bits_for_all_pairs {
+public class N0003_rotate_by_90_degree {
 
     private void solve() {
-        final int MOD = (int) 1e9 + 7;
-        int T = nextInt();
-        while (T-- > 0) {
-            int N = nextInt();
-            int[] A = nextArr(N);
-            int sum = 0;
-            if (false) {
-                for (int i = 0; i < N; i++) {
-                    for (int j = 0; j < N; j++) {
-                        int xor = A[i] ^ A[j];
-                        int localSum = bitCount(xor);
-                        sum += localSum;
-                        sum %= MOD;
-                    }
-                }
-            } else {
-                for (int bit = 0; bit < 32; bit++) {
-                    int amountOfZero = 0;
-                    for (int i = 0; i < N; i++)
-                        if ((A[i] & (1 << bit)) == 0)
-                            amountOfZero++;
-                    sum += (amountOfZero * (N - amountOfZero));
-                    if (sum > 0)
-                        sum -= MOD;
+        int t = nextInt();
+        while (t-- > 0) {
+            int n = nextInt();
+            int[][] m = nextIntMatrix(n, n);
 
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    sout(m[j][n - i - 1] + " ");
                 }
             }
-            soutnl(sum * 2 % MOD);
+            //we can also rotate it
+            //transpont
+            //reverce collomn
+            soutnl("");
         }
     }
-
-    int bitCount(int n) {
-        if (false)
-            return Integer.bitCount(n);
-        else {
-            int c = 0; // c accumulates the total bits set in v
-
-            for (; n > 0; n >>= 1) {
-                c += n & 1;
-            }
-            return c;
-        }
-
-    }
-
 
     public static void main(String[] args) {
-        new N0001_Find_sum_of_different_corresponding_bits_for_all_pairs().run();
+        new N0003_rotate_by_90_degree().run();
     }
 
     private BufferedReader reader;
