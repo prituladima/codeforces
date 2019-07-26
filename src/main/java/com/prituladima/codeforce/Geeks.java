@@ -211,7 +211,7 @@ public class Geeks {
         int low = 0;
         int high = length;
         while (low < high) {
-            int mid = (low + high) >> 1;
+            int mid = (low + high) >>> 1;
             if (value >= array[mid])
                 low = mid + 1;
             else
@@ -225,7 +225,7 @@ public class Geeks {
         int low = 0;
         int high = length;
         while (low < high) {
-            int mid = (low + high) >> 1;
+            int mid = (low + high) >>> 1;
             if (value >= array[mid])
                 low = mid + 1;
             else
@@ -238,7 +238,7 @@ public class Geeks {
         int low = 0;
         int high = length;
         while (low < high) {
-            int mid = (low + high) >> 1;
+            int mid = (low + high) >>> 1;
             if (value <= array[mid])
                 high = mid;
             else
@@ -252,7 +252,7 @@ public class Geeks {
         int low = 0;
         int high = length;
         while (low < high) {
-            int mid = (low + high) >> 1;
+            int mid = (low + high) >>> 1;
             if (value <= array[mid])
                 high = mid;
             else
