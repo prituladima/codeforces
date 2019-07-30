@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class F004_trapping_rain_water {
 
     static int inf = (int) 1e6 + 10;
-
+    // todo https://www.topcoder.com/community/competitive-programming/tutorials/range-minimum-query-and-lowest-common-ancestor/
     // TODO: 28.07.2019 MAKE Two pointers approach
     public static int trap(int[] height) {
         int len = height.length;
