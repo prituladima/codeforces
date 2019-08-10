@@ -100,6 +100,10 @@ public class F003_number_of_icelands {
             }
         }
 
+        public boolean same(int v, int u){
+            return find(v) == find(u);
+        }
+
         public int find(int i) { // path compression
             if (parent[i] != i) parent[i] = find(parent[i]);
             return parent[i];
