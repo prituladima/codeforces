@@ -95,7 +95,7 @@ public class F003_number_of_icelands {
                         parent[i * n + j] = i * n + j;
                         ++count;
                     }
-                    rank[i * n + j] = 0;
+                    //rank[i * n + j] = 0;
                 }
             }
         }
@@ -105,8 +105,8 @@ public class F003_number_of_icelands {
         }
 
         public int find(int i) { // path compression
-            if (parent[i] != i) parent[i] = find(parent[i]);
-            return parent[i];
+            while (parent[i] != i) i = parent[i];
+            return i;
         }
 
         public void union(int x, int y) { // union with rank
@@ -118,7 +118,8 @@ public class F003_number_of_icelands {
                 } else if (rank[rootx] < rank[rooty]) {
                     parent[rootx] = rooty;
                 } else {
-                    parent[rooty] = rootx; rank[rootx] += 1;
+                    parent[rooty] = rootx;
+                    rank[rootx] ++;
                 }
                 --count;
             }
