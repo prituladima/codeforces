@@ -3,6 +3,7 @@ package com.prituladima.google.leetcode;
 import java.util.Arrays;
 
 public class knight_dialer {
+    // TODO: 11.08.2019 https://medium.com/@alexgolec/google-interview-questions-deconstructed-the-knights-dialer-impossibly-fast-edition-c288da1685b8
     class Solution {
         int[][] steps = {
                 {4, 6},
