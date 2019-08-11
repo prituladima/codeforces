@@ -38,12 +38,10 @@ public final class I {
         dp[1][0] = 0;
         dp[1][8] = 0;
 
-        for (int i = 2; i <= n; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 2; i <= n; i++)
+            for (int j = 0; j < 10; j++)
                 for (int k : steps[j])
                     dp[i][j] += dp[i - 1][k];
-            }
-        }
         int ans = 0;
         for (int j = 0; j < 10; j++) {
             ans += dp[n][j];
