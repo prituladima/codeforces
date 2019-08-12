@@ -20,10 +20,8 @@ public class knight_dialer {
         int M = (int) 1e9 + 7;
 
         public int knightDialer(int N) {
-            if (N == 1) return 10;
             int[] last = new int[10];
             Arrays.fill(last, 1);
-            last[5] = 0;
             for (int i = 2; i <= N; i++) {
                 int[] cur = new int[10];
                 for (int to = 0; to < 10; to++) {
@@ -38,6 +36,29 @@ public class knight_dialer {
             int sum = 0;
             for (int i = 0; i < 10; i++) {
                 sum += last[i];
+                if (sum >= M) sum -= M;
+            }
+            return sum;
+        }
+
+        public int knightDialer2(int N) {
+            int[][] ans = new int[2][10];
+            Arrays.fill(ans[0], 1);
+            int k = 0;
+            for (int i = 2; i <= N; i++) {
+                Arrays.fill(ans[~k & 1], 0);
+                for (int to = 0; to < 10; to++) {
+                    for (int from : steps[to]) {
+                        ans[~k & 1][to] += ans[k & 1][from];
+                        if (ans[~k & 1][to] >= M) ans[~k & 1][to] -= M;
+                    }
+                }
+                k = ~k;
+            }
+
+            int sum = 0;
+            for (int i = 0; i < 10; i++) {
+                sum += ans[k & 1][i];
                 if (sum >= M) sum -= M;
             }
             return sum;
