@@ -43,7 +43,13 @@ public class AmountOfPointOnTheSameLineTest {
                 item(1,
                         array(5),
                         array(42),
-                        1)
+                        1)//,
+//                item(1,
+//                        array(1, 1, 2, 2),
+//                        array(1, 1, 2, 2),
+//                        4
+//
+//                )
         );
     }
 
