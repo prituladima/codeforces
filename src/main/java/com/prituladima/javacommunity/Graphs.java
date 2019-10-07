@@ -1,4 +1,5 @@
 package com.prituladima.javacommunity;
+
 import com.prituladima.codeforce.Main;
 
 import java.io.*;
@@ -9,27 +10,27 @@ import static java.lang.Integer.parseInt;
 import static java.lang.Long.parseLong;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
-public class Graphs {
 
-    int inf = (int)1e6;
-    Map<Integer, Deque<Integer>> graph = new HashMap<>();
-    boolean[] used = new boolean[inf];
+public class Graphs {
+    private static final int INF = (int) 1e6;
+
+    private Map<Integer, Set<Integer>> graph;
+    private boolean[] used = new boolean[INF];
 
     private void solve() {
 
         int n = nextInt();
-        while (n-- > 0) {
+        graph = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            graph.computeIfAbsent(i, key -> new LinkedHashSet<>());
+        }
 
+        int m = nextInt();
+        while (m-- > 0) {
             int from = nextInt();
             int to = nextInt();
-
-            graph.computeIfAbsent(from, key -> new ArrayDeque<>());
-            graph.computeIfAbsent(to, key -> new ArrayDeque<>());
-
             graph.get(from).add(to);
             graph.get(to).add(from);
-
-
         }
 
 
@@ -51,52 +52,47 @@ public class Graphs {
         dfs3(nextInt());
 
 
-
     }
 
-    private void bfs(int from){
+    private void bfs(int from) {
         Deque<Integer> deque = new ArrayDeque<>();
         deque.add(from);
-        while (!deque.isEmpty()){
+        while (!deque.isEmpty()) {
             int cur = deque.removeFirst();
             used[cur] = true;
             soutnl(cur);
-            if(graph.containsKey(cur))
-                for (int next: graph.get(cur))
-                    if(!used[next])
-                        deque.addLast(next);
+            for (int next : graph.get(cur))
+                if (!used[next])
+                    deque.addLast(next);
         }
     }
 
-    private void dfs(int from){
+    private void dfs(int from) {
         Deque<Integer> deque = new ArrayDeque<>();
         deque.add(from);
-        while (!deque.isEmpty()){
+        while (!deque.isEmpty()) {
             int cur = deque.removeFirst();
             used[cur] = true;
             soutnl(cur);
-            if(graph.containsKey(cur))
-                for (int next: graph.get(cur))
-                    if(!used[next])
-                        deque.addFirst(next);
+            for (int next : graph.get(cur))
+                if (!used[next])
+                    deque.addFirst(next);
         }
     }
 
-    private void dfs2(int from){
+    private void dfs2(int from) {
         used[from] = true;
         soutnl(from);
-        if(graph.containsKey(from))
-            for (int next: graph.get(from))
-                if(!used[next])
-                    dfs2(next);
+        for (int next : graph.get(from))
+            if (!used[next])
+                dfs2(next);
     }
 
-    private void dfs3(int from){
+    private void dfs3(int from) {
         used[from] = true;
-        if(graph.containsKey(from))
-            for (int next: graph.get(from))
-                if(!used[next])
-                    dfs3(next);
+        for (int next : graph.get(from))
+            if (!used[next])
+                dfs3(next);
         soutnl(from);
     }
 
