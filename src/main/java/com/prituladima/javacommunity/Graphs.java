@@ -14,7 +14,8 @@ import static java.util.stream.IntStream.range;
 public class Graphs {
     private static final int INF = (int) 1e6;
 
-    private Map<Integer, Set<Integer>> graph;
+    private Map<Integer, Collection<Integer>> graph;
+
     private boolean[] used = new boolean[INF];
 
     private void solve() {
@@ -57,26 +58,34 @@ public class Graphs {
     private void bfs(int from) {
         Deque<Integer> deque = new ArrayDeque<>();
         deque.add(from);
+        used[from] = true;
+
         while (!deque.isEmpty()) {
             int cur = deque.removeFirst();
-            used[cur] = true;
             soutnl(cur);
-            for (int next : graph.get(cur))
-                if (!used[next])
+            for (int next : graph.get(cur)) {
+                if (!used[next]){
+                    used[next] = true;
                     deque.addLast(next);
+                }
+            }
         }
     }
 
     private void dfs(int from) {
         Deque<Integer> deque = new ArrayDeque<>();
         deque.add(from);
+        used[from] = true;
+
         while (!deque.isEmpty()) {
             int cur = deque.removeFirst();
-            used[cur] = true;
             soutnl(cur);
-            for (int next : graph.get(cur))
-                if (!used[next])
+            for (int next : graph.get(cur)) {
+                if (!used[next]) {
+                    used[next] = true;
                     deque.addFirst(next);
+                }
+            }
         }
     }
 
