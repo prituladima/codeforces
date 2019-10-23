@@ -1,6 +1,9 @@
 package com.prituladima.codeforce;
 
+
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import static java.lang.Double.parseDouble;
@@ -11,9 +14,122 @@ import static java.util.stream.IntStream.range;
 
 public final class Main {
 
+    private static final long MODULO = (int) 1e9 + 7;
+
     private void solve() {
-        sout("No solution");
+
+        long x = nextLong();
+        long n = nextLong();
+
+        long ans = 1;
+
+        List<LongIntPair> primeFactors = factorize(x);
+        for (LongIntPair primeFactor : primeFactors) {
+            long pow = 0;
+            long p = primeFactor.first;
+            long prime = primeFactor.first;
+            for (int i = 0; i <= 63; i++) {
+                long d = n / p;
+                if(d <= 0) break;
+                pow += d;
+
+                long overflowCheck = p;
+                p*=prime;//check for overflow
+                if(p / overflowCheck != prime){
+                    break;
+                }
+            }
+
+            ans *= power_mod(prime, pow, MODULO);
+            ans %= MODULO;
+
+        }
+
+
+        println(ans);
+
     }
+
+    public static List<LongIntPair> factorize(long number) {
+        List<LongIntPair> result = new ArrayList<>();
+        for (long i = 2; i * i <= number; i++) {
+            if (number % i == 0) {
+                int power = 0;
+                do {
+                    power++;
+                    number /= i;
+                } while (number % i == 0);
+                result.add(LongIntPair.makePair(i, power));
+            }
+        }
+        if (number != 1) {
+            result.add(LongIntPair.makePair(number, 1));
+        }
+        return result;
+    }
+
+    public static class LongIntPair implements Comparable<LongIntPair> {
+        public final long first;
+        public final int second;
+
+        public static LongIntPair makePair(long first, int second) {
+            return new LongIntPair(first, second);
+        }
+
+        public LongIntPair(long first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+
+            LongIntPair pair = (LongIntPair) o;
+
+            return first == pair.first && second == pair.second;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = Long.hashCode(first);
+            result = 31 * result + Integer.hashCode(second);
+            return result;
+        }
+
+
+        @Override
+        public String toString() {
+            return "(" + first + "," + second + ")";
+        }
+
+        @SuppressWarnings({"unchecked"})
+        public int compareTo(LongIntPair o) {
+            int value = Long.compare(first, o.first);
+            if (value != 0) {
+                return value;
+            }
+            return Integer.compare(second, o.second);
+        }
+    }
+
+    static long power_mod(long a, long pow, long mod) {
+        long res = 1;
+        a = a % mod;
+        while (pow > 0) {
+            if ((pow & 1) == 1)
+                res = (res * a) % mod;
+            pow = pow >> 1;
+            a = (a * a) % mod;
+        }
+        return res;
+    }
+
 
     public static void main(String[] args) {
         new Main().run();
@@ -92,21 +208,21 @@ public final class Main {
         return tokenizer.nextToken();
     }
 
-    private void souf(String format, Object... args) {
+    private void printf(String format, Object... args) {
         writer.printf(format, args);
     }
 
-    private void sout(Object o) {
+    private void print(Object o) {
         writer.print(o);
     }
 
-    private void newLine() {
+    private void println() {
         writer.println();
     }
 
-    private void soutnl(Object o) {
-        sout(o);
-        newLine();
+    private void println(Object o) {
+        print(o);
+        println();
     }
 
     private void flush() {
