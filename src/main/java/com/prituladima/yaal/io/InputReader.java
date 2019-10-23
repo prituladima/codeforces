@@ -219,32 +219,11 @@ public class InputReader {
     }
 
     public int nextInt() {
-        long val = nextLong();
-        boolean inIntRange = Integer.MIN_VALUE <= val && val <= Integer.MAX_VALUE;
-        if(!inIntRange) throw new InputMismatchException("Integer is not enough.");
-        return (int)nextLong();
+        return Integer.parseInt(this.nextToken(), 10);
     }
 
     public long nextLong() {
-        int c = read();
-        while (isSpaceChar(c)) {
-            c = read();
-        }
-        int sgn = 1;
-        if (c == '-') {
-            sgn = -1;
-            c = read();
-        }
-        long res = 0;
-        do {
-            if (c < '0' || c > '9') {
-                throw new InputMismatchException();
-            }
-            res *= 10;
-            res += c - '0';
-            c = read();
-        } while (!isSpaceChar(c));
-        return res * sgn;
+        return Long.parseLong(this.nextToken(), 10);
     }
 
     public String nextToken() {

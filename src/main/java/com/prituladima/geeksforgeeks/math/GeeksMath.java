@@ -167,7 +167,7 @@ public class GeeksMath {
         return prime;
     }
 
-    static long power_mod(long a, long pow, long mod) {
+    public static long power_mod(long a, long pow, long mod) {
         long res = 1;
         a = a % mod;
         while (pow > 0) {

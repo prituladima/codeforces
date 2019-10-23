@@ -1,2 +1,2 @@
-61 src/main/java/com/prituladima/codeforce/D. Figury Hladni.json
+73 src/main/java/com/prituladima/codeforce/C. Primes and Multiplication.json
 0

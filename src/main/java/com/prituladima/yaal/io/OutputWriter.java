@@ -19,7 +19,7 @@ public class OutputWriter {
 
     public OutputWriter printCharTable(char[][] table) {
         for (char[] row : table) {
-            printLine(new String(row));
+            println(new String(row));
         }
         return this;
     }
@@ -69,30 +69,30 @@ public class OutputWriter {
         return this;
     }
 
-    public OutputWriter printLine(int[] array) {
+    public OutputWriter println(int[] array) {
         print(array);
         writer.println();
         return this;
     }
 
-    public OutputWriter printLine(double[] array) {
+    public OutputWriter println(double[] array) {
         print(array);
         writer.println();
         return this;
     }
 
-    public OutputWriter printLine(long[] array) {
+    public OutputWriter println(long[] array) {
         print(array);
         writer.println();
         return this;
     }
 
-    public OutputWriter printLine() {
+    public OutputWriter println() {
         writer.println();
         return this;
     }
 
-    public OutputWriter printLine(Object... objects) {
+    public OutputWriter println(Object... objects) {
         print(objects);
         writer.println();
         return this;
@@ -108,17 +108,17 @@ public class OutputWriter {
         return this;
     }
 
-    public OutputWriter printLine(char i) {
+    public OutputWriter println(char i) {
         writer.println(i);
         return this;
     }
 
-    public OutputWriter printLine(char[] array) {
+    public OutputWriter println(char[] array) {
         writer.println(array);
         return this;
     }
 
-    public OutputWriter printFormat(String format, Object... objects) {
+    public OutputWriter printf(String format, Object... objects) {
         writer.printf(format, objects);
         return this;
     }
@@ -136,7 +136,7 @@ public class OutputWriter {
         return this;
     }
 
-    public OutputWriter printLine(long i) {
+    public OutputWriter println(long i) {
         writer.println(i);
         return this;
     }
@@ -146,7 +146,7 @@ public class OutputWriter {
         return this;
     }
 
-    public OutputWriter printLine(int i) {
+    public OutputWriter printf(int i) {
         writer.println(i);
         return this;
     }
@@ -176,7 +176,7 @@ public class OutputWriter {
     }
 
     public OutputWriter printNoAns() {
-        this.printLine(-1);
+        this.println(-1);
         return this;
     }
 }
