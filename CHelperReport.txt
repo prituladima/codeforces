@@ -1,2 +1,3 @@
-84 src/main/java/com/prituladima/codeforce/D1. Remove the Substring (easy version).json
+75 src/main/java/com/prituladima/codeforce/C1. Balanced Removals (Easier).json
+1
 0
