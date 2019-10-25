@@ -1,4 +1,2 @@
-75 src/main/java/com/prituladima/codeforce/C1. Balanced Removals (Easier).json
-2
+63 src/main/java/com/prituladima/codeforce/C. Save the Nature.json
 0
-1

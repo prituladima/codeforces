@@ -133,7 +133,7 @@ public class Geeks {
         for (int i = a.length - 2; i >= 0; i--) suff[i] = suff[i + 1] + a[i];
         return suff;
     }
-
+    @Deprecated
     public static int[] calculateRemSum(int[] a) {
         return calculateRemSum(calculatePrefixSum(a), calculateSuffixSum(a));
     }
