@@ -1,3 +1,4 @@
 75 src/main/java/com/prituladima/codeforce/C1. Balanced Removals (Easier).json
-1
+2
 0
+1

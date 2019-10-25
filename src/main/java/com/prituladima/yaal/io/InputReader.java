@@ -369,8 +369,8 @@ public class InputReader {
         for (int i = 0; i < n; i++) {
             int from = this.nextInt();
             int to = this.nextInt();
-            graph.computeIfAbsent(from, (key) -> new HashSet<>());
-            graph.computeIfAbsent(to, (key) -> new HashSet<>());
+            graph.computeIfAbsent(from, (key) -> new LinkedHashSet<>());
+            graph.computeIfAbsent(to, (key) -> new LinkedHashSet<>());
             graph.get(from).add(to);
             graph.get(to).add(from);
         }
