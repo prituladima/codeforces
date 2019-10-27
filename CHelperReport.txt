@@ -1,2 +1,4 @@
-77 src/main/java/com/prituladima/codeforce/D2. RGB Substring (hard version).json
+57 src/main/java/com/prituladima/codeforce/C. Even Path.json
+2
 0
+1
