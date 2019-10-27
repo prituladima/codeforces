@@ -1,2 +1,2 @@
-63 src/main/java/com/prituladima/codeforce/C. Save the Nature.json
+77 src/main/java/com/prituladima/codeforce/D2. RGB Substring (hard version).json
 0
