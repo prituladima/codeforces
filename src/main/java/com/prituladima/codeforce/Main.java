@@ -2,8 +2,6 @@ package com.prituladima.codeforce;
 
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 
 import static java.lang.Double.parseDouble;
@@ -17,8 +15,6 @@ public final class Main {
     private static final long MODULO = (int) 1e9 + 7;
 
     private void solve() {
-
-
 
     }
 

@@ -618,7 +618,7 @@ public class Java8QuicksortKiller implements Runnable {
 
         copy = a.clone();
         t1 = System.currentTimeMillis();
-        Geeks.save_sort(copy);
+        Geeks.safeSort(copy);
         t2 = System.currentTimeMillis();
 
         System.out.println("Sorting time shuffle before dual pivot quick sort = " + (t2 - t1) + " ms.");

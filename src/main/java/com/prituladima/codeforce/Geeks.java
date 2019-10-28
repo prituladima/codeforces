@@ -263,7 +263,7 @@ public class Geeks {
     }
 
     @Reliable
-    public static void save_sort(int[] array) {
+    public static void safeSort(int[] array) {
         Geeks.shuffle(array);
         Arrays.sort(array);
     }
