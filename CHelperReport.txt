@@ -1,2 +1,2 @@
-86 src/main/java/com/prituladima/codeforce/D2. Equalizing by Division (hard version).json
+62 src/main/java/com/prituladima/codeforce/A1. Add on a Tree.json
 0
