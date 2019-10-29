@@ -1,6 +1,6 @@
 package com.prituladima.yaal.bit;
 
-public class BitUtil {
+public class BitMasksUtil {
 
     public static long nextPowerOf2(long n) {
         n--;

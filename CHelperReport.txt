@@ -1,3 +1,2 @@
 86 src/main/java/com/prituladima/codeforce/D2. Equalizing by Division (hard version).json
-1
-3
+0
