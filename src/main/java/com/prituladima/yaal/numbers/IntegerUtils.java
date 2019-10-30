@@ -99,13 +99,14 @@ public class IntegerUtils {
         return primes.toArray();
     }
 
-    public static boolean[] generatePrimalityTable(int upTo) {
+    public static boolean[] generatePrimarilyTable(int upTo) {
         boolean[] isPrime = new boolean[upTo];
         if (upTo < 2) return isPrime;
         fill(isPrime, 2, upTo, true);
         for (int i = 2; i * i < upTo; i++)
             if (isPrime[i])
-                for (int j = i * i; j < upTo; j += i) isPrime[j] = false;
+                for (int j = i * i; j < upTo; j += i)
+                    isPrime[j] = false;
         return isPrime;
     }
 
@@ -113,7 +114,7 @@ public class IntegerUtils {
 
         int INF = (int) 1e7;
         long start = System.currentTimeMillis();
-        boolean[] primalityTable = generatePrimalityTable(INF);
+        boolean[] primalityTable = generatePrimarilyTable(INF);
         long finsh = System.currentTimeMillis();
 
         double d = (double) (finsh - start) / 1000;

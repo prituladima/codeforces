@@ -1,2 +1,2 @@
-62 src/main/java/com/prituladima/codeforce/A1. Add on a Tree.json
+59 src/main/java/com/prituladima/codeforce/D. Prime Graph.json
 0

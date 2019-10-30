@@ -19,7 +19,7 @@ public class PrimeNumbersAndFibonacci {
 
     static void printPrimeAndFib(int n) {
 
-        boolean[] prime = IntegerUtils.generatePrimalityTable(n + 1);
+        boolean[] prime = IntegerUtils.generatePrimarilyTable(n + 1);
 
         for (int i = 2; i <= n; i++)
             if (prime[i] && (isSquare(5 * i * i + 4) || isSquare(5 * i * i - 4)))
