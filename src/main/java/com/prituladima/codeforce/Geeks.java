@@ -207,60 +207,6 @@ public class Geeks {
         return a % 2 == b % 2;
     }
 
-    public static int upperBound(int[] array, int length, int value) {
-        int low = 0;
-        int high = length;
-        while (low < high) {
-            int mid = (low + high) >>> 1;
-            if (value >= array[mid])
-                low = mid + 1;
-            else
-                high = mid;
-
-        }
-        return low;
-    }
-
-    public static int upperBound(long[] array, int length, long value) {
-        int low = 0;
-        int high = length;
-        while (low < high) {
-            int mid = (low + high) >>> 1;
-            if (value >= array[mid])
-                low = mid + 1;
-            else
-                high = mid;
-        }
-        return low;
-    }
-
-    public static int lowerBound(int[] array, int length, int value) {
-        int low = 0;
-        int high = length;
-        while (low < high) {
-            int mid = (low + high) >>> 1;
-            if (value <= array[mid])
-                high = mid;
-            else
-                low = mid + 1;
-
-        }
-        return low;
-    }
-
-    public static int lowerBound(long[] array, int length, long value) {
-        int low = 0;
-        int high = length;
-        while (low < high) {
-            int mid = (low + high) >>> 1;
-            if (value <= array[mid])
-                high = mid;
-            else
-                low = mid + 1;
-
-        }
-        return low;
-    }
 
     @Reliable
     public static void safeSort(int[] array) {
