@@ -1,3 +1,2 @@
-74 src/main/java/com/prituladima/codeforce/F. Daniel i vesennjaja uborka.json
-1
+62 src/main/java/com/prituladima/codeforce/1000. A+B Problem.json
 0
