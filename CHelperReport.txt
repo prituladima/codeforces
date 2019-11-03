@@ -1,2 +1,2 @@
-62 src/main/java/com/prituladima/codeforce/1000. A+B Problem.json
+72 src/main/java/com/prituladima/codeforce/Pjatju pjat - dvadcat pjat!.json
 0
