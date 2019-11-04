@@ -1,2 +1,2 @@
-72 src/main/java/com/prituladima/codeforce/Pjatju pjat - dvadcat pjat!.json
+61 src/main/java/com/prituladima/codeforce/1005. Stone Pile.json
 0

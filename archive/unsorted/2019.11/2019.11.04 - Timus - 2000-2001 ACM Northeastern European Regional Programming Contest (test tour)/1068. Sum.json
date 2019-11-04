@@ -1,0 +1,54 @@
+{
+  "name" : "1068. Sum",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "-3\n",
+    "output" : "-5\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "0",
+    "output" : "1",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "-1",
+    "output" : "0",
+    "index" : 2,
+    "active" : true
+  }, {
+    "input" : "-2",
+    "output" : "-2",
+    "index" : 3,
+    "active" : true
+  }, {
+    "input" : "10",
+    "output" : "55",
+    "index" : 4,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx64M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.Sum",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.11.04",
+  "contestName" : "Timus - 2000-2001 ACM Northeastern European Regional Programming Contest (test tour)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
