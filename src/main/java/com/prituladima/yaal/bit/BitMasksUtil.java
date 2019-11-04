@@ -25,7 +25,11 @@ public class BitMasksUtil {
         return n >> (binaryLen(n) - prefLen);
     }
 
-    public static int checkBit(int mask, int shift){
+    public static int amountOfBitMasksWithLen(int len) {
+        return 1 << len;
+    }
+
+    public static int checkBit(int mask, int shift) {
         return (mask >> shift) & 1;
     }
 
