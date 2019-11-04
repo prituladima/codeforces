@@ -1,2 +1,2 @@
-61 src/main/java/com/prituladima/codeforce/1005. Stone Pile.json
+64 src/main/java/com/prituladima/codeforce/1877. Bicycle Codes.json
 0
