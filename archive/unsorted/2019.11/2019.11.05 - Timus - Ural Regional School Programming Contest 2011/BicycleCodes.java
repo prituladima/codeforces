@@ -13,8 +13,8 @@ public class BicycleCodes {
             while (true) codes.add(in.nextToken());
         }catch (Exception e){}
 
-        for (int i = 0; i < codes.size(); i++) {
-            if(codes.get(i).equals(String.format("%04d", i ))){
+        for (int i = 0; i < 10000; i++) {
+            if(codes.get(i % codes.size()).equals(String.format("%04d", i ))){
                 out.println("yes");
                 return;
             }
