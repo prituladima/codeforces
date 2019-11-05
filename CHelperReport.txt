@@ -1,2 +1,2 @@
-64 src/main/java/com/prituladima/codeforce/1877. Bicycle Codes.json
+59 src/main/java/com/prituladima/codeforce/1264. Workdays.json
 0
