@@ -1,2 +1,2 @@
-59 src/main/java/com/prituladima/codeforce/1264. Workdays.json
+62 src/main/java/com/prituladima/codeforce/1820. Ural Steaks.json
 0
