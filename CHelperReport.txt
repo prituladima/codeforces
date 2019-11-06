@@ -1,2 +1,2 @@
-62 src/main/java/com/prituladima/codeforce/1820. Ural Steaks.json
+65 src/main/java/com/prituladima/codeforce/2100. Wedding Dinner.json
 0
