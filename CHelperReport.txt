@@ -1,2 +1,2 @@
-65 src/main/java/com/prituladima/codeforce/2100. Wedding Dinner.json
+79 src/main/java/com/prituladima/codeforce/1910. Titan Ruins- Hidden Entrance.json
 0

@@ -1,0 +1,39 @@
+{
+  "name" : "1639. Chocolate 2",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "2 4\n",
+    "output" : "[:=[first]\n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "1 3\n",
+    "output" : "[second]=:]\n",
+    "index" : 1,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx64M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.Chocolate2",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.11.05",
+  "contestName" : "Timus - USU Junior Contest, October 2008",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
