@@ -2,6 +2,7 @@ package com.prituladima.codeforce;
 
 import java.util.*;
 
+// TODO: 08.11.2019 Move in another place
 public class GeekLong {
 
     public static long modularMultiplicativeInverse(long x, long mod) {
