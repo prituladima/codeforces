@@ -1,2 +1,2 @@
-79 src/main/java/com/prituladima/codeforce/1910. Titan Ruins- Hidden Entrance.json
+60 src/main/java/com/prituladima/codeforce/1263. Elections.json
 0
