@@ -1,2 +1,2 @@
-60 src/main/java/com/prituladima/codeforce/1263. Elections.json
+64 src/main/java/com/prituladima/codeforce/1456. Jedi Riddle 2.json
 0
