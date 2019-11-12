@@ -1,2 +1,2 @@
-63 src/main/java/com/prituladima/codeforce/1196. History Exam.json
+55 src/main/java/com/prituladima/codeforce/1349. Farm.json
 0
