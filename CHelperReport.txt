@@ -1,2 +1,2 @@
-55 src/main/java/com/prituladima/codeforce/1349. Farm.json
+55 src/main/java/com/prituladima/codeforce/1893. A380.json
 0
