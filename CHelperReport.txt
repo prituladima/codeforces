@@ -1,2 +1,2 @@
-55 src/main/java/com/prituladima/codeforce/1893. A380.json
+73 src/main/java/com/prituladima/codeforce/1313. Some Words about Sport.json
 0
