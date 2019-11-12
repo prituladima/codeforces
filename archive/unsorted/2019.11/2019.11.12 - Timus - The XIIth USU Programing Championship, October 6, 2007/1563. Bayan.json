@@ -1,0 +1,34 @@
+{
+  "name" : "1563. Bayan",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "12\nESPRIT\nNice Connection\nCamelot\nAdilisik\nLady and Gentleman City\nMEXX\nCamelot\nSultanna Frantsuzova\nCamaieu\nMEXX\nAxara\nCamelot\n",
+    "output" : "3\n",
+    "index" : 0,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx64M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.Bayan",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.11.12",
+  "contestName" : "Timus - The XIIth USU Programing Championship, October 6, 2007",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

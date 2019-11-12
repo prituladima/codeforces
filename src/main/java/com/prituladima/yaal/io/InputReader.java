@@ -264,7 +264,7 @@ public class InputReader {
         return buf.toString();
     }
 
-    private String readLine() {
+    public String readLine() {
         String s = readLine0();
         while (s.trim().length() == 0) {
             s = readLine0();

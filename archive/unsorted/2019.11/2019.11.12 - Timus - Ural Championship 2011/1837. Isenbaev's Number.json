@@ -1,0 +1,34 @@
+{
+  "name" : "1837. Isenbaev's Number",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "7\nIsenbaev Oparin Toropov\nAyzenshteyn Oparin Samsonov\nAyzenshteyn Chevdar Samsonov\nFominykh Isenbaev Oparin\nDublennykh Fominykh Ivankov\nBurmistrov Dublennykh Kurpilyanskiy\nCormen Leiserson Rivest\n",
+    "output" : "Ayzenshteyn 2\nBurmistrov 3\nChevdar 3\nCormen undefined\nDublennykh 2\nFominykh 1\nIsenbaev 0\nIvankov 2\nKurpilyanskiy 3\nLeiserson undefined\nOparin 1\nRivest undefined\nSamsonov 2\nToropov 1\n",
+    "index" : 0,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx64M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.IsenbaevsNumber",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.11.12",
+  "contestName" : "Timus - Ural Championship 2011",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

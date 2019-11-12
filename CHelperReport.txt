@@ -1,2 +1,2 @@
-73 src/main/java/com/prituladima/codeforce/1313. Some Words about Sport.json
+56 src/main/java/com/prituladima/codeforce/1563. Bayan.json
 0
