@@ -12,6 +12,8 @@ https://codeforces.com/problemset/problem/1175/C
 
 https://www.youtube.com/watch?v=Q3JUfHpffIg
 
-todo 500 tasks
+todo Capacity 500 tasks
 
 http://acm.timus.ru/author.aspx?id=248669&sort=difficulty
+
+Day capacity 12 tasks

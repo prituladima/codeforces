@@ -1,2 +1,3 @@
-64 src/main/java/com/prituladima/codeforce/1404. Easy to Hack!.json
+63 src/main/java/com/prituladima/codeforce/1149. Sinus Dances.json
+1
 0
