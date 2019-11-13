@@ -1,2 +1,2 @@
-56 src/main/java/com/prituladima/codeforce/1563. Bayan.json
+64 src/main/java/com/prituladima/codeforce/1404. Easy to Hack!.json
 0

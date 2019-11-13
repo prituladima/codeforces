@@ -1,0 +1,39 @@
+{
+  "name" : "1404. Easy to Hack!",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "xbduyr",
+    "output" : "secret",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "x",
+    "output" : "s",
+    "index" : 1,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx64M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.EasyToHack",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.11.13",
+  "contestName" : "Timus - The 12th High School Pupils Collegiate Programming Contest of the Sverdlovsk Region (October 15, 2005)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
