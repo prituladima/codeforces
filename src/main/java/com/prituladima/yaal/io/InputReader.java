@@ -219,11 +219,33 @@ public class InputReader {
     }
 
     public int nextInt() {
-        return Integer.parseInt(this.nextToken(), 10);
+        long next = nextLong();
+        if(next != (int)next){
+            throw new InputMismatchException();
+        }
+        return (int)next;
     }
 
     public long nextLong() {
-        return Long.parseLong(this.nextToken(), 10);
+        int c = read();
+        while (isSpaceChar(c)) {
+            c = read();
+        }
+        int sgn = 1;
+        if (c == '-') {
+            sgn = -1;
+            c = read();
+        }
+        long res = 0;
+        do {
+            if (c < '0' || c > '9') {
+                throw new InputMismatchException();
+            }
+            res *= 10;
+            res += c - '0';
+            c = read();
+        } while (!isSpaceChar(c));
+        return res * sgn;
     }
 
     public String nextToken() {
