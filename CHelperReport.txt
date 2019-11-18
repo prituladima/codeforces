@@ -1,3 +1,2 @@
-63 src/main/java/com/prituladima/codeforce/1149. Sinus Dances.json
-1
+65 src/main/java/com/prituladima/codeforce/C. Platforms Jumping.json
 0

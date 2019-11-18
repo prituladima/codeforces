@@ -1,0 +1,44 @@
+{
+  "name" : "C. Platforms Jumping",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "7 3 2\n1 2 1\n",
+    "output" : "YES\n0 1 0 2 2 0 3 \n",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "10 1 11\n1\n",
+    "output" : "YES\n0 0 0 0 0 0 0 0 0 1 \n",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "10 1 5\n2\n",
+    "output" : "YES\n0 0 0 0 1 1 0 0 0 0 \n",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx256M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.CPlatformsJumping",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.11.18",
+  "contestName" : "Div2C or Div1A (Part 1)",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}

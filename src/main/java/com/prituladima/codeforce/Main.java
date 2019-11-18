@@ -12,8 +12,6 @@ import static java.util.stream.IntStream.range;
 
 public final class Main {
 
-    private static final long MODULO = (int) 1e9 + 7;
-
     private void solve() {
 
     }
