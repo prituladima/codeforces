@@ -1,2 +1,2 @@
-65 src/main/java/com/prituladima/codeforce/C. Platforms Jumping.json
+65 src/main/java/com/prituladima/codeforce/C. League of Leesins.json
 0
