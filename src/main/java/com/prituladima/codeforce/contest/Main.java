@@ -21,28 +21,6 @@ public class Main {
     private static final boolean MULTI_TEST = false;
 
     private void solve() {
-//        char[] s = nextToken().toCharArray();
-//        int n = nextInt();
-//        int m = nextInt();
-//        int[] a = nextIntArray(n);
-//        int[] b = nextIntArray(m);
-
-//        int ans = -1;
-//        println(ans);
-
-        StringBuilder stringBuilder = new StringBuilder();
-        long start = System.currentTimeMillis();
-        for (int i = 0; i < INF; i++) {
-//            print('a');
-//            print(-1);
-//            println("sadf");
-            stringBuilder.append('a');
-            stringBuilder.append(-1);
-            stringBuilder.append("sadf");
-        }
-        print(stringBuilder);
-        long end = System.currentTimeMillis();
-        printf("\n\n%d\n", end - start);
 
     }
 
@@ -87,7 +65,9 @@ public class Main {
     }
 
 
-    /** Primitives: int, long, double*/
+    /**
+     * Primitives: int, long, double
+     */
     private int nextInt() {
         return parseInt(nextToken());
     }
@@ -101,7 +81,9 @@ public class Main {
     }
 
 
-    /** Primitives 1D arrays: char, int, long, double*/
+    /**
+     * Primitives 1D arrays: char, int, long, double
+     */
     private char[] nextCharArray() {
         return nextToken().toCharArray();
     }
@@ -123,7 +105,9 @@ public class Main {
     }
 
 
-    /** Primitives 2D arrays: char, int, long, double*/
+    /**
+     * Primitives 2D arrays: char, int, long, double
+     */
     private char[][] nextCharMatrix(int n) {
         return range(0, n).mapToObj(i -> nextToken().toCharArray()).toArray(char[][]::new);
     }
@@ -140,7 +124,9 @@ public class Main {
         return range(0, n).mapToObj(i -> nextDoubleArray(m)).toArray(double[][]::new);
     }
 
-    /** Output */
+    /**
+     * Output
+     */
     private void printf(String format, Object... args) {
         stringBuilder.append(String.format(format, args));
     }
