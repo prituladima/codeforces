@@ -1,0 +1,34 @@
+{
+  "name" : "Task1876",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "40 40",
+    "output" : "120",
+    "index" : 0,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/codeforce",
+  "vmArgs" : "-Xmx512M",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.codeforce.Task1876",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.11.21",
+  "contestName" : "TIMUS",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : false,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
