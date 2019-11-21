@@ -1,2 +1,3 @@
-65 src/main/java/com/prituladima/codeforce/C. League of Leesins.json
+53 src/main/java/com/prituladima/codeforce/Task1881.json
+1
 0

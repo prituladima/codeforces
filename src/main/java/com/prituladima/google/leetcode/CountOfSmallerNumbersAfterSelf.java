@@ -9,10 +9,10 @@ import java.util.List;
  *
  */
 // TODO: 30.08.2019  mergesort and Fenwick tree
-public class CountOfSmallerNumbersAfterSelf {
+public class CountofSmallerNumbersAfterSelf {
     public static void main(String[] args) {
 
-        System.out.println(new CountOfSmallerNumbersAfterSelf().countSmaller(new int[]{5, 2, 6, 1}));
+        System.out.println(new CountofSmallerNumbersAfterSelf().countSmaller(new int[]{5, 2, 6, 1}));
 
     }
 
