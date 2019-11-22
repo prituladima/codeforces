@@ -1,16 +1,13 @@
 package com.prituladima.codeforce.contest;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
-import java.util.Random;
 
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
 //todo To be tested
 //todo return stringtokenizer
-//todo probably remove StringBuilder
 public class Main223538cb {
 
     private static final int BITS = 31;
@@ -22,14 +19,22 @@ public class Main223538cb {
     private static final boolean MULTI_TEST = false;
 
     private void solve() {
-        char[] s = nextToken().toCharArray();
-        int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
 
-        int ans = -1;
-        println(ans);
+        int w1 = nextInt();
+        int w2 = nextInt();
+        int l = nextInt();
+        int r = nextInt();
+//        if (l == r) println(w1);
+//        else
+        if (l < r) {
+            int ans = (r - l - 1) * w1 + 2 * (r - l) * w2;
+
+            println(ans);
+        } else {
+            int ans = (l - r + 1) * w1 + 2 * (l - r) * w2;
+
+            println(ans);
+        }
     }
 
     private void solveAll() {
@@ -235,33 +240,5 @@ public class Main223538cb {
         return stream(a).sum();
     }
 
-    public static void safeSort(long[] array) {
-        shuffle(array);
-        Arrays.sort(array);
-    }
 
-    public static void shuffle(long[] array) {
-        Random random = new Random();
-        for (int i = 0, j; i < array.length; i++) {
-            j = i + random.nextInt(array.length - i);
-            long buf = array[j];
-            array[j] = array[i];
-            array[i] = buf;
-        }
-    }
-
-    public static void safeSort(int[] array) {
-        shuffle(array);
-        Arrays.sort(array);
-    }
-
-    public static void shuffle(int[] array) {
-        Random random = new Random();
-        for (int i = 0, j; i < array.length; i++) {
-            j = i + random.nextInt(array.length - i);
-            int buf = array[j];
-            array[j] = array[i];
-            array[i] = buf;
-        }
-    }
 }

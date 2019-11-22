@@ -9,60 +9,6 @@ import java.util.stream.IntStream;
 
 public class Geeks {
 
-    public static double max(double req, double... opt) {
-        if(opt.length == 0) return req;
-        double max = req;
-        for (double value : opt) max = Math.max(max, value);
-        return max;
-    }
-
-    public static double min(double req, double... opt) {
-        if(opt.length == 0) return req;
-        double min = req;
-        for (double value : opt) min = Math.min(min, value);
-        return min;
-    }
-
-    public static double sum(double... a) {
-        return Arrays.stream(a).sum();
-    }
-
-    public static int max(int req, int... opt) {
-        if(opt.length == 0) return req;
-        int max = req;
-        for (int value : opt) max = Math.max(max, value);
-        return max;
-    }
-
-    public static int min(int req, int... opt) {
-        if(opt.length == 0) return req;
-        int min = req;
-        for (int value : opt) min = Math.min(min, value);
-        return min;
-    }
-
-    public static int sum(int... a) {
-        return Arrays.stream(a).sum();
-    }
-
-    public static long max(long req, long... opt) {
-        if(opt.length == 0) return req;
-        long max = req;
-        for (long value : opt) max = Math.max(max, value);
-        return max;
-    }
-
-    public static long min(long req, long... opt) {
-        if(opt.length == 0) return req;
-        long min = req;
-        for (long value : opt) min = Math.min(min, value);
-        return min;
-    }
-
-    public static long sum(long... a) {
-        return Arrays.stream(a).sum();
-    }
-
     public static int posMod(int a, int b) {
         return (a % b + b) % b;
     }
