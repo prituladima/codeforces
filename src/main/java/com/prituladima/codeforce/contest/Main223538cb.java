@@ -1,16 +1,13 @@
 package com.prituladima.codeforce.contest;
 
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.*;
 
-import static java.lang.Double.parseDouble;
-import static java.lang.Integer.parseInt;
-import static java.lang.Long.parseLong;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
 //todo To be tested
-public class Main {
+public class Main223538cb {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -21,17 +18,16 @@ public class Main {
     private static final boolean MULTI_TEST = false;
 
     private void solve() {
-//        char[] s = nextToken().toCharArray();
-        long n = nextInt();
-        long m = nextInt();
-        long a = nextInt();
+        char[] s = nextToken().toCharArray();
+        int n = nextInt();
+        int m = nextInt();
+        int[] a = nextIntArray(n);
+        int[] b = nextIntArray(m);
 
-//        int[] a = nextIntArray(n);
-//        int[] b = nextIntArray(m);
-
-        long ans = ((n + a - 1) / a) * ((m + a - 1) / a);
+        int ans = -1;
         println(ans);
     }
+
 
     private void solveAll() {
         int t = MULTI_TEST ? nextInt() : 1;
@@ -41,19 +37,18 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        new Main().run();
+        new Main223538cb().run();
     }
 
-    private BufferedReader reader;
     private PrintWriter writer;
-    private StringTokenizer tokenizer;
+    private StreamTokenizer tokenizer;
     private StringBuilder stringBuilder = new StringBuilder();
 
     private void run() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
              PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)))) {
-            this.reader = reader;
             this.writer = writer;
+            this.tokenizer = new StreamTokenizer(reader);
             solveAll();
             this.writer.print(stringBuilder);
         } catch (Exception e) {
@@ -62,31 +57,31 @@ public class Main {
         }
     }
 
+    /**
+     * Base types: Strings, int, long, double
+     */
     private String nextToken() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-            try {
-                tokenizer = new StringTokenizer(reader.readLine());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            tokenizer.nextToken();
+            return tokenizer.sval;
+        } catch (IOException e) {
+            throw new NoSuchElementException();
         }
-        return tokenizer.nextToken();
     }
 
-
-    /**
-     * Primitives: int, long, double
-     */
     private int nextInt() {
-        return parseInt(nextToken());
+        nextToken();
+        return (int) tokenizer.nval;
     }
 
     private long nextLong() {
-        return parseLong(nextToken());
+        nextToken();
+        return (long) tokenizer.nval;
     }
 
     private double nextDouble() {
-        return parseDouble(nextToken());
+        nextToken();
+        return tokenizer.nval;
     }
 
 
@@ -138,18 +133,30 @@ public class Main {
      */
     private void printf(String format, Object... args) {
         stringBuilder.append(String.format(format, args));
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void print(Object o) {
         stringBuilder.append(o);
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void println() {
         stringBuilder.append('\n');
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void println(Object o) {
         stringBuilder.append(o).append('\n');
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void flush() {
