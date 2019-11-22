@@ -1,2 +1,2 @@
-53 src/main/java/com/prituladima/codeforce/Task1881.json
+53 src/main/java/com/prituladima/codeforce/Task1723.json
 0

@@ -21,26 +21,16 @@ public class Main {
     private static final boolean MULTI_TEST = false;
 
     private void solve() {
-        int n = nextInt();
-        double r = nextDouble();
-        double[][] pairs = new double[n][2];
-        for (int i = 0; i < n; i++) {
-            pairs[i][0] = nextDouble();
-            pairs[i][1] = nextDouble();
-        }
+//        char[] s = nextToken().toCharArray();
+        long n = nextInt();
+        long m = nextInt();
+        long a = nextInt();
 
-        double ans = 2*Math.PI*r;
-        for(int i = 0 ; i < n-1 ; i ++){
-            ans += dist(pairs[i][0], pairs[i][1], pairs[i+1][0], pairs[i+1][1]);
-        }
-        ans += dist(pairs[n-1][0], pairs[n-1][1], pairs[0][0], pairs[0][1]);
+//        int[] a = nextIntArray(n);
+//        int[] b = nextIntArray(m);
 
-        long finalAns = Math.round(100*ans);
-        printf("%.2f", finalAns / 100.00);
-    }
-
-    private double dist(double x1, double y1, double x2, double y2){
-        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+        long ans = ((n + a - 1) / a) * ((m + a - 1) / a);
+        println(ans);
     }
 
     private void solveAll() {

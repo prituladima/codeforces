@@ -5,38 +5,6 @@ import java.util.*;
 // TODO: 08.11.2019 Move in another place
 public class GeekLong {
 
-    public static long modularMultiplicativeInverse(long x, long mod) {
-        return bpow(x, mod - 2, mod);
-    }
-
-    public static long bpow(long x, long n, long mod) {
-        if (n != 0) {
-            if (n % 2 == 1) {
-                return x * bpow(x, n - 1, mod) % mod;
-            } else {
-                return bpow(x * x % mod, n / 2, mod);
-            }
-        } else {
-            return 1;
-        }
-    }
-
-    public static long bpow(long x, long n) {
-        if (n != 0) {
-            if (n % 2 == 1) {
-                return x * bpow(x, n - 1);
-            } else {
-                return bpow(x * x, n / 2);
-            }
-        } else {
-            return 1;
-        }
-    }
-
-    public static long positiveMod(long a, long b) {
-        return (a % b + b) % b;
-    }
-
     public static List<Long> toList(long[] arr) {
         List<Long> ans = new ArrayList<>();
         for (long i : arr) ans.add(i);
@@ -77,34 +45,6 @@ public class GeekLong {
 
     public static boolean equalParity(long a, long b) {
         return a % 2 == b % 2;
-    }
-
-    public static int upperBound(long[] array, int length, int value) {
-        int low = 0;
-        int high = length;
-        while (low < high) {
-            final int mid = (low + high) >>> 1;
-            if (value >= array[mid]) {
-                low = mid + 1;
-            } else {
-                high = mid;
-            }
-        }
-        return low;
-    }
-
-    public static int lowerBound(long[] array, int length, int value) {
-        int low = 0;
-        int high = length;
-        while (low < high) {
-            final int mid = (low + high) >>> 1;
-            if (value <= array[mid]) {
-                high = mid;
-            } else {
-                low = mid + 1;
-            }
-        }
-        return low;
     }
 
     public static long[] shuffle(long[] arr) {
