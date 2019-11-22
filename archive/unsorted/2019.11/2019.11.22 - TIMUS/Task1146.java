@@ -1,7 +1,6 @@
 package com.prituladima.codeforce.contest;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 import static java.util.Arrays.stream;
@@ -19,15 +18,73 @@ public class Main223538cb {
     private static final boolean MULTI_TEST = false;
 
     private void solve() {
-        char[] s = nextToken().toCharArray();
         int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
+        int[][] a = nextIntMatrix(n, n);
+        int[][] prefSum = new int[n][n];
+        for (int i = 0; i < n; i++) {
+            prefSum[i][0] = a[i][0];
+            for (int j = 1; j < n; j++) {
+                prefSum[i][j] = a[i][j] + prefSum[i][j - 1];
+            }
+        }
 
-        int ans = -1;
+        for (int j = 0; j < n; j++) {
+            for (int i = 1; i < n; i++) {
+                prefSum[i][j] += prefSum[i - 1][j];
+            }
+        }
+
+        debugMatrix(prefSum);
+        int ans = Integer.MIN_VALUE;
+
+        for (int i1 = 0; i1 < n; i1++) {
+            for (int j1 = 0; j1 < n; j1++) {
+
+                for (int i2 = i1; i2 < n; i2++) {
+                    for (int j2 = j1; j2 < n; j2++) {
+
+                        int localAns = prefSum[i2][j2];
+
+                        if (isValidIndex(j1 - 1, n)) {
+                            localAns -= prefSum[i2][j1 - 1];
+                        }
+
+                        if (isValidIndex(i1 - 1, n)) {
+                            localAns -= prefSum[i1 - 1][j2];
+                        }
+
+                        if (isValidIndex(i1 - 1, n) && isValidIndex(j1 - 1, n)) {
+                            localAns += prefSum[i1 - 1][j1 - 1];
+                        }
+
+                        ans = Math.max(ans, localAns);
+
+                    }
+                }
+
+
+            }
+        }
+
+
         println(ans);
     }
+
+    private boolean isValidIndex(int ind, int n) {
+        return 0 <= ind && ind < n;
+    }
+
+    private void debugMatrix(int[][] matrix) {
+        if (ONLINE_JUDGE) return;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                print(matrix[i][j]);
+                print(' ');
+            }
+            println();
+        }
+    }
+
 
     private void solveAll() {
         int t = MULTI_TEST ? nextInt() : 1;
@@ -163,79 +220,6 @@ public class Main223538cb {
         writer.print(stringBuilder);
         writer.flush();
         stringBuilder = new StringBuilder();
-    }
-
-    /**
-     * Utils
-     */
-
-    private boolean isValidIndex(int ind, int n) {
-        return 0 <= ind && ind < n;
-    }
-
-    private void debugMatrix(int[][] matrix) {
-        if (ONLINE_JUDGE) return;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                print(matrix[i][j]);
-                print(' ');
-            }
-            println();
-        }
-    }
-
-    public static double max(double req, double... opt) {
-        if(opt.length == 0) return req;
-        double max = req;
-        for (double value : opt) max = Math.max(max, value);
-        return max;
-    }
-
-    public static double min(double req, double... opt) {
-        if(opt.length == 0) return req;
-        double min = req;
-        for (double value : opt) min = Math.min(min, value);
-        return min;
-    }
-
-    public static double sum(double... a) {
-        return Arrays.stream(a).sum();
-    }
-
-    public static int max(int req, int... opt) {
-        if(opt.length == 0) return req;
-        int max = req;
-        for (int value : opt) max = Math.max(max, value);
-        return max;
-    }
-
-    public static int min(int req, int... opt) {
-        if(opt.length == 0) return req;
-        int min = req;
-        for (int value : opt) min = Math.min(min, value);
-        return min;
-    }
-
-    public static int sum(int... a) {
-        return Arrays.stream(a).sum();
-    }
-
-    public static long max(long req, long... opt) {
-        if(opt.length == 0) return req;
-        long max = req;
-        for (long value : opt) max = Math.max(max, value);
-        return max;
-    }
-
-    public static long min(long req, long... opt) {
-        if(opt.length == 0) return req;
-        long min = req;
-        for (long value : opt) min = Math.min(min, value);
-        return min;
-    }
-
-    public static long sum(long... a) {
-        return Arrays.stream(a).sum();
     }
 
 

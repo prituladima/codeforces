@@ -1,7 +1,6 @@
 package com.prituladima.codeforce.contest;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 import static java.util.Arrays.stream;
@@ -19,14 +18,109 @@ public class Main223538cb {
     private static final boolean MULTI_TEST = false;
 
     private void solve() {
-        char[] s = nextToken().toCharArray();
-        int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
 
-        int ans = -1;
+        int N = nextInt(), M[][] = new int[100][100], S[][] = new int[100][101];
+
+
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < N; j++)
+                M[i][j] = nextInt();
+
+
+        for (int i = 0; i < N; ++i) S[i][0] = 0;
+
+        for (int i = 0; i < N; ++i)
+            for (int j = 1; j <= N; ++j)
+                S[i][j] = S[i][j - 1] + M[i][j - 1];
+
+
+        int ans = M[0][0], dp[] = new int[100];
+
+        for (int i = 0; i < N; ++i) {
+            for (int j = i; j < N; ++j) {
+                dp[0] = S[0][j + 1] - S[0][i];
+                ans = Math.max(ans, dp[0]);
+
+                for (int k = 1; k < N; ++k) {
+                    int aux = S[k][j + 1] - S[k][i];
+                    dp[k] = aux + Math.max(0, dp[k - 1]);
+                    ans = Math.max(ans, dp[k]);
+                }
+            }
+        }
+
         println(ans);
+
+    }
+
+    public static int[] kadane(int[] a) {
+        //result[0] == maxSum, result[1] == start, result[2] == end;
+        int[] result = new int[]{Integer.MIN_VALUE, 0, -1};
+        int currentSum = 0;
+        int localStart = 0;
+
+        for (int i = 0; i < a.length; i++) {
+            currentSum += a[i];
+            if (currentSum < 0) {
+                currentSum = 0;
+                localStart = i + 1;
+            } else if (currentSum > result[0]) {
+                result[0] = currentSum;
+                result[1] = localStart;
+                result[2] = i;
+            }
+        }
+
+        //all numbers in a are negative
+        if (result[2] == -1) {
+            result[0] = 0;
+            for (int i = 0; i < a.length; i++) {
+                if (a[i] > result[0]) {
+                    result[0] = a[i];
+                    result[1] = i;
+                    result[2] = i;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * To find and print maxSum, (left, top),(right, bottom)
+     */
+    public static int findMaxSubMatrix(int[][] a) {
+        int cols = a[0].length;
+        int rows = a.length;
+        int[] currentResult;
+        int maxSum = Integer.MIN_VALUE;
+        int left = 0;
+        int top = 0;
+        int right = 0;
+        int bottom = 0;
+
+        for (int leftCol = 0; leftCol < cols; leftCol++) {
+            int[] tmp = new int[rows];
+
+            for (int rightCol = leftCol; rightCol < cols; rightCol++) {
+
+                for (int i = 0; i < rows; i++) {
+                    tmp[i] += a[i][rightCol];
+                }
+                currentResult = kadane(tmp);
+                if (currentResult[0] > maxSum) {
+                    maxSum = currentResult[0];
+                    left = leftCol;
+                    top = currentResult[1];
+                    right = rightCol;
+                    bottom = currentResult[2];
+                }
+            }
+        }
+//        System.out.println("MaxSum: " + maxSum +
+//                ", range: [(" + left + ", " + top +
+//                ")(" + right + ", " + bottom + ")]");
+        return maxSum;
     }
 
     private void solveAll() {
@@ -182,60 +276,6 @@ public class Main223538cb {
             }
             println();
         }
-    }
-
-    public static double max(double req, double... opt) {
-        if(opt.length == 0) return req;
-        double max = req;
-        for (double value : opt) max = Math.max(max, value);
-        return max;
-    }
-
-    public static double min(double req, double... opt) {
-        if(opt.length == 0) return req;
-        double min = req;
-        for (double value : opt) min = Math.min(min, value);
-        return min;
-    }
-
-    public static double sum(double... a) {
-        return Arrays.stream(a).sum();
-    }
-
-    public static int max(int req, int... opt) {
-        if(opt.length == 0) return req;
-        int max = req;
-        for (int value : opt) max = Math.max(max, value);
-        return max;
-    }
-
-    public static int min(int req, int... opt) {
-        if(opt.length == 0) return req;
-        int min = req;
-        for (int value : opt) min = Math.min(min, value);
-        return min;
-    }
-
-    public static int sum(int... a) {
-        return Arrays.stream(a).sum();
-    }
-
-    public static long max(long req, long... opt) {
-        if(opt.length == 0) return req;
-        long max = req;
-        for (long value : opt) max = Math.max(max, value);
-        return max;
-    }
-
-    public static long min(long req, long... opt) {
-        if(opt.length == 0) return req;
-        long min = req;
-        for (long value : opt) min = Math.min(min, value);
-        return min;
-    }
-
-    public static long sum(long... a) {
-        return Arrays.stream(a).sum();
     }
 
 
