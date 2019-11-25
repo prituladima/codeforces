@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Random;
 
+import static java.lang.Math.max;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
@@ -22,15 +23,49 @@ public class Main223538cb {
     private static final boolean MULTI_TEST = false;
 
     private void solve() {
-        char[] s = nextToken().toCharArray();
         int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
+        //int[][] a = nextIntMatrix(n, n);
+        //memory optimized solution
+        int[][] prefSum = new int[n][n];
 
-        int ans = -1;
-        println(ans);
+        //1. calculate pref sum for each col
+        for (int col = 0; col < n; col++) {
+            prefSum[0][col] = nextInt();
+            for (int row = 1; row < n; row++) {
+                prefSum[row][col] = nextInt() + prefSum[row - 1][col];
+            }
+        }
+
+        int maxAns = Integer.MIN_VALUE;
+
+        //2. Lets iterate over all matrices with width = n
+        //time complexity O(n^2)
+        for (int left = 0; left < n; left++) {
+            for (int right = left; right < n; right++) {
+
+                int curSum = 0;
+                int localMaxAns = prefSum[right][0] - (left > 0 ? prefSum[left - 1][0] : 0);
+
+                //3. for current matrix upper_bound = left, lower_bound = right
+                //time complexity O(n)
+                for (int i = 0; i < n; i++) {
+                    int value = prefSum[right][i] - (left > 0 ? prefSum[left - 1][i] : 0);
+
+                    curSum += value;
+                    localMaxAns = max(localMaxAns, curSum);
+                    curSum = max(curSum, 0);
+
+                }
+
+                maxAns = max(maxAns, localMaxAns);
+
+            }
+        }
+
+
+        println(maxAns);
     }
+
 
     private void solveAll() {
         int t = MULTI_TEST ? nextInt() : 1;
