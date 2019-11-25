@@ -1,10 +1,9 @@
 package com.prituladima.codeforce.contest;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.NoSuchElementException;
-import java.util.Random;
+import java.util.*;
 
+import static java.lang.StrictMath.min;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
@@ -174,6 +173,11 @@ public class Main223538cb {
 
     private boolean isValidIndex(int ind, int n) {
         return 0 <= ind && ind < n;
+    }
+
+    private void debug(Object o) {
+        if (ONLINE_JUDGE) return;
+        println(o);
     }
 
     private void debugMatrix(int[][] matrix) {
