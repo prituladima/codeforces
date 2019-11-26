@@ -1,4 +1,4 @@
-package com.prituladima.codeforce.contest;
+//package com.prituladima.timus;
 
 import java.io.*;
 import java.util.*;
@@ -7,7 +7,10 @@ import static java.lang.StrictMath.min;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-public class Main223538cb {
+//todo To be tested
+//todo return stringtokenizer
+//todo probably remove StringBuilder
+public class Task2002 {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -17,15 +20,67 @@ public class Main223538cb {
     private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
 
-    private void solve() {
-        char[] s = nextToken().toCharArray();
-        int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
+    String s = "6\n" +
+            "register vasya 12345\n" +
+            "login vasya 1234\n" +
+            "login vasya 12345\n" +
+            "login anakin C-3PO\n" +
+            "logout vasya\n" +
+            "logout vasya";
 
-        int ans = -1;
-        println(ans);
+    private void solve() {
+
+        Set<String> registered = new HashSet<>();
+        HashMap<String, String> nameToPassword = new HashMap<>();
+        Set<String> logined = new HashSet<>();
+        Set<String> logout = new HashSet<>();
+
+        int n = nextInt();
+        while (n-- > 0) {
+            String com = nextToken();
+            if ("register".equals(com)) {
+                String name = nextToken();
+                String password = nextToken();
+                if (registered.contains(name)) {
+                    println("fail: user already exists");
+                } else {
+                    registered.add(name);
+                    nameToPassword.put(name, password);
+                    println("success: new user added");
+                }
+
+            } else if ("login".equals(com)) {
+                String name = nextToken();
+                String password = nextToken();
+
+                if (!registered.contains(name)) {
+                    println("fail: no such user");
+                } else if (!password.equals(nameToPassword.getOrDefault(name, "")))
+                    println("fail: incorrect password");
+                else if (logined.contains(name)) {
+                    println("fail: already logged in");
+                } else {
+                    logined.add(name);
+                    println("success: user logged in");
+                }
+
+            } else if ("logout".equals(com)) {
+                String name = nextToken();
+                if (!registered.contains(name)) {
+                    println("fail: no such user");
+                } else if (!logined.contains(name)) {
+                    println("fail: already logged out");
+                } else {
+                    logined.remove(name);
+                    println("success: user logged out");
+                }
+
+
+            } else {
+                throw new IllegalStateException();
+            }
+        }
+
     }
 
     private void solveAll() {
@@ -36,12 +91,13 @@ public class Main223538cb {
     }
 
     public static void main(String[] args) {
-        new Main223538cb().run();
+        new Task2002().run();
     }
 
     private BufferedReader reader;
     private PrintWriter writer;
     private StringTokenizer tokenizer;
+    private StringBuilder stringBuilder = new StringBuilder();
 
     private void run() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -49,6 +105,7 @@ public class Main223538cb {
             this.writer = writer;
             this.reader = reader;
             solveAll();
+            this.writer.print(stringBuilder);
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
@@ -129,23 +186,37 @@ public class Main223538cb {
      * Output
      */
     private void printf(String format, Object... args) {
-        writer.printf(format, args);
+        stringBuilder.append(String.format(format, args));
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void print(Object o) {
-        writer.print(o);
+        stringBuilder.append(o);
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void println() {
-        writer.println();
+        stringBuilder.append('\n');
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void println(Object o) {
-        writer.println(o);
+        stringBuilder.append(o).append('\n');
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void flush() {
+        writer.print(stringBuilder);
         writer.flush();
+        stringBuilder = new StringBuilder();
     }
 
     /**

@@ -99,18 +99,6 @@ public class Geeks {
         return rem;
     }
 
-    public static Map<Integer, Integer> multiSet(int[] arr) {
-        Map<Integer, Integer> co = new HashMap<>();
-        for (int i : arr) co.merge(i, 1, Integer::sum);
-        return co;
-    }
-
-    public static Map<Long, Integer> multiSet(long[] arr) {
-        Map<Long, Integer> co = new HashMap<>();
-        for (long i : arr) co.merge(i, 1, Integer::sum);
-        return co;
-    }
-
     public static String toBitString(int number, int len) {
         String bits = Integer.toString(number, 2);
         StringBuilder sb = new StringBuilder();

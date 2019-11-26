@@ -1,14 +1,14 @@
-package com.prituladima.codeforce.contest;
+package com.prituladima.timus;
 
 import java.io.*;
-import java.util.*;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Random;
 
-import static java.lang.StrictMath.min;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-public class Main223538cb {
-
+public class Task1635 {
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
     private static final int INF = (int) 1e7 + 7;
@@ -19,13 +19,16 @@ public class Main223538cb {
 
     private void solve() {
         char[] s = nextToken().toCharArray();
-        int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
+        //Find the answer
+        int[][] ans = new int[4001][4001];
 
-        int ans = -1;
-        println(ans);
+
+
+        //Constructive answer
+        // TODO: 11/26/2019
+
+
+
     }
 
     private void solveAll() {
@@ -36,19 +39,20 @@ public class Main223538cb {
     }
 
     public static void main(String[] args) {
-        new Main223538cb().run();
+        new Task1635().run();
     }
 
-    private BufferedReader reader;
     private PrintWriter writer;
-    private StringTokenizer tokenizer;
+    private StreamTokenizer tokenizer;
+    private StringBuilder stringBuilder = new StringBuilder();
 
     private void run() {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
              PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)))) {
             this.writer = writer;
-            this.reader = reader;
+            this.tokenizer = new StreamTokenizer(reader);
             solveAll();
+            this.writer.print(stringBuilder);
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
@@ -59,26 +63,27 @@ public class Main223538cb {
      * Base types: Strings, int, long, double
      */
     private String nextToken() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-            try {
-                tokenizer = new StringTokenizer(reader.readLine());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            tokenizer.nextToken();
+            return tokenizer.sval;
+        } catch (IOException e) {
+            throw new NoSuchElementException();
         }
-        return tokenizer.nextToken();
     }
 
     private int nextInt() {
-        return Integer.parseInt(nextToken());
+        nextToken();
+        return (int) tokenizer.nval;
     }
 
     private long nextLong() {
-        return Long.parseLong(nextToken());
+        nextToken();
+        return (long) tokenizer.nval;
     }
 
     private double nextDouble() {
-        return Double.parseDouble(nextToken());
+        nextToken();
+        return tokenizer.nval;
     }
 
 
@@ -129,23 +134,37 @@ public class Main223538cb {
      * Output
      */
     private void printf(String format, Object... args) {
-        writer.printf(format, args);
+        stringBuilder.append(String.format(format, args));
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void print(Object o) {
-        writer.print(o);
+        stringBuilder.append(o);
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void println() {
-        writer.println();
+        stringBuilder.append('\n');
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void println(Object o) {
-        writer.println(o);
+        stringBuilder.append(o).append('\n');
+        if (stringBuilder.length() > 1000) {
+            flush();
+        }
     }
 
     private void flush() {
+        writer.print(stringBuilder);
         writer.flush();
+        stringBuilder = new StringBuilder();
     }
 
     /**
@@ -154,11 +173,6 @@ public class Main223538cb {
 
     private boolean isValidIndex(int ind, int n) {
         return 0 <= ind && ind < n;
-    }
-
-    private void debug(Object o) {
-        if (ONLINE_JUDGE) return;
-        println(o);
     }
 
     private void debugMatrix(int[][] matrix) {
@@ -249,23 +263,4 @@ public class Main223538cb {
             array[i] = buf;
         }
     }
-
-    public static Map<Double, Integer> multiSet(double[] arr) {
-        Map<Double, Integer> multiSet = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) multiSet.put(arr[i], multiSet.getOrDefault(arr[i], 0) + 1);
-        return multiSet;
-    }
-
-    public static Map<Integer, Integer> multiSet(int[] arr) {
-        Map<Integer, Integer> multiSet = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) multiSet.put(arr[i], multiSet.getOrDefault(arr[i], 0) + 1);
-        return multiSet;
-    }
-
-    public static Map<Long, Integer> multiSet(long[] arr) {
-        Map<Long, Integer> multiSet = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) multiSet.put(arr[i], multiSet.getOrDefault(arr[i], 0) + 1);
-        return multiSet;
-    }
-
 }
