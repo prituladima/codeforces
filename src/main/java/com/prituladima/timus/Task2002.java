@@ -1,4 +1,4 @@
-//package com.prituladima.timus;
+package com.prituladima.timus;
 
 import java.io.*;
 import java.util.*;

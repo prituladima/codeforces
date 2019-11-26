@@ -17,18 +17,177 @@ public class Task1635 {
     private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
 
+    class Manacher {
+        private int[] p;  // p[i] = length of longest palindromic substring of t, centered at i
+        private String s;  // original string
+        private char[] t;  // transformed string
+
+        public Manacher(String s) {
+            this.s = s;
+            preprocess();
+            p = new int[t.length];
+
+            int center = 0, right = 0;
+            for (int i = 1; i < t.length - 1; i++) {
+                int mirror = 2 * center - i;
+
+                if (right > i)
+                    p[i] = Math.min(right - i, p[mirror]);
+
+                // attempt to expand palindrome centered at i
+                while (t[i + (1 + p[i])] == t[i - (1 + p[i])])
+                    p[i]++;
+
+                // if palindrome centered at i expands past right,
+                // adjust center based on expanded palindrome.
+                if (i + p[i] > right) {
+                    center = i;
+                    right = i + p[i];
+                }
+            }
+
+        }
+
+        // Transform s into t.
+        // For example, if s = "abba", then t = "$#a#b#b#a#@"
+        // the # are interleaved to avoid even/odd-length palindromes uniformly
+        // $ and @ are prepended and appended to each end to avoid bounds checking
+        private void preprocess() {
+            t = new char[s.length() * 2 + 3];
+            t[0] = '$';
+            t[s.length() * 2 + 2] = '@';
+            for (int i = 0; i < s.length(); i++) {
+                t[2 * i + 1] = '#';
+                t[2 * i + 2] = s.charAt(i);
+            }
+            t[s.length() * 2 + 1] = '#';
+        }
+
+        // longest palindromic substring
+        public String longestPalindromicSubstring() {
+            int length = 0;   // length of longest palindromic substring
+            int center = 0;   // center of longest palindromic substring
+            for (int i = 1; i < p.length - 1; i++) {
+                if (p[i] > length) {
+                    length = p[i];
+                    center = i;
+                }
+            }
+            return s.substring((center - 1 - length) / 2, (center - 1 + length) / 2);
+        }
+
+        // longest palindromic substring centered at index i/2
+        public String longestPalindromicSubstring(int i) {
+            int length = p[i + 2];
+            int center = i + 2;
+            return s.substring((center - 1 - length) / 2, (center - 1 + length) / 2);
+        }
+
+        //len must be <= with palindrome len
+        public boolean isPalindrome(int l, int r) {
+            if (r < l) {
+                return isPalindrome(r, l);
+            }
+
+            return r - l + 1 <= p[l + r + 2];
+        }
+    }
+
     private void solve() {
         char[] s = nextToken().toCharArray();
+
+        int N = s.length;
+        int[][] ans = new int[N][N];
+
+        final Manacher manacher = new Manacher(String.valueOf(s));
+        for (int L = N - 1; L >= 0; L--) {
+            for (int R = L; R < N; R++) {
+                if (manacher.isPalindrome(L, R)) {
+                    ans[L][R] = 1;
+                } else {
+                    ans[L][R] = ans[L][R - 1] + ans[R][R];
+                }
+            }
+            ans[L][N - 1] = Integer.MAX_VALUE;
+            if (manacher.isPalindrome(L, N - 1)) {
+                ans[L][N - 1] = 1;
+                continue;
+            }
+            for (int R = L; R + 1 <= N - 1; R++) {
+                ans[L][N - 1] = Math.min(ans[L][N - 1], ans[L][R] + ans[R + 1][N - 1]);
+            }
+        }
+        int finalAns = ans[0][N - 1];
+        println(finalAns);
+        finalAns--;
+        for (int i = 0; i < N; i++) {
+            if (ans[i][N - 1] == finalAns) {
+                print(' ');
+                finalAns--;
+            }
+            print(s[i]);
+        }
+
+
+        //zzzqxx
+        //n = 6
+        //ans[5][5] = 1;
+        //ans[4][5]
+
+
+        //adfgh asdsa fnkjnsdvjfks
+
+/**
+ //1. [L..R] palindrome ? O(1)
+ //2. iterate over all pref that palindromes
+ // i - end pref pal
+ // ans[1][1] = 1
+ // ans[1][2] = ans[1][1] + ans[2][2] or [1..2] palindrome -> 1
+ // ans[1][3] = ans[1][2] + ans[3][3] or [1..3] pal -> 1 or ans[1][1] + ans[2][3]
+
+ // L <= R
+ // ans[1][R] = if([1..R] is ok) -> 1
+ //             else
+ // for(int L = 1; L < R; L++)
+ //  ans[1][R] = min(ans[1][L], ans[L+1][R])
+
+ ans[1][n]
+
+ ans[n][n] = 1
+
+ 1..n ans[i][i] = 1
+
+ ans[n-1][n] = ans[n][n] + ans[n-1][n-1] or pal
+ ans[n-2][n] = ans[n-1][n] + ans[n-2][n-2] or pal or ans[n][n] + ans[n-2][n-1]
+
+
+
+
+ // ans[1][j] = min(1 + ans[i + 1][j])
+ // ans[n-1][n-1] = 1
+
+ ans[1][n] =
+
+
+
+ */
+
+
         //Find the answer
-        int[][] ans = new int[4001][4001];
-
-
+//        int[] ans = new int[4001];
+//        int[] cur = new int[4001];
+        //O(n^2) run
+        //O(n)
+//        for (int i = 1; i < s.length; i++) {
+//
+//        }
 
         //Constructive answer
         // TODO: 11/26/2019
 
+        //sasdjknfskjlanf
 
-
+        //[i..n)
     }
 
     private void solveAll() {
