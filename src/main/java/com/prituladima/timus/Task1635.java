@@ -128,6 +128,9 @@ public class Task1635 {
             print(s[i]);
         }
 
+        //Fails for "dfffdd"
+        //outputs is
+        //dfff dd
 
         //zzzqxx
         //n = 6
