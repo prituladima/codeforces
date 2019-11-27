@@ -97,36 +97,54 @@ public class Task1635 {
         char[] s = nextToken().toCharArray();
 
         int N = s.length;
-        int[][] ans = new int[N][N];
 
-        final Manacher manacher = new Manacher(String.valueOf(s));
+        int[] startIndexToAnsForSuffix = new int[N];// TODO: 11/27/2019 make memory optimization
+//        int[] startIndexToAnsForPref = new int[N];
+
+        final Manacher manacher = new Manacher(String.valueOf(s));//Should be treated as reliable data structure
         for (int L = N - 1; L >= 0; L--) {
+
+            int[] curStartIndexToAnsForPref = new int[N];
+
             for (int R = L; R < N; R++) {
+
+                int prefInd = R - L;
+
                 if (manacher.isPalindrome(L, R)) {
-                    ans[L][R] = 1;
+                    curStartIndexToAnsForPref[prefInd] = 1;
                 } else {
-                    ans[L][R] = ans[L][R - 1] + ans[R][R];
+                    curStartIndexToAnsForPref[prefInd] = 1 + curStartIndexToAnsForPref[prefInd - 1];
+                }
+
+
+            }
+
+            startIndexToAnsForSuffix[L] = Integer.MAX_VALUE;
+            if (manacher.isPalindrome(L, N - 1)) {
+                startIndexToAnsForSuffix[L] = 1;
+            } else {
+                for (int R = L; R + 1 < N; R++) {
+                    int prefInd = R - L;
+                    startIndexToAnsForSuffix[L] = Math.min(startIndexToAnsForSuffix[L], curStartIndexToAnsForPref[prefInd] + startIndexToAnsForSuffix[R + 1]);
                 }
             }
-            ans[L][N - 1] = Integer.MAX_VALUE;
-            if (manacher.isPalindrome(L, N - 1)) {
-                ans[L][N - 1] = 1;
-                continue;
-            }
-            for (int R = L; R + 1 <= N - 1; R++) {
-                ans[L][N - 1] = Math.min(ans[L][N - 1], ans[L][R] + ans[R + 1][N - 1]);
-            }
+
+//            startIndexToAnsForPref = curStartIndexToAnsForPref;
         }
-        int finalAns = ans[0][N - 1];
+        int finalAns = startIndexToAnsForSuffix[0];
         println(finalAns);
         finalAns--;
-        for (int i = 0; i < N; i++) {
-            if (ans[i][N - 1] == finalAns) {
+        print(s[0]);
+        int lastStart = 0;
+        for (int i = 1; i < N; i++) {
+            if (startIndexToAnsForSuffix[i] == finalAns && manacher.isPalindrome(lastStart, i - 1)) {
                 print(' ');
                 finalAns--;
+                lastStart = i;
             }
             print(s[i]);
         }
+        // TODO: 11/27/2019 Find error
 
         //Fails for "dfffdd"
         //outputs is

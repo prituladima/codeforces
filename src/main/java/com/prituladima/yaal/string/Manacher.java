@@ -1,5 +1,7 @@
 package com.prituladima.yaal.string;
 
+// TODO: 11/27/2019 Make online implementation 
+// TODO: 11/27/2019 Probably https://codeforces.com/blog/entry/12143
 public class Manacher {
     private int[] p;  // p[i] = length of longest palindromic substring of t, centered at i
     private String s;  // original string
