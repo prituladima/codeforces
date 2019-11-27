@@ -1,4 +1,4 @@
-package com.prituladima.timus;
+//package com.prituladima.timus;
 
 import java.io.*;
 import java.util.Arrays;
@@ -98,48 +98,56 @@ public class Task1635 {
 
         int N = s.length;
 
-        int[] startIndexToAnsForSuffix = new int[N];// TODO: 11/27/2019 make memory optimization
-//        int[] startIndexToAnsForPref = new int[N];
+        //Answer will be calculated for all prefixes
+        //suffix[N - 1] = will always be 1
+        //suffix[L] = min(prefix[R - L], suffix[R + 1]) where L is in (N, 0]
+        //suffix[0] = will be the final answer
+        int[] suffix = new int[N];// TODO: 11/27/2019 make memory optimization
 
         final Manacher manacher = new Manacher(String.valueOf(s));//Should be treated as reliable data structure
+        //
         for (int L = N - 1; L >= 0; L--) {
 
-            int[] curStartIndexToAnsForPref = new int[N];
+            int[] prefix = new int[N];
 
             for (int R = L; R < N; R++) {
 
                 int prefInd = R - L;
 
                 if (manacher.isPalindrome(L, R)) {
-                    curStartIndexToAnsForPref[prefInd] = 1;
+                    prefix[prefInd] = 1;
                 } else {
-                    curStartIndexToAnsForPref[prefInd] = 1 + curStartIndexToAnsForPref[prefInd - 1];
+                    //prefix is calculated from prev calculated pref
+                    prefix[prefInd] = prefix[prefInd - 1] + 1;
                 }
 
 
             }
 
-            startIndexToAnsForSuffix[L] = Integer.MAX_VALUE;
+            suffix[L] = Integer.MAX_VALUE;
             if (manacher.isPalindrome(L, N - 1)) {
-                startIndexToAnsForSuffix[L] = 1;
+                suffix[L] = 1;
             } else {
                 for (int R = L; R + 1 < N; R++) {
                     int prefInd = R - L;
-                    startIndexToAnsForSuffix[L] = Math.min(startIndexToAnsForSuffix[L], curStartIndexToAnsForPref[prefInd] + startIndexToAnsForSuffix[R + 1]);
+                    //BIGGER SUFFIX WITH LEN IS SUM OF JUST CALCULATED PREFIX WITH LEN A + SMALLER SUFFIX WITH LEN B
+                    //WHERE LEN = A + B
+                    suffix[L] = Math.min(suffix[L], prefix[prefInd] + suffix[R + 1]);
                 }
             }
 
-//            startIndexToAnsForPref = curStartIndexToAnsForPref;
+//            startIndexToAnsForPref = prefix;
         }
-        int finalAns = startIndexToAnsForSuffix[0];
-        println(finalAns);
-        finalAns--;
+        int amountOfPalindromes = suffix[0];
+        println(amountOfPalindromes);
+
+        amountOfPalindromes--;
         print(s[0]);
         int lastStart = 0;
         for (int i = 1; i < N; i++) {
-            if (startIndexToAnsForSuffix[i] == finalAns && manacher.isPalindrome(lastStart, i - 1)) {
+            if (suffix[i] == amountOfPalindromes && manacher.isPalindrome(lastStart, i - 1)) {
                 print(' ');
-                finalAns--;
+                amountOfPalindromes--;
                 lastStart = i;
             }
             print(s[i]);
