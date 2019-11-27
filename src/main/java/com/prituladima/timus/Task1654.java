@@ -1,13 +1,12 @@
-package com.prituladima.codeforce.contest;
+package com.prituladima.timus;
 
 import java.io.*;
 import java.util.*;
 
-import static java.lang.StrictMath.min;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-public class Main223538cb {
+public class Task1654 {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -17,15 +16,114 @@ public class Main223538cb {
     private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
 
-    private void solve() {
-        char[] s = nextToken().toCharArray();
-        int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
+    class Manacher {
+        private int[] p;  // p[i] = length of longest palindromic substring of t, centered at i
+        private String s;  // original string
+        private char[] t;  // transformed string
 
-        int ans = -1;
-        println(ans);
+        public Manacher(String s) {
+            this.s = s;
+            preprocess();
+            p = new int[t.length];
+
+            int center = 0, right = 0;
+            for (int i = 1; i < t.length - 1; i++) {
+                int mirror = 2 * center - i;
+
+                if (right > i)
+                    p[i] = Math.min(right - i, p[mirror]);
+
+                // attempt to expand palindrome centered at i
+                while (t[i + (1 + p[i])] == t[i - (1 + p[i])])
+                    p[i]++;
+
+                // if palindrome centered at i expands past right,
+                // adjust center based on expanded palindrome.
+                if (i + p[i] > right) {
+                    center = i;
+                    right = i + p[i];
+                }
+            }
+
+        }
+
+        // Transform s into t.
+        // For example, if s = "abba", then t = "$#a#b#b#a#@"
+        // the # are interleaved to avoid even/odd-length palindromes uniformly
+        // $ and @ are prepended and appended to each end to avoid bounds checking
+        private void preprocess() {
+            t = new char[s.length() * 2 + 3];
+            t[0] = '$';
+            t[s.length() * 2 + 2] = '@';
+            for (int i = 0; i < s.length(); i++) {
+                t[2 * i + 1] = '#';
+                t[2 * i + 2] = s.charAt(i);
+            }
+            t[s.length() * 2 + 1] = '#';
+        }
+
+        // longest palindromic substring
+        public String longestPalindromicSubstring() {
+            int length = 0;   // length of longest palindromic substring
+            int center = 0;   // center of longest palindromic substring
+            for (int i = 1; i < p.length - 1; i++) {
+                if (p[i] > length) {
+                    length = p[i];
+                    center = i;
+                }
+            }
+            return s.substring((center - 1 - length) / 2, (center - 1 + length) / 2);
+        }
+
+        // longest palindromic substring centered at index i/2
+        public String longestPalindromicSubstring(int i) {
+            int length = p[i + 2];
+            int center = i + 2;
+            return s.substring((center - 1 - length) / 2, (center - 1 + length) / 2);
+        }
+
+        //len must be <= with palindrome len
+        public boolean isPalindrome(int l, int r) {
+            if (r < l) {
+                return isPalindrome(r, l);
+            }
+
+            return r - l + 1 <= p[l + r + 2];
+        }
+
+    }
+
+    private void solve() {
+        // TODO: 11/27/2019 SOLVE TLE
+        String str = nextToken();
+//        char[] s = str.toCharArray();
+        while (true) {
+            Manacher manacher = new Manacher(str);
+            int maxEven = -1;
+            int maxLen = Integer.MIN_VALUE;
+            for (int i = 0; i < manacher.p.length; i++) {
+                if (manacher.p[i] % 2 == 0 && manacher.p[i] > 0) {
+                    if (maxLen < manacher.p[i]) {
+                        maxLen = manacher.p[i];
+                        maxEven = i;
+                    }
+                }
+            }
+            if (maxEven == -1) {
+                println(str);
+                break;
+            }
+            String trimmed = str.replace(manacher.longestPalindromicSubstring(maxEven - 2), "");
+
+            debug(trimmed);
+//            if(trimmed.length() == str.length())
+                str = trimmed;
+//            else {
+//                println(trimmed);
+//                break;
+//            }
+
+        }
     }
 
     private void solveAll() {
@@ -36,7 +134,7 @@ public class Main223538cb {
     }
 
     public static void main(String[] args) {
-        new Main223538cb().run();
+        new Task1654().run();
     }
 
     private BufferedReader reader;
@@ -266,34 +364,6 @@ public class Main223538cb {
         Map<Long, Integer> multiSet = new HashMap<>();
         for (int i = 0; i < arr.length; i++) multiSet.put(arr[i], multiSet.getOrDefault(arr[i], 0) + 1);
         return multiSet;
-    }
-
-    public static int[] calculatePrefixSum(int[] a) {
-        int[] pref = new int[a.length];
-        pref[0] = a[0];
-        for (int i = 1; i < a.length; i++) pref[i] = pref[i - 1] + a[i];
-        return pref;
-    }
-
-    public static int[] calculateSuffixSum(int[] a) {
-        int[] suff = new int[a.length];
-        suff[a.length - 1] = a[a.length - 1];
-        for (int i = a.length - 2; i >= 0; i--) suff[i] = suff[i + 1] + a[i];
-        return suff;
-    }
-
-    public static long[] calculatePrefixSum(long[] a) {
-        long[] pref = new long[a.length];
-        pref[0] = a[0];
-        for (int i = 1; i < a.length; i++) pref[i] = pref[i - 1] + a[i];
-        return pref;
-    }
-
-    public static long[] calculateSuffixSum(long[] a) {
-        long[] suff = new long[a.length];
-        suff[a.length - 1] = a[a.length - 1];
-        for (int i = a.length - 2; i >= 0; i--) suff[i] = suff[i + 1] + a[i];
-        return suff;
     }
 
 }

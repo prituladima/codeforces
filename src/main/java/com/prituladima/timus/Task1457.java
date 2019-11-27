@@ -1,13 +1,12 @@
-package com.prituladima.codeforce.contest;
+package com.prituladima.timus;
 
 import java.io.*;
 import java.util.*;
 
-import static java.lang.StrictMath.min;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-public class Main223538cb {
+public class Task1457 {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -18,14 +17,93 @@ public class Main223538cb {
     private static final boolean MULTI_TEST = false;
 
     private void solve() {
-        char[] s = nextToken().toCharArray();
-        int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
 
-        int ans = -1;
-        println(ans);
+        // TODO: 11/27/2019
+        int n = nextInt();
+        int[] a = nextIntArray(n);
+        safeSort(a);
+
+        int[] suffix = calculateSuffixSum(a);
+        int[] suffix2 = new int[a.length];
+
+        for (int i = a.length - 1; i >= 0; i--) suffix2[i] = suffix[i] * suffix[i];
+
+        int[] prefix = calculatePrefixSum(a);
+        int[] prefix2 = new int[a.length];
+        for (int i = 0; i < a.length; i++) prefix2[i] = prefix[i] * prefix[i];
+
+
+        double minAns = a[0];
+        for (int i = 1; i < n; i++) {
+
+            //Solve for range a[i - 1] to a[i]
+            if (a[i - 1] == a[i]) {
+                minAns = Math.min(minAns, a[i]);
+            } else {
+
+
+
+                //Check answer for a[i - 1]
+//                double leftBound = 0;
+//                if (isValidIndex(i - 2, n)) {
+//                    leftBound += prefix2[i - 2];
+//                }
+//                leftBound += suffix2[i];
+
+                //Check answer for a[i]
+//                double rightBound = 0;
+//                if (isValidIndex(i + 1, n)) {
+//                    leftBound += suffix2[i + 1];
+//                }
+//                leftBound += prefix2[i - 1];
+
+                //Let's suppose that function is monotonic
+
+
+
+
+
+            }
+
+
+        }
+
+        printf("%.6f\n", minAns);
+
+
+        if (true) return;
+
+
+        int max = maxn(a[0], a);
+        double l = -1;
+        double r = (double) max + 1;
+        double e = 0.0000001;
+
+        double sum0 = 0;
+        for (int i = 0; i < n; i++) {
+            double k = Math.abs(a[i]);
+            sum0 += k * k;
+        }
+
+
+        while (r - l > e) {
+            double m = l + (r - l) / 2;
+            double sum = 0;
+            for (int i = 0; i < n; i++) {
+                double k = Math.abs(a[i] - m);
+                sum += k * k;
+            }
+            if (sum0 > sum) {
+                sum0 = sum;
+                l = m;
+                debug(m);
+            } else {
+                r = m;
+            }
+        }
+
+//        double ans = -1;
+        printf("%.6f\n", l);
     }
 
     private void solveAll() {
@@ -36,7 +114,7 @@ public class Main223538cb {
     }
 
     public static void main(String[] args) {
-        new Main223538cb().run();
+        new Task1457().run();
     }
 
     private BufferedReader reader;
@@ -295,5 +373,6 @@ public class Main223538cb {
         for (int i = a.length - 2; i >= 0; i--) suff[i] = suff[i + 1] + a[i];
         return suff;
     }
+
 
 }
