@@ -6,7 +6,7 @@ import java.util.*;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-public class Task1131 {
+public class Task2005 {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -17,35 +17,67 @@ public class Task1131 {
     private static final boolean MULTI_TEST = false;
 
     private void solve() {
-//        long canUse = 1;
+        int[][] dist = nextIntMatrix(5, 5);
 
-        long lastUsed = 1;
 
-        long reminder = nextInt();
+        int minAns = Integer.MAX_VALUE;
+        int[] optimalConf = null;
 
-        if(reminder == 1){
-            println(0);
-            return;
+        int[][] conf = new int[][]{
+                {1, 3, 2, 4, 5},
+                {1, 3, 4, 2, 5},
+                {1, 2, 3, 4, 5},
+                {1, 4, 3, 2, 5},
+        };
+
+
+        for (int[] curConf : conf) {
+
+            int localAns = 0;
+
+            for (int i = 1; i < curConf.length; i++) {
+
+                localAns += dist[curConf[i - 1] - 1][curConf[i] - 1];
+
+            }
+
+            debug(localAns);
+            debug(curConf);
+
+
+            if (localAns < minAns) {
+                minAns = localAns;
+                optimalConf = curConf;
+            }
+
+
         }
 
-        reminder -= 2;
+//        for(int[] curConf: conf){
+//
+//            int localAns = 0;
+//
+//            for(int i = 1; i < curConf.length; i++){
+//
+//                localAns += dist[i - 1][i];
+//
+//            }
+//
+//            if(localAns == minAns){
+//
+//                debug(curConf);
+//
+//            }
+//
+//
+//        }
 
-        long k = nextInt();
-
-        long ans = 0;
-
-        while (2 * lastUsed < k && 0 < reminder) {
-            lastUsed *= 2;
-            reminder = Math.max(0, reminder - lastUsed);
-            ans++;
+        printSeparator();
+        println(minAns);
+        Objects.requireNonNull(optimalConf);
+        for (int c : optimalConf) {
+            printf("%d ", c);
         }
-
-        if(2*lastUsed >= k){
-//            debug("+ " + ans);
-            ans += (reminder + k - 1)/k;
-        }
-
-        println(ans + 1);
     }
 
     private void solveAll() {
@@ -56,7 +88,7 @@ public class Task1131 {
     }
 
     public static void main(String[] args) {
-        new Task1131().run();
+        new Task2005().run();
     }
 
     private BufferedReader reader;
@@ -176,12 +208,26 @@ public class Task1131 {
         return 0 <= ind && ind < n;
     }
 
+    private void printSeparator() {
+        if (ONLINE_JUDGE) return;
+        println("--------------Answer-----------------");
+    }
+
     private void debug(Object o) {
         if (ONLINE_JUDGE) return;
         println(o);
     }
 
-    private void debugMatrix(int[][] matrix) {
+    private void debug(int[] array) {
+        if (ONLINE_JUDGE) return;
+        for (int i = 0; i < array.length; i++) {
+            print(array[i]);
+            print(' ');
+        }
+        println();
+    }
+
+    private void debug(int[][] matrix) {
         if (ONLINE_JUDGE) return;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {

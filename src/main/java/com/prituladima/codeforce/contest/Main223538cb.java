@@ -126,6 +126,17 @@ public class Main223538cb {
     }
 
     /**
+     * Graphs
+     */
+    private Map<Integer, Set<Integer>> buildGraph(int amountOfVertex) {
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        for (int from = 1; from <= amountOfVertex; from++) {
+            graph.putIfAbsent(from, new HashSet<>());
+        }
+        return graph;
+    }
+
+    /**
      * Output
      */
     private void printf(String format, Object... args) {
@@ -156,12 +167,26 @@ public class Main223538cb {
         return 0 <= ind && ind < n;
     }
 
+    private void printSeparator() {
+        if (ONLINE_JUDGE) return;
+        println("--------------Answer-----------------");
+    }
+
     private void debug(Object o) {
         if (ONLINE_JUDGE) return;
         println(o);
     }
 
-    private void debugMatrix(int[][] matrix) {
+    private void debug(int[] array) {
+        if (ONLINE_JUDGE) return;
+        for (int i = 0; i < array.length; i++) {
+            print(array[i]);
+            print(' ');
+        }
+        println();
+    }
+
+    private void debug(int[][] matrix) {
         if (ONLINE_JUDGE) return;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {

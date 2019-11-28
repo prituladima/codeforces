@@ -3,10 +3,11 @@ package com.prituladima.timus;
 import java.io.*;
 import java.util.*;
 
+import static java.lang.StrictMath.min;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-public class Task1131 {
+public class Task1106 {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -16,36 +17,53 @@ public class Task1131 {
     private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
 
+    boolean[] used = new boolean[110];
+
     private void solve() {
-//        long canUse = 1;
+        int n = nextInt();
+        Map<Integer, Set<Integer>> graph = prepareGraph(n);
 
-        long lastUsed = 1;
-
-        long reminder = nextInt();
-
-        if(reminder == 1){
-            println(0);
-            return;
+        for (int from = 1; from <= n; from++) {
+            int val;
+            while ((val = nextInt()) > 0) {
+                graph.get(from).add(val);
+                graph.get(val).add(from);
+            }
         }
 
-        reminder -= 2;
-
-        long k = nextInt();
-
-        long ans = 0;
-
-        while (2 * lastUsed < k && 0 < reminder) {
-            lastUsed *= 2;
-            reminder = Math.max(0, reminder - lastUsed);
-            ans++;
+        for (int from = 1; from <= n; from++) {
+            if (graph.get(from).isEmpty()) {
+                println(0);
+                return;
+            }
         }
 
-        if(2*lastUsed >= k){
-//            debug("+ " + ans);
-            ans += (reminder + k - 1)/k;
+
+        List<Integer> ans = new ArrayList<>();
+        for(int from = 1; from <= n; from++){
+            if(!used[from])
+                dfs(from, graph, 0, ans);
         }
 
-        println(ans + 1);
+        println(ans.size());
+        for(int val : ans){
+            printf("%d ", val);
+        }
+        println();
+    }
+
+    private void dfs(int from, Map<Integer, Set<Integer>> graph, int level, List<Integer> ans) {
+        used[from] = true;
+
+        if(level % 2 == 1) ans.add(from);
+
+
+        for(int to : graph.get(from)){
+            if(!used[to]){
+                dfs(to, graph, level + 1, ans);
+            }
+        }
+
     }
 
     private void solveAll() {
@@ -56,7 +74,7 @@ public class Task1131 {
     }
 
     public static void main(String[] args) {
-        new Task1131().run();
+        new Task1106().run();
     }
 
     private BufferedReader reader;
@@ -125,6 +143,13 @@ public class Task1131 {
         return range(0, size).mapToObj(i -> nextToken()).toArray(String[]::new);
     }
 
+    private Map<Integer, Set<Integer>> prepareGraph(int amountOfVertex){
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        for (int from = 1; from <= amountOfVertex; from++) {
+            graph.putIfAbsent(from, new HashSet<>());
+        }
+        return graph;
+    }
 
     /**
      * Primitives 2D arrays: char, int, long, double
