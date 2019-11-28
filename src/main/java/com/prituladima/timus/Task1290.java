@@ -1,13 +1,12 @@
-package com.prituladima.codeforce.contest;
+package com.prituladima.timus;
 
 import java.io.*;
 import java.util.*;
 
-import static java.lang.StrictMath.min;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-public class Main223538cb {
+public class Task1290 {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -18,14 +17,95 @@ public class Main223538cb {
     private static final boolean MULTI_TEST = false;
 
     private void solve() {
-        char[] s = nextToken().toCharArray();
         int n = nextInt();
-        int m = nextInt();
+//        if (n == 0) {
+//            print(0);
+//            return;
+//        }
         int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
 
-        int ans = -1;
-        println(ans);
+        safeSort(a);
+
+        int[] b = new int[26000];
+        int pointer = 0;
+
+
+        for (int value = 0; ; value++) {
+            int localAns = 0;
+
+            //Impossible bounds
+            int l = -1;
+            int r = a.length;
+            //Invariant that semi-interval (l, r] length is more than 1
+            while (r - l > 1) {
+                int m = l + (r - l) / 2;//To prevent overflow
+                if (a[m] > value)//function
+                    r = m;//Right bound is on
+                else
+                    l = m;//Left bound is off
+            }
+            //Invariant broken we now have semi-interval
+            //with length 1. (l, r] where r is the answer.
+            //We must check if this r != a.length
+            //If we were looking for specific value we must check it.
+            localAns = n - r;
+
+
+            if (localAns == 0) {
+                break;
+            } else {
+                b[pointer++] = localAns;
+            }
+        }
+//        b[0] = a.length;
+        b = Arrays.copyOf(b, pointer);
+        debug(b);
+
+        a = b;
+        n = a.length;
+        safeSort(a);
+
+        b = new int[26000];
+        pointer = 0;
+
+
+        for (int value = 0; ; value++) {
+            int localAns = 0;
+
+            //Impossible bounds
+            int l = -1;
+            int r = a.length;
+            //Invariant that semi-interval (l, r] length is more than 1
+            while (r - l > 1) {
+                int m = l + (r - l) / 2;//To prevent overflow
+                if (a[m] > value)//function
+                    r = m;//Right bound is on
+                else
+                    l = m;//Left bound is off
+            }
+            //Invariant broken we now have semi-interval
+            //with length 1. (l, r] where r is the answer.
+            //We must check if this r != a.length
+            //If we were looking for specific value we must check it.
+            localAns = n - r;
+
+
+            if (localAns == 0) {
+                break;
+            } else {
+                b[pointer++] = localAns;
+            }
+        }
+//        b[0] = a.length;;
+        b = Arrays.copyOf(b, pointer);
+        debug(b);
+
+        printSeparator();
+        for (int i = 0; i < pointer; i++) {
+            println(b[i]);
+        }
+
+
     }
 
     private void solveAll() {
@@ -36,7 +116,7 @@ public class Main223538cb {
     }
 
     public static void main(String[] args) {
-        new Main223538cb().run();
+        new Task1290().run();
     }
 
     private BufferedReader reader;

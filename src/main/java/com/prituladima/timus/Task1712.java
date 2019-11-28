@@ -1,13 +1,12 @@
-package com.prituladima.codeforce.contest;
+package com.prituladima.timus;
 
 import java.io.*;
 import java.util.*;
 
-import static java.lang.StrictMath.min;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-public class Main223538cb {
+public class Task1712 {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -18,14 +17,56 @@ public class Main223538cb {
     private static final boolean MULTI_TEST = false;
 
     private void solve() {
-        char[] s = nextToken().toCharArray();
-        int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
+        char[][] grille = new char[4][4];//rotatable
+        for(int row = 0; row < 4; row++){
+            grille[row] = nextCharArray();
+        }
+        char[][] values = new char[4][4];
+        for(int row = 0; row < 4; row++){
+            values[row] = nextCharArray();
+        }
 
-        int ans = -1;
+        StringBuilder ans = new StringBuilder();
+        for(int i = 0; i < 4; i++){
+
+            debug('\n');
+            debug(grille);
+
+            for (int row = 0; row < 4; row++) {
+                for (int col = 0; col < 4; col++) {
+                    if(grille[row][col] == 'X'){
+                        ans.append(values[row][col]);
+                    }
+                }
+            }
+
+//            rotate(grille);
+//            if(true) continue;
+
+            //make grills up side down
+            for (int col = 0; col < 4; col++) {
+                for(int up = 0, down = 3; up < down; up ++, down-- ){
+                    char temp = grille[up][col];
+                    grille[up][col] = grille[down][col];
+                    grille[down][col] = temp;
+                }
+            }
+
+
+            //invert grills
+            for (int col = 0; col < 4; col++) {
+                for (int row = col; row < 4; row++) {
+                    char tmp = grille[row][col];
+                    grille[row][col] = grille[col][row];
+                    grille[col][row] = tmp;
+                }
+            }
+
+
+        }
         println(ans);
+
+
     }
 
     private void solveAll() {
@@ -36,7 +77,7 @@ public class Main223538cb {
     }
 
     public static void main(String[] args) {
-        new Main223538cb().run();
+        new Task1712().run();
     }
 
     private BufferedReader reader;
@@ -186,7 +227,7 @@ public class Main223538cb {
         println();
     }
 
-    private void debug(int[][] matrix) {
+    private void debug(char[][] matrix) {
         if (ONLINE_JUDGE) return;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -197,8 +238,7 @@ public class Main223538cb {
         }
     }
 
-
-    private void debug(char[][] matrix) {
+    private void debug(int[][] matrix) {
         if (ONLINE_JUDGE) return;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {

@@ -13,7 +13,7 @@ public class BinarySearchUtil {
         int r = a.length;
         //Invariant that semi-interval [l, r) length is more than 1
         while (r - l > 1) {
-            int m = l + (r - l) >> 1;//To prevent overflow
+            int m = l + (r - l) / 2;//To prevent overflow
             if (a[m] < value)//function
                 l = m;//Left bound is on
             else
@@ -33,7 +33,7 @@ public class BinarySearchUtil {
         int r = a.length;
         //Invariant that semi-interval (l, r] length is more than 1
         while (r - l > 1) {
-            int m = l + (r - l) >> 1;//To prevent overflow
+            int m = l + (r - l) / 2;//To prevent overflow
             if (a[m] >= value)//function
                 r = m;//Right bound is on
             else
