@@ -1,17 +1,12 @@
-package com.prituladima.codeforce.contest;
+//package com.prituladima.mccme.dp.subarrays;
 
 import java.io.*;
 import java.util.*;
 
-import static java.lang.StrictMath.*;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
-/**
- * Don't confuse variables in inner cycles. Don't call variable like (i j k g).
- * Delegate methods
- */
-public class Main223538cb {
+public class A {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -23,13 +18,35 @@ public class Main223538cb {
 
     private void solve() {
         char[] s = nextToken().toCharArray();
-        int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
+        int n = s.length;
 
-        int ans = -1;
-        println(ans);
+        int maxAns = 1;
+
+        //1. Iterate over all subarrays
+
+        for (int L = 0; L < n; L++) {
+            for (int R = L; R < n; R++) {
+
+                if(L <= R) ;
+
+//                debug(String.valueOf(s).substring(L, R+1));
+
+                boolean conditionIsOk = true;
+                for(int k = L, g = R ; k < g; k ++, g--){//Confused variables in inner cycle
+                    conditionIsOk &= (s[k] == s[g]);
+                }
+
+                if(conditionIsOk){
+                    debug("->         " + String.valueOf(s).substring(L, R+1));
+                    maxAns = Math.max(maxAns, R - L + 1);//calculated distance without guaranty that it (> 0)
+                }
+
+
+            }
+        }
+
+        print(maxAns);
+
     }
 
     private void solveAll() {
@@ -40,7 +57,7 @@ public class Main223538cb {
     }
 
     public static void main(String[] args) {
-        new Main223538cb().run();
+        new A().run();
     }
 
     private BufferedReader reader;
