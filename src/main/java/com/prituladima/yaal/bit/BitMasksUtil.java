@@ -33,4 +33,24 @@ public class BitMasksUtil {
         return (mask >> shift) & 1;
     }
 
+    int turnOffK(int n, int k) {
+        // k must be greater than 0
+        if (k <= 0) return n;
+
+        // Do & of n with a number with all set bits except
+        // the k'th bit
+        return (n & ~(1 << (k - 1)));
+    }
+
+    int turnOnK(int n, int k) {
+        // k must be greater than 0
+        if (k <= 0)
+            return n;
+
+        // Do | of n with a number with all
+        // unset bits except the k'th bit
+        return (n | (1 << (k - 1)));
+    }
+
+
 }
