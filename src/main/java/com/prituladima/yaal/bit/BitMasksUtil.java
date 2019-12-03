@@ -33,23 +33,16 @@ public class BitMasksUtil {
         return (mask >> shift) & 1;
     }
 
-    int turnOffK(int n, int k) {
-        // k must be greater than 0
-        if (k <= 0) return n;
-
-        // Do & of n with a number with all set bits except
-        // the k'th bit
-        return (n & ~(1 << (k - 1)));
+    public static int turnOffK(int n, int k) {
+        return (n & ~(1 << k));
     }
 
-    int turnOnK(int n, int k) {
-        // k must be greater than 0
-        if (k <= 0)
-            return n;
+    public static int turnOnK(int n, int k) {
+        return (n | (1 << k));
+    }
 
-        // Do | of n with a number with all
-        // unset bits except the k'th bit
-        return (n | (1 << (k - 1)));
+    public static boolean maskToIndex(int bitmask, int index){
+        return (bitmask & (1 << index)) > 0;
     }
 
 

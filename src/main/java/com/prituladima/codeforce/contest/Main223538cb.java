@@ -8,8 +8,7 @@ import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
 /**
- * Don't confuse variables in inner cycles. Don't call variable like (i j k g).
- * Delegate methods
+ * Don't confuse variables in inner cycles. Don't call variable like (i j k g). Delegate methods.
  */
 public class Main223538cb {
 

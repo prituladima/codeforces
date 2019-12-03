@@ -15,110 +15,80 @@ public class Task1152 {
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
     private static final int INF = (int) 1e7 + 7;
+    private static final int MASK = 1 << 20 - 1;
 
     private static final String yes = "YES", no = "NO";
     private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
 
+    private static int[] memo;
+
     private void solve() {
 
         int n = nextInt();
         int[] a = nextIntArray(n);
+        if (n < 4) {
+            print(0);
+            return;
+        }
 
-        println(minAns(0, a));
+        int subSetMask = (1 << n) - 1;
+        memo = new int[1 << n];
+        Arrays.fill(memo, -1);
+
+        println(minAns(0, a, subSetMask));
 
     }
 
 
-    Map<Integer, Integer> argsToMinAns = new HashMap<>();
+    //    Map<Integer, Integer> argsToMinAns = new HashMap<>();
     int order = 0;
 
-    private int minAns(int lev, int[] a) {
-        int key = getKey(a);
-
-        if (argsToMinAns.containsKey(key)) {
-            return argsToMinAns.get(key);
+    private int minAns(int lev, int[] a, final int mask) {
+        if (memo[mask] != -1) {
+            return memo[mask];
         }
 
+        //recursion debug
         char[] tabs = new char[lev];
         Arrays.fill(tabs, '\t');
-//        debug(String.valueOf(tabs));
-        debug(String.valueOf(tabs)  + " [" + order++ + "] " + String.format("%s",
-                String.format("%" + a.length + "s", Integer.toBinaryString(key)).replace(' ', '0')));
-//        debug(a);
-
-        int allSum = sumn(a);
-
         int n = a.length;
+        debug(new StringBuilder().append(tabs) + String.format("%" + n + "s", Integer.toBinaryString(mask)).replace(' ', '0'));
+
+
+
+        int allSum = 0;
+        for (int i = 0; i < n; i++) {
+            allSum += ((mask & (1 << i)) > 0) ? a[i] : 0;
+        }
+
         int minAns = Integer.MAX_VALUE;
         if (allSum == 0) {
-//            debug("We here");
-            return 0;
+            return memo[mask] = 0;
         }
-
 
         for (int L = 0; L < n; L++) {
-            if (a[L] == 0) continue;
+            if ((mask & (1 << L)) > 0) {
 
-            int localAns = 0;
-            int sum = a[L] + a[(L + 1) % n] + a[(L + 2) % n];
+                int localSum = 0;
 
-            int a1 = a[L];
-            int a2 = a[(L + 1) % n];
-            int a3 = a[(L + 2) % n];
+                for (int i = 0; i < 3; i++) {
+                    localSum += ((mask & (1 << (L + i))) > 0) ? a[(L + i) % n] : 0;
+                }
 
-            a[L] = 0;
-            a[(L + 1) % n] = 0;
-            a[(L + 2) % n] = 0;
+                int mask2 = mask;
+                for (int i = 0; i < 3; i++) {
+                    mask2 &= ~(1 << ((L + i) % n));
+                }
 
-            localAns += allSum - sum;
+                int localAns = allSum - localSum + minAns(lev + 1, a, mask2);
 
-            localAns += minAns(lev + 1, a);//???
-
-
-            minAns = Math.min(minAns, localAns);
-
-            a[L] = a1;
-            a[(L + 1) % n] = a2;
-            a[(L + 2) % n] = a3;
-
-        }
-
-        argsToMinAns.put(key, minAns);
-        return minAns;
-    }
-
-
-    private int getKey(int[] arr) {
-        int res = 0;
-        for (int i = 1; i <= arr.length; i++) {
-            if (arr[i - 1] > 0) {
-                res = turnOnK(res, i);
+                minAns = Math.min(minAns, localAns);
             }
         }
-
-        return res;
+        return memo[mask] = minAns;
     }
 
-
-    int turnOffK(int n, int k) {
-        // k must be greater than 0
-        if (k <= 0) return n;
-
-        // Do & of n with a number with all set bits except
-        // the k'th bit
-        return (n & ~(1 << (k - 1)));
-    }
-
-    int turnOnK(int n, int k) {
-        // k must be greater than 0
-        if (k <= 0)
-            return n;
-
-        // Do | of n with a number with all
-        // unset bits except the k'th bit
-        return (n | (1 << (k - 1)));
-    }
 
     private void solveAll() {
         int t = MULTI_TEST ? nextInt() : 1;
