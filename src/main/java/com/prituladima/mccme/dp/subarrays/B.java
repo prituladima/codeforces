@@ -1,5 +1,5 @@
-package com.prituladima.timus;
-
+//package com.prituladima.mccme.dp.subarrays;
+//
 import java.io.*;
 import java.util.*;
 
@@ -7,94 +7,73 @@ import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
 /**
- * Don't confuse variables in inner cycles. Don't call variable like (i j k g).
- * Delegate methods
+ * Don't confuse variables in inner cycles. Don't call variable like (i j k g). Delegate methods.
  */
-// TODO: 12/3/2019 make bottom up solution
-public class Task1152 {
+public class B {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
     private static final int INF = (int) 1e7 + 7;
-    private static final int MASK = 1 << 20 - 1;
 
     private static final String yes = "YES", no = "NO";
-    private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
+    private static final boolean ONLINE_JUDGE = true;//System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
-
-    private static int[] memo;
 
     private void solve() {
 
         int n = nextInt();
         int[] a = nextIntArray(n);
-        if (n < 4) {
-            print(0);
-            return;
+        int[][] ans = new int[n][n];
+
+        for (int i = 1; i < n; i++) {
+            ans[i - 1][i] = Math.max(a[i - 1], a[i]);
         }
 
-        int subSetMask = (1 << n) - 1;
-        memo = new int[1 << n];
-        Arrays.fill(memo, -1);
+        debug(ans);
 
-        println(minAns(0, a, subSetMask));
+        for (int len = 4; len <= n; len += 2) {
 
-    }
+            for (int l = 0; l < n; l++) {
+                for (int r = 0; r < n; r++) {
+
+                    if (ans[l][r] == 0 && l < r && (r - l + 1) == len) {
+
+//                        ans[l][r] = maxn(
+//                                ans[l][r],
+//                                a[l] + ans[l + 1][r - 1],
+//                                a[l] + ans[l + 2][r],
+//                                ans[l + 1][r - 1] + a[r],
+//                                ans[l][r - 2] + a[r]
+//                        );
+
+                        if (a[l + 1] > a[r]) {
+                            ans[l][r] = Integer.max(ans[l][r], a[l] + ans[l + 2][r]);
+                        } else if(a[l + 1] < a[r]){
+                            ans[l][r] = Integer.max(ans[l][r], a[l] + ans[l + 1][r - 1]);
+                        } else {
+                            //ans[l][r] = Integer.max(ans[l][r], a[l] + Math.max(ans[l + 2][r], ans[l + 1][r - 1]));
+                        }
+
+                        if (a[l] < a[r - 1]) {
+                            ans[l][r] = Integer.max(ans[l][r], ans[l][r - 2] + a[r]);
+                        } else if(a[l] > a[r - 1]){
+                            ans[l][r] = Integer.max(ans[l][r], ans[l + 1][r - 1] + a[r]);
+                        } else {
+                           // ans[l][r] = Integer.max(ans[l][r], Math.max(ans[l][r - 2], ans[l + 1][r - 1]) + a[r]);
+                        }
 
 
-    //    Map<Integer, Integer> argsToMinAns = new HashMap<>();
-    int order = 0;
+                    }
 
-    private int minAns(int lev, int[] a, final int mask) {
-//        if (memo[mask] != -1) {
-//            return memo[mask];
-//        }
-
-        //recursion debug
-        char[] tabs = new char[lev];
-        Arrays.fill(tabs, '\t');
-        int n = a.length;
-        debug(new StringBuilder().append(tabs).append(memo[mask] != -1 ? "OLD": "NEW").append(" ").append(order).append(" ") + String.format("%" + n + "s",
-                Integer.toBinaryString(mask)).replace(' ', '0'));
-
-
-        if (memo[mask] != -1) {
-            return memo[mask];
-        }
-
-        int demage = 0;
-        for (int i = 0; i < n; i++) {
-            demage += ((mask & (1 << i)) > 0) ? a[i] : 0;
-        }
-
-        int minDemage = Integer.MAX_VALUE;
-        if (demage == 0) {
-            return memo[mask] = 0;
-        }
-
-        for (int L = 0; L < n; L++) {
-            if ((mask & (1 << L)) > 0) {
-
-                int kill = 0;
-
-                for (int i = 0; i < 3; i++) {
-                    kill += ((mask & (1 << ((L + i) % n))) > 0) ? a[(L + i) % n] : 0;
                 }
 
-                int mask2 = mask;
-                for (int i = 0; i < 3; i++) {
-                    mask2 &= ~(1 << ((L + i) % n));
-                }
-
-                int localAns = demage - kill + minAns(lev + 1, a, mask2);
-
-                minDemage = Math.min(minDemage, localAns);
             }
-        }
-        order++;
-        return memo[mask] = minDemage;
-    }
 
+        }
+        debug(ans);
+
+        println(ans[0][n - 1]);
+    }
 
     private void solveAll() {
         int t = MULTI_TEST ? nextInt() : 1;
@@ -104,7 +83,7 @@ public class Task1152 {
     }
 
     public static void main(String[] args) {
-        new Task1152().run();
+        new B().run();
     }
 
     private BufferedReader reader;

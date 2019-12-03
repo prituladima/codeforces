@@ -1,4 +1,4 @@
-//package com.prituladima.mccme.dp.subarrays;
+package com.prituladima.mccme.dp.subarrays;
 
 import java.io.*;
 import java.util.*;
@@ -13,39 +13,155 @@ public class A {
     private static final int INF = (int) 1e7 + 7;
 
     private static final String yes = "YES", no = "NO";
-    private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
+    private static final boolean ONLINE_JUDGE = true;//System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
+
+
+    int[][] memo = new int[100][100];
 
     private void solve() {
         char[] s = nextToken().toCharArray();
         int n = s.length;
 
-        int maxAns = 1;
-
-        //1. Iterate over all subarrays
-
-        for (int L = 0; L < n; L++) {
-            for (int R = L; R < n; R++) {
-
-                if(L <= R) ;
-
-//                debug(String.valueOf(s).substring(L, R+1));
-
-                boolean conditionIsOk = true;
-                for(int k = L, g = R ; k < g; k ++, g--){//Confused variables in inner cycle
-                    conditionIsOk &= (s[k] == s[g]);
-                }
-
-                if(conditionIsOk){
-                    debug("->         " + String.valueOf(s).substring(L, R+1));
-                    maxAns = Math.max(maxAns, R - L + 1);//calculated distance without guaranty that it (> 0)
-                }
-
-
+        for (int i = 0; i < 100; i++) {
+            for (int j = 0; j < 100; j++) {
+                memo[i][j] = -1;
             }
         }
 
-        print(maxAns);
+
+//        int[][] ans = new int[n][n];
+
+//        int maxAns = 0;
+
+        //1. Iterate over all subarrays
+
+//        for (int i = 0; i < n; i++) {
+//            ans[i][i] = 1;
+//        }
+
+//        for(int i = 1; i < n ; i ++){
+//            ans[i - 1][i] = 1;
+//            if(s[i - 1] == s[i]){
+//                ans[i - 1][i] = 2;
+//            }
+//        }
+
+//
+//        for (int L = 0; L < n; L++) {
+//            for (int R = n - 1; R > L; R--) {
+////                if (L + 1 < R) {
+//                if (s[L] == s[R]) {
+//                    ans[L][R] = Math.max(ans[L][R], ans[L + 1][R - 1] + 2);
+//                } else {
+//                    ans[L][R] = Math.max(ans[L + 1][R], ans[L][R - 1]);
+//                }
+////                }
+//
+//            }
+//        }
+
+        println(ans(0, n - 1, s));
+
+    }
+
+    private int ans(int L, int R, char[] s) {
+        if(!isValidIndex(L, s.length) || !isValidIndex(R, s.length)){
+            return 0;
+        }
+
+        if (memo[L][R] != -1) {
+            return memo[L][R];
+        }
+
+        if (L == R) {
+            return memo[L][R] = 1;
+        } else if(L > R){
+            return memo[L][R] = 0;
+        } else if (s[L] == s[R]) {
+            return memo[L][R] = ans(L + 1, R - 1, s) + 2;
+        } else {
+            return memo[L][R] = Math.max(ans(L + 1, R, s), ans(L, R - 1, s));
+        }
+
+    }
+
+
+    public class Manacher {
+        private int[] p;  // p[i] = length of longest palindromic substring of t, centered at i
+        private String s;  // original string
+        private char[] t;  // transformed string
+
+        public Manacher(String s) {
+            this.s = s;
+            preprocess();
+            p = new int[t.length];
+
+            int center = 0, right = 0;
+            for (int i = 1; i < t.length - 1; i++) {
+                int mirror = 2 * center - i;
+
+                if (right > i)
+                    p[i] = Math.min(right - i, p[mirror]);
+
+                // attempt to expand palindrome centered at i
+                while (t[i + (1 + p[i])] == t[i - (1 + p[i])])
+                    p[i]++;
+
+                // if palindrome centered at i expands past right,
+                // adjust center based on expanded palindrome.
+                if (i + p[i] > right) {
+                    center = i;
+                    right = i + p[i];
+                }
+            }
+
+        }
+
+        // Transform s into t.
+        // For example, if s = "abba", then t = "$#a#b#b#a#@"
+        // the # are interleaved to avoid even/odd-length palindromes uniformly
+        // $ and @ are prepended and appended to each end to avoid bounds checking
+        private void preprocess() {
+            t = new char[s.length() * 2 + 3];
+            t[0] = '$';
+            t[s.length() * 2 + 2] = '@';
+            for (int i = 0; i < s.length(); i++) {
+                t[2 * i + 1] = '#';
+                t[2 * i + 2] = s.charAt(i);
+            }
+            t[s.length() * 2 + 1] = '#';
+        }
+
+        // longest palindromic substring
+        public String longestPalindromicSubstring() {
+            int length = 0;   // length of longest palindromic substring
+            int center = 0;   // center of longest palindromic substring
+            for (int i = 1; i < p.length - 1; i++) {
+                if (p[i] > length) {
+                    length = p[i];
+                    center = i;
+                }
+            }
+            return s.substring((center - 1 - length) / 2, (center - 1 + length) / 2);
+        }
+
+        // longest palindromic substring centered at index i/2
+        public String longestPalindromicSubstring(int i) {
+            int length = p[i + 2];
+            int center = i + 2;
+            return s.substring((center - 1 - length) / 2, (center - 1 + length) / 2);
+        }
+
+        //len must be <= with palindrome len
+        public boolean isPalindrome(int l, int r) {
+            if (r < l) {
+                return isPalindrome(r, l);
+            }
+
+            return r - l + 1 <= p[l + r + 2];
+        }
+
 
     }
 
