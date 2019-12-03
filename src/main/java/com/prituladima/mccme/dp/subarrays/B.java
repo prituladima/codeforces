@@ -1,5 +1,6 @@
-//package com.prituladima.mccme.dp.subarrays;
+package com.prituladima.mccme.dp.subarrays;
 //
+
 import java.io.*;
 import java.util.*;
 
@@ -19,61 +20,111 @@ public class B {
     private static final boolean ONLINE_JUDGE = true;//System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
 
+    int[][] memo = new int[100][100];
+
     private void solve() {
 
         int n = nextInt();
         int[] a = nextIntArray(n);
-        int[][] ans = new int[n][n];
 
-        for (int i = 1; i < n; i++) {
-            ans[i - 1][i] = Math.max(a[i - 1], a[i]);
+
+        for (int i = 0; i < 100; i++) {
+            for (int j = 0; j < 100; j++) {
+                memo[i][j] = -1;
+            }
         }
 
-        debug(ans);
+//        for (int i = 1; i < n; i++) {
+//            ans[i - 1][i] = Math.max(a[i - 1], a[i]);
+//        }
+//
+//        debug(ans);
+//
+//        for (int len = 4; len <= n; len += 2) {
+//
+//            for (int l = 0; l < n; l++) {
+//                for (int r = 0; r < n; r++) {
+//
+//                    if (l < r && (r - l + 1) == len) {
+//
+////                        ans[l][r] = maxn(
+////                                ans[l][r],
+////                                a[l] + ans[l + 1][r - 1],
+////                                a[l] + ans[l + 2][r],
+////                                ans[l + 1][r - 1] + a[r],
+////                                ans[l][r - 2] + a[r]
+////                        );
+//
+//                        if (a[l + 1] > a[r]) {
+//                            ans[l][r] = Integer.max(ans[l][r], a[l] + ans[l + 2][r]);
+//                        } else if (a[l + 1] < a[r]) {
+//                            ans[l][r] = Integer.max(ans[l][r], a[l] + ans[l + 1][r - 1]);
+//                        } else {
+//                            //ans[l][r] = Integer.max(ans[l][r], a[l] + Math.max(ans[l + 2][r], ans[l + 1][r - 1]));
+//                        }
+//
+//                        if (a[l] < a[r - 1]) {
+//                            ans[l][r] = Integer.max(ans[l][r], ans[l][r - 2] + a[r]);
+//                        } else if (a[l] > a[r - 1]) {
+//                            ans[l][r] = Integer.max(ans[l][r], ans[l + 1][r - 1] + a[r]);
+//                        } else {
+//                            // ans[l][r] = Integer.max(ans[l][r], Math.max(ans[l][r - 2], ans[l + 1][r - 1]) + a[r]);
+//                        }
+//
+//
+//                    }
+//
+//                }
+//
+//            }
+//
+//        }
+//        debug(ans);
 
-        for (int len = 4; len <= n; len += 2) {
-
-            for (int l = 0; l < n; l++) {
-                for (int r = 0; r < n; r++) {
-
-                    if (ans[l][r] == 0 && l < r && (r - l + 1) == len) {
-
-//                        ans[l][r] = maxn(
-//                                ans[l][r],
-//                                a[l] + ans[l + 1][r - 1],
-//                                a[l] + ans[l + 2][r],
-//                                ans[l + 1][r - 1] + a[r],
-//                                ans[l][r - 2] + a[r]
-//                        );
-
-                        if (a[l + 1] > a[r]) {
-                            ans[l][r] = Integer.max(ans[l][r], a[l] + ans[l + 2][r]);
-                        } else if(a[l + 1] < a[r]){
-                            ans[l][r] = Integer.max(ans[l][r], a[l] + ans[l + 1][r - 1]);
-                        } else {
-                            //ans[l][r] = Integer.max(ans[l][r], a[l] + Math.max(ans[l + 2][r], ans[l + 1][r - 1]));
-                        }
-
-                        if (a[l] < a[r - 1]) {
-                            ans[l][r] = Integer.max(ans[l][r], ans[l][r - 2] + a[r]);
-                        } else if(a[l] > a[r - 1]){
-                            ans[l][r] = Integer.max(ans[l][r], ans[l + 1][r - 1] + a[r]);
-                        } else {
-                           // ans[l][r] = Integer.max(ans[l][r], Math.max(ans[l][r - 2], ans[l + 1][r - 1]) + a[r]);
-                        }
+        println(ans(0, n - 1, a));
+    }
 
 
-                    }
+    private int ans(int L, int R, int[] a) {
+        if (L < R && (R - L + 1) % 2 == 0) {
 
-                }
 
+            if (memo[L][R] != -1) {
+                return memo[L][R];
             }
 
-        }
-        debug(ans);
+            if (L + 1 == R) {
+                return memo[L][R] = Math.max(a[L], a[R]);
+            }
 
-        println(ans[0][n - 1]);
+            memo[L][R] = 0;
+
+            //we want to cross L
+//            if (a[L + 1] > a[R]) {
+//                memo[L][R] = Integer.max(memo[L][R], a[L] + ans(L + 2, R, a));
+//            } else if (a[L + 1] < a[R]) {
+//                memo[L][R] = Integer.max(memo[L][R], a[L] + ans(L + 1, R - 1, a));
+//            } else {
+            memo[L][R] = Integer.max(memo[L][R], a[L] + Math.min(ans(L + 2, R, a), ans(L + 1, R - 1, a)));
+//            }
+
+            //we want to cross R
+//            if (a[L] < a[R - 1]) {
+//                memo[L][R] = Integer.max(memo[L][R], ans(L, R - 2, a) + a[R]);
+//            } else if (a[L] > a[R - 1]) {
+//                memo[L][R] = Integer.max(memo[L][R], ans(L + 1, R - 1, a) + a[R]);
+//            } else {
+            memo[L][R] = Integer.max(memo[L][R], Math.min(ans(L + 1, R - 1, a), ans(L, R - 2, a)) + a[R]);
+//            }
+
+            return memo[L][R];
+        } else {
+            return 0;
+        }
+
+
     }
+
 
     private void solveAll() {
         int t = MULTI_TEST ? nextInt() : 1;
