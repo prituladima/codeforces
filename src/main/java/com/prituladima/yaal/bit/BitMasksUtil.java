@@ -33,14 +33,30 @@ public class BitMasksUtil {
         return (mask >> shift) & 1;
     }
 
-    public static int turnOffK(int n, int k) {
-        return (n & ~(1 << k));
+    /**
+     * Set 0 to specific bit in mask
+     */
+    public static int turnOffK(int mask, int ind) {
+        return (mask & ~(1 << ind));
     }
 
-    public static int turnOnK(int n, int k) {
-        return (n | (1 << k));
+    /**
+     * Set 1 to specific bit in mask
+     */
+    public static int turnOnK(int mask, int ind) {
+        return (mask | (1 << ind));
     }
 
+    /**
+     * Toggle specific bit in mask
+     */
+    public static int toggleBit(int mask, int ind){
+        return (mask ^ (1 << ind));
+    }
+
+    /**
+     * Check specific index in mask
+     */
     public static boolean maskToIndex(int bitmask, int index){
         return (bitmask & (1 << index)) > 0;
     }

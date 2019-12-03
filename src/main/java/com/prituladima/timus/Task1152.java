@@ -57,23 +57,23 @@ public class Task1152 {
 
 
 
-        int allSum = 0;
+        int demage = 0;
         for (int i = 0; i < n; i++) {
-            allSum += ((mask & (1 << i)) > 0) ? a[i] : 0;
+            demage += ((mask & (1 << i)) > 0) ? a[i] : 0;
         }
 
-        int minAns = Integer.MAX_VALUE;
-        if (allSum == 0) {
+        int minDemage = Integer.MAX_VALUE;
+        if (demage == 0) {
             return memo[mask] = 0;
         }
 
         for (int L = 0; L < n; L++) {
             if ((mask & (1 << L)) > 0) {
 
-                int localSum = 0;
+                int kill = 0;
 
                 for (int i = 0; i < 3; i++) {
-                    localSum += ((mask & (1 << (L + i))) > 0) ? a[(L + i) % n] : 0;
+                    kill += ((mask & (1 << ((L + i) % n))) > 0) ? a[(L + i) % n] : 0;
                 }
 
                 int mask2 = mask;
@@ -81,12 +81,12 @@ public class Task1152 {
                     mask2 &= ~(1 << ((L + i) % n));
                 }
 
-                int localAns = allSum - localSum + minAns(lev + 1, a, mask2);
+                int localAns = demage - kill + minAns(lev + 1, a, mask2);
 
-                minAns = Math.min(minAns, localAns);
+                minDemage = Math.min(minDemage, localAns);
             }
         }
-        return memo[mask] = minAns;
+        return memo[mask] = minDemage;
     }
 
 
