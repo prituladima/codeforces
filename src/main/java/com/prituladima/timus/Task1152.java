@@ -45,17 +45,21 @@ public class Task1152 {
     int order = 0;
 
     private int minAns(int lev, int[] a, final int mask) {
-        if (memo[mask] != -1) {
-            return memo[mask];
-        }
+//        if (memo[mask] != -1) {
+//            return memo[mask];
+//        }
 
         //recursion debug
         char[] tabs = new char[lev];
         Arrays.fill(tabs, '\t');
         int n = a.length;
-        debug(new StringBuilder().append(tabs) + String.format("%" + n + "s", Integer.toBinaryString(mask)).replace(' ', '0'));
+        debug(new StringBuilder().append(tabs).append(memo[mask] != -1 ? "OLD": "NEW").append(" ").append(order).append(" ") + String.format("%" + n + "s",
+                Integer.toBinaryString(mask)).replace(' ', '0'));
 
 
+        if (memo[mask] != -1) {
+            return memo[mask];
+        }
 
         int demage = 0;
         for (int i = 0; i < n; i++) {
@@ -86,6 +90,7 @@ public class Task1152 {
                 minDemage = Math.min(minDemage, localAns);
             }
         }
+        order++;
         return memo[mask] = minDemage;
     }
 
