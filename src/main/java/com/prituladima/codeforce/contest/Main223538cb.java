@@ -10,6 +10,7 @@ import static java.util.stream.IntStream.range;
 /**
  * Don't confuse variables in inner cycles. Don't call variable like (i j k g). Delegate methods.
  * -Xmx64m maximum heap size allocation
+ * Never hardcode MAXN. Always make plus one.
  */
 public class Main223538cb {
 

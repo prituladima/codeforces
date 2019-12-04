@@ -10,7 +10,9 @@ import static java.util.stream.IntStream.range;
  * Don't confuse variables in inner cycles. Don't call variable like (i j k g). Delegate methods.
  */
 public class Task1167 {
+    // TODO: 12/4/2019 BONUS Build optimal answer
 
+    private static final int MAXN = 501;
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
     private static final int INF = (int) 1e7 + 7;
@@ -19,18 +21,97 @@ public class Task1167 {
     private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
 
+    private static int[][] memo = new int[MAXN][MAXN];
+
+    static {
+        for (int i = 0; i < MAXN; i++) {
+            for (int j = 0; j < MAXN; j++) {
+                memo[i][j] = -1;
+            }
+        }
+    }
+
+    int[] count0 = new int[MAXN];
+    int[] count1 = new int[MAXN];
+
     private void solve() {
-        int[][] ans = new int[500][500];
 
         int n = nextInt();
-        int m = nextInt();
+        int k = nextInt();
         int[] a = nextIntArray(n);
 
+        count0[0] = (a[0] == 0) ? 1 : 0;
+        count1[0] = (a[0] == 1) ? 1 : 0;
 
+        for (int i = 1; i < n; i++) {
+            count0[i] = count0[i - 1];
+            count1[i] = count1[i - 1];
+            count0[i] += (a[i] == 0) ? 1 : 0;
+            count1[i] += (a[i] == 1) ? 1 : 0;
+        }
 
+        debug(count0);
+        debug(count1);
 
+        printSeparator();
+        boolean topDown = false;
+        if (topDown) {
+            println(minAns(n - 1, k, n));
+        } else {
+
+            for (int i = 0; i < n; i++) {
+                memo[i][1] = val(0, i, n);
+                memo[i][i + 1] = 0;
+            }
+
+            for (int g = 2; g <= k; g++) {
+                for (int R = g - 1; R < n; R++) {
+
+                    memo[R][g] = Integer.MAX_VALUE;
+
+                    for (int smallerR = R - 1; ; smallerR--) {
+                        memo[R][g] = Math.min(memo[R][g], memo[smallerR][g - 1] + val(smallerR + 1, R, n));
+                        if (smallerR + 1 == g - 1) {
+                            break;
+                        }
+                    }
+                }
+            }
+            println(memo[n - 1][k]);
+
+        }
 
     }
+
+    private int minAns(int R, int k, int n) {
+        if (memo[R][k] != -1) {
+            return memo[R][k];
+        } else if (k == 1) {
+            return memo[R][1] = val(0, R, n);
+        } else {
+            int minAns = Integer.MAX_VALUE;
+            for (int smallerR = R - 1; ; smallerR--) {
+                minAns = Math.min(minAns, minAns(smallerR, k - 1, n) + val(smallerR + 1, R, n));
+                if (smallerR + 1 == k - 1) {
+                    break;
+                }
+            }
+            return memo[R][k] = minAns;
+        }
+    }
+
+    private int val(int L, int R, int n) {
+        int amountOf0 = count0[R];
+        if (isValidIndex(L - 1, n)) {
+            amountOf0 -= count0[L - 1];
+        }
+        int amountOf1 = count1[R];
+        if (isValidIndex(L - 1, n)) {
+            amountOf1 -= count1[L - 1];
+        }
+        return amountOf0 * amountOf1;
+    }
+
 
     private void solveAll() {
         int t = MULTI_TEST ? nextInt() : 1;
