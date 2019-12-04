@@ -1,17 +1,15 @@
-package com.prituladima.codeforce.contest;
+package com.prituladima.timus;
 
 import java.io.*;
 import java.util.*;
 
-import static java.lang.StrictMath.*;
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
 
 /**
  * Don't confuse variables in inner cycles. Don't call variable like (i j k g). Delegate methods.
- * -Xmx64m maximum heap size allocation
  */
-public class Main223538cb {
+public class Task1167 {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -21,29 +19,18 @@ public class Main223538cb {
     private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
 
-    private static int[] memo;
-
     private void solve() {
-        char[] s = nextToken().toCharArray();
+        int[][] ans = new int[500][500];
+
         int n = nextInt();
         int m = nextInt();
         int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
 
-        int ans = -1;
-        println(ans);
+
+
+
+
     }
-
-
-    private int minAns(int lev) {
-
-        char[] tabs = new char[lev];
-        Arrays.fill(tabs, '\t');
-        debug(new StringBuilder().append(tabs).append(" ").append(lev));
-
-        return 0;
-    }
-
 
     private void solveAll() {
         int t = MULTI_TEST ? nextInt() : 1;
@@ -53,7 +40,7 @@ public class Main223538cb {
     }
 
     public static void main(String[] args) {
-        new Main223538cb().run();
+        new Task1167().run();
     }
 
     private BufferedReader reader;

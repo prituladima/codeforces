@@ -16,7 +16,7 @@ public class A {
     private static final boolean ONLINE_JUDGE = true;//System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
 
-
+    // TODO: 12/4/2019 BONUS Build optimal answer
     int[][] memo = new int[100][100];
 
     private void solve() {

@@ -11,6 +11,7 @@ import static java.util.stream.IntStream.range;
  * Don't confuse variables in inner cycles. Don't call variable like (i j k g). Delegate methods.
  */
 public class B {
+    // TODO: 12/4/2019 BONUS Build optimal answer
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
