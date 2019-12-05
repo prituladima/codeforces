@@ -1,4 +1,4 @@
-package com.prituladima.codeforce.contest;
+package com.prituladima.timus;
 
 import java.io.*;
 import java.util.*;
@@ -10,10 +10,11 @@ import static java.util.stream.IntStream.range;
  * Don't confuse variables in inner cycles. Don't call variable like (i j k g). Delegate methods.
  * -Xmx64m maximum heap size allocation
  * Never hardcode MAXN. Always make plus one.
- * 90% errors is copy-paste, wrong indexes and TOO MUCH variables
+ * 90% errors is copy-paste and wrong indexes
  */
-public class Main223538cb {
+public class Task1221 {
 
+    private static final int MAXN = 101;
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
     private static final int INF = (int) 1e7 + 7;
@@ -23,38 +24,157 @@ public class Main223538cb {
     private static final boolean MULTI_TEST = false;
 
     private static int[] memo;
+    private static int[][] prefSumCol;
+    private static int[][] prefSumRow;
 
-    private void solve() {
-        char[] s = nextToken().toCharArray();
+    private int solve() {
         int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
+        if (n == 0) {
+            return 0;
+        }
+
+        int[][] a = nextIntMatrix(n, n);
 
         int ans = -1;
-        println(ans);
+
+
+//        for (int row = 0; row < n; row++) {
+//            prefSumCol[row][0] = a[row][0];
+//            for (int col = 1; col < n; col++) {
+//                prefSumCol[row][col] = prefSumCol[row][col - 1];
+//                prefSumCol[row][col] += a[row][col];
+//            }
+//        }
+//
+//        for (int col = 0; col < n; col++) {
+//            prefSumRow[0][col] = a[0][col];
+//            for (int row = 1; row < n; row++) {
+//                prefSumRow[row][col] = prefSumRow[row - 1][col];
+//                prefSumRow[row][col] += a[row][col];
+//            }
+//        }
+        prefSumCol = calculatePrefixSumCol(a);
+        prefSumRow = calculatePrefixSumRow(a);
+
+        for (int T = 0; T < n; T++) {
+            for (int D = 0; D < n; D++) {
+                int high = D - T + 1;
+                if (T < D && high > 2 && high % 2 == 1 && high > ans) {
+                    if (answerExistForSeriesWithHigh(D, high, n)) {
+                        ans = Math.max(high, ans);
+                    }
+
+                }
+            }
+        }
+
+
+        return ans;
+    }
+
+    private boolean answerExistForSeriesWithHigh(int i, int high, int n) {
+        for (int j = high - 1; j < n; j++) {
+            if (matrixIsOk(i, j, high, n)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean matrixIsOk(int i, int j, int high, int n) {
+        int curShift = -2;
+        int mustBeValue = high - 1;
+
+        boolean allMatch = true;
+        for (int diff = 0; diff < high; diff++) {
+            int pointerI = i - diff;
+            int pointerJ = j - diff;
+
+            int sumI = getColSum(pointerI, j, high);
+            int sumJ = getRowSum(i, pointerJ, high);
+
+            allMatch &= (sumI == Math.abs(mustBeValue) && sumJ == Math.abs(mustBeValue));
+//            if(mustBeValue == 0){
+//                curShift -= curShift;
+//
+//            }
+            if (!allMatch) return false;
+            mustBeValue += curShift;
+
+
+        }
+        return allMatch;
+    }
+
+    private int getColSum(int i, int j, int high) {
+
+        int ans = prefSumCol[i][j];
+        if (0 <= j - high) {
+            ans -= prefSumCol[i][j - high];
+        }
+
+        return ans;
+
+
+    }
+
+    private int getRowSum(int i, int j, int high) {
+        int ans = prefSumRow[i][j];
+        if (0 <= i - high) {
+            ans -= prefSumRow[i - high][j];
+        }
+        return ans;
+    }
+
+    private int[][] calculatePrefixSumCol(int[][] a){
+        int n = a.length;
+        int m = a[0].length;
+        int[][] prefSumCol = new int[n][m];
+        for (int row = 0; row < n; row++) {
+            prefSumCol[row][0] = a[row][0];
+            for (int col = 1; col < a[row].length; col++) {
+                prefSumCol[row][col] = prefSumCol[row][col - 1];
+                prefSumCol[row][col] += a[row][col];
+            }
+        }
+        return prefSumCol;
+    }
+
+    private int[][] calculatePrefixSumRow(int[][] a){
+        int n = a.length;
+        int m = a[0].length;
+        int[][] prefSumRow = new int[n][m];
+        for (int col = 0; col < n; col++) {
+            prefSumRow[0][col] = a[0][col];
+            for (int row = 1; row < n; row++) {
+                prefSumRow[row][col] = prefSumRow[row - 1][col];
+                prefSumRow[row][col] += a[row][col];
+            }
+        }
+        return prefSumRow;
     }
 
 
-    private int minAns(int lev) {
+//    private
 
-        char[] tabs = new char[lev];
-        Arrays.fill(tabs, '\t');
-        debug(new StringBuilder().append(tabs).append(" ").append(lev));
 
-        return 0;
-    }
-
+//    private boolean
 
     private void solveAll() {
-        int t = MULTI_TEST ? nextInt() : 1;
-        while (t-- > 0) {
-            solve();
+        while (true) {
+            final int res = solve();
+            if (res == 0) {
+                return;
+            } else if (res == -1) {
+                println("No solution");
+            } else {
+                println(res);
+            }
         }
     }
 
     public static void main(String[] args) {
-        new Main223538cb().run();
+        new Task1221().run();
     }
 
     private BufferedReader reader;
