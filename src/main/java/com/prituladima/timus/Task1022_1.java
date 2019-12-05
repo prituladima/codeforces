@@ -1,4 +1,4 @@
-package com.prituladima.codeforce.contest;
+package com.prituladima.timus;
 
 import java.io.*;
 import java.util.*;
@@ -12,7 +12,7 @@ import static java.util.stream.IntStream.range;
  * Never hardcode MAXN. Always make plus one.
  * 90% errors is copy-paste, wrong indexes and TOO MUCH variables
  */
-public class Main223538cb {
+public class Task1022_1 {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -23,17 +23,61 @@ public class Main223538cb {
     private static final boolean MULTI_TEST = false;
 
     private int[] memo;
-    private boolean[] used[];
+    private boolean[] used;
+    private Map<Integer, Set<Integer>> graph;
 
     private void solve() {
-        char[] s = nextToken().toCharArray();
         int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
+        graph = new HashMap<>();
 
-        int ans = -1;
-        println(ans);
+        for(int parent = 1; parent <= n ; parent++){
+            graph.put(parent, new HashSet<>());
+            int child;
+            while ((child = nextInt()) != 0){
+                graph.get(parent).add(child);
+            }
+        }
+
+        for (Integer integer : topoSort(graph)) {
+            print(integer);
+            print(' ');
+        }
+
+    }
+
+
+    int UNTOUCHED = 0;
+    int FINISHED = 2;
+    int INPROGRESS = 1;
+    int[] vis;
+    List<Integer> topoAns;
+
+    // Returns nodes in topological order or null if cycle was found
+    public List<Integer> topoSort(Map<Integer, Set<Integer>> graph) {
+        int n = graph.size();
+        topoAns = new ArrayList<>();
+        vis = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            if (!topoDFS(graph, i)) return null;
+        }
+        Collections.reverse(topoAns);
+        return topoAns;
+    }
+
+    boolean topoDFS(Map<Integer, Set<Integer>> graph, int curr) {
+        Integer status = vis[curr];
+        if (status == null) status = UNTOUCHED;
+        if (status == FINISHED) return true;
+        if (status == INPROGRESS) {
+            return false;
+        }
+        vis[curr] = INPROGRESS;
+        for (int next : graph.get(curr)) {
+            if (!topoDFS(graph, next)) return false;
+        }
+        vis[curr] = FINISHED;
+        topoAns.add(curr);
+        return true;
     }
 
 
@@ -55,7 +99,7 @@ public class Main223538cb {
     }
 
     public static void main(String[] args) {
-        new Main223538cb().run();
+        new Task1022_1().run();
     }
 
     private BufferedReader reader;

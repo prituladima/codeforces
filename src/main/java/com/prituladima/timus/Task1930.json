@@ -1,0 +1,44 @@
+{
+  "name" : "Task1930",
+  "testType" : "SINGLE",
+  "input" : {
+    "type" : "STANDARD",
+    "fileName" : "input.txt"
+  },
+  "output" : {
+    "type" : "STANDARD",
+    "fileName" : "output.txt"
+  },
+  "tests" : [ {
+    "input" : "3 2\n1 2\n3 2\n1 3",
+    "output" : "1",
+    "index" : 0,
+    "active" : true
+  }, {
+    "input" : "3 3\n1 2\n2 3\n3 1\n1 3",
+    "output" : "0",
+    "index" : 1,
+    "active" : true
+  }, {
+    "input" : "7 7\n1 2\n2 6\n3 2\n3 4\n4 6\n4 7\n5 4\n1 5",
+    "output" : "1",
+    "index" : 2,
+    "active" : true
+  } ],
+  "location" : "src/main/java/com/prituladima/timus",
+  "vmArgs" : "-Xmx256m -Xss64m",
+  "mainClass" : "Main",
+  "taskClass" : "com.prituladima.timus.Task1930",
+  "checkerClass" : "net.egork.chelper.checkers.TokenChecker",
+  "checkerParameters" : "",
+  "testClasses" : [ ],
+  "date" : "2019.12.05",
+  "contestName" : "",
+  "truncate" : true,
+  "inputClass" : "com.prituladima.yaal.io.InputReader",
+  "outputClass" : "com.prituladima.yaal.io.OutputWriter",
+  "includeLocale" : false,
+  "failOnOverflow" : true,
+  "interactive" : false,
+  "interactor" : "net.egork.chelper.tester.Interactor"
+}
