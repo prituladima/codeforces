@@ -7,6 +7,11 @@ import java.util.*;
 
 public class Task1930 {
 
+    /**
+     * O(n!) - https://www.geeksforgeeks.org/find-paths-given-source-destination/
+     * O(?) - https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
+     */
+
     private Map<Integer, Set<Integer>> graph = new HashMap<>();
     private Map<Integer, Set<Integer>> up = new HashMap<>();
     private Map<Integer, Set<Integer>> down = new HashMap<>();
