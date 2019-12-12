@@ -18,9 +18,10 @@ public class DisjointUnionSets {
         return find(u) == find(v);
     }
 
-    private int find(int x) {
-        while (parent[x] != x) x = parent[x];
-        return x;
+    private int find(int v) {
+        if (v == parent[v])
+            return v;
+        return parent[v] = find (parent[v]);
     }
 
     public void union(int x, int y) {
