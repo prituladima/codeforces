@@ -1,4 +1,4 @@
-package com.prituladima.codeforce.contest;
+package com.prituladima.codeforce.contest1335;
 
 import java.io.*;
 import java.util.*;
@@ -12,7 +12,7 @@ import static java.util.stream.IntStream.range;
  * Never hardcode MAXN. Always make plus one.
  * 90% errors is copy-paste, wrong indexes and TOO MUCH variables
  */
-public class Main223538cb {
+public class Main223538cbB {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -20,20 +20,60 @@ public class Main223538cb {
 
     private static final String yes = "YES", no = "NO";
     private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
-    private static final boolean MULTI_TEST = false;
+    private static final boolean MULTI_TEST = true;
 
     private int[] memo;
     private boolean[] used[];
 
     private void solve() {
-        char[] s = nextToken().toCharArray();
-        int n = nextInt();
-        int m = nextInt();
-        int[] a = nextIntArray(n);
-        int[] b = nextIntArray(m);
 
-        int ans = -1;
-        println(ans);
+        int n = nextInt();
+        int a = nextInt();
+        int b = nextInt();
+
+        if (b == 26) {
+
+            char[] chars = new char[n];
+            for (int i = 0; i < n; i++) {
+                chars[i] = (char) ('a' + (i % 26));
+            }
+            println(String.valueOf(chars));
+
+        } else if(b == a) {
+            char[] chars = new char[n];
+            for (int i = 0; i < n; i++) {
+                chars[i] = (char) ('a' + (i % b));
+            }
+            println(String.valueOf(chars));
+        } else {
+            int diff = a - b;
+//            char[] chars = new char[n];
+//            for (int i = 0; i < n; ) {
+//                chars[i] = (char) ('a' + (i % b));
+//                if(i % b == 0){
+//                    for (int j = 0; j < diff; j++) {
+//                        if(i + j > n) break;
+//                        chars[i + j] = (char) ('a' + (i % b));
+//                    }
+//                    i+= diff;
+//                }
+//                i++;
+//            }
+            StringBuilder fa = new StringBuilder();
+            int i = 0;
+            while (fa.length() < n){
+                fa.append((char) ('a' + (i % b)));
+                if(i % b == 0){
+                    for (int j = 0; j < diff; j++) {
+                        fa.append('a');
+                    }
+//                    i+= diff;
+                }
+                i++;
+            }
+
+            println(fa.toString().substring(0, n));
+        }
     }
 
 
@@ -55,7 +95,7 @@ public class Main223538cb {
     }
 
     public static void main(String[] args) {
-        new Main223538cb().run();
+        new Main223538cbB().run();
     }
 
     private BufferedReader reader;

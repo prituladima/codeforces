@@ -1,2 +1,3 @@
-49 src/main/java/com/prituladima/timus/Task1930.json
+76 src/main/java/com/prituladima/codeforce/contest/A. Konfety i dve sestry.json
+1
 0
