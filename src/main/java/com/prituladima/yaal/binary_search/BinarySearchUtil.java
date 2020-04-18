@@ -1,9 +1,7 @@
 package com.prituladima.yaal.binary_search;
 
-// TODO: 10/31/2019
-//  what if: dec order of array
-//  be able to customize <, <= in upper bound
-//  be able to customize >, >= in lower bound
+import java.util.function.Predicate;
+
 public class BinarySearchUtil {
 
     //Algo that helps to find the rightmost answer in array
@@ -45,6 +43,32 @@ public class BinarySearchUtil {
         //If we were looking for specific value we must check it.
         return r;
     }
+
+    public int upperBound(int inclusiveLeft, int exclusiveRight, int[] array, Predicate<Integer> predicate) {
+        while (exclusiveRight - inclusiveLeft > 1) {
+            int middle = inclusiveLeft + (exclusiveRight - inclusiveLeft) / 2;
+            if (predicate.test(array[middle])) {
+                inclusiveLeft = middle;
+            } else {
+                exclusiveRight = middle;
+            }
+        }
+        return inclusiveLeft;
+    }
+
+    public int lowerBound(int exclusiveLeft, int inclusiveRight, int[] array, Predicate<Integer> predicate) {
+        while (inclusiveRight - exclusiveLeft > 1) {
+            int middle = exclusiveLeft + (inclusiveRight - exclusiveLeft) / 2;
+            if (predicate.test(array[middle])) {
+                inclusiveRight = middle;
+            } else {
+                exclusiveLeft = middle;
+            }
+        }
+        return inclusiveRight;
+    }
+
+
 
     public static void main(String[] args) {
 
