@@ -9,7 +9,6 @@ import static java.util.stream.IntStream.range;
 /**
  * Don't confuse variables in inner cycles. Don't call variable like (i j k g). Delegate methods.
  * -Xmx64m maximum heap size allocation
- * Never hardcode MAXN. Always make plus one.
  * 90% errors is copy-paste, wrong indexes and TOO MUCH variables
  */
 public class MainC {
@@ -21,29 +20,18 @@ public class MainC {
     private static final String yes = "YES", no = "NO";
     private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = false;
-
+    private static final int MAXN = 2 * (int) 10e5 + 10;
     private int[] memo;
     private boolean[] used;
-    long[] deep;
-    long[] subTreeSize;
-    Graph graph;
+    long[] deep = new long[MAXN];
+    long[] subTreeSize = new long[MAXN];
+    //    Graph graph;
+    Tree tree;
 
     private void solve() {
         int n = nextInt();
         int k = nextInt();
-        graph = new Graph();
-
-        int ed = n - 1;
-        for (int i = 0; i < ed; i++) {
-            int from = nextInt();
-            int to = nextInt();
-            graph.putIfAbsent(from, new HashSet<>());
-            graph.putIfAbsent(to, new HashSet<>());
-            graph.get(from).add(to);
-            graph.get(to).add(from);
-        }
-        subTreeSize = new long[n + 20];
-        deep = new long[n + 20];
+        tree = nextTree(n, false);
 
         dfsTree(1, 0, 1);
 
@@ -72,7 +60,7 @@ public class MainC {
     private void dfsTree(int from, int parent, int lev) {
         deep[from] = lev;
         subTreeSize[from] = 1;
-        for (int to : graph.get(from)) {
+        for (int to : tree.get(from)) {
             if (parent != to) {
                 dfsTree(to, from, lev + 1);
                 subTreeSize[from] += subTreeSize[to];
@@ -259,12 +247,40 @@ public class MainC {
 
     }
 
-    private Graph buildGraph(int amountOfVertex) {
+    private class Tree extends Graph {
+
+    }
+
+    private Graph nextGraph(int amountOfVertexes, int amountOfEdges, boolean isDirected) {
         Graph graph = new Graph();
-        for (int from = 1; from <= amountOfVertex; from++) {
-            graph.putIfAbsent(from, new HashSet<>());
+        for (int i = 1; i <= amountOfVertexes; i++) {
+            graph.put(i, new HashSet<>());
+        }
+        for (int i = 1; i <= amountOfEdges; i++) {
+            int from = nextInt();
+            int to = nextInt();
+            graph.get(from).add(to);
+            if (!isDirected) {
+                graph.get(to).add(from);
+            }
         }
         return graph;
+    }
+
+    private Tree nextTree(int amountOfVertexes, boolean isDirected) {
+        Tree tree = new Tree();
+        for (int i = 1; i <= amountOfVertexes; i++) {
+            tree.put(i, new HashSet<>());
+        }
+        for (int i = 1; i <= amountOfVertexes - 1; i++) {
+            int from = nextInt();
+            int to = nextInt();
+            tree.get(from).add(to);
+            if (!isDirected) {
+                tree.get(to).add(from);
+            }
+        }
+        return tree;
     }
 
     /**

@@ -1,4 +1,4 @@
-//package com.prituladima.codeforce.contest1337;
+package com.prituladima.codeforce;
 
 import java.io.*;
 import java.util.*;
@@ -13,7 +13,7 @@ import static java.util.stream.IntStream.range;
  * Never hardcode MAXN. Always make plus one.
  * 90% errors is copy-paste, wrong indexes and TOO MUCH variables
  */
-public class MainD {
+public class MainLibs {
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
@@ -22,65 +22,12 @@ public class MainD {
     private static final String yes = "YES", no = "NO";
     private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
     private static final boolean MULTI_TEST = true;
+    private static final int MAXN = 2 * (int) 10e5 + 10;
 
     private void solve() {
-        int nr = nextInt(), ng = nextInt(), nb = nextInt();
-        int[] r = nextIntArray(nr);
-        int[] g = nextIntArray(ng);
-        int[] b = nextIntArray(nb);
-        safeSort(r);
-        safeSort(g);
-        safeSort(b);
-        long minAns = Long.MAX_VALUE;
-
-        int[][][] vars = {
-                {r, g, b},
-                {r, b, g},
-
-                {g, r, b},
-                {g, b, r},
-
-                {b, r, g},
-                {b, g, r}
-        };
-        for (int[][] comb : vars) {
-            minAns = Long.min(getMinAns(comb[0], comb[1], comb[2]), minAns);
-        }
-
-        if (minAns == Long.MAX_VALUE) {
-            throw new IllegalStateException();
-        }
-
-        println(minAns);
-
 
     }
 
-    private long getMinAns(int[] X, int[] Y, int[] Z) {
-        long minAns = Long.MAX_VALUE;
-        for (final int XI : X) {
-
-            int j = lowerBound(-1, Y.length, ans -> XI <= Y[ans]);
-            if (j == Y.length) continue;
-
-            int k = upperBound(-1, Z.length, ans -> Z[ans] <= XI);
-            if (k == -1) continue;
-
-            minAns = Long.min(minAns, fun(XI, Y[j], Z[k]));
-        }
-//        if(!ONLINE_JUDGE){
-//            println("TRY");
-//            println(Arrays.toString(X));
-//            println(Arrays.toString(Y));
-//            println(Arrays.toString(Z));
-//        }
-
-        return minAns;
-    }
-
-    private long fun(long x, long y, long z) {
-        return (x - y) * (x - y) + (y - z) * (y - z) + (z - x) * (z - x);
-    }
 
     private int upperBound(int inclusiveLeft, int exclusiveRight, Predicate<Integer> predicate) {
         while (exclusiveRight - inclusiveLeft > 1) {
@@ -106,12 +53,6 @@ public class MainD {
         return inclusiveRight;
     }
 
-
-    private boolean isOkey(int an, int an1, int an2) {
-        return an + an1 > an2;
-    }
-
-
     private int minAns(int lev) {
 
         char[] tabs = new char[lev];
@@ -130,7 +71,7 @@ public class MainD {
     }
 
     public static void main(String[] args) {
-        new MainD().run();
+        new MainLibs().run();
     }
 
     private BufferedReader reader;
@@ -226,12 +167,40 @@ public class MainD {
 
     }
 
-    private Graph buildGraph(int amountOfVertex) {
+    private class Tree extends Graph {
+
+    }
+
+    private Graph nextGraph(int amountOfVertexes, int amountOfEdges, boolean isDirected) {
         Graph graph = new Graph();
-        for (int from = 1; from <= amountOfVertex; from++) {
-            graph.putIfAbsent(from, new HashSet<>());
+        for (int i = 1; i <= amountOfVertexes; i++) {
+            graph.put(i, new HashSet<>());
+        }
+        for (int i = 1; i <= amountOfEdges; i++) {
+            int from = nextInt();
+            int to = nextInt();
+            graph.get(from).add(to);
+            if (!isDirected) {
+                graph.get(to).add(from);
+            }
         }
         return graph;
+    }
+
+    private Tree nextTree(int amountOfVertexes, boolean isDirected) {
+        Tree tree = new Tree();
+        for (int i = 1; i <= amountOfVertexes; i++) {
+            tree.put(i, new HashSet<>());
+        }
+        for (int i = 1; i <= amountOfVertexes - 1; i++) {
+            int from = nextInt();
+            int to = nextInt();
+            tree.get(from).add(to);
+            if (!isDirected) {
+                tree.get(to).add(from);
+            }
+        }
+        return tree;
     }
 
     /**
@@ -355,7 +324,7 @@ public class MainD {
         return stream(a).sum();
     }
 
-    public static void safeSort(long[] array) {
+    public static void sort(long[] array) {
         shuffle(array);
         Arrays.sort(array);
     }
@@ -370,7 +339,7 @@ public class MainD {
         }
     }
 
-    public static void safeSort(int[] array) {
+    public static void sort(int[] array) {
         shuffle(array);
         Arrays.sort(array);
     }

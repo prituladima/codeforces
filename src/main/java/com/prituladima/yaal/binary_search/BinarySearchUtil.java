@@ -1,6 +1,5 @@
 package com.prituladima.yaal.binary_search;
 
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class BinarySearchUtil {
@@ -45,10 +44,10 @@ public class BinarySearchUtil {
         return r;
     }
 
-    public int upperBound(int inclusiveLeft, int exclusiveRight, Function<Integer, Integer> function, Predicate<Integer> predicate) {
+    public int upperBound(int inclusiveLeft, int exclusiveRight, Predicate<Integer> predicate) {
         while (exclusiveRight - inclusiveLeft > 1) {
             int middle = inclusiveLeft + (exclusiveRight - inclusiveLeft) / 2;
-            if (predicate.test(function.apply(middle))) {
+            if (predicate.test(middle)) {
                 inclusiveLeft = middle;
             } else {
                 exclusiveRight = middle;
@@ -57,10 +56,10 @@ public class BinarySearchUtil {
         return inclusiveLeft;
     }
 
-    public int lowerBound(int exclusiveLeft, int inclusiveRight, Function<Integer, Integer> function, Predicate<Integer> predicate) {
+    public int lowerBound(int exclusiveLeft, int inclusiveRight, Predicate<Integer> predicate) {
         while (inclusiveRight - exclusiveLeft > 1) {
             int middle = exclusiveLeft + (inclusiveRight - exclusiveLeft) / 2;
-            if (predicate.test(function.apply(middle))) {
+            if (predicate.test(middle)) {
                 inclusiveRight = middle;
             } else {
                 exclusiveLeft = middle;
@@ -73,9 +72,7 @@ public class BinarySearchUtil {
     public static void main(String[] args) {
 
 
-
     }
-
 
 
 }
