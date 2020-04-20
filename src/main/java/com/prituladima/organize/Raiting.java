@@ -1,4 +1,4 @@
-package com.prituladima.codeforce;
+package com.prituladima.organize;
 
 import java.io.BufferedReader;
 import java.io.IOException;

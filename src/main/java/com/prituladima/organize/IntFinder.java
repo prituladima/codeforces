@@ -1,4 +1,4 @@
-package com.prituladima.codeforce;
+package com.prituladima.organize;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

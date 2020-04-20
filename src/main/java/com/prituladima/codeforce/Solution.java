@@ -1,23 +1,18 @@
 package com.prituladima.codeforce;
 
-
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
-import static java.lang.Double.parseDouble;
-import static java.lang.Integer.parseInt;
-import static java.lang.Long.parseLong;
-import static java.util.Arrays.stream;
-import static java.util.stream.IntStream.range;
-
-public final class Main {
+public final class Solution {
 
     private void solve() {
 
     }
 
     public static void main(String[] args) {
-        new Main().run();
+        new Solution().run();
     }
 
     private BufferedReader reader;
@@ -39,47 +34,47 @@ public final class Main {
 
 
     private int nextInt(int radix) {
-        return parseInt(nextToken(), radix);
+        return Integer.parseInt(nextToken(), radix);
     }
 
     private int nextInt() {
-        return parseInt(nextToken());
+        return Integer.parseInt(nextToken());
     }
 
     private long nextLong(int radix) {
-        return parseLong(nextToken(), radix);
+        return Long.parseLong(nextToken(), radix);
     }
 
     private long nextLong() {
-        return parseLong(nextToken());
+        return Long.parseLong(nextToken());
     }
 
     private double nextDouble() {
-        return parseDouble(nextToken());
+        return Double.parseDouble(nextToken());
     }
 
     private int[] nextArr(int size) {
-        return stream(new int[size]).map(c -> nextInt()).toArray();
+        return Arrays.stream(new int[size]).map(c -> nextInt()).toArray();
     }
 
     private long[] nextArrL(int size) {
-        return stream(new long[size]).map(c -> nextLong()).toArray();
+        return Arrays.stream(new long[size]).map(c -> nextLong()).toArray();
     }
 
     private double[] nextArrD(int size) {
-        return stream(new double[size]).map(c -> nextDouble()).toArray();
+        return Arrays.stream(new double[size]).map(c -> nextDouble()).toArray();
     }
 
     private char[][] nextCharMatrix(int n) {
-        return range(0, n).mapToObj(i -> nextToken().toCharArray()).toArray(char[][]::new);
+        return IntStream.range(0, n).mapToObj(i -> nextToken().toCharArray()).toArray(char[][]::new);
     }
 
     private int[][] nextIntMatrix(final int n, final int m) {
-        return range(0, n).mapToObj(i -> nextArr(m)).toArray(int[][]::new);
+        return IntStream.range(0, n).mapToObj(i -> nextArr(m)).toArray(int[][]::new);
     }
 
     private double[][] nextDoubleMatrix(final int n, final int m) {
-        return range(0, n).mapToObj(i -> nextArrD(m)).toArray(double[][]::new);
+        return IntStream.range(0, n).mapToObj(i -> nextArrD(m)).toArray(double[][]::new);
     }
 
     private String nextToken() {

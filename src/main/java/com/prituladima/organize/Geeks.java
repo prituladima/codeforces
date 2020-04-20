@@ -1,4 +1,4 @@
-package com.prituladima.codeforce;
+package com.prituladima.organize;
 
 import com.prituladima.Naive;
 import com.prituladima.Reliable;

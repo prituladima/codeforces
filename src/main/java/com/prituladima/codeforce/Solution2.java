@@ -10,25 +10,80 @@ import static java.util.stream.IntStream.range;
 /**
  * Don't confuse variables in inner cycles. Don't call variable like (i j k g). Delegate methods.
  * -Xmx64m maximum heap size allocation
- * Never hardcode MAXN. Always make plus one.
  * 90% errors is copy-paste, wrong indexes and TOO MUCH variables
  */
-public class MainLibs {
+public class Solution2 {
+
+    private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
+    private static final boolean MULTI_TEST = false;
 
     private static final int BITS = 31;
     private static final int MODULO = (int) 1e9 + 7;
     private static final int INF = (int) 1e7 + 7;
 
+    private static final Random rand = new Random(1278367);
+
     private static final String yes = "YES", no = "NO";
-    private static final boolean ONLINE_JUDGE = System.getProperty("ONLINE_JUDGE") != null;
-    private static final boolean MULTI_TEST = true;
+
     private static final int MAXN = 2 * (int) 10e5 + 10;
 
-    private void solve() {
+    private boolean[] used = new boolean[MAXN];
 
+    private void solveAll() {
+        int t = MULTI_TEST ? nextInt() : 1;
+        while (t-- > 0) {
+            solve();
+        }
     }
 
 
+    private void solve() {
+        {
+
+        }
+
+        {
+
+        }
+
+        {
+
+        }
+    }
+
+
+    private boolean inRange(int val, int fromInclusive, int toExclusive) {
+        return fromInclusive <= val && val < toExclusive;
+    }
+
+    private int nextRandInt(int minInclusive, int maxExclusive) {
+        return rand.nextInt(maxExclusive - minInclusive) + minInclusive;
+    }
+
+
+    /**
+     * Graph traverses
+     */
+    private void dfs(int from, boolean[] used, Graph graph) {
+        used[from] = true;
+        for (int to : graph.get(from)) {
+            if (!used[to]) {
+                dfs(to, used, graph);
+            }
+        }
+    }
+
+    private void dfsTree(int from, int parent, Tree tree) {
+        for (int to : tree.get(from)) {
+            if (parent != to) {
+                dfsTree(to, from, tree);
+            }
+        }
+    }
+
+    /**
+     * Binary searches.
+     */
     private int upperBound(int inclusiveLeft, int exclusiveRight, Predicate<Integer> predicate) {
         while (exclusiveRight - inclusiveLeft > 1) {
             int middle = inclusiveLeft + (exclusiveRight - inclusiveLeft) / 2;
@@ -62,16 +117,8 @@ public class MainLibs {
         return 0;
     }
 
-
-    private void solveAll() {
-        int t = MULTI_TEST ? nextInt() : 1;
-        while (t-- > 0) {
-            solve();
-        }
-    }
-
     public static void main(String[] args) {
-        new MainLibs().run();
+        new Solution2().run();
     }
 
     private BufferedReader reader;
@@ -163,11 +210,11 @@ public class MainLibs {
     /**
      * Graphs
      */
-    private class Graph extends HashMap<Integer, Collection<Integer>> {
+    private static class Graph extends HashMap<Integer, Collection<Integer>> {
 
     }
 
-    private class Tree extends Graph {
+    private static class Tree extends Graph {
 
     }
 
