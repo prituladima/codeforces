@@ -36,74 +36,59 @@ public class SolutionD {
         }
     }
 
+    private long pathLen(long n) {
+        return n * (n - 1) + 1;
+    }
 
     private void solve() {
         long n = nextInt();
         long L = nextLong();
         long R = nextLong();
 
-        long k;
-        if ((L + 1) / 2 <= n - 1) {
-            k = 0;
-        } else {
-            long lowK = 0, highK = n;
-            while (highK - lowK > 1) {
-                long mid = lowK + (highK - lowK) / 2;
-                long sum = n * mid - mid * (mid + 1) / 2;
-                if (sum < (L + 1) / 2) {
-                    lowK = mid;
+        boolean tillEnd = false;
+        if (R == pathLen(n)) {
+            R--;
+            tillEnd = true;
+        }
+
+        long curPointer = 1;
+        long lev = 1;
+        for (; curPointer + 2 * (n - lev) < L; lev++) {
+            curPointer += 2 * (n - lev);
+        }
+
+        boolean trigger = true;
+        outer:
+        for (; lev < n; lev++) {
+            for (long lev2 = lev + 1; lev2 <= n; curPointer++) {
+
+                if (curPointer < L) {
+                    if (trigger) {
+                    } else {
+                        lev2++;
+                    }
+                    trigger = !trigger;
+                } else if (R < curPointer) {
+                    break outer;
                 } else {
-                    highK = mid;
+                    if (trigger) {
+                        print(lev);
+                        printSpace();
+                    } else {
+                        print(lev2);
+                        printSpace();
+                        lev2++;
+                    }
+
+                    trigger = !trigger;
                 }
+
             }
-            k = lowK;
         }
-
-//        debug("k = " + k);
-
-        long P = n * k - k * (k + 1) / 2 + 1;
-
-        long diff = (L + 1) / 2 - P;
-
-        if (L % 2 == 0) {
-            print((k + 2 + diff) + " ");
-            L++;
-            diff++;
+        if (tillEnd) {
+            print(1);
         }
-
-
-        boolean oneMore = false;
-        boolean last = false;
-        if (R == n * (n - 1) + 1) {
-            last = true;
-            R--;
-        } else if (R % 2 == 1) {
-            oneMore = true;
-            R--;
-        }
-
-
-        while (L / 2 <= R / 2) {
-            print((k + 1) + " " + (k + 2 + diff) + " ");
-            if ((k + 2 + diff) == n) {
-                k++;
-                diff = 0;
-            }
-            L++;
-            L++;
-            diff++;
-        }
-
-
-
-        if (last) {
-            println(1);
-        }else if (oneMore) {
-            println((k + 1));
-        } else {
-            println();
-        }
-
+        println();
     }
 
 
@@ -139,9 +124,9 @@ public class SolutionD {
     /**
      * Binary searches.
      */
-    private int upperBound(int inclusiveLeft, int exclusiveRight, Predicate<Integer> predicate) {
+    private long upperBound(long inclusiveLeft, long exclusiveRight, Predicate<Long> predicate) {
         while (exclusiveRight - inclusiveLeft > 1) {
-            int middle = inclusiveLeft + (exclusiveRight - inclusiveLeft) / 2;
+            long middle = inclusiveLeft + (exclusiveRight - inclusiveLeft) / 2;
             if (predicate.test(middle)) {
                 inclusiveLeft = middle;
             } else {
@@ -314,6 +299,10 @@ public class SolutionD {
 
     private void print(Object o) {
         writer.print(o);
+    }
+
+    private void printSpace() {
+        writer.print(' ');
     }
 
     private void println() {

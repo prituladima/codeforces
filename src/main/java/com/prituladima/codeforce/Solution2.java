@@ -261,6 +261,10 @@ public class Solution2 {
         writer.print(o);
     }
 
+    private void printSpace() {
+        writer.print(' ');
+    }
+
     private void println() {
         writer.println();
     }
