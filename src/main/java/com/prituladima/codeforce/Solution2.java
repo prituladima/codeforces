@@ -451,4 +451,186 @@ public class Solution2 {
         return suff;
     }
 
+    /**
+     * Data-structures
+     * todo Binary lifting
+     * todo HL decomposition
+     * todo RMQ
+     */
+
+    private class BinaryIndexedTree {
+        private final long[] value;
+
+        public BinaryIndexedTree(int size) {
+            value = new long[size];
+        }
+
+        public long get(int from, int to) {
+            if (from > to) {
+                return 0;
+            }
+            return get(to) - get(from - 1);
+        }
+
+        private long get(int to) {
+            long result = 0;
+            while (to >= 0) {
+                result += value[to];
+                to = (to & (to + 1)) - 1;
+            }
+            return result;
+        }
+
+        public void add(int at, long value) {
+            while (at < this.value.length) {
+                this.value[at] += value;
+                at = at | (at + 1);
+            }
+        }
+    }
+
+    private class DisjointUnionSets {
+
+        private int[] rank, parent;
+        private int amount;
+
+        public DisjointUnionSets(int amount) {
+            this.rank = new int[amount];
+            this.parent = new int[amount];
+            this.amount = amount;
+            for (int i = 0; i < amount; i++) {
+                parent[i] = i;
+            }
+        }
+
+        public boolean isInSameSet(int u, int v) {
+            return find(u) == find(v);
+        }
+
+        private int find(int v) {
+            if (v == parent[v])
+                return v;
+            return parent[v] = find(parent[v]);
+        }
+
+        public void union(int x, int y) {
+            // Find representatives of two sets
+            int xRoot = find(x), yRoot = find(y);
+
+            // Elements are in the same set, no need
+            // to unite anything.
+            if (xRoot == yRoot)
+                return;
+
+            // If x's rank is less than y's rank
+            if (rank[xRoot] < rank[yRoot])
+
+                // Then move x under y so that depth
+                // of tree remains less
+                parent[xRoot] = yRoot;
+
+                // Else if y's rank is less than x's rank
+            else if (rank[xRoot] > rank[yRoot])
+
+                // Then move y under x so that depth of
+                // tree remains less
+                parent[yRoot] = xRoot;
+
+            else // if ranks are the same
+            {
+                // Then move y under x (doesn't matter
+                // which one goes where)
+                parent[yRoot] = xRoot;
+
+                // And increment the the result tree's
+                // rank by 1
+                rank[xRoot]++;
+            }
+            amount--;
+        }
+
+        public int getAmount() {
+            return amount;
+        }
+    }
+
+    private class GCDIterativeSegmentTree {
+        //    int N = (int) 1e5 + 10;  // limit for array size
+        int n;  // array size
+        int[] t;
+
+        public GCDIterativeSegmentTree(int n) {
+            this.n = n;
+            this.t = new int[2 * n];
+        }
+
+        public void build() {  // build the tree
+            for (int i = n - 1; i > 0; --i) t[i] = gcd(t[i << 1], t[i << 1 | 1]);
+        }
+
+        public void modify(int p, int value) {  // set value at position p
+            for (t[p += n] = value; p > 1; p >>= 1) t[p >> 1] = gcd(t[p], t[p ^ 1]);
+        }
+
+        public int query(int l, int r) {  // sum on interval [l, r)
+            int res = 0;
+            for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
+                if ((l & 1) == 1) res = gcd(res, t[l++]);
+                if ((r & 1) == 1) res = gcd(res, t[--r]);
+            }
+            return res;
+        }
+
+        public int gcd(int a, int b) {
+            a = Math.abs(a);
+            b = Math.abs(b);
+            while (b != 0) {
+                int temp = a % b;
+                a = b;
+                b = temp;
+            }
+            return a;
+        }
+    }
+
+    /**
+     * Bits
+     */
+    private boolean contains(int set, int bit) {
+        return (set & (1 << bit)) > 0;
+    }
+
+    private int add(int set, int bit) {
+        return bit | (1 << bit);
+    }
+
+    private int remove(int set, int bit) {
+        return set & ~(1 << bit);
+    }
+
+    private int toggle(int set, int bit) {
+        return set ^ (1 << bit);
+    }
+
+
+    /**
+     * Math
+     */
+    private long powMod(long base, long exp, long mod) {
+        long ans = 1;
+        while (exp > 0) {
+            if ((exp & 1) == 1) {
+                ans *= base;
+                ans %= mod;
+            }
+            base *= base;
+            base %= mod;
+            exp >>= 1;
+        }
+        return ans;
+    }
+
+    private long modularMultiplicativeInverse(long a, long mod){
+        return powMod(a, mod - 2, mod);
+    }
 }
