@@ -219,6 +219,10 @@ public class LazyHashMap<KeyType, ValueType> implements Map<KeyType, ValueType> 
         }
     }
 
+    private void compress(int pos){
+        // TODO: 29.05.2020
+    }
+
 
     private int positiveModulo(int hash, int modulo) {
         return (hash % modulo + modulo) % modulo;
