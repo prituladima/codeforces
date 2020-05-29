@@ -28,7 +28,8 @@ public class Solution2 {
 
     private static final String yes = "YES", no = "NO";
 
-    private static final int MAXN = 2 * (int) 10e4 + 10;
+    private static final int MAXN = 2 * (int) 10e5
+            + 10;
 
     private boolean[] used;// = new boolean[MAXN];
 
@@ -44,11 +45,11 @@ public class Solution2 {
     }
 
     private void solve() {
-        int ringSize = 10000;
-        for (int i = 0; 1 << i <= ringSize; i++) {
-            System.out.println(i);
-        }
-        System.out.println(log(ringSize));
+//        int ringSize = 10000;
+//        for (int i = 0; 1 << i <= ringSize; i++) {
+//            System.out.println(i);
+//        }
+//        System.out.println(log(ringSize));
 
         if (false) {
             Map<String, String> map = new HashMap<>();
@@ -74,53 +75,59 @@ public class Solution2 {
             System.out.println(map.size());
         }
 
-        if (true) {
+        if (false) {
             List<Map<String, String>> list = new ArrayList<>();
+            long start = System.currentTimeMillis();
             for (int i = 0; i < MAXN; i++) {
-                Map<String, String> map = new HashMap<>();
+                Map<String, String> map = new HashMap<>(2);
                 map.put(nextUUID(), nextUUID());
                 map.put(nextUUID(), nextUUID());
-                map.put(nextUUID(), nextUUID());
+//                map.put(nextUUID(), nextUUID());
                 list.add(map);
             }
-            System.out.println("Init");
-
+//            System.out.println("Init");
+            long finish = System.currentTimeMillis();
+            System.out.println(finish - start);
             nextInt();
 
-            System.out.println("GC");
+//            System.out.println("GC");
             list = null;
         }
 
-        if (true) {
+        if (false) {
             List<Map<String, String>> list = new ArrayList<>();
+            long start = System.currentTimeMillis();
             for (int i = 0; i < MAXN; i++) {
                 Map<String, String> map = new ArrayMap<>();
                 map.put(nextUUID(), nextUUID());
                 map.put(nextUUID(), nextUUID());
-                map.put(nextUUID(), nextUUID());
+//                map.put(nextUUID(), nextUUID());
                 list.add(map);
             }
-            System.out.println("Init");
+//            System.out.println("Init");
+            long finish = System.currentTimeMillis();
+            System.out.println(finish - start);
+//            nextInt();
 
-            nextInt();
-
-            System.out.println("GC");
+//            System.out.println("GC");
         }
 
         if (true) {
             List<Map<String, String>> list = new ArrayList<>();
+            long start = System.currentTimeMillis();
             for (int i = 0; i < MAXN; i++) {
                 Map<String, String> map = new BiMap<>();
                 map.put(nextUUID(), nextUUID());
                 map.put(nextUUID(), nextUUID());
-                map.put(nextUUID(), nextUUID());
+//                map.put(nextUUID(), nextUUID());
                 list.add(map);
             }
-            System.out.println("Init");
-
+            long finish = System.currentTimeMillis();
+//            System.out.println("Init");
+            System.out.println(finish - start);
             nextInt();
-
-            System.out.println("GC");
+            list.add(null);
+//            System.out.println("GC");
         }
 
     }
