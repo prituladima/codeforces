@@ -74,7 +74,7 @@ public class Solution2 {
             System.out.println(map.size());
         }
 
-        if (false) {
+        if (true) {
             List<Map<String, String>> list = new ArrayList<>();
             for (int i = 0; i < MAXN; i++) {
                 Map<String, String> map = new HashMap<>();
@@ -91,7 +91,7 @@ public class Solution2 {
             list = null;
         }
 
-        if (false) {
+        if (true) {
             List<Map<String, String>> list = new ArrayList<>();
             for (int i = 0; i < MAXN; i++) {
                 Map<String, String> map = new ArrayMap<>();
@@ -106,6 +106,23 @@ public class Solution2 {
 
             System.out.println("GC");
         }
+
+        if (true) {
+            List<Map<String, String>> list = new ArrayList<>();
+            for (int i = 0; i < MAXN; i++) {
+                Map<String, String> map = new BiMap<>();
+                map.put(nextUUID(), nextUUID());
+                map.put(nextUUID(), nextUUID());
+                map.put(nextUUID(), nextUUID());
+                list.add(map);
+            }
+            System.out.println("Init");
+
+            nextInt();
+
+            System.out.println("GC");
+        }
+
     }
 
     private String nextUUID() {

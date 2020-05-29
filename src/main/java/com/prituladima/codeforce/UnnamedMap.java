@@ -21,7 +21,7 @@ public class UnnamedMap<KeyType, ValueType> implements Map<KeyType, ValueType> {
 
     @Override
     public boolean isEmpty() {
-        return size;
+        return size == 0;
     }
 
     @Override
@@ -35,17 +35,17 @@ public class UnnamedMap<KeyType, ValueType> implements Map<KeyType, ValueType> {
     }
 
     @Override
-    public Object get(Object key) {
+    public ValueType get(Object key) {
         return null;
     }
 
     @Override
-    public Object put(Object key, Object value) {
+    public ValueType put(Object key, Object value) {
         return null;
     }
 
     @Override
-    public Object remove(Object key) {
+    public ValueType remove(Object key) {
         return null;
     }
 
