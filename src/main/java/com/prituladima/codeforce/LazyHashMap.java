@@ -221,6 +221,7 @@ public class LazyHashMap<KeyType, ValueType> implements Map<KeyType, ValueType> 
 
     private void compress(int pos){
         // TODO: 29.05.2020
+
     }
 
 
