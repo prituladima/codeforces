@@ -50,10 +50,7 @@ public class LazyHashMap<KeyType, ValueType> implements Map<KeyType, ValueType> 
 
     public LazyHashMap(int flags) {
         this.flags = flags;
-
         defaultSetUp();
-
-
     }
 
     private void defaultSetUp() {
@@ -165,20 +162,12 @@ public class LazyHashMap<KeyType, ValueType> implements Map<KeyType, ValueType> 
         if (keyStorage[pos].length != valueStorage[pos].length) {
             throw new BrokenInvariantException("Collisions list must equals");
         }
-        ensureCapacityFor(pos);
-        int length = writePointers[pos];
 
-        for (int i = 0; i < length; i++) {
-            Object curKeyType = keyStorage[pos][i];
-            if (curKeyType == null) {
-                keyStorage[pos][i] = key;
-                valueStorage[pos][i] = value;
-                break;
-            } else if (curKeyType == key || curKeyType.equals(key)) {
-                valueStorage[pos][i] = value;
-                break;
-            }
-        }
+        ensureCapacityFor(pos);
+        int writePointer = writePointers[pos];
+
+        keyStorage[pos][writePointer] = key;
+        valueStorage[pos][writePointer] = value;
 
         writePointers[pos]++;
 
@@ -234,11 +223,6 @@ public class LazyHashMap<KeyType, ValueType> implements Map<KeyType, ValueType> 
     private int positiveModulo(int hash, int modulo) {
         return (hash % modulo + modulo) % modulo;
     }
-
-    private void moveCloserToStart() {
-
-    }
-
 
     @Override
     public int size() {
