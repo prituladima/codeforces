@@ -1,8 +1,11 @@
 package com.prituladima.codeforce;
 
+import androidx.collection.ArrayMap;
+
 import java.io.*;
 import java.util.*;
 import java.util.function.Predicate;
+
 
 import static java.util.Arrays.stream;
 import static java.util.stream.IntStream.range;
@@ -25,9 +28,9 @@ public class Solution2 {
 
     private static final String yes = "YES", no = "NO";
 
-    private static final int MAXN = 2 * (int) 10e5 + 10;
+    private static final int MAXN = 2 * (int) 10e4 + 10;
 
-    private boolean[] used = new boolean[MAXN];
+    private boolean[] used;// = new boolean[MAXN];
 
     private void solveAll() {
         int t = MULTI_TEST ? nextInt() : 1;
@@ -36,19 +39,77 @@ public class Solution2 {
         }
     }
 
+    public static int log(int x) {
+        return (int) (Math.log(x) / Math.log(2)) + 1;
+    }
 
     private void solve() {
-        {
+        int ringSize = 10000;
+        for (int i = 0; 1 << i <= ringSize; i++) {
+            System.out.println(i);
+        }
+        System.out.println(log(ringSize));
 
+        if (false) {
+            Map<String, String> map = new HashMap<>();
+            for (int i = 0; i < MAXN; i++) {
+                map.put(nextUUID(), nextUUID());
+            }
+            System.out.println("Init");
+
+            nextInt();
+
+            System.out.println("GC");
+            System.out.println(map.size());
         }
 
-        {
-
+        if (false) {
+            Map<String, String> map = new ArrayMap<>();
+            for (int i = 0; i < MAXN; i++) {
+                map.put(nextUUID(), nextUUID());
+            }
+            System.out.println("Init");
+            nextInt();
+            System.out.println("GC");
+            System.out.println(map.size());
         }
 
-        {
+        if (false) {
+            List<Map<String, String>> list = new ArrayList<>();
+            for (int i = 0; i < MAXN; i++) {
+                Map<String, String> map = new HashMap<>();
+                map.put(nextUUID(), nextUUID());
+                map.put(nextUUID(), nextUUID());
+                map.put(nextUUID(), nextUUID());
+                list.add(map);
+            }
+            System.out.println("Init");
 
+            nextInt();
+
+            System.out.println("GC");
+            list = null;
         }
+
+        if (false) {
+            List<Map<String, String>> list = new ArrayList<>();
+            for (int i = 0; i < MAXN; i++) {
+                Map<String, String> map = new ArrayMap<>();
+                map.put(nextUUID(), nextUUID());
+                map.put(nextUUID(), nextUUID());
+                map.put(nextUUID(), nextUUID());
+                list.add(map);
+            }
+            System.out.println("Init");
+
+            nextInt();
+
+            System.out.println("GC");
+        }
+    }
+
+    private String nextUUID() {
+        return UUID.randomUUID().toString();
     }
 
 
@@ -630,7 +691,7 @@ public class Solution2 {
         return ans;
     }
 
-    private long modularMultiplicativeInverse(long a, long mod){
+    private long modularMultiplicativeInverse(long a, long mod) {
         return powMod(a, mod - 2, mod);
     }
 }
