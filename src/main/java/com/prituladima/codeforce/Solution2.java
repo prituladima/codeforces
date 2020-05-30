@@ -1,6 +1,7 @@
 package com.prituladima.codeforce;
 
 import androidx.collection.ArrayMap;
+import com.prituladima.experimental_map.TripleMap;
 
 import java.io.*;
 import java.util.*;
@@ -45,6 +46,9 @@ public class Solution2 {
     }
 
     private void solve() {
+
+        Map<String, String> map0001 = new HashMap<>();
+        System.out.println(map0001.get("dfghj"));
 //        int ringSize = 10000;
 //        for (int i = 0; 1 << i <= ringSize; i++) {
 //            System.out.println(i);
@@ -116,7 +120,7 @@ public class Solution2 {
             List<Map<String, String>> list = new ArrayList<>();
             long start = System.currentTimeMillis();
             for (int i = 0; i < MAXN; i++) {
-                Map<String, String> map = new BiMap<>();
+                Map<String, String> map = new TripleMap<>();
                 map.put(nextUUID(), nextUUID());
                 map.put(nextUUID(), nextUUID());
 //                map.put(nextUUID(), nextUUID());
