@@ -1,7 +1,8 @@
 package com.prituladima.codeforce;
 
 import androidx.collection.ArrayMap;
-import com.prituladima.experimental_map.FixedSize3Map;
+import com.prituladima.experimental_map.FixedSizeMap;
+import com.prituladima.experimental_map.SpaceEfficientMap;
 
 import java.io.*;
 import java.util.*;
@@ -29,8 +30,7 @@ public class Solution2 {
 
     private static final String yes = "YES", no = "NO";
 
-    private static final int MAXN = 2 * (int) 10e5
-            + 10;
+    private static final int MAXN = 2 * (int) 10e4 + 10;
 
     private boolean[] used;// = new boolean[MAXN];
 
@@ -47,8 +47,8 @@ public class Solution2 {
 
     private void solve() {
 
-        Map<String, String> map0001 = new HashMap<>();
-        System.out.println(map0001.get("dfghj"));
+//        Map<String, String> map0001 = new HashMap<>();HashMap
+//        System.out.println(map0001.get("dfghj"));
 //        int ringSize = 10000;
 //        for (int i = 0; 1 << i <= ringSize; i++) {
 //            System.out.println(i);
@@ -79,32 +79,36 @@ public class Solution2 {
             System.out.println(map.size());
         }
 
-        if (false) {
+        int maxCapacity = 16;
+
+        if (true) {
             List<Map<String, String>> list = new ArrayList<>();
             long start = System.currentTimeMillis();
             for (int i = 0; i < MAXN; i++) {
                 Map<String, String> map = new HashMap<>(2);
-                map.put(nextUUID(), nextUUID());
-                map.put(nextUUID(), nextUUID());
+                for (int i1 = 0; i1 < maxCapacity; i1++)
+                    map.put(nextUUID(), nextUUID());
+                //map.put(nextUUID(), nextUUID());
 //                map.put(nextUUID(), nextUUID());
                 list.add(map);
             }
 //            System.out.println("Init");
             long finish = System.currentTimeMillis();
             System.out.println(finish - start);
-            nextInt();
+//            nextInt();nextInt
 
 //            System.out.println("GC");
             list = null;
         }
 
-        if (false) {
+        if (true) {
             List<Map<String, String>> list = new ArrayList<>();
             long start = System.currentTimeMillis();
             for (int i = 0; i < MAXN; i++) {
                 Map<String, String> map = new ArrayMap<>();
-                map.put(nextUUID(), nextUUID());
-                map.put(nextUUID(), nextUUID());
+                for (int i1 = 0; i1 < maxCapacity; i1++)
+                    map.put(nextUUID(), nextUUID());
+//                map.put(nextUUID(), nextUUID());
 //                map.put(nextUUID(), nextUUID());
                 list.add(map);
             }
@@ -120,16 +124,17 @@ public class Solution2 {
             List<Map<String, String>> list = new ArrayList<>();
             long start = System.currentTimeMillis();
             for (int i = 0; i < MAXN; i++) {
-                Map<String, String> map = new FixedSize3Map<>();
-                map.put(nextUUID(), nextUUID());
-                map.put(nextUUID(), nextUUID());
+                Map<String, String> map = new SpaceEfficientMap<>();
+                for (int i1 = 0; i1 < maxCapacity; i1++)
+                    map.put(nextUUID(), nextUUID());
+//                map.put(nextUUID(), nextUUID());
 //                map.put(nextUUID(), nextUUID());
                 list.add(map);
             }
             long finish = System.currentTimeMillis();
 //            System.out.println("Init");
             System.out.println(finish - start);
-            nextInt();
+//            nextInt();nextInt
             list.add(null);
 //            System.out.println("GC");
         }

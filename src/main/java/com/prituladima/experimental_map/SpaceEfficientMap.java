@@ -1,5 +1,7 @@
 package com.prituladima.experimental_map;
 
+import androidx.collection.ArrayMap;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -9,7 +11,7 @@ public class SpaceEfficientMap<KeyType, ValueType> implements Map<KeyType, Value
     private Map<KeyType, ValueType> internal;
 
     public SpaceEfficientMap() {
-        internal = new FixedSize3Map<>();
+        internal = new FixedSizeMap<>(2);
     }
 
     @Override
@@ -44,29 +46,34 @@ public class SpaceEfficientMap<KeyType, ValueType> implements Map<KeyType, Value
     }
 
     private void ensureCapacity() {
-        SizeLimited<KeyType, ValueType> sizeLimited = (SizeLimited<KeyType, ValueType>) internal;
-        if (internal.size() == sizeLimited.getMaxCapacity()) {
-            Map<KeyType, ValueType> biggerSizeMap = sizeLimited.getMapWithBiggerCapacity();
-            biggerSizeMap.putAll(internal);
-            internal = biggerSizeMap;
+        if (internal.size() > 16) return;
+        Map<KeyType, ValueType> biggerSizeMap;
+        if (internal.size() < 16) {
+            biggerSizeMap = new FixedSizeMap<>(internal.size() + 1);
+        } else {
+            biggerSizeMap = new ArrayMap<>();
         }
+        biggerSizeMap.putAll(internal);
+        internal = biggerSizeMap;
     }
 
     @Override
     public ValueType remove(Object key) {
+        ValueType removed = internal.remove(key);
         optimizeCapacity();
-        return internal.remove(key);
+        return removed;
     }
 
     private void optimizeCapacity() {
-        if (!isEmpty()) {
-            SizeLimited<KeyType, ValueType> sizeLimited = (SizeLimited<KeyType, ValueType>) internal;
-            if (internal.size() == sizeLimited.getMinCapacity()) {
-                Map<KeyType, ValueType> smallerSizeMap = sizeLimited.getMapWithSmallerCapacity();
-                smallerSizeMap.putAll(internal);
-                internal = smallerSizeMap;
-            }
+        if (internal.size() > 16) return;
+        Map<KeyType, ValueType> smallerSizeMap;
+        if (internal.size() < 16) {
+            smallerSizeMap = new FixedSizeMap<>(internal.size() - 1);
+        } else {
+            smallerSizeMap = new ArrayMap<>();
         }
+        smallerSizeMap.putAll(internal);
+        internal = smallerSizeMap;
     }
 
     @Override
@@ -76,7 +83,7 @@ public class SpaceEfficientMap<KeyType, ValueType> implements Map<KeyType, Value
 
     @Override
     public void clear() {
-        internal = new FixedSize3Map<>();
+        internal = new FixedSizeMap<>(2);
     }
 
     @Override
