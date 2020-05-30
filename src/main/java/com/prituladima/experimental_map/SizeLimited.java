@@ -8,7 +8,7 @@ public interface SizeLimited<K, V> {
 
     int getMaxCapacity();
 
-    Map<K, V> prev();
+    Map<K, V> getMapWithSmallerCapacity();
 
-    Map<K, V> next();
+    Map<K, V> getMapWithBiggerCapacity();
 }

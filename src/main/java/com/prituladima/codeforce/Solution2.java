@@ -1,7 +1,7 @@
 package com.prituladima.codeforce;
 
 import androidx.collection.ArrayMap;
-import com.prituladima.experimental_map.TripleMap;
+import com.prituladima.experimental_map.FixedSize3Map;
 
 import java.io.*;
 import java.util.*;
@@ -120,7 +120,7 @@ public class Solution2 {
             List<Map<String, String>> list = new ArrayList<>();
             long start = System.currentTimeMillis();
             for (int i = 0; i < MAXN; i++) {
-                Map<String, String> map = new TripleMap<>();
+                Map<String, String> map = new FixedSize3Map<>();
                 map.put(nextUUID(), nextUUID());
                 map.put(nextUUID(), nextUUID());
 //                map.put(nextUUID(), nextUUID());

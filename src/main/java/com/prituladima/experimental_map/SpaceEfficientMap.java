@@ -4,12 +4,12 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-public class UnnamedMap<KeyType, ValueType> implements Map<KeyType, ValueType> {
+public class SpaceEfficientMap<KeyType, ValueType> implements Map<KeyType, ValueType> {
 
     private Map<KeyType, ValueType> internal;
 
-    public UnnamedMap() {
-        internal = new TripleMap<>();
+    public SpaceEfficientMap() {
+        internal = new FixedSize3Map<>();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class UnnamedMap<KeyType, ValueType> implements Map<KeyType, ValueType> {
     private void ensureCapacity() {
         SizeLimited<KeyType, ValueType> sizeLimited = (SizeLimited<KeyType, ValueType>) internal;
         if (internal.size() == sizeLimited.getMaxCapacity()) {
-            Map<KeyType, ValueType> biggerSizeMap = sizeLimited.next();
+            Map<KeyType, ValueType> biggerSizeMap = sizeLimited.getMapWithBiggerCapacity();
             biggerSizeMap.putAll(internal);
             internal = biggerSizeMap;
         }
@@ -62,7 +62,7 @@ public class UnnamedMap<KeyType, ValueType> implements Map<KeyType, ValueType> {
         if (!isEmpty()) {
             SizeLimited<KeyType, ValueType> sizeLimited = (SizeLimited<KeyType, ValueType>) internal;
             if (internal.size() == sizeLimited.getMinCapacity()) {
-                Map<KeyType, ValueType> smallerSizeMap = sizeLimited.prev();
+                Map<KeyType, ValueType> smallerSizeMap = sizeLimited.getMapWithSmallerCapacity();
                 smallerSizeMap.putAll(internal);
                 internal = smallerSizeMap;
             }
@@ -76,7 +76,7 @@ public class UnnamedMap<KeyType, ValueType> implements Map<KeyType, ValueType> {
 
     @Override
     public void clear() {
-        internal = new TripleMap<>();
+        internal = new FixedSize3Map<>();
     }
 
     @Override
