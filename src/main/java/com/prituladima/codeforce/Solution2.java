@@ -1,9 +1,5 @@
 package com.prituladima.codeforce;
 
-import androidx.collection.ArrayMap;
-import com.prituladima.experimental_map.FixedSizeMap;
-import com.prituladima.experimental_map.SpaceEfficientMap;
-
 import java.io.*;
 import java.util.*;
 import java.util.function.Predicate;
@@ -47,97 +43,6 @@ public class Solution2 {
 
     private void solve() {
 
-//        Map<String, String> map0001 = new HashMap<>();HashMap
-//        System.out.println(map0001.get("dfghj"));
-//        int ringSize = 10000;
-//        for (int i = 0; 1 << i <= ringSize; i++) {
-//            System.out.println(i);
-//        }
-//        System.out.println(log(ringSize));
-
-        if (false) {
-            Map<String, String> map = new HashMap<>();
-            for (int i = 0; i < MAXN; i++) {
-                map.put(nextUUID(), nextUUID());
-            }
-            System.out.println("Init");
-
-            nextInt();
-
-            System.out.println("GC");
-            System.out.println(map.size());
-        }
-
-        if (false) {
-            Map<String, String> map = new ArrayMap<>();
-            for (int i = 0; i < MAXN; i++) {
-                map.put(nextUUID(), nextUUID());
-            }
-            System.out.println("Init");
-            nextInt();
-            System.out.println("GC");
-            System.out.println(map.size());
-        }
-
-        int maxCapacity = 16;
-
-        if (true) {
-            List<Map<String, String>> list = new ArrayList<>();
-            long start = System.currentTimeMillis();
-            for (int i = 0; i < MAXN; i++) {
-                Map<String, String> map = new HashMap<>(2);
-                for (int i1 = 0; i1 < maxCapacity; i1++)
-                    map.put(nextUUID(), nextUUID());
-                //map.put(nextUUID(), nextUUID());
-//                map.put(nextUUID(), nextUUID());
-                list.add(map);
-            }
-//            System.out.println("Init");
-            long finish = System.currentTimeMillis();
-            System.out.println(finish - start);
-//            nextInt();nextInt
-
-//            System.out.println("GC");
-            list = null;
-        }
-
-        if (true) {
-            List<Map<String, String>> list = new ArrayList<>();
-            long start = System.currentTimeMillis();
-            for (int i = 0; i < MAXN; i++) {
-                Map<String, String> map = new ArrayMap<>();
-                for (int i1 = 0; i1 < maxCapacity; i1++)
-                    map.put(nextUUID(), nextUUID());
-//                map.put(nextUUID(), nextUUID());
-//                map.put(nextUUID(), nextUUID());
-                list.add(map);
-            }
-//            System.out.println("Init");
-            long finish = System.currentTimeMillis();
-            System.out.println(finish - start);
-//            nextInt();
-
-//            System.out.println("GC");
-        }
-
-        if (true) {
-            List<Map<String, String>> list = new ArrayList<>();
-            long start = System.currentTimeMillis();
-            for (int i = 0; i < MAXN; i++) {
-                Map<String, String> map = new SpaceEfficientMap<>();
-                for (int i1 = 0; i1 < maxCapacity; i1++)
-                    map.put(nextUUID(), nextUUID());
-//                map.put(nextUUID(), nextUUID());
-//                map.put(nextUUID(), nextUUID());
-                list.add(map);
-            }
-            long finish = System.currentTimeMillis();
-//            System.out.println("Init");
-            System.out.println(finish - start);
-//            nextInt();nextInt
-            list.add(null);
-//            System.out.println("GC");
-        }
 
     }
 

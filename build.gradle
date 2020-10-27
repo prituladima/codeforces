@@ -16,6 +16,8 @@ dependencies {
 //    compile group: 'androidx.collection', name: 'collection', version: '1.1.0'
 // https://mvnrepository.com/artifact/androidx.annotation/annotation
 //    compile group: 'androidx.annotation', name: 'annotation', version: '1.1.0'
+// https://mvnrepository.com/artifact/it.unimi.dsi/fastutil
+    compile group: 'it.unimi.dsi', name: 'fastutil', version: '8.3.1'
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation fileTree(dir: 'jars', include: '*.jar')
