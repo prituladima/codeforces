@@ -249,6 +249,28 @@ public class Solution2 {
         return tree;
     }
 
+    private static class Graph_Optimized {
+
+        int edges;
+        int[] last, prev, to;
+
+        public Graph_Optimized(int edgeCapacity) {
+            edges = 0;
+            last = new int[edgeCapacity];
+            Arrays.fill(last, -1);
+            prev = new int[edgeCapacity];
+            to = new int[edgeCapacity];
+        }
+
+        public void add(int x, int y) {
+            prev[edges] = last[x];
+            last[x] = edges;
+            to[edges] = y;
+            edges += 1;
+        }
+
+    }
+
     /**
      * Output
      */
